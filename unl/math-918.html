@@ -37,15 +37,16 @@ Here are the two general references for the course.
 <li>Alessio Caminata &amp; Alessandro de Stefani's <a href="https://a-destefani.github.io/ads/files/Notes.pdf">Notes for course on F-singularities</a>; called [CdS] in the daily update.</li>
 </ul>
 
-<p>For office hours, fill out this poll by Sunday afternoon: <a href="https://www.when2meet.com/?34375147-zTea5">https://www.when2meet.com/?34375147-zTea5</a></p>
+<p>Office Hours: <b>Mon 1:30-2:30</b> and <b>Thurs 12:30-1:30</b>. Or stop by my office when my door is open.</p>
 
 <h2>Daily Update</h2>
 
 <p>Use this table of contents list to jump to a specific day. Info for future classes is a tentative plan, and will be updated by the day after the class with what actually happened.</p>
 <dl>
   <dt><a href="#01-13">Jan 13</a></dt><dd>Basics &amp; Notation: Day 1</dd>
-  <dt><a href="#01-15">Upcoming</a></dt><dd>Basics &amp; Notation: Day 2</dd>
-  <dt><a href="#upcoming">Upcoming</a></dt><dd>Proof of Kunz's theorem</dd>
+  <dt><a href="#01-15">Jan 15</a></dt><dd>Basics &amp; Notation: Day 2</dd>
+  <dt><a href="#01-20">Jan 20</a></dt><dd>Completions and Proof of Kunz's theorem</dd>
+  <dt><a href="#upcoming">Upcoming</a></dt><dd>Finishing proof of Kunz's theorem + starting F-splitting</dd>
 </dl>
 
 <h3 id="01-13">Jan 13</h3>
@@ -111,12 +112,73 @@ Here are the two general references for the course.
   <div class="thm"><p><b>Corollary:</b> Let $(R,\mathfrak m)$ be an $F$-finite local ring. Then $R$ is regular if and only if $F_*R$ is free.</p></div>
 
 
-<h3 id="upcoming">Upcoming</h3>
-    <p>Up next is to finish Ch 1 of [MP]; roughly equivalently, Rmk 1.10 of [CdS] then move on to Ch 2 of [CdS]. (We'll be skipping the integral &amp; tight closure for now but it will return later in the semester!)</p>
-<p>First we'll see the answer to #4 (and maybe #5?) above. Then we'll work towards proving Kunz's theorem! 
-To do this, we'll end up defining completions and stating Cohen's structure theorem, proving that $F_*$ is an exact functor and commutes with localization (Prop 1.10 of [CdS]), and then finally proving the theorem.
-<!--  via "Lech independence" (the version of the proof in [CdS]). If you know more about regular rings (including what a regular sequence is), you might enjoy reading the alternate homological version of the proof in [MP].-->
+<h3 id="01-20">Jan 20</h3>
+
+<p>Some facts (that became exercises):</p>
+<ol>
+<li>
+Prove that $F$ induces an isomorphism on Spec.
+        <button type="button" class="viewsoln">View Solution</button>
+        <div class="soln"><p>The induced map on Spec takes a prime ideal $Q$ to $F^{-1}(Q)$. If $r\in Q$, then $r^p=F(r)\in Q$ and thus $r\in F^{-1}(Q)$. Conversely, if $r\in F^{-1}(Q)$ this means $r^p\in Q$, but $Q$ is prime so $r\in Q$.</p></div>
+</li>
+<li>Prove that $F_*^e$ is an exact functor. (In particular, we first saw what it does to maps and to modules: just throws an $F_*^e$ decoration in front!)
+        <button type="button" class="viewsoln">View Solution</button>
+        <div class="soln"><p>See proof of Prop 1.10(1) in [CdS].</p></div>
+</li>
+<li>If $W\subset R$ is a multiplicative set, then $W^{-1}(F_*^eR)\to F_*^e(W^{-1}R)$ via $\frac{F_*^e r}{w}\mapsto F_*^e(\frac{r}{w^{p^e}})$ is a $W^{-1}R$-module isomorphism.
+        <button type="button" class="viewsoln">View Solution</button>
+        <div class="soln"><p>See proof of Prop 1.10(2) in [CdS].</p></div>
+</li>
+</ol>
+
+
+<div class="defn">
+<p><b>Definition:</b> A sequence $(r_n)_{n\in \mathbb N}$in $R^{\mathbb N}$ is <em>Cauchy in the $I$-adic topology</em> if for all $t\in \mathbb N$ there exists a $d\in \mathbb N$ such that for $n,m\geq d$, we have $r_n-r_m\in I^t$.
+
+Let $C_I(R)$ be the set of Cauchy sequences.
+
+Let $C^0_I(R)$ be the sequences convernging to zero, i.e., s.t. for all $n$ there exists $m$ s.t. for all $i\geq m$, $r_i\in I^n$. 
+</p></div>
+
+<div class="thm">
+<p><b>Facts/Definition:</b> $C_I(R)$ is a ring and $C^0_I(R)$ is an ideal; the completion is $\widehat R^I = C_I/C_I^0$. We're going to only use this for local rings and the $I=\mathfrak m$ case, written just plain $\widehat R$, which satisfies:</p>
+<ul>
+<li>$\widehat R$ is a local commutative unital noetherian ring</li>
+
+<li>Completion at $\mathfrak m$ is faithfully flat</li>
+
+<li>$R$ is regular if and only if $\widehat R$ is regular.</li>
+
+<li>(Cohen Structure Theorem, equicharacteristic case) Suppose $(R,\mathfrak m,k)$ is a complete local ring containing a field. Then $R\cong k[[ x_1,\ldots, x_n]]/I$. Further, $R$ is regular if and only if $R\cong k[[x_1,\ldots, x_d]]$.</li>
+</ul>
+</div>
+
+<p><em>Proof of regular implies flat</em></p>
+<p>$R$ is regular iff $R_Q$ is regular for all $Q$; and a map $\phi$ is flat iff $\phi_Q$ is flat for all $Q$. Further, $F_*^e$ commutes with localization. Thus we reduce to the local case. Now consider</p>
+<img src="../Files/unl/01-20_kunz-comm-digr-small.png">
+<p>Recall fact: In such a diagram (where both vertical maps are faithfully flat), if the bottom map is flat then so is the top one. So sufficient to show for the complete case, and likewise sufficient to do for a power series ring over an algebraically closed field, but we (basically) already did that! &#8718; 
 </p>
+<p>We started the proof of the other direction (in the style of [CdS]) but didn't finish; however we did get through the following:</p>
+<div class="defn">
+<p><b>Definition:</b> 
+Let $(R,\mathfrak m)$ local. 
+Then $x_1,\ldots, x_n$ is <em>Lech independent</em> if having $a_1x_1+\cdots + a_nx_n=0$ for $a_i\in R$ in fact implies that $a_i \in \langle x_1,\ldots, x_n\rangle$ for all $i$.</p>
+
+<p>Equivalently: letting $\mathfrak q = \langle \underline x\rangle$, they are Lech independent iff they minimally generate $\mathfrak q$ and $\mathfrak q/\mathfrak q^2$ is a free $R/\mathfrak q$-module.
+</p>
+</div>
+
+<div class="thm">
+<p><b>Lech's Lemma:</b> 
+Let $(R,\mathfrak m)$ be a local ring and $x_1,\ldots, x_n$ be Lech independent elements which generate an $\mathfrak m$-primary ideal. 
+If $x_1=y_1z_1$ then \[\ell_R(R/\langle x_1,\ldots, x_n\rangle)=\ell_R(R/\langle y_1,\ldots, x_n\rangle) + \ell_R(R/\langle z_1,\ldots, x_n\rangle)\]
+</p></div>
+<p>Proof in Lemma 2.6 of [CdS]</p>
+
+<h3 id="upcoming">Upcoming</h3>
+<p>Finish proving Kunz  via "Lech independence" (the version of the proof in [CdS]). If you know more about regular rings (including what a regular sequence is), you might enjoy reading the alternate homological version of the proof in [MP]. Then skip ahead to Ch 2 of [MP] and Ch 5 of [CdS] to define F-splitting.
+</p>
+<p>No in-class exercises on Thurs (probably), but HW 1 will be released!</p>
  
     </main>
 <script>
