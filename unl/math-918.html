@@ -50,7 +50,8 @@ Here are the two general references for the course.
   <dt><a href="#01-13">Jan 13</a></dt><dd>Basics &amp; Notation: Day 1</dd>
   <dt><a href="#01-15">Jan 15</a></dt><dd>Basics &amp; Notation: Day 2</dd>
   <dt><a href="#01-20">Jan 20</a></dt><dd>Completions and Proof of Kunz's theorem</dd>
-  <dt><a href="#upcoming">Upcoming</a></dt><dd>Finishing proof of Kunz's theorem + starting F-splitting</dd>
+  <dt><a href="#01-22">Jan 22</a></dt><dd>Finishing proof of Kunz's theorem + starting F-splitting</dd>
+  <dt><a href="#upcoming">Upcoming</a><dd>Continuing thru Ch 2 of [MP] on F-splitting; Fedder's criterion (or equivalently Ch 5 of [CdS]).</dd></dt>
 </dl>
 
 <h3 id="01-13">Jan 13</h3>
@@ -157,10 +158,10 @@ Let $C^0_I(R)$ be the sequences convernging to zero, i.e., s.t. for all $n$ ther
 </ul>
 </div>
 
-<p><em>Proof of regular implies flat</em></p>
+<p><em>Proof of Kunz's theorem (regular implies flat): </em></p>
 <p>$R$ is regular iff $R_Q$ is regular for all $Q$; and a map $\phi$ is flat iff $\phi_Q$ is flat for all $Q$. Further, $F_*^e$ commutes with localization. Thus we reduce to the local case. Now consider</p>
 <img src="../Files/unl/01-20_kunz-comm-digr-small.png">
-<p>Recall fact: In such a diagram (where both vertical maps are faithfully flat), if the bottom map is flat then so is the top one. So sufficient to show for the complete case, and likewise sufficient to do for a power series ring over an algebraically closed field, but we (basically) already did that! &#8718; 
+<p>Recall fact: In such a diagram (where both vertical maps are faithfully flat), if the bottom map is flat then so is the top one. So sufficient to show for the complete case, and likewise sufficient to do for a power series ring over an algebraically closed field, but we (basically) already did that!&nbsp; &#9632;
 </p>
 <p>We started the proof of the other direction (in the style of [CdS]) but didn't finish; however we did get through the following:</p>
 <div class="defn">
@@ -179,10 +180,94 @@ If $x_1=y_1z_1$ then \[\ell_R(R/\langle x_1,\ldots, x_n\rangle)=\ell_R(R/\langle
 </p></div>
 <p>Proof in Lemma 2.6 of [CdS]</p>
 
-<h3 id="upcoming">Upcoming</h3>
-<p>Finish proving Kunz  via "Lech independence" (the version of the proof in [CdS]). If you know more about regular rings (including what a regular sequence is), you might enjoy reading the alternate homological version of the proof in [MP]. Then skip ahead to Ch 2 of [MP] and Ch 5 of [CdS] to define F-splitting.
+
+<h3 id="01-22">Jan 22</h3>
+<div class="thm">
+<p><b>Proposition:</b> If $\underline x\in R$ is Lech independent and $\varphi:R\to S$ is a flat map, then $\varphi(x_1),\ldots, \varphi(x_n)$ is Lech independent in $S$.</p>
+</div>
+<p><b>Proof:</b> Let $I=\underline x$. Then by Lech independence, $I/I^2 \cong (R/I)^n$ as $(R/I)$ and as $R$-modules. But then flatness gives
+\[
+(IS)/(IS)^2 \cong (S/IS)^n
+\]
+and by rank reasons clearly $\varphi(\underline x)$ is still a minimal generating set.&nbsp; &#9632;
 </p>
-<p>No in-class exercises on Thurs (probably), but HW 1 will be released!</p>
+
+<div class="thm">
+<p><b>Proposition:</b> If $\underline x$ is Lech independent and $x_1=y_1z_1$ then $y_1,\ldots, x_2,\ldots, x_n$ is L.i.
+</p></div>
+<p><b>Proof:</b> From last time, we saw that $\underline x : y_1 = \langle z_1,x_2,\ldots, x_n\rangle$. 
+So suppose we have coefficients $a_1z_1 + \sum_{i=2}^n a_ix_i=0$. 
+Multiply by $y_1$ to get $a_1(y_1z_1)+\sum_i (a_iy_1)x_i=0$. 
+By Lech independence of $\underline x$, this means $a_1 \in \underline x \subset \langle z_1,x_2,\ldots, x_n\rangle$. 
+Further, means $a_i \in \underline x:y_1 = \langle z_1,x_2,\ldots, x_n\rangle$ as desired.&nbsp; &#9632;</p>
+
+
+
+
+<p><b>Proof of Kunz's theorem (flat => regular):</b> 
+$R$ is regular if and only if $\widehat R$ is regular, and by the same diagram before, if $F_*\widehat R$ is a flat $\widehat R$ module then  $F_*R$ is a flat $R$-module. (In fact, this is iff because $\widehat R\to \widehat{F_*R}$ is canonically $\widehat R\to F_* \widehat R$.) So WLOG $R$ is complete local ring, and $R\cong k[[x_1,\ldots, x_n]]/I$. Let $S=k[[x_1,\ldots, x_n]]$.
+</p>
+<p>
+We can further WLOG assume $n =$ embedding dimension (recall that = $\dim_k\mathfrak m / \mathfrak m^2$ = by NAK the minimal number of generators of $\mathfrak m$), since if not just throw away redundant $x$'s. 
+Thus $\underline x$ is Lech independent, and so is $\underline x^{[q]}$, and then also so is $x_1^{a_1},\ldots, x_n^{a_n}$ for combo of powers.. On the one hand, by Lech's length lemma, a base case of $\ell(R/\mathfrak m)=1$,  and induction, we get that $\ell_R(R/\langle x_1^{a_1},\ldots, x_n^{a_n}) = \prod_i a_i$.  But we also can do the same thing to $S$ and see that $\ell_S(S/\langle x_1^{a_1},\ldots, x_n^{a_n}) = \prod_i a_i$.</p>
+<p>
+Thus $S/\langle \underline x\rangle^{[p^e]}\to S/(I+\langle \underline x\rangle^{[p^e]}\cong R/\mathfrak m^{[p^e]}$ is an isomorphism for all $t$, and so $I\subset \underline x^{[q]}$ and by Krull's intersection, $I=0$. &nbsp; &#9632;</p>
+
+<p>Now... new topic! Moving onto Frobenius splitting. We defined $F$-splitting, saw a proposition about how it relates to other split maps, and saw two examples.</p>
+
+<div class="defn">
+<p>
+<b>Definition:</b> $R$ is <em>$F$-split</em> if there exists some $R$-module map $\pi\in \operatorname{Hom}_R(F_*R,R)$ such that $\pi\circ F = \operatorname{id}_R$.
+</p>
+<p>Equivalently: There exists an $R$-module map $\pi:F_*R\to R$ such that $\pi(F_*1)=1$.</p>
+</div>
+<p>We saw that was the same since being a splitting exactly means that for all $r\in R$ we have $r = \pi\circ F(r) = \pi(F_*r^{p})=\pi(rF_*1)=r\pi(F_*1)$.</p>
+
+<div class="thm">
+<p><b>Proposition:</b> If $R$ is $F$-split then $R$ is reduced.</p>
+</div>
+<p><em>Proof:</em> Let $\pi:F_*R\to R$ be our splitting. If $\pi\circ F=\operatorname{id}_R$, this forces the first map to be injective. And we saw $F$ injective iff $R$ reduced.&nbsp; &#9632;</p>
+
+<div class="zb">
+<p>
+<b>Example:</b> If $R=k[x]$ or $k[[x]]$ then $R$ is $F$-split. We saw that in fact these examples are both free, with $R$-basis of $\{F_*x^i\: | \: 0\le i \lt p\}$. 
+By freeness, we can define a map by doing whatever we want on the generators, such as the <em>standard monomial splitting</em>, which sends
+\[F_*1\mapsto 1, \qquad F_*x^i\mapsto 0\ \  \forall 0\lt i\lt p.\]</p>
+</div>
+<div class="thm">
+<p><b>Proposition:</b> Suppose $\varphi:R\to S$ is split (as an $R$-module map). If $S$ is $F$-split then so is $R$.</p>
+</div>
+<p><em>Proof:</em> 
+Suppose that $\varphi$ is split via $\gamma:S\to R$, and that $F_S$ is split via $\pi:F_*S\to S$. 
+Then $\gamma\circ\pi\circ (F_*\varphi)$ is our desired splitting of $F_R$. See this via
+\[\gamma\circ\pi\circ (F_*\varphi)(F_*1) = \gamma\circ \pi(F_*\varphi(1)) = \gamma(\pi(F_*1))=\gamma(1)=1.\quad &#9632;\]</p>
+<div class="zb">
+<p><b>Example:</b>
+Let $G$ be a finite group such that $p\not|\,|G|$. Let $R$ be a char $p$ ring with a $G$ action, and let
+\[R^G = \{r\in R \: | \: g\cdot r = r \ \forall g\in G\]
+be the invariant subring. The inclusion $R^G\to R$ is always split via the <em>Reynold's operator</em>:
+\[R\to R^g\qquad r\mapsto \frac{1}{|G|}\sum_{g\in G}g\cdot r\] 
+Thus whenever $R$ is $F$-split, the invariant ring $R^G$ is also $F$-split.</p>
+<p>As a more specific example, take $G=S_3$ and $R=\mathbb F_p[x_1,x_2,x_3]$. Have $G$ act on $R$ via $\sigma\cdot f(x_1,x_2,x_3) = f(x_{\sigma(1)},x_{\sigma(2)},x_{\sigma(3)})$. Examples of polynomials in $R^G$ are $x_1x_2x_3$ and $x_1+x_2+x_3$, but NOT plain old $x_1$ or plain old $x_1x_2$. Using the previous polynomial example and the above invariant example, we see that if $p\ge 5$ then $R^{S_3}$ is $F$-split.</p>
+</div>
+
+<p>Today's class prompted some good requests for examples, which I will give you on Tuesday:</p>
+<ul>
+<li>What's an example of a reduced ring that is NOT $F$-split?</li>
+<li>What's an example of an invariant ring that is $F$-split even though $p||G|$?</li>
+</ul>
+<p>Finally, an in-class exercise was to prove the following, which we will go over on Tuesday:</p>
+<div class="thm">
+<p><b>Proposition:</b> The following are equivalent for a char $p$ ring $R$.
+  <ol>
+    <li>$R$ is $F$-split.</li>
+    <li>There exists some $e\gt 0$ such that $F^e:R\to F_*^eR$ splits.</li>
+    <li>For all $e\gt 0$ the map $F^e:R\to F_*^eR$ splits.</li>
+  </ol>
+</p></div>
+
+<h3 id="upcoming">Upcoming</h3>
+<p>Continuing through the second half of Ch 2 of [MP] we will cover Fedder's criterion to detect $F$-splitting. (We will return to the first half of the chapter on $F$-purity later in the semester!)</p>
  
     </main>
 <script>
