@@ -1,0 +1,87 @@
+\documentclass[11pt]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in, headheight=14.5pt]{geometry}
+\usepackage{math-hw}
+\pagestyle{fancy}
+\fancyhead[L]{Math 918}
+\fancyhead[R]{HW 1}
+
+\usepackage[margin=1in, headheight=14.5pt]{geometry}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% fonts
+\usepackage{calligra}
+\usepackage{mathrsfs}
+\usepackage[mathscr]{euscript}
+
+\usepackage{enumitem}
+\usepackage{hyperref}
+%\usepackage[colorlinks,  citecolor=green, linkcolor = black, urlcolor = cyan]{hyperref} % hyperlinks for cross-referencing; colorlinks is recommended because otherwise the boxes obscure the roman numerals; linkcolor is changed to blue after the table of contents (see firstpages.tex). As of 2021, red is not allowed by Rackham.
+\usepackage[nameinlink]{cleveref}
+%\usepackage{backref}
+\setlength{\droptitle}{-4em}
+
+
+\newtoggle{solution}
+\toggletrue{solution}
+%\togglefalse{solution}
+
+
+\iftoggle{solution}{
+\includeversion{solnenv}
+\includeversion{commenv}
+}{
+\excludeversion{solnenv}
+\excludeversion{commenv}
+}
+
+
+
+
+
+\title{Homework 1}
+%\author{Anna Brosowsky}
+\date{\vspace{-4em}}
+
+\begin{document}
+
+
+\maketitle\thispagestyle{fancy}
+
+Remember you are allowed to discuss with classmates (or an AI tool), but that you need to tell me who/what you discussed with + the final submitted writeup should be your own work.
+
+If you solve a problem using a computer algebra system (e.g., Macualay2 or Singular) that is allowed, just provide some code instead of just saying ``by Macaulay2''! Also please do so in the ``spirit'' of the problem, i.e., don't just use the function \verb|isFPure| :)
+
+\begin{enumerate}[itemsep=4em]
+\item Prove the following statement:
+\begin{prop}
+Let $(R,\mf m,k)$ be a local ring. The number of minimal generators for $F_*^eR$ as an $R$-module is
+\[
+[k:k^{p^e}]\cdot \dim_k(R/\mathfrak m^{[p^e]})
+\]
+\end{prop}
+
+\item (Exercise 5 in Ma--Polstra) Prove that if $R$ is essentially of finite type\footnote{essentially of finite type = a localization of something of finite type} over an $F$-finite field, then $R$ is also $F$-finite. Do this via first proving each of the following three facts:
+\begin{enumerate}
+\item If $R$ is $F$-finite, then $R/I$ is $F$-finite for all ideals $I$.
+
+
+\item If $R$ is $F$-finite, then $W^{-1}R$ is $F$-finite for all multiplicative sets $W$.
+
+
+\item If $R$ is $F$-finite, then $R[x]$ and $R[[x]]$ are $F$-finite for an indeterminate $x$.
+
+
+
+\end{enumerate}
+
+\item (Exercise 1 in Ma--Polstra) Prove that if there exists an $e_0>0$ such that $F_*^{e_0}R$ is $F$-finite, then in fact $F_*^eR$ is $F$-finite for all $e>0$.
+
+
+\item Let $R=\bb F_2[x^2,x^3]$. Prove that $R$ is \emph{not} $F$-split.\footnote{Hint: You are welcome to use the generators \& relations for $F_*R$ we found in class, no need to reprove!}\footnote{Note: This problem is definitely doable by hand using what we've learned as of 1/22, but you are also welcome to use any other methods for testing $F$-splitting that we learn in-class between now and when this HW is due.}
+
+
+\end{enumerate}
+
+
+\end{document}
