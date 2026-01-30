@@ -55,11 +55,12 @@ If you solve a problem using a computer algebra system (e.g., Macualay2 or Singu
 \begin{enumerate}[itemsep=4em]
 \item Prove the following statement:
 \begin{prop}
-Let $(R,\mf m,k)$ be a local ring. The number of minimal generators for $F_*^eR$ as an $R$-module is
+Let $(R,\mf m,k)$ be a local ring containing a \emph{coefficient field}, i.e., there exists an injection $\gamma:k\to R$ such that $\pi\circ \gamma$ is an isomorphism, where $\pi$ is the natural surjection $\pi:R\to R/\mf m \cong k$ . Then number of minimal generators for $F_*^eR$ as an $R$-module is
 \[
 [k:k^{p^e}]\cdot \dim_k(R/\mathfrak m^{[p^e]})
 \]
 \end{prop}
+
 
 \item (Exercise 5 in Ma--Polstra) Prove that if $R$ is essentially of finite type\footnote{essentially of finite type = a localization of something of finite type} over an $F$-finite field, then $R$ is also $F$-finite. Do this via first proving each of the following three facts:
 \begin{enumerate}
