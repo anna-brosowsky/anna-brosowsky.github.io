@@ -40,8 +40,26 @@ Here are the two general references for the course.
 <p>Office Hours: <b>Mon 1:30-2:30</b> and <b>Thurs 12:30-1:30</b>. Or stop by my office when my door is open.</p>
 
 <ul>
-<li> Homework 1: [<a href="../Files/unl/math-918_hw1.pdf">PDF</a>] [<a href="../Files/unl/math-918_hw1.tex">TeX</a>] + [<a href="../Files/unl/math-hw.sty">math-hw.sty</a>] (style file needed to complie!)</li>
+<li> Homework 1: [<a href="../Files/unl/math-918_hw1.pdf">PDF</a>] and [<a href="../Files/unl/math-918_hw1.tex">TeX</a>] + [<a href="../Files/unl/math-hw.sty">math-hw.sty</a>] (style file needed to compile!)
+    <ul><li>Due on Friday Feb 6th at midnight. Submit on Gradescope.</li></ul></li>
 </ul>
+
+<h3>HCC Info</h3>
+<p>You have access to the Holland Computing Center (HCC) for this class! To use these resources, you will need an account associated with HCC that is separate from your University of Nebraska account and credentials:</p>
+<ul>
+    <li>If you already have an HCC account from a prior class or research, you can add the class group to your account or move your account to the <b>math918</b> group: <a href="https://hcc.unl.edu/group-addchange-request">https://hcc.unl.edu/group-addchange-request</a>.</li>
+    <li>If you need an HCC account: <a href="https://hcc.unl.edu/new-user-request">https://hcc.unl.edu/new-user-request</a> and request the <b>math918</b> group.</li>
+</ul>
+
+<p>**You will need to activate your DUO two factor for your HCC account in order to use the resources. Without this you will not have access! This is different from the TrueYou DUO you use to log into other UNL services.**</p>
+
+<p>Here is some other important info:</p>
+<ul>
+    <li>For more useful links and notes for students taking a class using HCC resources, please see <a href="https://hcc.unl.edu/docs/faq/class_students">https://hcc.unl.edu/docs/faq/class_students</a>.</li>
+    <li>While using HCC resources for this class, be aware of HCC's class account guidelines and center's policies: <a href="https://hcc.unl.edu/hcc-policies">https://hcc.unl.edu/hcc-policies</a>.</li>
+    <li>Pay special attention to the guidelines for class accounts since data is removed at the end of the semester: <a href="https://hcc.unl.edu/hcc-policies#class-groups">https://hcc.unl.edu/hcc-policies#class-groups</a></li>
+</ul>
+
 
 <h2>Daily Update</h2>
 
@@ -51,7 +69,9 @@ Here are the two general references for the course.
   <dt><a href="#01-15">Jan 15</a></dt><dd>Basics &amp; Notation: Day 2</dd>
   <dt><a href="#01-20">Jan 20</a></dt><dd>Completions and Proof of Kunz's theorem</dd>
   <dt><a href="#01-22">Jan 22</a></dt><dd>Finishing proof of Kunz's theorem + starting F-splitting</dd>
-  <dt><a href="#upcoming">Upcoming</a><dd>Continuing thru Ch 2 of [MP] on F-splitting; Fedder's criterion (or equivalently Ch 5 of [CdS]).</dd></dt>
+  <dt><a href="#01-27">Jan 27</a></dt><dd>Proof that F-splitting can equivalently be checked for some/any $e$; examples (including $F$-finite regular local rings); the statement of Fedder's criterion; viewing $\hom_S(F_*^eS,S)$ as a rank 1 free module for regular $S$.</dd>
+  <dt><a href="#01-29">Jan 29</a></dt><dd>A HW correction; fact about the generating $\Phi$ and ideal containments; more general statement of Fedder's criterion. </dd>
+  <dt><a href="#upcoming">Upcoming</a></dt><dd>IOU several more facts needed to prove Fedder; some examples. Thursday---using Macaulay2 and the HCC so bring a laptop! Also if you want to follow along with the HCC part of the demo (highly recommended!) follow the setup instructions to request an account <b>prior to the start of Thursday's class</b>.</dd>
 </dl>
 
 <h3 id="01-13">Jan 13</h3>
@@ -244,9 +264,9 @@ Then $\gamma\circ\pi\circ (F_*\varphi)$ is our desired splitting of $F_R$. See t
 <div class="zb">
 <p><b>Example:</b>
 Let $G$ be a finite group such that $p\not|\,|G|$. Let $R$ be a char $p$ ring with a $G$ action, and let
-\[R^G = \{r\in R \: | \: g\cdot r = r \ \forall g\in G\]
+\[R^G = \{r\in R \: | \: g\cdot r = r \ \forall g\in G\}\]
 be the invariant subring. The inclusion $R^G\to R$ is always split via the <em>Reynold's operator</em>:
-\[R\to R^g\qquad r\mapsto \frac{1}{|G|}\sum_{g\in G}g\cdot r\}\] 
+\[R\to R^g\qquad r\mapsto \frac{1}{|G|}\sum_{g\in G}g\cdot r\] 
 Thus whenever $R$ is $F$-split, the invariant ring $R^G$ is also $F$-split.</p>
 <p>As a more specific example, take $G=S_3$ and $R=\mathbb F_p[x_1,x_2,x_3]$. Have $G$ act on $R$ via $\sigma\cdot f(x_1,x_2,x_3) = f(x_{\sigma(1)},x_{\sigma(2)},x_{\sigma(3)})$. Examples of polynomials in $R^G$ are $x_1x_2x_3$ and $x_1+x_2+x_3$, but NOT plain old $x_1$ or plain old $x_1x_2$. Using the previous polynomial example and the above invariant example, we see that if $p\ge 5$ then $R^{S_3}$ is $F$-split.</p>
 </div>
@@ -266,16 +286,88 @@ Thus whenever $R$ is $F$-split, the invariant ring $R^G$ is also $F$-split.</p>
   </ol>
 </p></div>
 
+<h3 id="01-27">Jan 27</h3>
+<p><b>Proof of proposition from last week (F-split iff for some e iff for all e):</b>
+1 implies 3: If $\pi:F_*R\to R$ is our splitting, then notice that $\pi\circ F_*\pi \circ \cdots \circ F_*^{e-1}\pi:F_*^eR\to R$ is a splitting!
+Notation $\pi^{\star e} =$ such a composition, and in fact $\psi\star \phi := \psi\circ F_*^e\phi$. </p>
+
+<p>3 implies 2: clear</p>
+
+<p>2 implies 1: let $\pi:F_*^eR\to R$ be our splitting. Then
+\[ R \stackrel{F}{\to} F_*R \stackrel{F_*F^{e-1}}{\to} F_*^eR \stackrel{\pi}{\to}  R \]
+so take $\pi \circ F_*F^{e-1}$ as our splitting.  &nbsp; &#9632; </p>
+
+<p><b>(Non)Example:</b> The ring $\mathbb F_2[x^2,x^3]$ is reduced, but is NOT $F$-split. (Proved in HW 1 #4). </p>
+
+<p><b>Example:</b>  Here are some invariant rings that ARE $F$-split even though $p$ divides the order of the group (so that the Reynold's operator proof won't work):</p>
+<ul>
+    <li>If $G$ acts via the trivial action, then for ANY ring $R$ we have $R^G=R$. So regardless of the group order, if $R$ is $F$-split then clearly so is $R^G$.</li>
+    <li>If $G=S_2$ and $R=\mathbb F_2[x,y]$ and we do the same symmetric group action of permutating the variables from last time. Then $R^G = \mathbb F_2[x+y,xy]\cong \mathbb F_2[w,z]$ which is regular and thus $F$-split.</li>
+</ul>
+
+<p>The following theorem was an in-class exercise.</p>
+<div class="thm"><p><b>Theorem:</b> Any $F$-finite regular local ring is $F$-split. Any complete regular local ring is $F$-split.</p></div>
+        <button type="button" class="viewsoln">View Complete Regular Local Proof</button>
+        <div class="soln">
+            <p>By the Cohen structure theorem, if $R$ is a complete regular local ring then $R\cong k[[x_1,\ldots, x_d]]$ where $k$ is the residue field. From seeing this example before we know that $F_*R$ is free (though possibly infinitely generated if $k$ is a bad field!), that $F_*1$ is part of a basis, and so the standard monomial splitting works. Recall the standard monomial splitting sends $F_*1\mapsto 1$ and $F_*(\lambda_i x^{\alpha})\mapsto 0$ for all the other generators.  &nbsp; &#9632; </p>
+        </div>
+        <button type="button" class="viewsoln">View $F$-Finite Regular Local Proof</button>
+        <div class="soln">
+            <p>By Kunz, regular means $F_*R$ is flat. Since we're further $F$-finite and local, $F_*R$ is free. So as long as we can prove that $F_*1$ is part of a minimal generating set (i.e., part of a basis) we can do the same thing as above and construct a map that sends $F_*1$ to $1$ and the other generators to wherever we want. To check this use NAK! $F_*1$ is part of a minimal generating set if and only if $F_*1$ is non-zero in $F_*R/\mathfrak mF_*R$. By definition we  can simplify $\mathfrak F_R= F_*\mathfrak m^{[p]}$, and clearly $F_1 \notin F_*\mathfrak m^{[p]}$. Thus we can extend to a minimal generating set (=free basis).  &nbsp; &#9632; </p>
+        </div>
+
+<p><b>WARNING:</b> It is NOT true that every regular local ring is $F$-split; we really do need some adjectives! We will see an example later in the semester. </p>
+
+<div class="thm"><p><b>Fedder's Criterion:</b> Let $S$ be an $F$-finite regular local ring, and let $R=S/I$. Then $R$ is $F$-split if and only if $I^{[p]}:I\not\subseteq \mathfrak m^{[p]}$ </p></div>
+
+<p>It's stated there for motivation but it will take us a while to prove it. First we want to have a good understanding of what $\hom_S(F_*^eS,S)$ looks like, and how it relates to $\hom_R(F_*^eR,R)$. This will then help us figure out how a potential splitting of the Frobenius on $R$ might relate to one on $S$.</p>
+
+<p><b>Remark:</b> If $T$ is an $R$-algebra, then $\hom_R(T,R)$ has the structure 
+of a $T$-module via premultiplication: $(t\cdot \varphi)(s) = \varphi(ts) $.
+So, $\hom_R(F_*^eR,R)$ has the structure of an $F_*^eR$-module via premultiplication: $(F_*^er \cdot \varphi)(F_*^es) = \varphi(F_*^e(rs))$.</p>
+
+
+<div class="thm"><p><b>Proposition:</b> 
+Let $k$ be an $F$-finite field, and let $S=$ either $k[x_1,\ldots, x_d]$, or the localization thereof at $\mathfrak m$, or $k[[x_1,\ldots, x_d]]$. 
+Then $\hom_S(F_*^eS,S)$ is a free rank one $F_*^eS$-module. 
+Specifically, if $\{F_*^e\lambda_i\}$ is a $k$-basis of $F_*^ek$ (where wlog $\lambda_1=1$), then  $\Phi:F_*^eS\to S$ is our generator where $\Phi$ is defined on the monomial basis to be 
+\[
+\Phi(F_*^e(\lambda_ix^{\alpha})) = \begin{cases} 1 & i=1,\  \textrm{and }\alpha_j = (p^e-1)\ \forall j\\
+0 & \textrm{else} \end{cases} \]
+</p></div>
+<p><b>Proof (when $k$ is perfect):</b>
+$k$ is perfect means we don't have to worry about the $\lambda_i$ (a similar proof works with them there it is just more annoying to type out but not any more interesting). Let $\pi_\alpha$ be the dual (projection) to $x^{\alpha}$, so that
+\[
+\pi_\alpha(F_*^e(x^{\beta})) = \begin{cases} 1 & \alpha = \beta\\
+0 & \textrm{else} \end{cases}. \]
+</p>
+<ul>
+  <li>Goal 1: Show that each $\pi_\alpha$ can be written as $F_*^es\cdot \Phi$ for some $s\in S$. (Hint: First notice that $\Phi$ itself is a $\pi_\alpha$, and then see what $F_*^ex\cdot \Phi$ looks like in terms of the $\pi_\alpha$'s, and see if you can figure out a pattern.)
+        <button type="button" class="viewsoln">View Goal 1 Proof</button>
+        <div class="soln">
+            <p>Let 𝟙 denote the all 1's vector. So $\Phi = \pi_{(p^e-1)𝟙}$, and more generally we HAVE a map that sends exactly one monomial to 1 (and the rest to 0), and we WANT maps that send exactly one monomial to 1 (and the rest to 0). So we should try acting by monomials. Specifically,
+        \[F_*^e(x^{p^e-1)𝟙-\alpha})\cdot \Phi (F_*^ex^{\beta}) 
+            = \Phi(F_*^e x^{(p^e -1)𝟙-\alpha+\beta}) = \begin{cases} 1 & (p^e-1)𝟙  - \alpha+\beta = (p^e-1) 𝟙 \\ 0 & \textrm{else}\end{cases}.\] I.e., it equals one exactly when $\beta = \alpha$. So $F_*^e(x^{p^e𝟙 -1 -\alpha})\cdot \Phi = \pi_\alpha$.  &nbsp; &#9632; </p>
+        </div></li>
+  <li>Goal 2:  Show that the $\pi_\alpha$ generate $\hom_S(F_*^eS,S)$ as an $F_*^eS$ algebra.
+        <button type="button" class="viewsoln">View Goal 2 Proof</button>
+        <div class="soln">
+            <p>  &nbsp; &#9632; </p>
+        </div></li>
+</ul>
+<p>Now clearly combining Goal 1 and Goal 2 we see that $\Phi$ generates. For freeness, the only possible relation is of the form $F_*^es \cdot \Phi=0$. But this can never happen---$\Phi$ is non-zero on monomials of arbitrarily large degree!   &nbsp; &#9632; </p>
+
+
+
+
 <h3 id="upcoming">Upcoming</h3>
-<p>Continuing through the second half of Ch 2 of [MP] we will cover Fedder's criterion to detect $F$-splitting. (We will return to the first half of the chapter on $F$-purity later in the semester!)</p>
+<p>Continuing through the second half of Ch 2 of [MP] we will cover Fedder's criterion to detect $F$-splitting. (We will return to the first half of the chapter on $F$-purity later in the semester!). Also, <b>set up an HCC account by Thursday</b> if you want to follow along with the demo!</p>
  
     </main>
 <script>
     var coll = document.getElementsByClassName("viewsoln");
     var i;
-    console.log("hello");
     for (i = 0; i < coll.length; i++) {
-      console.log("loop");
       console.log(i);
       coll[i].addEventListener("click", function() {
         this.classList.toggle("active");
