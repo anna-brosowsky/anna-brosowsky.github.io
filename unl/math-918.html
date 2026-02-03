@@ -15,7 +15,8 @@
           bb: ["{\\mathbb{#1}}",1],
           mf: ["{\\mathfrak{#1}}",1],
           mc: ["{\\mathcal{#1}}",1],
-          Spec: "{\\operatorname{Spec}}"
+          Spec: "{\\operatorname{Spec}}",
+          id: "{\\operatorname{id}}"
         }
       }
     };
@@ -392,18 +393,47 @@ If $J\subset I^{[p^e]}$, then in fact for ANY map $\psi\in \hom_S(F_*^eS,S)$ we 
 \[
 \psi(F_*^eJ)\subset \psi(F_*^eI^{[p^e]}) \subset I\psi(F_*^eS)\subset I.
 \]
-<!--For converse, by Kunz $F_*^eS$ is free over $S$, with basis $\{F_*^eg_i\}_{i=1}^t$. Let $\{\pi_i\}_{i=1}^t\subset \hom_S(F_*^eS,S)$ be the dual basis (recall: this means $\pi_i(F_*^eg_j)=1$ if $i=j$, otherwise $0$). Further, because $\Phi$ generates, there exist $s_i\in S$ s.t. $\pi_i = \Phi\star s_i$. 
-......  &nbsp; &#9632; 
--->
+For converse, first make several observations:
+By Kunz $F_*^eS$ is free over $S$, with basis $\{F_*^eg_i\}_{i=1}^t$. 
+Let $\{\pi_i\}_{i=1}^t\subset \hom_S(F_*^eS,S)$ be the dual basis (recall: this means $\pi_i(F_*^eg_j)=1$ if $i=j$, otherwise $0$). 
+Further, because $\Phi$ generates, there exist $s_i\in S$ s.t. $\pi_i = F_*^es_i \cdot \Phi$. 
+And 
+\[\id_{F_*^eS} = \sum_i \gamma_i \circ \pi_i,\]
+ where here $\gamma_i$ is the $S$-module map $S\to F_*^eS$ which sends $1\mapsto F_*^eg_i$. (Notice: this is the same as taking the $e$-th Frobenius map $S\to F_*^eS$, and then composing with multiplication by $F_*^eg_i$).
+</p>
+<p>
+Now since $\Phi(F_*^eJ)\subseteq I$, we see
+\[\pi_i(F_*^eJ) = (F_*^es_i \cdot \Phi)(F_*^eJ) =\Phi(F_*^e(s_iJ))\subseteq I\]
+and so further,
+\[
+F_*^eJ = \id_{F_*^eS}(F_*^eJ) 
+= \sum_i \gamma_i \circ \pi_i(F_*^eJ)
+\subseteq \sum_i \gamma_i(I) = \sum_i I\gamma_i(S)\subseteq I 
+\]
+as desired.  &nbsp; &#9632; 
 </p>
 
 <div class="thm"><p><b>Theorem:</b> 
 Let $S$ be an $F$-finite ring, $I$ an ideal, and $R=S/I$. 
 Then there is a natural $F_*^eS$-module map
-\[(F_*^e(I^{[p^e]}:I))\cdot \hom_S(F_*^eS,S)\to \hom_R(F_*^eR,R)$.\]
-If further $S$ is regular, then in fact this map is a surjection and the kernel is $F_*^e(I^{[p^e]})\cdot \hom_S(F_*^eS,S)$.</p></div>
+\[\Psi:(F_*^e(I^{[p^e]}:I))\cdot \hom_S(F_*^eS,S)\to \hom_R(F_*^eR,R).\]
+If $S$ is regular, then this map is a surjection and the kernel is $F_*^e(I^{[p^e]})\cdot \hom_S(F_*^eS,S)$.</p></div>
 <p><b>Proof:</b>
-To be filled in  
+<em>The natural map:</em>
+Let $t\in I^{[p^e]}:I$ and $\varphi\in \hom_S(F_*^eS,S)$. Given $r+I\in S/I=R$, we ideally want the resulting map on $\hom_R(F_*^eR,R)$ to have $F_*^e(r+I)\mapsto (F_*^et\cdot \varphi)(F_*^er) + I$. 
+This will work! To check it is in $\hom_R(F_*^eR,R)$ we only need to check well-definedness, i.e., that things in $F_*^eI$ are sent to things in $I$. Sosuppose we have some $j\in I$. 
+Then
+\[(F_*^et\cdot \varphi)(F_*^ej) = \varphi(F_*^e(jt))\in \varphi(F_*^e(I^{[p^e]}) = I\varphi(F_*^eS) \subset I.\]
+And by design, the overall map $\Psi$ is an $F_*^eS$-module map. </p>
+<p><em>Surjectivity in the regular case:</em>
+Since $S$ is regular we have $F_*^eS$ flat (by Kunz). Since $S$ also $F$-finite, we further have $F_*^eS$ a projective $S$-module. 
+Thus ANY map  $\theta\in \hom_R(F_*^eR,R)$ can be lifted to  $\Theta\in\hom_S(F_*^eS,S)$ (using that the projection map $\rho:S\to R$ is surjective). 
+By our knowledge of $\hom_S(F_*^eS,S)$, we can write $\Theta = F_*^es \cdot \Phi$. To finish surjectivity, it will suffice to check that $s\in I^{[p^e]}:I$. 
+But by virtue of the fact that $\Theta$ descends,
+\[I\supset \Theta(F_*^eI) = \Phi(F_*^e(sI)).\]
+Now by the Proposition above, $sI\subset I^{[p^e]}$, thus $s\in I^{[p^e]}:I$.</p>
+<p><em>Kernel in the regular case:</em>  
+A map $F_*^et\cdot \varphi\in F_*^e(I^{[p^e]}:I)\cdot \hom_S(F_*^eS,S)$ is in the kernel if it descends to the zero map, which happens exactly when $(F_*^et\cdot \varphi)(F_*^eS) = \varphi(F_*^e(tS))\subset I$. Now use the Proposition again, further writing $\varphi = F_*^es\cdot \Phi$, so that $\Phi(F_*^e(stS))\subset I$ and so $stS \subset I^{[p^e]}$. Thus $st\in I^{[p^e]}$, and we've shown that $F_*^et\cdot \varphi = F_*^e(st)\cdot \Phi$ is in $F_*^e(I^{[p^e]})\cdot \hom_S(F_*^eS,S)$ as desired.  
 &nbsp; &#9632; 
 </p>
 
@@ -413,11 +443,14 @@ Let $S$ be an $F$-finite ring, $I$ an ideal, and $R=S/I$. Let $\mf q\in \bb V(I)
 </p></div>
 
 <p>Having a property "on an open neighborhood" means the same thing as in analysis: there is some open set $U$ such that for all points $\mf p$, the property holds. More specifically for us, the $U$ is open in the Zariski topology, so that $U=\Spec R\setminus \bb V(J)$ for an ideal $J$; points are prime ideals; and "being $F$-split at prime ideal $\mf p$" means that $R_{\mf p}$ is $F$-split.</p>
+<p>Proof is promised for February 3rd!</p>
 
-<p><b>Proof:</b>
+
+<!-- <p><b>Proof:</b>
 To be filled in.
   &nbsp; &#9632; 
 </p>
+-->
 <!--
 <div class="thm">
 <p><b>Proposition:</b>
