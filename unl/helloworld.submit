@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH --time=01:00:00          # run time in hh:mm:ss
+#SBATCH --mem-per-cpu=10240      # max mem per cpu (in megabytes)
+#SBATCH --job-name=helloworld
+#SBATCH --error=/work/math918/abrosowsky/helloworld.%J.err
+#SBATCH --output=/work/math918/abrosowsky/helloworld.%J.out
+
+module load apptainer
+echo "Here's how you can print a message from the batch file!"
+echo $SLURM_JOB_ID
+echo "You can also print shell variables intsead of just strings. That one is"
+echo "a helpful id number for debugging"
+apptainer exec docker://unlhcc/macaulay2 M2 --script demo.m2 
