@@ -16,7 +16,9 @@
           mf: ["{\\mathfrak{#1}}",1],
           mc: ["{\\mathcal{#1}}",1],
           Spec: "{\\operatorname{Spec}}",
-          id: "{\\operatorname{id}}"
+          id: "{\\operatorname{id}}",
+          im: "{\\operatorname{im}}",
+          ev: "{\\operatorname{ev}}"
         }
       }
     };
@@ -56,8 +58,9 @@ Here are the two general references for the course.
 <h3>HCC Info</h3>
 <p>You have access to the Holland Computing Center (HCC) for this class! To use these resources, you will need an account associated with HCC that is separate from your University of Nebraska account and credentials:</p>
 <ul>
-    <li>If you already have an HCC account from a prior class or research, you can add the class group to your account or move your account to the <b>math918</b> group: <a href="https://hcc.unl.edu/group-addchange-request">https://hcc.unl.edu/group-addchange-request</a>.</li>
     <li>If you need an HCC account: <a href="https://hcc.unl.edu/new-user-request">https://hcc.unl.edu/new-user-request</a> and request the <b>math918</b> group.</li>
+    <li>If you already have an HCC account from a prior class or research, you can add the class group to your account or move your account to the <b>math918</b> group: <a href="https://hcc.unl.edu/group-addchange-request">https://hcc.unl.edu/group-addchange-request</a>. 
+<br><em>Note:</em> Not actually required to add/change group! ANY access to HCC is good enough for us. But you're still welcome to join the class group if you e.g. want to keep class access separate from research access for some reason.</li>
 </ul>
 
 <p>**You will need to activate your DUO two factor for your HCC account in order to use the resources. Without this you will not have access! This is different from the TrueYou DUO you use to log into other UNL services.**</p>
@@ -80,7 +83,8 @@ Here are the two general references for the course.
   <dt><a href="#01-22">Jan 22</a></dt><dd>Finishing proof of Kunz's theorem + starting F-splitting</dd>
   <dt><a href="#01-27">Jan 27</a></dt><dd>Proof that F-splitting can equivalently be checked for some/any $e$; examples (including $F$-finite regular local rings); the statement of Fedder's criterion; viewing $\hom_S(F_*^eS,S)$ as a rank 1 free module for regular $S$.</dd>
   <dt><a href="#01-29">Jan 29</a></dt><dd>A HW correction; fact about the generating $\Phi$ and ideal containments; more general statement of Fedder's criterion. </dd>
-  <dt><a href="#upcoming">Upcoming</a></dt><dd>IOU several more facts needed to prove Fedder; some examples. Thursday---using Macaulay2 and the HCC so bring a laptop! Also if you want to follow along with the HCC part of the demo (highly recommended!) follow the setup instructions to request an account <b>prior to the start of Thursday's class</b>.</dd>
+  <dt><a href="#02-03">Feb 03</a></dt><dd>$F$-splitting localizes; the $F$-split locus is open; the completion of Fedder.</dd>
+  <dt><a href="#upcoming">Upcoming</a></dt><dd>Thursday---using Macaulay2 and the HCC so bring a laptop! Also if you want to follow along with the HCC part of the demo (highly recommended!) follow the setup instructions above to request an account <b>prior to the start of Thursday's class</b>.</dd>
 </dl>
 
 <h3 id="01-13">Jan 13</h3>
@@ -327,7 +331,7 @@ so take $\pi \circ F_*F^{e-1}$ as our splitting.  &nbsp; &#9632; </p>
 
 <p><b>WARNING:</b> It is NOT true that every regular local ring is $F$-split; we really do need some adjectives! We will see an example later in the semester. </p>
 
-<div class="thm"><p><b>Fedder's Criterion:</b> Let $S$ be an $F$-finite regular local ring, and let $R=S/I$. Then $R$ is $F$-split if and only if $I^{[p]}:I\not\subseteq \mathfrak m^{[p]}$ </p></div>
+<div id="fedder-criterion" class="thm"><p><b>Fedder's Criterion:</b> Let $S$ be an $F$-finite regular local ring, and let $R=S/I$. Then $R$ is $F$-split if and only if $I^{[p]}:I\not\subseteq \mathfrak m^{[p]}$ </p></div>
 
 <p>It's stated there for motivation but it will take us a while to prove it. First we want to have a good understanding of what $\hom_S(F_*^eS,S)$ looks like, and how it relates to $\hom_R(F_*^eR,R)$. This will then help us figure out how a potential splitting of the Frobenius on $R$ might relate to one on $S$.</p>
 
@@ -382,69 +386,74 @@ In fact, $\hom_S(F_*^eS,S)$ is a free rank one $F_*^eS$ for any Gorenstein local
 See Remark 5.9 of [CdS] for a proof. 
 We'll use the regular case of this statement to be able to the following results for any regular local ring, not just polynomials/power series.</p>
 
-<div class="thm"><p><b>Proposition:</b>
+<div id="fedder-containment-lemma" class="thm"><p><b>Proposition:</b>
 Let $S$ be an $F$-finite regular local ring and let $\Phi$ be the generator of $\hom_S(F_*^eS,S)$. Let $I$ and $J$ be ideals of $S$. Then
 \[
 \Phi(F_*^eJ)\subset I \iff J\subset I^{[p^e]}
 \]
 </p></div>
 <p><b>Proof:</b>
-If $J\subset I^{[p^e]}$, then in fact for ANY map $\psi\in \hom_S(F_*^eS,S)$ we have
-\[
-\psi(F_*^eJ)\subset \psi(F_*^eI^{[p^e]}) \subset I\psi(F_*^eS)\subset I.
-\]
-For converse, first make several observations:
-By Kunz $F_*^eS$ is free over $S$, with basis $\{F_*^eg_i\}_{i=1}^t$. 
-Let $\{\pi_i\}_{i=1}^t\subset \hom_S(F_*^eS,S)$ be the dual basis (recall: this means $\pi_i(F_*^eg_j)=1$ if $i=j$, otherwise $0$). 
-Further, because $\Phi$ generates, there exist $s_i\in S$ s.t. $\pi_i = F_*^es_i \cdot \Phi$. 
-And 
-\[\id_{F_*^eS} = \sum_i \gamma_i \circ \pi_i,\]
- where here $\gamma_i$ is the $S$-module map $S\to F_*^eS$ which sends $1\mapsto F_*^eg_i$. (Notice: this is the same as taking the $e$-th Frobenius map $S\to F_*^eS$, and then composing with multiplication by $F_*^eg_i$).
+    If $J\subset I^{[p^e]}$, then in fact for ANY map $\psi\in \hom_S(F_*^eS,S)$ we have
+    \[
+    \psi(F_*^eJ)\subset \psi(F_*^eI^{[p^e]}) \subset I\psi(F_*^eS)\subset I.
+    \]
+    For converse, first make several observations:
+    By Kunz $F_*^eS$ is free over $S$, with basis $\{F_*^eg_i\}_{i=1}^t$. 
+    Let $\{\pi_i\}_{i=1}^t\subset \hom_S(F_*^eS,S)$ be the dual basis (recall: this means $\pi_i(F_*^eg_j)=1$ if $i=j$, otherwise $0$). 
+    Further, because $\Phi$ generates, there exist $s_i\in S$ s.t. $\pi_i = F_*^es_i \cdot \Phi$. 
+    And 
+    \[\id_{F_*^eS} = \sum_i \gamma_i \circ \pi_i,\]
+     where here $\gamma_i$ is the $S$-module map $S\to F_*^eS$ which sends $1\mapsto F_*^eg_i$. (Notice: this is the same as taking the $e$-th Frobenius map $S\to F_*^eS$, and then composing with multiplication by $F_*^eg_i$).
 </p>
 <p>
-Now since $\Phi(F_*^eJ)\subseteq I$, we see
-\[\pi_i(F_*^eJ) = (F_*^es_i \cdot \Phi)(F_*^eJ) =\Phi(F_*^e(s_iJ))\subseteq I\]
-and so further,
-\[
-F_*^eJ = \id_{F_*^eS}(F_*^eJ) 
-= \sum_i \gamma_i \circ \pi_i(F_*^eJ)
-\subseteq \sum_i \gamma_i(I) = \sum_i I\gamma_i(S)\subseteq I 
-\]
-as desired.  &nbsp; &#9632; 
+    Now since $\Phi(F_*^eJ)\subseteq I$, we see
+    \[\pi_i(F_*^eJ) = (F_*^es_i \cdot \Phi)(F_*^eJ) =\Phi(F_*^e(s_iJ))\subseteq I\]
+    and so further,
+    \[
+    F_*^eJ = \id_{F_*^eS}(F_*^eJ) 
+    = \sum_i \gamma_i \circ \pi_i(F_*^eJ)
+    \subseteq \sum_i \gamma_i(I) = \sum_i I\gamma_i(S)\subseteq I 
+    \]
+    as desired.  &nbsp; &#9632; 
 </p>
 
-<div class="thm"><p><b>Theorem:</b> 
+<div id="fedder-hom-structure" class="thm"><p><b>Theorem:</b> 
 Let $S$ be an $F$-finite ring, $I$ an ideal, and $R=S/I$. 
 Then there is a natural $F_*^eS$-module map
 \[\Psi:(F_*^e(I^{[p^e]}:I))\cdot \hom_S(F_*^eS,S)\to \hom_R(F_*^eR,R).\]
 If $S$ is regular, then this map is a surjection and the kernel is $F_*^e(I^{[p^e]})\cdot \hom_S(F_*^eS,S)$.</p></div>
-<p><b>Proof:</b>
-<em>The natural map:</em>
-Let $t\in I^{[p^e]}:I$ and $\varphi\in \hom_S(F_*^eS,S)$. Given $r+I\in S/I=R$, we ideally want the resulting map on $\hom_R(F_*^eR,R)$ to have $F_*^e(r+I)\mapsto (F_*^et\cdot \varphi)(F_*^er) + I$. 
-This will work! To check it is in $\hom_R(F_*^eR,R)$ we only need to check well-definedness, i.e., that things in $F_*^eI$ are sent to things in $I$. Sosuppose we have some $j\in I$. 
-Then
-\[(F_*^et\cdot \varphi)(F_*^ej) = \varphi(F_*^e(jt))\in \varphi(F_*^e(I^{[p^e]}) = I\varphi(F_*^eS) \subset I.\]
-And by design, the overall map $\Psi$ is an $F_*^eS$-module map. </p>
-<p><em>Surjectivity in the regular case:</em>
-Since $S$ is regular we have $F_*^eS$ flat (by Kunz). Since $S$ also $F$-finite, we further have $F_*^eS$ a projective $S$-module. 
-Thus ANY map  $\theta\in \hom_R(F_*^eR,R)$ can be lifted to  $\Theta\in\hom_S(F_*^eS,S)$ (using that the projection map $\rho:S\to R$ is surjective). 
-By our knowledge of $\hom_S(F_*^eS,S)$, we can write $\Theta = F_*^es \cdot \Phi$. To finish surjectivity, it will suffice to check that $s\in I^{[p^e]}:I$. 
-But by virtue of the fact that $\Theta$ descends,
-\[I\supset \Theta(F_*^eI) = \Phi(F_*^e(sI)).\]
-Now by the Proposition above, $sI\subset I^{[p^e]}$, thus $s\in I^{[p^e]}:I$.</p>
-<p><em>Kernel in the regular case:</em>  
-A map $F_*^et\cdot \varphi\in F_*^e(I^{[p^e]}:I)\cdot \hom_S(F_*^eS,S)$ is in the kernel if it descends to the zero map, which happens exactly when $(F_*^et\cdot \varphi)(F_*^eS) = \varphi(F_*^e(tS))\subset I$. Now use the Proposition again, further writing $\varphi = F_*^es\cdot \Phi$, so that $\Phi(F_*^e(stS))\subset I$ and so $stS \subset I^{[p^e]}$. Thus $st\in I^{[p^e]}$, and we've shown that $F_*^et\cdot \varphi = F_*^e(st)\cdot \Phi$ is in $F_*^e(I^{[p^e]})\cdot \hom_S(F_*^eS,S)$ as desired.  
-&nbsp; &#9632; 
-</p>
+  <p><b>Proof:</b>
+    <em>The natural map:</em>
+    Let $t\in I^{[p^e]}:I$ and $\varphi\in \hom_S(F_*^eS,S)$. Given $r+I\in S/I=R$, we ideally want the resulting map on $\hom_R(F_*^eR,R)$ to have $F_*^e(r+I)\mapsto (F_*^et\cdot \varphi)(F_*^er) + I$. 
+    This will work! To check it is in $\hom_R(F_*^eR,R)$ we only need to check well-definedness, i.e., that things in $F_*^eI$ are sent to things in $I$. Sosuppose we have some $j\in I$. 
+    Then
+    \[(F_*^et\cdot \varphi)(F_*^ej) = \varphi(F_*^e(jt))\in \varphi(F_*^e(I^{[p^e]}) = I\varphi(F_*^eS) \subset I.\]
+    And by design, the overall map $\Psi$ is an $F_*^eS$-module map. </p>
+    <p><em>Surjectivity in the regular case:</em>
+    Since $S$ is regular we have $F_*^eS$ flat (by Kunz). Since $S$ also $F$-finite, we further have $F_*^eS$ a projective $S$-module. 
+    Thus ANY map  $\theta\in \hom_R(F_*^eR,R)$ can be lifted to  $\Theta\in\hom_S(F_*^eS,S)$ (using that the projection map $\rho:S\to R$ is surjective). 
+    By our knowledge of $\hom_S(F_*^eS,S)$, we can write $\Theta = F_*^es \cdot \Phi$. To finish surjectivity, it will suffice to check that $s\in I^{[p^e]}:I$. 
+    But by virtue of the fact that $\Theta$ descends,
+    \[I\supset \Theta(F_*^eI) = \Phi(F_*^e(sI)).\]
+    Now by the Proposition above, $sI\subset I^{[p^e]}$, thus $s\in I^{[p^e]}:I$.</p>
+    <p><em>Kernel in the regular case:</em>  
+    A map $F_*^et\cdot \varphi\in F_*^e(I^{[p^e]}:I)\cdot \hom_S(F_*^eS,S)$ is in the kernel if it descends to the zero map, which happens exactly when $(F_*^et\cdot \varphi)(F_*^eS) = \varphi(F_*^e(tS))\subset I$. Now use the Proposition again, further writing $\varphi = F_*^es\cdot \Phi$, so that $\Phi(F_*^e(stS))\subset I$ and so $stS \subset I^{[p^e]}$. Thus $st\in I^{[p^e]}$, and we've shown that $F_*^et\cdot \varphi = F_*^e(st)\cdot \Phi$ is in $F_*^e(I^{[p^e]})\cdot \hom_S(F_*^eS,S)$ as desired.  
+    &nbsp; &#9632; 
+  </p>
 
+<p>The following theorem has been restated for clarity. (It was still true as stated in class though!)</p>
 <div class="thm"><p><b>Theorem:</b> 
-Let $S$ be an $F$-finite ring, $I$ an ideal, and $R=S/I$. Let $\mf q\in \bb V(I)\subset\Spec(S) $ be a prime ideal of $S$ that corresponds to a prime ideal in $R$. Then $R$ is Frobenius split in a neighborhood of $\mf q$ if and only if (for any fixed $e$)
+Let $S$ be an $F$-finite ring, $I$ an ideal, and $R=S/I$. Let $\mf q\in \bb V(I)\subset\Spec(S) $ be a prime ideal of $S$ that corresponds to a prime ideal in $R$. Then $R_{\mf q}$ is $F$-split if and only if (for any fixed $e$)
 \[(I^{[p^e]}:I)\not\subseteq \mf q^{[p^e]}.\]
 </p></div>
 
-<p>Having a property "on an open neighborhood" means the same thing as in analysis: there is some open set $U$ such that for all points $\mf p$, the property holds. More specifically for us, the $U$ is open in the Zariski topology, so that $U=\Spec R\setminus \bb V(J)$ for an ideal $J$; points are prime ideals; and "being $F$-split at prime ideal $\mf p$" means that $R_{\mf p}$ is $F$-split.</p>
 <p>Proof is promised for February 3rd!</p>
 
+<p><b>Proof of Fedder's criterion ($I^{[p^e]}:I\not\subseteq \mf m$ version from Jan 27) using the above:</b>
+Let $(R,\mf m)$ be our local ring. 
+By the Lemma from Feb 3rd, $R$ is $F$-split if and only if $R_{\mf m}$ is $F$-split, i.e., $R$ is F-split at $\mf m$. 
+By the above Theorem, this is if and only $(I^{[p]}:I)\not\subseteq \mf m^{[p]}$, as desired.
+&nbsp; &#9632; </p>
 
 <!-- <p><b>Proof:</b>
 To be filled in.
@@ -460,8 +469,131 @@ If there exists a map $\pi:F_*^eR\to R$ such that $\pi(F_*^ed)=1$, and $c|d$ in 
 
 
 
+<h3 id="02-03">Feb 3rd</h3>
+
+<p>Finishing the proof of the (more general) Fedder's criterion, including some necessary lemmas. Hopefully some examples. Also, <b>set up an HCC account by Thursday</b> if you want to follow along with the demo!</p>
+<p>The following results will appear as exercises, in addition to a few more examples (squarefree monomial ideals?)</p>
+<div class="thm"><p><b>Lemma 1:</b>
+If there exists a map $\pi:F_*^eR\to R$ such that $\pi(F_*^ed)=1$, and $c|d$ in $R$, then there exists a map sending $F_*^ec\mapsto 1$. In particular, if there is ANY surjective map $F_*^eR\to R$ then $R$ is $F$-split.
+</p></div>
+        <button type="button" class="viewsoln">View Proof</button>
+        <div class="soln">
+            <p>Write $d=cc'$, and let $\gamma':F_*^eR\to F_*^eR$ be the ``times $F_*^ec'$ map''. Then $\pi\circ \gamma'$ is our desired map, because it has $F_*^ec\mapsto F_*^e(cc')=F_*^ed \mapsto 1$.</p>
+            
+            <p>The in particular follows since we can always choose $c=1$.&nbsp; &#9632;</p> 
+        </div>
+
+<div class="thm"><p><b>Lemma 2:</b>
+Let $\ev_d:\hom_R(F_*^eR,R)\to R$ be the "evaluation at $F_*^ed$" map, so that $\ev_d(\varphi) = \varphi(F_*^ed)$. Then there exists a map $\pi\in \hom_R(F_*^eR,R)$ such that $\pi(F_*^ed)=1$ if and only if $\ev_d$ is surjective.
+</p></div>
+        <button type="button" class="viewsoln">View Proof</button>
+        <div class="soln">
+            <p>Since the codomain of $\ev_d$ is a free rank one $R$-module, being surjective is equivalent to having $1$ in the image. But this is then equivalent to saying there exists a $\pi$ such that $\ev_d(\pi)=\pi(F_*^e1)=1$.&nbsp; &#9632;</p>
+        </div>
+
+<div class="thm"><p><b>Lemma 4:</b>
+The following are equivalent for map $\varphi:M\to N$ of $R$-modules:
+<ol>
+    <li> $\varphi$ is surjective. </li>
+    <li> $\varphi^{-1}R$ is surjective for all multiplicative sets $W$.</li>
+    <li> $\varphi_{\mf p}$ is surjective for all prime ideals $\mf p$. </li>
+    <li> $\varphi_{\mf m}$ is surjective for all maximal ideals $\mf m$.</li>
+</ol>
+</p></div>
+<p><b>Proof:</b>
+    A map is surjective iff its cokernel is zero, i.e., iff $N/\im(\varphi))=0$. 
+    And checking if a module is zero localizes! 
+    More specifically, for (1) equivalent to (2), we know that $\varphi$ is surjective iff $N/\im(\varphi)=0$ iff $W^{-1}(N/\im(\varphi))=0$ for all multiplicative $W$. 
+    Since localization exact, $W^{-1}(N/\im(\varphi)) \cong (W^{-1}N)/(W^{-1}\im(\varphi))$. 
+    Further, note that $W^{-1}\varphi$ (i.e., the map where $m/w\mapsto \varphi(m)/w$) has image = $W^{-1}\im(\varphi)$. Thus in fact $W^{-1}(N/\im(\varphi))\cong (W^{-1}N)/\im(W^{-1}\varphi)$, and this is zero iff $W^{-1}\varphi$ is surjective.
+</p>
+<p>
+    The arguments for (1) iff (3) and for (1) iff (4) follow similarly.&nbsp; &#9632;
+</p>
+
+<div class="thm"><p><b>Proposition 1:</b>
+The following are equivalent for any $F$-finite ring $R$:
+<ol>
+    <li> $R$ is $F$-split. </li>
+    <li> $W^{-1}R$ is $F$-split for all multiplicative sets $W$.</li>
+    <li> $R_{\mf p}$ is $F$-split for all prime ideals $\mf p$. </li>
+    <li> $R_{\mf m}$ is $F$-split for all maximal ideals $\mf m$.</li>
+</ol>
+</p></div>
+        <button type="button" class="viewsoln">View Proof</button>
+        <div class="soln">
+            <p>Standard comm alg result (<a href="https://eloisagrifo.github.io/Teaching/ca1/CA1notes.pdf">Eloi&#769;sa's 905 notes</a>, Lemma 5.26): If modules are finitely generated, then localization commutes with Hom. In particular, 
+            \[\begin{aligned}
+              W^{-1}\hom_R(F_*^eR,R) 
+                &\cong \hom_{W^{-1}R}(W^{-1}F_*^eR,W^{-1}R) \\
+                &\cong \hom_{W^{-1}R}(F_*^e(W^{-1}R),W^{-1}R).
+              \end{aligned}
+            \]
+
+            By Lemma 2, $R$ is $F$-split iff $\ev_1$ is surjective. By Lemma 4, this is iff $W^{-1}\ev_1$ is surjective for all $W$. By the above standard result, $W^{-1}\ev_1$ can be viewed as a map $\hom_{W^{-1}R}(F_*^e(W^{-1}R),W^{-1}R)\to W^{-1}R$, and in fact by tracing through the isomorphisms this is $\ev_1$ for $W^{-1}R$. 
+            Thus by Lemma 2 in reverse, $W^{-1}\ev_1$ is surjective iff $W^{-1}R$ is $F$-split$.</p>
+            <p>That completes the proof of (1) iff (2). The proofs of(1) iff (3) and of (1) iff (4) work the same.  &nbsp; &#9632;</p>
+        </div>
+
+<div class="thm"><p><b>Corollary 1:</b>
+If $R$ is $F$-finite then the locus of $F$-split points is open, and is specifically equal to $\Spec R \setminus \bb V(\im( \ev_1))$.
+</p></div>
+
+<p><b>Rmk:</b> The ``locus'' of $F$-split points is the set of points $\mf p$ on which $R$ is $F$-split. 
+On Spec, points are prime ideals, and "being $F$-split at prime ideal $\mf p$ means that $R_{\mf p}$ is $F$-split. Finally, open means in the Zariski topology, where all open sets look like
+$U=\Spec R\setminus \bb V(J)$ for an ideal $J$.</p>
+
+
+        <button type="button" class="viewsoln">View Proof</button>
+        <div class="soln">
+            <p>The localization $R_{\mf p}$ is $F$-split if and only if $\ev_1$ localized at $\mf p$ is surjective, i.e., iff the cokernel $(R/\im(\ev_1))_{\mf p}$ is zero, i.e, iff $(\im(\ev_1))_{\mf p}=R$. 
+        That happens iff we inverted an element of the image, i.e., iff $\im(\ev_1)\not\subset \mf p$. 
+            By definition, this means $\mf p \notin \bb V(\im (\ev_1))$.  &nbsp; &#9632;</p>
+        </div>
+
+
+
+<div class="thm"><p><b>Lemma 3:</b>
+Let $S$ be regular local $F$-finite, take $t\in I^{[p^e]}:I$ and let $\varphi=F_*^et\cdot \Phi$, where $\Phi$ is as usual the generator of $\hom_S(F_*^eS,S)$. 
+Show that $\Psi(\varphi)$ (i.e., $\varphi$ viewed as a map on $S/I$) is surjective if and only if $t\notin \mf m^{[p^e]}$.
+</p></div>
+        <button type="button" class="viewsoln">View Proof</button>
+        <div class="soln">
+            <p>If $t\in \mf m^{[p^e]}$, then $\varphi(F_*^es) = \Phi(F_*^e(ts))\in \Phi(F_*^e(\mf m^{[p^e]})) = \mf m \Phi(F_*^eS) = \mf m$. 
+            In particular, we never hit $1$ in the image.</p>
+
+            <p>If $t\notin \mf m^{[p^e]}$, then our <a href="#fedder-containment-lemma">containment proposition from Jan 29</a> says $\Phi(F_*^e(tS))\not\subset\mf m$. 
+            Thus there is some $s\in S$ such that $\Phi(F_*^e(ts)) = \varphi(F_*^es) \notin \mf m$. 
+            Thus the image of $\varphi$ contains a unit, and so $\varphi$ is surjective. &nbsp; &#9632; </p>
+        </div>
+
+<p><b>Putting this all together...</b>
+    By the <a href="#fedder-hom-structure">theorem on hom structure from Jan 29</a> (and by the fact that $I^{[p^e]}:I$ is an ideal), EVERY map in $\hom_R(F_*^eR,R)$ comes from a map of the form of Lemma 3.
+    (See this because for any $t'\in I^{[p^e]}:I$ and $\gamma\in \hom_S(F_*^eS,S)$, we can write $\gamma = F_*^es \cdot \Phi$, and so $F_*^e(t')\cdot \gamma = F_*^e(t's)\cdot \Phi$. 
+</p>
+<p>By Lemma 1, there exists a $\varphi$ which is surjective when descended to $R$ iff $R$ is $F$-split. 
+    By Lemma 3, this happens iff there exists a $t\in I^{[p^e]}:I$ which is $\notin \mf m^{[p^e]}$. 
+    In other words, iff $I^{[p^e]}:I\not\subset \mf m^{[p^e]}$. 
+    This (FINALLY!) completes the proof of <a href="#fedder-criterion">Fedder's criterion</a>, and in fact in a stronger way where we see we could've done some/any $e$ instead of just $e=1$. &nbsp; &#9632; </p>
+
+
 <h3 id="upcoming">Upcoming</h3>
-<p>Continuing through the second half of Ch 2 of [MP] we will cover Fedder's criterion to detect $F$-splitting. (We will return to the first half of the chapter on $F$-purity later in the semester!). Also, <b>set up an HCC account by Thursday</b> if you want to follow along with the demo!</p>
+
+<p>Technology day! Here are all of the links you might need in class, or that might provide help while doing more stuff on your own later:</p>
+<h4> Macaulay2 (M2) related</h4>
+<ul>
+    <li>Web Macaulay2: <a href="https://www.unimelb-macaulay2.cloud.edu.au/">https://www.unimelb-macaulay2.cloud.edu.au/</a> </li>
+    <li>The Macauly2 Documentation: <a href="https://macaulay2.com/doc/Macaulay2/share/doc/Macaulay2/Macaulay2Doc/html/">https://macaulay2.com/doc/Macaulay2/share/doc/Macaulay2/Macaulay2Doc/html/</a> </li>
+    <li>The M2 Zulip chat (Zulip is a chatroom kinda like slack or discord; this can be a useful place to go with code questions): <a href="https://macaulay2.zulipchat.com/">https://macaulay2.zulipchat.com/</a>
+    <li>The M2 GitHub (not needed for most people, but could be useful if you want to install on your personal laptop, or if you want to file a bug report or contribute to code!): <a href="https://github.com/Macaulay2/M2">https://github.com/Macaulay2/M2</a></li>
+</ul>
+
+<h4>Holland Computing Cluster (HCC) related</h4>
+<ul>
+    <li>Swan Open OnDemand (aka, the way to access the HCC through a browser): <a href="https://swan-ood.unl.edu/">https://swan-ood.unl.edu/</a> . You know you set up your account correctly if you are able to login at that link!</li>
+    <li>HCC documentation: <a href="https://hcc.unl.edu/docs/">https://hcc.unl.edu/docs/</a></li>
+    <li>Guide to basic shell (aka terminal aka console) commands: <a href="https://hcc.unl.edu/docs/connecting/basic_linux_commands">https://hcc.unl.edu/docs/connecting/basic_linux_commands</a></li>
+</ul>
 
 <p>&nbsp;</p> 
     </main>
