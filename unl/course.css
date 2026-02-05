@@ -46,3 +46,7 @@
 .thm {
   background-color: #e1f1e1;
 }
+
+.code {
+  font-family: "Lucida Console", monospace;
+}

@@ -590,10 +590,28 @@ Show that $\Psi(\varphi)$ (i.e., $\varphi$ viewed as a map on $S/I$) is surjecti
 
 <h4>Holland Computing Cluster (HCC) related</h4>
 <ul>
-    <li>Swan Open OnDemand (aka, the way to access the HCC through a browser): <a href="https://swan-ood.unl.edu/">https://swan-ood.unl.edu/</a> . You know you set up your account correctly if you are able to login at that link!</li>
+    <li>Swan Open OnDemand (aka, the way to access the HCC through a browser): <a href="https://swan-ood.unl.edu/">https://swan-ood.unl.edu/</a> . 
+    You know you set up your account correctly if you are able to login at that link!</li>
     <li>HCC documentation: <a href="https://hcc.unl.edu/docs/">https://hcc.unl.edu/docs/</a></li>
     <li>Guide to basic shell (aka terminal aka console) commands: <a href="https://hcc.unl.edu/docs/connecting/basic_linux_commands">https://hcc.unl.edu/docs/connecting/basic_linux_commands</a></li>
 </ul>
+
+<p>To run Macaulay2 on the HCC in interactive mode... First go to <a href="https://swan-ood.unl.edu/">Swan Open OnDemand</a>. Click the dropdown menu for "Clusters" (in the red bar on top), then click the only option which is Swan Shell Access. You're now in a black background, text-only shell! Then run the following three commands one-by-one (commands themselves in the numbered list, comments/context bulleted in underneath each):</p>
+<ol>
+    <li><div class="code">srun --pty --mem=10gb --qos=short $SHELL</div>
+        <ul><li>Before running this line, the "prompt" (place I'm typing) looks something like <div class="code">[username@login1.swan ~]$</div></li>
+         <li>This command might take a minute or two to run, with messages saying something about being queued, waiting for resources, and/or having resources allocated. Once it has completed, your new prompt will look something like <div class="code">[username@c0000.swan ~]$</div></li>
+         <li>What's going on here? <div class="code">srun</div> = "slurm run", i.e., running a "real time" job using SLURM (what SLURM is doesn't matter, but it does mean a lot of commands start with s...). 
+        <div class="code">pty</div> = a specific interface format. 
+        <div class="code">mem</div> = an amount of memory. I wouldn't ever go less than 10gb even for a "small" job because even just opening M2 can take some space! 
+        <div class="code">qos</div>= "quality of service", aka how the system decides priority (if more people want to run code RIGHT NOW than the system can handle, who gets to go first?). So short means we'll get cut off after 6 hrs, and it might be sooner if tons of people are also requesting short jobs.</li></ul></li>
+    <li><div class="code">module load apptainer</div>
+      <ul><li>By default installed programs aren't actually accessible to you, you need to "module load" them first. For example, "module load python". Here, "apptainer" is a way to get weirder and more niche programs.</li></ul>
+    </li>
+    <li><div class="code">apptainer exec docker://unlhcc/macaulay2 M2</div>
+      <ul><li>This starts up M2, including "installing" it. The first time you do it, it might take a while (for me it took under 10 minutes, but more than 5). However, it will cache the result in something called a SIF file to make future loads faster! So if you ever see output messages about using cached SIF files, that's usually a good thing :)</ul></li></li>
+</ol>
+<p>TADA! After this you should now be in M2 interactive mode.</p>
 
 <p>&nbsp;</p> 
     </main>
