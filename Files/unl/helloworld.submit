@@ -2,8 +2,8 @@
 #SBATCH --time=01:00:00          # run time in hh:mm:ss
 #SBATCH --mem-per-cpu=10240      # max mem per cpu (in megabytes)
 #SBATCH --job-name=helloworld
-#SBATCH --error=/work/math918/abrosowsky/helloworld.%J.err
-#SBATCH --output=/work/math918/abrosowsky/helloworld.%J.out
+#SBATCH --error=helloworld.%J.err  # name/location of error message file
+#SBATCH --output=helloworld.%J.out
 
 module load apptainer
 echo "Here's how you can print a message from the batch file!"
