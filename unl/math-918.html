@@ -18,7 +18,8 @@
           Spec: "{\\operatorname{Spec}}",
           id: "{\\operatorname{id}}",
           im: "{\\operatorname{im}}",
-          ev: "{\\operatorname{ev}}"
+          ev: "{\\operatorname{ev}}",
+          Min: "{\\operatorname{Min}}"
         }
       }
     };
@@ -92,7 +93,8 @@ Here are the two general references for the course.
   <dt><a href="#01-29">Jan 29</a></dt><dd>A HW correction; fact about the generating $\Phi$ and ideal containments; more general statement of Fedder's criterion. </dd>
   <dt><a href="#02-03">Feb 03</a></dt><dd>$F$-splitting localizes; the $F$-split locus is open; the completion of Fedder.</dd>
   <dt><a href="#02-05">Feb 05</a></dt><dd>We learned some M2 basics (everything needed to do Fedder's criterion) and also learned how the HCC works.</dd>
-  <dt><a href="#upcoming">Upcoming</a></dt><dd>$F$-split rings are nice, but can we use the Frobenius to get some even nicer rings? We'll start strong $F$-regularity.</dd>
+  <dt><a href="#02-10">Feb 10</a></dt><dd>Defined (eventual) splitting along elements and SFR. Proved that local + SFR implies domain, and that F-finite regular local rings are SFR.</dd>
+  <dt><a href="#upcoming">Upcoming</a></dt><dd>More Fedder examples; proof that SFR localizes; other nice properties.</dd>
 </dl>
 
 <h3 id="01-13">Jan 13</h3>
@@ -595,7 +597,7 @@ Show that $\Psi(\varphi)$ (i.e., $\varphi$ viewed as a map on $S/I$) is surjecti
     <li>The Macauly2 Documentation: <a href="https://macaulay2.com/doc/Macaulay2/share/doc/Macaulay2/Macaulay2Doc/html/">https://macaulay2.com/doc/Macaulay2/share/doc/Macaulay2/Macaulay2Doc/html/</a> </li>
     <li>The M2 Zulip chat (Zulip is a chatroom kinda like slack or discord; this can be a useful place to go with code questions): <a href="https://macaulay2.zulipchat.com/">https://macaulay2.zulipchat.com/</a>
     <li>The M2 GitHub (not needed for most people, but could be useful if you want to install on your personal laptop, or if you want to file a bug report or contribute to code!): <a href="https://github.com/Macaulay2/M2">https://github.com/Macaulay2/M2</a></li>
-    <li>Advanced users: You can pass command-line arguments to a .m2 file run as a script using<a href="https://macaulay2.com/doc/Macaulay2/share/doc/Macaulay2/Macaulay2Doc/html/_script__Command__Line.html">scriptCommandLine</a> and <a href="https://www.macaulay2.com/doc/Macaulay2/share/doc/Macaulay2/Macaulay2Doc/html/_value.html">value</a> in your M2 code. </li>
+    <li>Advanced users: You can pass command-line arguments to a .m2 file run as a script using <a href="https://macaulay2.com/doc/Macaulay2/share/doc/Macaulay2/Macaulay2Doc/html/_script__Command__Line.html">scriptCommandLine</a> and <a href="https://www.macaulay2.com/doc/Macaulay2/share/doc/Macaulay2/Macaulay2Doc/html/_value.html">value</a> in your M2 code. </li>
 </ul>
 
 <h4>Holland Computing Cluster (HCC) related links</h4>
@@ -667,7 +669,7 @@ Show that $\Psi(\varphi)$ (i.e., $\varphi$ viewed as a map on $S/I$) is surjecti
 
 <p><b>Possible alternate method:</b> The nice people at the HCC have made us a job template! In Swan Open OnDemand, click the dropdown menu for "Jobs" (in the red bar on top), then click "Job Composer". The macaulay2 template is called Apptainer-macaulay2-job. I still haven't figured out how to actually use the job composer but this might be helpful!</p>
 
-<h3>Troubleshooting</h3>
+<h4>Troubleshooting</h4>
 <p><b>Error Messages?</b> Take a look at the .err file. Does it give anything useful? My rule of thumb: totaly mysterious error usually = ran out of memory</p>
 
 <p><b>Missing files?</b> Did your output end up in home or in work? In a subfolder? Do you have two different HCC groups and put it in your advisor's group instead of the math918 group? Look through different options in the file browser, and double check in the batch file where you told it to save.</p>
@@ -675,10 +677,166 @@ Show that $\Psi(\varphi)$ (i.e., $\varphi$ viewed as a map on $S/I$) is surjecti
 <p><b>Other problem?</b> Do you have another problem I should add to this list? Let me know!</p>
 
 
+<h3 id="02-10">Feb 10</h3>
+
+<p>F-splitting is nice, but can we do better? Our goal: describe a stronger condition on the ring that is still related to the Frobenius, but gets us even nicer properties.</p>
+
+<div class="defn">
+<p><b>Definition:</b>
+    Let $c\in R$. We say $R$ is <em>$e$-$F$-split along $c$</em> if the map 
+    $R\to F_*^eR\to F_*^eR$ via 
+    $r\mapsto F_*^er^{p^e}\mapsto F_*^e(r^{p^e}c)$ splits as an $R$-module map.
+</p>
+<p>
+    Equivalently, there exists $\varphi\in \hom_R(F_*^eR,R)$ such that $\varphi(F_*^ec)=1$.
+</p>
+<p>If there exists such an $e$, say that $R$ is <em>eventually $F$-split along $c$</em>.
+</div>
+
+<div class="zb">
+<p><b>Example:</b>Let $R=\bb F_p[x]$, $c=x^p$.</p>
+<ul>
+    <li>$R$ is NOT 1-F-split along $c$. Notice that for any possible $\varphi$, we have $\varphi(F_*x^p) = x\varphi(F_*1) \neq 1$.</li>
+    <li>$R$ IS 2-F-split along $c$. In fact taking $\varphi = F_*(x^{p^2-p-1}\cdot \Phi$ works, where $\Phi$ is the generating map which sends $F_*x^{p^2-1}\mapsto 1$. </li>
+</ul>
+</div>
+
+<div class="thm">
+<p><b>Remark 1:</b>
+If $a|c$ and $R$ is $e$-$F$-split along $c$ then $R$ is $e$-$F$-split along $a$. 
+</p>
+</div>
+<p><b>Proof:</b> See Tuesday 02/03! Same statement just new vocab. &nbsp; &#9632; </p>
+
+<div class="thm">
+<p><b>Corollary:</b>
+If $R$ is $e$-F-split along anything, then $R$ is $F$-split.
+</p>
+</div>
+<p><b>Proof:</b> If $R$ is $e$-F-split along $c$, then since $1|c$ we have that $R$ is $e$-F-split along 1. 
+    By definition this means there exists a $\varphi$ such that $\varphi(F_*^e1)=1$.&nbsp; &#9632; </p>
+
+<div class="thm">
+<p><b>Remark 2:</b>
+If $R$ is $e$-$F$-split along $c$ then $R$ is $(e+1)$-$F$-split along $c$. 
+</p>
+</div>
+<p><b>Proof:</b>
+    Suppose $\varphi$ is our $e$-F-splitting. By the Corollary, we also know that $R$ is $F$-split, and so let $\pi\in \hom_R(F_*R,R)$ be our Frobenius splitting. 
+    Then $\pi\circ F_*\varphi$ is our desired map, since 
+    $$\pi\circ F_*\varphi (F_*^{e+1}c) = \pi(F_*\varphi(F_*^ec))
+    = \pi(F_*1) = 1&nbsp; &#9632; $$
+</p>
+
+
+
+
+<div class="thm">
+<p><b>Proposition: </b>
+    If $R$ is eventually $F$-split along $c$ then $c$ is a non-zero divisor.
+</p>
+</div>
+<p><b>Proof Method 1:</b> (contrapositive)
+    Suppose $cy=0$ for $y\neq 0$. Then our map that we are trying to split sends $y\mapsto F_*^ey^{p^e}\mapsto F_*^e(y^{p^e}c) = F_*^e0$. 
+    So the map isn't injective and can't be split. &nbsp; &#9632; 
+</p>
+<p><b>Proof Method 2:</b> (contradiction)
+    If we did have a splitting $\varphi$, we would have 
+    $$y = y\varphi(F_*^ec) = \varphi(F_*^e(y^{p^e}c)) = \varphi(F_*^e0) = 0$$
+    which is our desired contradiction. &nbsp; &#9632; 
+</p>
+
+
+
+<div class="defn">
+<p><b>Definition:</b>
+    Let $R$ be $F$-finite. Then $R$ is <em>strongly $F$-regular</em> (SFR for short on the board) if for all $c$ non-zero divisors, $R$ is eventually $F$-split along $c$.
+</p>
+<p>
+Equivalently (1), 
+    $R$ is <em>strongly $F$-regular</em> if for all $c$ non-zero divisors, there exists an $e$ and $\varphi\in\hom_R(F_*^eR,R)$ such that  $\varphi(F_*^ec)=1$.
+</p>
+<p>
+Equivalently (2), 
+    $R$ is <em>strongly $F$-regular</em> if for all $c$ not in any minimal prime, $R$ is eventually $F$-split along $c$.
+</p>
+</div>
+
+<p><b>Proof that equiv (2) and original are the same definition:</b>
+    Recall that the set of zerodivisors is the union of all the elements in the associated primes, and that minimal primes are always associated.
+    So if $R$ satisfies (2), then it automatically satisfies the original (since if you are a non-zero divisor you are DEFINITELY not in any minimal prime).
+</p>
+<p>
+    Conversely suppose that $R$ satisfies the original. Since 1 is a non-zero divisor, $R$ is eventually $F$-split along $1$, i.e., $R$ is plain old $F$-split. 
+    Thus $R$ is reduced, and reduced rings have no non-minimal associated primes. &nbsp; &#9632; 
+</p>
+
+<div class="defn">
+<p><b>Notation:</b> $R^\circ = R\setminus \bigcup_{\mf p\in \Min(R)}\mf p$ is the notation for the set of elements not in any minimal prime.</p>
+</div>
+
+<div class="zb">
+<p><b>Examples:</b> (to be proved in a later class)</p>
+<ol>
+    <li>$F$-finite regular rings are strongly $F$-regular</li>
+    <li>$R=\bb F_p[x,y]/\langle xy\rangle$ is $F$-split, but not strongly $F$_regular</li>
+</ol>
+</div>
+
+<div class="thm">
+<p><b>Theorem:</b>
+    Let $(R,\mf m)$ be a local $F$-finite strongly $F$-regular ring. Then $R$ is a domain.
+</p>
+</div>
+
+<p>
+We had some good discussions about $F$-finiteness, and I'm going to summarize it here: I'm following the convention of the books we're using, and making $F$-finite part of the definition of SFR. This means that saying it in the previous theorem statement is redundant! I'm going to do that a lot though for emphasis.
+</p>
+<p>
+As Adam pointed out in the chat, the original definition of strong $F$-regularity did not require $F$-finiteness, and indeed there's nothing in the definition that needs it there. In particular while all of our references require this, it's not always required out in the wild. For more about F-singularities in the non-F-finite world, check out <a href="https://www.math.purdue.edu/~murayama/F-SingularitiesNonF-finite.pdf">these notes by Takumi Murayama</a>. 
+</p>
+<p>
+<b>Fact:</b> (we won't prove this) 
+    There exists a char $p$ ring $R$ which is regular, but such that $\hom_R(F_*R,R)=0$. 
+    In particular, this is a regular ring which is neither SFR nor even F-split.
+</p>
+
+
+<div class="thm">
+<p><b>Lemma 1:</b>
+    If $\bigcap_{i=1}^n\mf p_i\subset \mf q$ for prime ideals $\mf p_1,\ldots, \mf p_n, \mf q$, then there exists an $i$ such that $\mf p_i\subset \mf q$. 
+</p>
+</div>
+<p><b>Proof:</b>
+    We only prove $n=2$, the rest is straightforward induction. If $\mf p_1\subset \mf q$, we're done. Otherwise there exists $a\in \mf p_1\setminus \mf q$. Observe that $\mf p_1\mf p_2\subset \mf p_1\cap \mf p_2$. 
+    For all $b\in \mf p_2$, $ab\in \mf q$ which by primeness means $b\in \mf q$ as desired. &nbsp; &#9632;
+</p>
+
+
+<div class="thm"><p><b>Lemma 2:</b> If $(R,\mf m)$ local and $f+g$ is a unit then either $f$ or $g$ is a unit.</p></div>
+<p>Proof omitted</p>
+
+
+<div class="thm"><p><b>Lemma 3:</b>
+$R$ is $e$-F-split along $c$ if and only if there exists $\varphi$ such that $\varphi(F_*^ec)=u$ a unit.
+</p></div>
+<p><b>Proof:</b>
+    The forward implication is clear. For the backgwards implication, let $\psi = F_*^e(\frac{1}{u^{p^e}})\cdot \varphi$. Then $\psi(F_*^ec) = \varphi(F_*^e(\frac{c}{u^{p^e}})) = \frac{1}{u}\varphi(F_*^ec) = \frac{1}{u}u = 1$. 
+    &nbsp; &#9632;
+</p>
+
+
+<p><b>Proof of SFR + local implies domain:</b> See proof of Lemma 3.2 in [MP]. &nbsp; &#9632;</p>
+
+<div class="thm"><p><b>Theorem:</b>
+    Let $(R,\mf m,k)$ be a local $F$-finite regular ring. Then $R$ is strongly $F$-regular.
+</p></div>
+<p><b>Proof:</b> See proof of Theorem 3.4 in [MP] (ignoring the 1st line about reducing to the local case because we, by assumption, are already in the local case!)    &nbsp; &#9632; </p>
+
+
 <h3 id="upcoming">Upcoming</h3>
-<p>I still you some in-class problem solving and discussion time on the two actual Fedder computations from the Feb 3rd worksheet (squarefree monomial ideals + the cubic). This will happen the next time we have in-person class. 
-    Otherwise, we are moving on to a new topic---strong $F$-regularity! 
-    This is Ch 3 in [MP] and and Definition 5.22 onwards of [CdS].</p>
+<p>I still you some in-class problem solving and discussion time on the two actual Fedder computations from the Feb 3rd worksheet (squarefree monomial ideals + the cubic). This will happen the next time we have in-person class.</p> 
+    <p>Otherwise, we will continue to follow Ch 3 in [MP]. Up next: SFR localizes, proof that regular rings are SFR, and some examples and nice properties.</p>
 
 
 <p>&nbsp;</p> 
