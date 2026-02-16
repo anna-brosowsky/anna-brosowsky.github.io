@@ -54,7 +54,7 @@ Here are the two general references for the course.
 <ul>
 <li> Homework 1: [<a href="../Files/unl/math-918_hw1.pdf">PDF</a>] and [<a href="../Files/unl/math-918_hw1.tex">TeX</a>] + [<a href="../Files/unl/math-hw.sty">math-hw.sty</a>] (style file needed to compile!)
     <ul><li>Due on Friday Feb 6th at midnight. Submit on Gradescope.</li></ul></li>
-<li> Homework 2: [<a href="../Files/unl/math-918_hw2.pdf">PDF</a>] and [<a href="../Files/unl/math-918_hw2.tex">TeX</a>] + [<a href="../Files/unl/math-hw.sty">math-hw.sty</a>] (style file needed to compile!)
+<li> Homework 2: [<a href="../Files/unl/math-918_hw2.pdf">PDF</a>] and [<a href="../Files/unl/math-918_hw2.tex">TeX</a>] + [<a href="../Files/unl/math-hw.sty">math-hw.sty</a>] (style file needed to compile! same as last week)
     <ul><li>Due on Friday Feb 20th at midnight. Submit on Gradescope.</li></ul></li>
 </ul>
 
@@ -832,6 +832,48 @@ $R$ is $e$-F-split along $c$ if and only if there exists $\varphi$ such that $\v
     Let $(R,\mf m,k)$ be a local $F$-finite regular ring. Then $R$ is strongly $F$-regular.
 </p></div>
 <p><b>Proof:</b> See proof of Theorem 3.4 in [MP] (ignoring the 1st line about reducing to the local case because we, by assumption, are already in the local case!)    &nbsp; &#9632; </p>
+
+
+<h3 id="02-12">Feb 12</h3>
+
+<p>We started with a return to Fedder's criterion.</p>
+<ol>
+    <li>Let $k$ be an $F$-finite field and let $S=k[x_1,\ldots, x_d]$ be a polynomial ring. Let $I$ be a squarefree monomial ideal (so, $I=\langle m_1,\ldots, m_t\rangle$ where each $m_i$ is a  monomial with  no power $\gt 1$ on any variable). Prove that $S/I$ is F-split.
+        <button type="button" class="viewsoln">View Solution</button>
+        <div class="soln">
+            <p>Let $g=(x_1\cdots x_d)^{p-1}$. Then $m_i^{p-1}|g$, and so $m_i^p|(m_ig)$, and so $g\in I^{[p]}:I$. But clearly $g\notin \mf m^{[p]}=\langle x_1^p,\ldots, x_d^p\rangle$, thus $S/I$ is F-split as desired. </p>
+        </div>
+    </li>
+    <li>Let $k$ be an $F$-finite field and let $S=k[x,y,z]$. Let $f=x^3+y^3+z^3$. For which $p$ is $S/f$ F-split?
+
+        <button type="button" class="viewsoln">View Solution</button>
+        <div class="soln">
+            <p>We know that $\langle f\rangle ^{[p]}:\langle f \rangle = \langle f^{p-1}\rangle$. Exapanding out, 
+            $$f^{p-1} = \sum_{a+b+c=p-1} \binom{p-1}{a,b,c} x^{3a}y^{3b}z^{3c}.$$
+            If one of these monomials is NOT in $\mf m^{[p]}$, we need $3a,3b,3c\lt p$, i.e., we need $a,b,c,\le \lfloor \frac{p-1}{3}\rfloor$. 
+            On the flip side, since $a+b+c=p-1$, this means we need $3\lfloor \frac{p-1}{3}\rfloor \geq p-1$, i.e., $\lfloor\frac{p-1}{3}\rfloor\geq \frac{p-1}{3}$. 
+            But a floor usually makes things smaller so this is only achieved when we have equality and $3|(p-1)$, i.e., when $p\equiv 1\mod 3$.
+           Finally, note that the coefficient of $\binom{p-1}{a,b,c}$ is never $0$ mod $p$, since the numerator of $(p-1)!$ is never divisible by $p$. </p>
+        </div>
+    </li>
+</ol>
+
+            <p><b>Remark:</b> A <em>Stanley-Reisner</em> ring is a polynomial ring mod a squarefree monomial ideal. Thus you have just proven that Stanley-Reisner rings are always $F$-split.</p>
+
+<div class="thm">
+<p><b>Facts:</b>Let $I,J,J_1,J_2$ be ideals.</p>
+<ol>
+    <li>$I:(J_1+J_2) = (I:J_1)\cap (I:J_2)$. In particular, 
+    $$I:\langle f_1,\ldots, f_t\rangle = \bigcap_{i=1}^t (I:\langle f_i\rangle.$$</li>
+    <li>If $R$ is a domain, then $I:\langle f \rangle = \langle \frac{g_1}{f},\ldots, \frac{g_s}{f}\rangle$ 
+    where $I\cap \langle f \rangle = \langle g_1,\ldots, g_s\rangle$.</li>
+    <li>If $I=\langle m_1,\ldots, m_t\rangle$ and $J=\langle n_1,\ldots, n_s\rangle$ are monomial ideals, then
+    $$I\cap J = \langle \lcm(m_i,n_j)\: | \: 1\le i\le t,\ 1\le j \le s\rangle.$$
+    In particular, if $n$ is a monomial then $I:\langle n \rangle = \langle \frac{\lcm(m_1,n)}{n},\ldots, \frac{\lcm(m_t,n)}{n}\rangle$.</li>
+</ol>
+</div>
+
+<p>With those facts, we could compute $I^{[p]}:I$ in the Stanley-Reisner case if we wanted to... but it would be kind of annoying so our method is better! Check out the <a href="https://en.wikipedia.org/wiki/Ideal_quotient">Wikipedia page on colon ideals</a> for various other helpful properties of colon ideals.</p>
 
 
 <h3 id="upcoming">Upcoming</h3>
