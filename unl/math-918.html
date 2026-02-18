@@ -19,7 +19,8 @@
           id: "{\\operatorname{id}}",
           im: "{\\operatorname{im}}",
           ev: "{\\operatorname{ev}}",
-          Min: "{\\operatorname{Min}}"
+          Min: "{\\operatorname{Min}}",
+          lcm: "{\\operatorname{lcm}}"
         }
       }
     };
@@ -94,7 +95,9 @@ Here are the two general references for the course.
   <dt><a href="#02-03">Feb 03</a></dt><dd>$F$-splitting localizes; the $F$-split locus is open; the completion of Fedder.</dd>
   <dt><a href="#02-05">Feb 05</a></dt><dd>We learned some M2 basics (everything needed to do Fedder's criterion) and also learned how the HCC works.</dd>
   <dt><a href="#02-10">Feb 10</a></dt><dd>Defined (eventual) splitting along elements and SFR. Proved that local + SFR implies domain, and that F-finite regular local rings are SFR.</dd>
-  <dt><a href="#upcoming">Upcoming</a></dt><dd>More Fedder examples; proof that SFR localizes; other nice properties.</dd>
+  <dt><a href="#02-12">Feb 12</a></dt><dd>Fedder examples; proof that if $R$ is SFR then so is $R_{\mf p}$.</dd>
+  <dt><a href="#02-17">Feb 17</a></dt><dd>Proof that if $R_{\mf p}$ is SFR for all $\mf p$, then $R$ is SFR; proved that all $F$-finite regular rings are SFR; stated that for SFR rings all module-finite extensions split and started proof.</dd>
+  <dt><a href="#upcoming">Upcoming</a></dt><dd>Continuing through Ch 3 of [MP]: finishing the above proof, defining splinter rings and seeing that SFR rings are splinters; proving that SFR rings are normal.</dd>
 </dl>
 
 <h3 id="01-13">Jan 13</h3>
@@ -783,7 +786,7 @@ Equivalently (2),
 </ol>
 </div>
 
-<div class="thm">
+<div class="thm" id="local+SFR=domain">
 <p><b>Theorem:</b>
     Let $(R,\mf m)$ be a local $F$-finite strongly $F$-regular ring. Then $R$ is a domain.
 </p>
@@ -828,7 +831,7 @@ $R$ is $e$-F-split along $c$ if and only if there exists $\varphi$ such that $\v
 
 <p><b>Proof of SFR + local implies domain:</b> See proof of Lemma 3.2 in [MP]. &nbsp; &#9632;</p>
 
-<div class="thm"><p><b>Theorem:</b>
+<div class="thm" id="local+regular=SFR"><p><b>Theorem:</b>
     Let $(R,\mf m,k)$ be a local $F$-finite regular ring. Then $R$ is strongly $F$-regular.
 </p></div>
 <p><b>Proof:</b> See proof of Theorem 3.4 in [MP] (ignoring the 1st line about reducing to the local case because we, by assumption, are already in the local case!)    &nbsp; &#9632; </p>
@@ -861,7 +864,7 @@ $R$ is $e$-F-split along $c$ if and only if there exists $\varphi$ such that $\v
             <p><b>Remark:</b> A <em>Stanley-Reisner</em> ring is a polynomial ring mod a squarefree monomial ideal. Thus you have just proven that Stanley-Reisner rings are always $F$-split.</p>
 
 <div class="thm">
-<p><b>Facts:</b>Let $I,J,J_1,J_2$ be ideals.</p>
+<p><b>Facts:</b> Let $I,J,J_1,J_2$ be ideals.</p>
 <ol>
     <li>$I:(J_1+J_2) = (I:J_1)\cap (I:J_2)$. In particular, 
     $$I:\langle f_1,\ldots, f_t\rangle = \bigcap_{i=1}^t (I:\langle f_i\rangle.$$</li>
@@ -876,10 +879,153 @@ $R$ is $e$-F-split along $c$ if and only if there exists $\varphi$ such that $\v
 <p>With those facts, we could compute $I^{[p]}:I$ in the Stanley-Reisner case if we wanted to... but it would be kind of annoying so our method is better! Check out the <a href="https://en.wikipedia.org/wiki/Ideal_quotient">Wikipedia page on colon ideals</a> for various other helpful properties of colon ideals.</p>
 
 
-<h3 id="upcoming">Upcoming</h3>
-<p>I still you some in-class problem solving and discussion time on the two actual Fedder computations from the Feb 3rd worksheet (squarefree monomial ideals + the cubic). This will happen the next time we have in-person class.</p> 
-    <p>Otherwise, we will continue to follow Ch 3 in [MP]. Up next: SFR localizes, proof that regular rings are SFR, and some examples and nice properties.</p>
+<div class="thm">
+<p><b>Theorem:</b>
+Let $R$ be an $F$-finite ring of prime char $p\gt 0$. Then $R$ is strongly $F$-regular if and only if $R_{\mf p}$ is strongly $F$-regular for all prime ideals $\mf p$.
+</p></div>
+<p><b>Proof that SFR implies localizations are SFR:</b> 
+(Ref: Lemma 3.3 of [MP])
+Suppose $R$ is strongly $F$-regular and let $\Min(R) = \{P_1,\ldots, P_n\}$, and let $\{P_t,\ldots, P_n\}$ be the primes of $R$ corresponding to the minimal primes of $R_{\mf p}$. 
+Let $c\in R$ be such that $c/1 \in R_{\mf p}$ isn't contained in any minimal primes of $R_{\mf p}$.  
+Then our goal is to show that $R_{\mf p}$ is eventually $F$-split along $c/1$.</p>
 
+<p>Suppose that $c$ is contained in $P_1,\ldots, P_i$ but not in any other minimal primes of $R$. (Note that by definition of our choice, that $i\lt t$). Pick $c'\in \left(\bigcap_{j=i+1}^n P_j \right) \setminus \left(\bigcup_{j=1}^i P_i\right)$. Such a $c'$ exists by prime avoidance. 
+Let $c'' = c+c'$, so that by design, $c''$ is not in any minimal prime of $R$. 
+By SFR of $R$, there exists an $e\gt 0$ and $\varphi$ such that $\varphi(F_*^e c'')=1$. 
+Then in $R_{\mf p}$ we get that $\varphi(F_*^e\frac{c}{1}) + \varphi(F_*^e\frac{c'}{1}) = \varphi(F_*\frac{c''}{1}) = 1$, and so either $\varphi(F_*^e(c/1))$ or $\varphi*(F_*^e(c'/1))$ is a unit.
+</p>
+
+<p> 
+But $c'/1$ is contained in all the minimal primes of $R_{\mf p}$, and so is a zerodivisor. 
+Thus  $\varphi(F_*^e\frac{c'}{1})$ can't be a unit, and so $\varphi(F_*^ec/1)$ is, as desired.&nbsp; &#9632;
+</p>
+
+<h3 id="02-17">Feb 17</h3>
+
+<p><b>Proof that localizations SFR implies original ring SFR:</b>
+(Ref: Lemma 3.3 of [MP])
+Fix $c\in R^\circ$. 
+For all $\mf p\in \Spec(R)$, we know there exists an $e$ (depending on $\mf p$) such that $R_{\mf p}$ is $e$-$F$-split along $c/1$.
+Since $\hom_{R_{\mf p}}(F_*^eR_{\mf p}, R_{\mf p}) \cong R_{\mf p}\otimes_R \hom_R(F_*^eR,R)$, this means that there exists a $\psi \in \hom_R*F_*^eR,R)$ and $f\notin \mf p$ such that $\varphi(F_*^ec) = f$.
+[Since this is exactly saying that $\varphi/f$ is our desired splitting in the localization.]
+</p>
+
+<p>Let $\{f_\alpha\}_{\alpha\in \mc A}$ be the set of $f$'s appearing in this manner. Then $\bigcup_{\alpha\in \mc A} D(f) = \Spec(R)$.
+Further, $\Spec(R)$ is compact and so there exists a finite subcover so that $\Spec(R) = D(f_1)\cup\cdots \cup D(f_t)$. 
+Let $e_i$ be the iterate corresponding to $f_i$, and let $e_0 = \max\{e_1,\ldots, e_t\}$.
+We've thus shown that $R_{\mf p}$ is $e_0$-$F$-split along $c/1$ for all $\mf p$. In other words, we've found a common $e$ that works for all primes!</p>
+
+<p>
+Now, consider the evaluation maps discussed on Feb 3rd: 
+$\ev_c^e:\hom_R(F_*^eR,R) \to R$ which sends $\varphi \mapsto \varphi(F_*^ec)$. 
+Notice that $\frac{\ev_c^e}{1} = \ev_{c/1}^e \in \hom_{R_{\mf p}}(F_*^eR_{\mf p}, R_{\mf p})$.
+So now we know that $R$ is eventually $e_0$-$F$-split along $c$ if and only if $\ev_c^{e_0}$ is surjective if and only if
+$\frac{\ev_c^{e_0}}{1} = \ev_{c/1}^{e_0}$ is surjective for all primes $\mf p$,
+if and only if $R_{\mf p}$ is eventually $e_0$-$F$-split along $c/1$ for all primes $\mf p$. 
+&nbsp; &#9632;
+</p>
+
+<div class="thm">
+<p><b>Theorem:</b>
+If $R$ is an $F$-finite regular ring then $R$ is strongly $F$-regular.
+</p>
+</div>
+<p><b>Proof:</b>
+Regularity is a local property. By the previous result, SFR is a local property. So WLOG $R$ is local. 
+But by the <a href="#local+regular=SFR">Theorem from Feb 10</a>, a local $F$-finite regular ring is SFR.
+&nbsp; &#9632;
+</p>
+
+<p><b>Long-term Goal:</b> Use SFR-ness to prove some results that, on the face of it, have nothing to do with the Frobenius! 
+One such result will be that direct summands of regular rings are Cohen-Macaulay and normal. Another such result will be related to the next one:</p>
+
+<div class="thm">
+<p><b>Theorem:</b>
+Let $R$ be $F$-finite and strongly $F$-regular. Then $R\hookrightarrow S$ splits for any module-finite extension $S$ of $R$.
+</p></div>
+
+<p>To prove this, we broke the result down into several claims. We proved the first three in class, and the other claim + putting it all together to prove the theorem will be done on Thursday. (See Theorem 3.5 of [MP]).</p>
+
+<div class="thm">
+<p><b>Claim 1:</b>
+If $R\hookrightarrow S$ is a module-finite extension, then $R\hookrightarrow S$ splits if and only if $R_{\mf p}\hookrightarrow (R\setminus \mf p)^{-1}S$ splits for all primes $\mf p\in \Spec(R)$.
+</p></div>
+        <button type="button" class="viewsoln">View Proof</button>
+        <div class="soln">
+            <p>
+            This is very similar to the proof of F-splitting and SFR-ness localizing!
+            Let $\ev:\hom_R(S,R)\to R$ be the "evaluation at 1" map, so $\varphi\mapsto \varphi(1)$. Then $R\to S$ splits if and only if $\ev$ is surjective. 
+            Since $S$ is module-finite, $R_{\mf p}\otimes_R \hom_R(S,R) \cong \hom_{R_{\mf p}}(S_{\mf p}, R_{\mf p})$, and $\ev/1$ is in fact evaluation at $1/1$ in $S_{\mf p}$.
+            Since surjectivity localizes, we then have that $\ev$ is surjective if and only if the localizations $\ev/1$ are surjective for all primes $\mf p\in \Spec(R)$, which happens if and only if $R_{\mf p}\to S_{\mf p}$ splits for all primes $\mf p$.  
+            &nbsp; &#9632;</p>
+        </div>
+
+<div class="thm">
+<p><b>Claim 2:</b>
+    Suppose that every module-finite extension $R'\hookrightarrow S'$ such that $R'$ is a SFR local domain and $S'$ is a domain splits. 
+Prove that in fact EVERY module-finite extension $R\hookrightarrow S$ where $R$ is SFR splits. </p>
+
+<p>In other words, prove that we can reduce the original theorem to the case where further $R,S$ are domains and $R$ is local.
+</p></div>
+        <button type="button" class="viewsoln">View Proof</button>
+        <div class="soln">
+            <p>
+            By Claim 1, $R\hookrightarrow S$ splits if and only if $R_{\mf p}\hookrightarrow S_{\mf p}$ for all $\mf p$, thus WLOG we can assume that $R$ is local. By the <a href="#local+SFR=domain">Theorem from Feb 10</a>, this automatically ensures that $R$ is a domain. Thus we've reduced to the case where $R$ is a local domain.</p>
+            <p>Now let $\mf q\in \Min(S)$, and consider the map $R\to S \to S/\mf q$. Clearly the composite $R\to S/\mf q$ is still module-finite, and by design $S/\mf q$ is a domain. 
+            Further, since $R\to S$ is integral, by lying over + incomparability, the minimal primes of $S$ lie over $\langle 0\rangle \in \Spec(R)$. In other words, $\mf q\cap R=(0)$ and so $R\to S/\mf q$ is injective.</p>
+
+            <p>Suppose that there exists $\pi:S/\mf q\to R$ a splitting. Then taking the composite $S\to S/\mf q \to R$ gives our desired splitting of $R\to S$. Thus we can use splittings where $S$ is a domain to build splittings for non-domains.
+            &nbsp; &#9632;</p>
+        </div>
+
+<div class="thm">
+<p><b>Claim 3:</b>
+Let $R$ be a domain and $M$ be a finitely generated $R$-module. Prove that $M$ is torsion-free if and only if $M$ embeds into a finitely generated free module.
+</p></div>
+        <button type="button" class="viewsoln">View Proof</button>
+        <div class="soln">
+            <p>
+            Since $R$ is a domain, any free module is torsion-free, and so any submodule of a free module is also torsion-free.</p>
+
+            <p>Now suppose that $M$ is torsion-free. Let $K=\operatorname{Frac}(R)$ be the field of fractions of $R$. Since $M$ is f.g., $M\otimes_R K$ is a finite dimensional $K$-vector space.
+            Call the $K$-basis $e_1,\ldots, e_t$.
+            Since $M$ is torsion-free, the map $M\to M\otimes_R K$ is an inclusion. Let $x_1,\ldots, x_n$ be a generating set for $M$. Viewing the images of these elements in $M\otimes_R K$, we can write in terms of our $K$-basis:
+            \[\frac{x_1}{1} = \sum_{j} \frac{a_{ij}}{b_{ij}}e_j\]
+            for $a_{ij},b_{ij}\in R$. Let $b=\prod_{i,j}b_{ij}$ be a common denominator. Then the image of $M$ in $M\otimes_K R$ is contained in $R\frac{e_1}{b} \oplus \cdots \oplus R\frac{e_t}{b}$, because clearly the generators of $M$ are all contained in this submodule. This is a finitely generated free module so we have proven our desired result.
+            &nbsp; &#9632;</p>
+        </div>
+
+<div class="defn">
+<p><b>Definition:</b>
+$M$ is a <em>solid</em> $R$-module if $\hom_R(M,R)\neq 0$.
+$S$ is a <em>solid</em> $R$-algebra if $\hom_R(S,R)\neq 0$ (in other words, if $S$ is solid as an $R$-module).
+</p>
+</div>
+
+<div class="thm">
+<p><b>Claim 4:</b>
+Let $R$ be a domain and $M$ a finitely-generated $R$-module. 
+If $M$ is a torsion-free $R$-module,
+then $M$ is solid.
+</p>
+<p>We only need the above direction but in fact, this is an if and only if: when $R$ is a domain and $M$ is f.g., then $M$ is torsion-free if and only $M$ is solid.</p>
+</div>
+
+<p><b>Proof:</b> Next time!</p>
+
+
+
+<h3 id="upcoming">Upcoming</h3>
+    <p>We will continue to follow Ch 3 in [MP]. Up next: 
+    finishing the proof that SFR rings are splinters (including a definition of splinter!); showing that SFR rings are normal; showing that direct summands of SFR rings are SFR.
+    </p>
+    <p>In addition to proving Claim 4, we'll also state and prove Claim 5 as an exercise:</p>
+
+<div class="thm">
+<p><b>Claim 5:</b>
+If $S$ is a solid $R$-algebra, then in fact there exists $\theta\in \hom_R(S,R)$ such that $\theta(1)\neq 0$.
+</p>
+</div>
 
 <p>&nbsp;</p> 
     </main>
