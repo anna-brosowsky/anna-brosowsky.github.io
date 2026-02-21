@@ -1,0 +1,123 @@
+\documentclass[11pt]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in, headheight=14.5pt]{geometry}
+\usepackage{math-hw}
+\pagestyle{fancy}
+\fancyhead[L]{Math 918}
+%\fancyhead[C]{MATH 665}
+\fancyhead[R]{HW 3}
+
+\usepackage[margin=1in, headheight=14.5pt]{geometry}
+\usepackage{parskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% fonts
+\usepackage{calligra}
+\usepackage{mathrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{bbm}
+
+\usepackage{enumitem}
+\usepackage{hyperref}
+%\usepackage[colorlinks,  citecolor=green, linkcolor = black, urlcolor = cyan]{hyperref} % hyperlinks for cross-referencing; colorlinks is recommended because otherwise the boxes obscure the roman numerals; linkcolor is changed to blue after the table of contents (see firstpages.tex). As of 2021, red is not allowed by Rackham.
+\usepackage[nameinlink]{cleveref}
+%\usepackage{backref}
+\usepackage{url} % allow hyperlink in reference
+\usepackage[style=alphabetic,url=false,backref=true]{biblatex}
+\addbibresource{zotero-export.bib}
+\setlength{\droptitle}{-4em}
+
+
+\newtoggle{solution}
+\toggletrue{solution}
+%\togglefalse{solution}
+
+
+\iftoggle{solution}{
+\includeversion{solnenv}
+\includeversion{commenv}
+}{
+\excludeversion{solnenv}
+\excludeversion{commenv}
+}
+
+
+
+
+
+\title{Homework 3}
+%\author{Anna Brosowsky}
+\date{\vspace{-4em}}
+
+\begin{document}
+
+
+\maketitle\thispagestyle{fancy}
+
+Remember you are allowed to discuss with classmates (or an AI tool), but that you need to tell me who/what you discussed with + the final submitted writeup should be your own work.
+
+
+\begin{enumerate}[itemsep=7em]
+\item Suppose that $S=R_1\times R_2$, and that $R_1,R_2$, and $S$ are all $F$-finite\footnote{In fact this result holds without the $F$-finiteness hypothesis (and both $R_i$ F-finite automatically implies $S$ F-finite), but I am including it since for us $F$-finiteness is part of the definition of strong $F$-regularity}. 
+Prove that $S$ is strongly $F$-regular if and only if both $R_1$ and $R_2$ are strongly $F$-regular\footnote{Hint: There are multiple ways to approach this. One approach is mentioned in the proof of Theorem~3.9 of [MP], which you can look at if you get stuck!}.
+
+
+
+\item (Exercise 13 of [MP]) Let $R\to S$ be a faithfully flat extension of $F$-finite rings. 
+\begin{enumerate}[itemsep=1em]
+\item Let $M,N$ be finitely generated $R$-modules, and let $\psi:M\to N$ be an $R$-module map. Prove that $\psi$ is surjective if and only if $\psi\otimes_R \id_S: M\otimes_R S \to N\otimes_R S$ is surjective.
+
+
+\item Prove that if $c$ is a non-zerodivisor on $R$, then $c$ is also a non-zerodivisor on $S$.
+
+\item Prove that if $S$ is strongly $F$-regular, then so is $R$.
+
+\end{enumerate}
+
+
+\item (Glassbrenner's Criterion). Let $(S, \mf m, k)$ be an F -finite regular local ring of prime
+characteristic $p > 0$ and let $I \subseteq S$ be an ideal. Let $R = S/I$. 
+\begin{enumerate}[itemsep=1em]
+\item Let $c\in S$. Prove that $R$ is $e$-F-split along $c$ if and only if $c(I^{[p^e]}:I)\not\subseteq \mf m^{[p^e]}$.\footnote{Hint: Use results from Jan 29th \& Feb 3rd! And try to modify the proof of Fedder's criterion.}
+
+\item Conclude that $R$ is strongly $F$-regular if and only if for every $c \in S$ not in any minimal prime of $I$, there exists $e > 0$ such that $c\not\in\mf m^{[p^e]}:(I^{[p^e]} :I)$
+\end{enumerate}
+
+
+
+\newpage
+
+\item Prove the following number theory results. Since (a) is a special case of (b), you only need to write up a solution to (b). However, you may find it helpful to think about the simpler part (a) first!
+\begin{enumerate}[itemsep=1em]
+\item (Lucas's Theorem) Write $n=\sum_{i=0}^d n_i p^i$ and $m = \sum_{i=0}^d m_i p^i$ where $0\le n_i,m_i<p$ for all $i$.\footnote{Hint: Both parts (a) \& (b) are still true if you allow the top coefficient to be even larger, i.e., if we relax the last inequality to just be $n_d,m_d,m_{d,i}\ge 0$. You may actually find it easier to prove this more general version!} Then
+\[
+\binom{n}{m} \equiv \prod_{i=0}^d \binom{n_i}{m_i} \mod p.
+\]
+Here we follow the convention that $\binom{a}{b} = 0$ if $b>a$.
+
+
+\item (Multinomial Lucas's Theorem) Suppose that $n = m_1+\cdots + m_t$. Write $n=\sum_{i=0}^d n_ip^i$ and $m_j = \sum_{i=0}^d m_{i,j} p^i$ where $0\le n_i,m_{i,j}<p$ for all $i$.
+Then
+\[
+\binom{n}{m_1,\ldots, m_t} \equiv \prod_{i=0}^d \binom{n_i}{m_{i,1},\ldots, m_{i,t}} \mod p.
+\]
+Here we follow the convention that $\binom{a}{b_1,\ldots, b_t}=0$ if $b_1+\cdots + b_t\neq a$.
+
+\end{enumerate}
+
+
+\item (Exercise 17 of [MP]) Let $k$ be an $F$-finite field and let $R = k[[ x_1, \ldots , x_d]]/\langle x^n_1 +\cdots + x^n_d \rangle$. Using Glassbrenner's criterion, prove each of the following facts:
+\begin{enumerate}[itemsep=1em]
+\item Show that $R$
+is not strongly F -regular if $n \ge d \ge 2$.
+\item Show that $R$ is strongly $F$-regular if $n < d$ and $p \gg 0$.\footnote{Hint: Use ``test element'' criterion (Thm 3.11 of [MP]; done in-class on Tuesday 02/24), and use some number theory to make divisibility things nicer.}
+\end{enumerate}
+
+
+
+
+
+\end{enumerate}
+
+
+\end{document}
