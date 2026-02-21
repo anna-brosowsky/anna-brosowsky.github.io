@@ -1020,7 +1020,7 @@ then $M$ is solid.
 
 
 
-<h3 id="upcoming">Upcoming</h3>
+<h3 id="02-19">Feb 19</h3>
 
 
         <button type="button" class="viewsoln">View Proof of Claim 4</button>
@@ -1057,7 +1057,6 @@ If $S$ is a solid $R$-algebra, then in fact there exists $\theta\in \hom_R(S,R)$
     Since $R$ is SFR there exists $e$ and $\varphi$ such that $\varphi(F_*^ec)=1$. 
     Then taking the map $\varphi \circ F_*^e\theta \circ F^e: S \to F_*^e S \to F_*^eR \to R$, we get that $1\mapsto F_*^e1 \mapsto F_*^ec \mapsto 1$. Thus this is our desired splitting of $R\hookrightarrow S$.
     &nbsp; &#9632;</p>
-</p>
 
 <div class="defn">
 <p><b>Definition:</b>
@@ -1077,7 +1076,61 @@ If $S$ is a solid $R$-algebra, then in fact there exists $\theta\in \hom_R(S,R)$
 
 <p>To see how to remove the $F$-finite assumption, see the proof of Corollary 3.6 of [MP]. The more general statement that regular rings (in any characteristic!) are splinters is called the <em>Direct Summand Conjecture</em>, because it's equivalently saying that regular rings are direct summands of any module-finite extension. Although  it's called the direct summand conjecture, this is actually now a theorem! In other words, a regular ring in ANY characteristic (including mixed) is a splinter, see  <a href="">Andre&#769;'s paper "La conjecture du facteur direct"</a>.</p>
 
-<p>THURSDAY NOTES STILL UNDER CONSTRUCTION!</p>
+<div class="thm"><p><b>Fact</b> (Proved on HW3):
+    Let $S=R_1\times R_2$. 
+    Then $S$ is strongly $F$-regular if and only if both $R_1$ and $R_2$ are strongly $F$-regular.
+</p></div>
+
+<div class="thm"><p><b>Proposition:</b>
+Let $R$ be $F$-finite and strongly $F$-regular. Then $R$ is normal.
+</p></div>
+
+        <button type="button" class="viewsoln">View Proof of Proposition</button>
+        <div class="soln">
+            <p>
+            Let $\alpha\in \Frac(R)$ (our total ring of fractions) be integral over $R$. We want to show that in fact $\alpha\in R$.
+            Write $\alpha = \frac{a}{b}$ for $b$ a nzd in $R$, and consider the map $R\to R[\alpha]$. This map is integral + algebra finite, therefore module finite. Since $R$ is a splinter, this map splits.
+            Thus we have $\theta:R[\frac{a}{b}]\to R$ an $R$-linear map with $\theta(1)=1$. In particular, by $R$-linearity we have
+            \[b\theta(\frac{a}{b}) = \theta(\frac{a}{1}) = a\theta(1) = a.\]
+            Thus when viewed in $R[\frac{a}{b}]$ we see that $\theta(a/b) = a/b$. But also $\theta(a/b)\in R$. Thus $a/b=\alpha\in R$ as desired.
+            &nbsp; &#9632;</p>
+        </div>
+
+<div class="thm"><p><b>Corollary:</b>
+If $R$ is an $F$-finite one dimensional strongly $F$-regular ring, then $R$ is regular.</p></div>
+<p><b>Proof:</b> One-dimensional normal rings are all regular.
+    &nbsp; &#9632;</p>
+
+
+<div class="thm"><p><b>Fact:</b>
+If $S$ is a reduced normal ring, then $S=\prod_{i=1}^nS_i$ is a finite product of normal domains $S_i$. In particular, every strongly $F$-regular ring is a product of normal domains.</p></div>
+
+<p>You will perhaps eventually see a proof of this in 906, but <a href="https://stacks.math.columbia.edu/tag/030C">here is a reference</a> (where we also recall that noetherian rings always have finitely many minimal primes, and that strongly $F$-regular rings are always reduced). </p>
+
+
+<div class="thm"><b>Theorem:</b>
+Let $R$ and $S$ be $F$-finiite rings such that $R$ is a direct summand of $S$. (In other words, $R\to S$ is a ring map that splits as an $R$-module map.) If $S$ is strongly $F$-regular then so is $R$.
+</p></div>
+
+<p>We didn't suceed at doing the whole proof. We got through explaining why we can reduce to the  case where $R$ and $S$ are both domains. Next time we will start from the domain case.</p>
+
+<p><b>Proof (that we can reduce to the domain case):</b></p>
+<p>First, it suffices to prove that $R_{\mf p}$ is SFR for all primes $\mf p\in \Spec(R)$ (since SFR-ness localizes). Also, again by localization, we know that $(R\setminus \mf p)^{-1}S$ is SFR for all primes of $R$.
+    (Technically for SFR we only talked about localization at primes. But notice that this implies similar results for an arbitrary multiplicative set by taking further localizations if necessary!)
+    Finally, note that if the original map splits, so does any localization. Thus we can reduce to assuming that $R$ is local.</p>
+<p>
+    Second, note that $S$ SFR implies $S$ normal implies by Fact that $S\cong\prod S_1\times \cdots \times S_n$ is a product of normal domains. By Fact from HW3, these are in fact all SFR. 
+    Write this as $S \cong \prod_{i=1}^n S_i e_i$. Our final goal is to show that in fact, composition with one of the projections $R\to S \to S_i$ splits, so that we can replace $S$ by the domain $S_i$. And then since $R$ is a direct summand, that will force $R$ to be a domain as well (since it injects into a domain).</p>
+
+<p>In order to show that one of these composites  splits: 
+    Since $R\to S$ splits, let $\varphi$ be our splitting $S\to R$. 
+    Now we have
+    \[1=\varphi(1) = \varphi(e_1+\cdots + e_n) = \varphi(e_1)+\cdots + \varphi(e_n)\]
+    and since $R$ is local and this sums to a unit, there exists some $i$ such that $\varphi(e_i)$ is a unit. Now define a map $\phi:S_i\to R$ via $\phi(s_i) = \varphi(s_ie_i)$, in other words, $\phi = \varphi|_{S_i}$. This map is $R$-linear, and $\phi(1)=\varphi(e_i)=$ a unit. 
+    Thus by rescaling by the inverse of this unit, we get our desired splitting of $R\to S_i$.
+    &nbsp; &#9632;</p>
+
+
 
 <p>&nbsp;</p> 
     </main>
