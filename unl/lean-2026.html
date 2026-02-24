@@ -5,6 +5,7 @@
     <meta name="author" content="Anna Brosowsky">
     <meta name="description" content="">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="course.css">
     <title>Lean Learning League</title>
 </head>
 <body>
@@ -22,7 +23,7 @@
 <p>Find this page again easily via <a href="http://go.unl.edu/LLLs26">http://go.unl.edu/LLLs26</a></p>
 
 <h2>Upcoming</h2>
-<p>Homework for Feb 10th: Continue read sections 2.1-2.3 in <a href="https://leanprover-community.github.io/mathematics_in_lean/C02_Basics.html">Ch2 of Mathematics in Lean</a>. 
+<p>Homework for Feb 24th: For real this time, we finish Chapter 2? <a href="https://leanprover-community.github.io/mathematics_in_lean/C02_Basics.html">Ch2 of Mathematics in Lean</a>. 
 Try to do the exercises as you go, but if you get stuck on something just save it as a question for our meeting and move on! During discussion on Feb 10th we will go over any questions then continue to have time to work on exercises together.</p>
 
 <h2>Additional Resources</h2>
@@ -30,6 +31,38 @@ Try to do the exercises as you go, but if you get stuck on something just save i
 <p>There is supposedly a web version of lean available at <a href="https://live.lean-lang.org/">https://live.lean-lang.org/</a>. 
 I haven't looked into it too much myself, but if anyone is interested and gets it working then we'd love for you to help people troubleshoot. (In particular, the stumbling block at which I gave up was figuring out how to get the MIL imports to work in order to get exercise S02 to be error-free).</p>
 <p>Ayden discovered <a href="https://adam.math.hhu.de/">even more lean games</a> on the same server. So you can keep playing the natural number game, or try out real analysis, set theory, or linear algebra.</p>
+
+<h2>Tactics/Syntax Covered</h2>
+<p>Here's a list of the tactics &amp; syntax that has been covered so far (or at least, as far as I've managed to type up---I'm behind!!)
+    You can also use this as a guide to help you know what to skim/skip if you've fallen behind---if you feel comfortable with all the tactics/syntax on this list, then you can jump ahead!
+    Things ordered roughly by when they appear</p>
+
+<ul>
+    <li><a href="https://lean-lang.org/doc/reference/latest/Interacting-with-Lean/#Lean___Parser___Command___check" class="code">#check</a>: Checks the type of the input. Examples: <br>
+    <span class="code">#check 2+2</span> &nbsp; outputs ℕ <br>
+    <span class="code">#check 2+2=4</span> &nbsp; outputs Prop
+    </li>
+    <li><a href="https://lean-lang.org/doc/reference/latest/Interacting-with-Lean/#Lean___Parser___Command___eval" class="code">#eval</a> compiles &amp; evaluates the input (gets mad about sorry though). Examples:<br>
+    <span class="code">#eval 2+2</span> &nbsp; outputs 4 <br>
+    <span class="code">#eval 2+2=4</span> &nbsp; outputs true
+    </li>
+    <li><a href="https://lean-lang.org/doc/reference/latest/Definitions/Example-Declarations/#--tech-term-example">example</a> / <a href="https://lean-lang.org/doc/reference/latest/Definitions/Theorems/#The-Lean-Language-Reference--Definitions--Theorems">theorem</a>: An example is a theorem but unnamed &amp; forgotten (so, once you're done with it Lean forgets all about it). A theorem gets a name and can be used inside of proofs of later results.</li>
+    <li><a href="https://lean-lang.org/doc/reference/latest/Tactic-Proofs/Running-Tactics/#Lean___Parser___Term___byTactic-next" class="code">by</a>: Tells lean we're about to start a proof using tactics. Indents matter! (like python). If you don't want indents to matter, you need to use braces ({ and }) around everything after by and separate tactics by semicolons (;).</li>
+    <li><a href="https://lean-lang.org/doc/reference/latest/Tactic-Proofs/Tactic-Reference/#rw" class="code">rw</a>: 
+    Rewrites the 1st instance of each of the theorems you're specifying. 
+    Examples:<br>
+    <span class="code">rw [mul_comm]</span><br>
+    <span class="code">rw [sub_self, ← add_mul]</span><br>
+    <span class="code">rw [mul_comm a b]</span></li>
+    <li><a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/NthRewrite.html" class="code">nth_rw</a>: Rewrites the nth instance. Use like <span class="code">rw 2 [mul_comm]</span></li>
+    <li><a href="https://lean-lang.org/doc/reference/latest/Namespaces-and-Sections/#scope-commands" class="code">section ... end</a> &amp; <a href="" class="code">variable</a>: section creates a new section. Might be useful to do this so you can also declare some <span class="code">variable</span>s used throughout the section, and not need to re-declare their types in each example or theorem. </li>
+    <li><a href="https://lean-lang.org/doc/reference/latest/Tactic-Proofs/Tactic-Reference/#calc" class="code">calc</a></li>
+    <li><a href="" class="code">exact</a></li>
+
+
+    <li><span class="code">namespace</span>: Similar to section but need to pass in a name as input (and the same name to <span class="code">end</span> it). Also, theorems named in the namespace won't exist outside it.</li>
+    <li><span class="code">variable (R : Type*) [Ring R]</span> creates a type called R and gives it a ring structure.</li>
+</ul>
 
 <h2>Past Meetings</h2>
 <dl>
@@ -47,6 +80,11 @@ We saw a mini-preview of what actual lean code would look like. We also discusse
     </dd>
     <dt>Feb 3rd</dt>
     <dd>We started working through 2.1 and 2.2 exercises. We looked at the syntax of "have".</dd>
+    <dt>Feb 10th</dt>
+    <dd>We continued working through Ch 2 exercises.</dd>
+    <dt>Feb 17th</dt>
+    <dd>More Ch 2! Noah taught us about apply_fun, as a way to do the same thing to both sides of an equation.  Here's an example that takes hypothesis h and multiplies both sides of the equation by 2:
+        <div class="code">apply_fun (fun x\mapsto 2*x) at h</div></dd>
     </dd>
 </dl>
 
