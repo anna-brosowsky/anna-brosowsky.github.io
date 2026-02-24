@@ -23,8 +23,7 @@
 <p>Find this page again easily via <a href="http://go.unl.edu/LLLs26">http://go.unl.edu/LLLs26</a></p>
 
 <h2>Upcoming</h2>
-<p>Homework for Feb 24th: For real this time, we finish Chapter 2? <a href="https://leanprover-community.github.io/mathematics_in_lean/C02_Basics.html">Ch2 of Mathematics in Lean</a>. 
-Try to do the exercises as you go, but if you get stuck on something just save it as a question for our meeting and move on! During discussion on Feb 10th we will go over any questions then continue to have time to work on exercises together.</p>
+<p>Homework for Mar 3rd: Don't forget stuff we already know :) And just continue going through the book at our own pace.  <a href="https://leanprover-community.github.io/mathematics_in_lean/C02_Basics.html">Ch2 of Mathematics in Lean</a>. </p>
 
 <h2>Additional Resources</h2>
 
@@ -49,19 +48,32 @@ I haven't looked into it too much myself, but if anyone is interested and gets i
     <li><a href="https://lean-lang.org/doc/reference/latest/Definitions/Example-Declarations/#--tech-term-example">example</a> / <a href="https://lean-lang.org/doc/reference/latest/Definitions/Theorems/#The-Lean-Language-Reference--Definitions--Theorems">theorem</a>: An example is a theorem but unnamed &amp; forgotten (so, once you're done with it Lean forgets all about it). A theorem gets a name and can be used inside of proofs of later results.</li>
     <li><a href="https://lean-lang.org/doc/reference/latest/Tactic-Proofs/Running-Tactics/#Lean___Parser___Term___byTactic-next" class="code">by</a>: Tells lean we're about to start a proof using tactics. Indents matter! (like python). If you don't want indents to matter, you need to use braces ({ and }) around everything after by and separate tactics by semicolons (;).</li>
     <li><a href="https://lean-lang.org/doc/reference/latest/Tactic-Proofs/Tactic-Reference/#rw" class="code">rw</a>: 
-    Rewrites the 1st instance of each of the theorems you're specifying. 
+    Finds the  1st instance thing that matches the desired pattern. Then rewrites ALL instances that look exactly like this first one (where first is measured in an out-to-in way?)
     Examples:<br>
     <span class="code">rw [mul_comm]</span><br>
     <span class="code">rw [sub_self, ← add_mul]</span><br>
     <span class="code">rw [mul_comm a b]</span></li>
+    <div>If the current goal is trying to prove that <span class="code">a*b*c*d=a*b*c*e</span> then 
+        <span class="code">rw [mul_assoc]</span> 
+        makes the new goal into <span class="code">a*b*(c*d) = a*b*c*e</span>. However, 
+        <span class="code">rw [mul_assoc a]</span> 
+        makes the new goal into <span class="code">a*(b*c)*d=a*(b*c)*e
+    </div>
     <li><a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/NthRewrite.html" class="code">nth_rw</a>: Rewrites the nth instance. Use like <span class="code">rw 2 [mul_comm]</span></li>
     <li><a href="https://lean-lang.org/doc/reference/latest/Namespaces-and-Sections/#scope-commands" class="code">section ... end</a> &amp; <a href="" class="code">variable</a>: section creates a new section. Might be useful to do this so you can also declare some <span class="code">variable</span>s used throughout the section, and not need to re-declare their types in each example or theorem. </li>
     <li><a href="https://lean-lang.org/doc/reference/latest/Tactic-Proofs/Tactic-Reference/#calc" class="code">calc</a></li>
-    <li><a href="" class="code">exact</a></li>
+    <li><a href="https://lean-lang.org/doc/reference/latest/Tactic-Proofs/Tactic-Reference/#exact" class="code">exact e</a> and <a href="https://lean-lang.org/doc/reference/latest/Tactic-Proofs/Tactic-Reference/#apply" class="code">apply e</a>: apply sees if the conclusion of <span class="code">e</span> would prove our thing, then gives us the hypotheses as new subgoals. exact is the special case where we already know that <span class="code">e</span> is true.</li>
 
 
     <li><span class="code">namespace</span>: Similar to section but need to pass in a name as input (and the same name to <span class="code">end</span> it). Also, theorems named in the namespace won't exist outside it.</li>
     <li><span class="code">variable (R : Type*) [Ring R]</span> creates a type called R and gives it a ring structure.</li>
+    <li><a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Ring/Basic.html#ring-tactic" class="code">ring</a>: Use <span class="code">by ring</span> and Lean will attempt to auto-prove using the ring axioms!.</li>
+    <li><a href="https://lean-lang.org/doc/reference/latest/Tactic-Proofs/Tactic-Reference/#rfl" class="code">rfl</a>: Means "reflexive". If the proof is by definition, this will solve it! 
+    So, something like <span class="code">example (a b : \R) : a-b = a + -b := by refl</span> works.
+    </li> 
+    <li><a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/NormNum/Core.html#norm_num" class="code">norm_num</a> is a tactic. I'm still kind of confused on what it's good for?</li>
+    <li><a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Linarith/Frontend.html#Mathlib.Tactic.linarith" class="code">linarith</a> is a tactic for autosolving linear arithmetic?</li>
+     
 </ul>
 
 <h2>Past Meetings</h2>
@@ -83,9 +95,11 @@ We saw a mini-preview of what actual lean code would look like. We also discusse
     <dt>Feb 10th</dt>
     <dd>We continued working through Ch 2 exercises.</dd>
     <dt>Feb 17th</dt>
-    <dd>More Ch 2! Noah taught us about apply_fun, as a way to do the same thing to both sides of an equation.  Here's an example that takes hypothesis h and multiplies both sides of the equation by 2:
+    <dd>More Ch 2! We learned some subtleties about how rw works/how it chooses which instances to rewrite. Noah taught us about apply_fun, as a way to do the same thing to both sides of an equation.  Here's an example that takes hypothesis h and multiplies both sides of the equation by 2:
         <div class="code">apply_fun (fun x\mapsto 2*x) at h</div></dd>
     </dd>
+    <dt>Feb 24th</dt>
+    <dd>We learned to be careful of type signatures! lt_of_le_of_lt doesn't take any parameters, so it's illegal to try to write something like <span class="code">rw [lt_of_le_of_lt g h]</span>. We can tell this because when this Theorem was originally defined, there was no forall or any parameters in the definition. It HAS to be inferred from context.</dd>
 </dl>
 
 
