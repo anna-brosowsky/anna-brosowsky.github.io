@@ -102,7 +102,9 @@ Here are the two general references for the course.
   <dt><a href="#02-10">Feb 10</a></dt><dd>Defined (eventual) splitting along elements and SFR. Proved that local + SFR implies domain, and that F-finite regular local rings are SFR.</dd>
   <dt><a href="#02-12">Feb 12</a></dt><dd>Fedder examples; proof that if $R$ is SFR then so is $R_{\mf p}$.</dd>
   <dt><a href="#02-17">Feb 17</a></dt><dd>Proof that if $R_{\mf p}$ is SFR for all $\mf p$, then $R$ is SFR; proved that all $F$-finite regular rings are SFR; stated that for SFR rings all module-finite extensions split and started proof.</dd>
-  <dt><a href="#upcoming">Upcoming</a></dt><dd>Finishing up Ch 3 of [MP]: finishing the above proof; doing the "test element" criterion that reduces checking SFR-ness to checking eventual $F$-splitting along a single (well-chosen) $c$.</dd>
+  <dt><a href="#02-24">Feb 24</a></dt><dd>Finishing up Ch 3 of [MP]: finishing the above proof; doing the "test element" criterion that reduces checking SFR-ness to checking eventual $F$-splitting along a single (well-chosen) $c$, + a reminder of the Jacobian criterion for smoothness and how to use it to choose a good $c$.</dd>
+  <dt><a href="#02-26">Feb 26</a></dt><dd>Under construction!! Solutions to exercises on computing which of four rings $R$ were SFR; starting local cohomology.</dd>
+  <dt><a href="#upcoming">Upcoming</a></dt><dd>More local cohomology + seeing what SFR-ness can tell us about it.</dd>
 </dl>
 
 <h3 id="01-13">Jan 13</h3>
@@ -160,12 +162,12 @@ Here are the two general references for the course.
     </ol>
 
   <p>We then noticed a pattern: drawing the corresponding varieties for the two ``free'' examples gave us affine space (the polynomial ring) and a smooth elliptic curve (#3). Drawing the two ``non-free'' examples gave us two lines crossing (#1) and a cuspidal cubic (#2).</p>
-  <div class="defn"><p><b>Definition:</b> The ring $(R,\mathfrak m, k)$ is a  <em>regular local ring</em> if $\dim R = \dim_k \mathfrak m /\mathfrak m^2$. In other words, if the Krull dimension = the embedding dimension.</p><p>A ring $R$ is a <em>regular ring</em> if $R_{\mathfrak m}$ is a regular local ring for every maximal ideal $\mathfrak m$.</p></div>
+  <div class="defn"><p><b>Definition 2.1:</b> The ring $(R,\mathfrak m, k)$ is a  <em>regular local ring</em> if $\dim R = \dim_k \mathfrak m /\mathfrak m^2$. In other words, if the Krull dimension = the embedding dimension.</p><p>A ring $R$ is a <em>regular ring</em> if $R_{\mathfrak m}$ is a regular local ring for every maximal ideal $\mathfrak m$.</p></div>
   <p>You will eventually learn a lot more about regular rings in Math 906.</p>
   <div class="thm"><p><b>Kunz's Theorem:</b> $R$ is regular if and only if the Frobenius is flat.</p></div>
-  <div class="defn"><p><b>Definition:</b> $R$ is <em>$F$-finite</em> if $F_*R$ is a finitely generated $R$-module.</p></div>
+  <div class="defn"><p><b>Definition 2.3:</b> $R$ is <em>$F$-finite</em> if $F_*R$ is a finitely generated $R$-module.</p></div>
   <p>For a local ring and a finitely generated module $M$, you already know that $M$ is flat if and only if it is free. This and our new definition give us an immediate corollary to Kunz.</p>
-  <div class="thm"><p><b>Corollary:</b> Let $(R,\mathfrak m)$ be an $F$-finite local ring. Then $R$ is regular if and only if $F_*R$ is free.</p></div>
+  <div class="thm"><p><b>Corollary 2.4:</b> Let $(R,\mathfrak m)$ be an $F$-finite local ring. Then $R$ is regular if and only if $F_*R$ is free.</p></div>
 
 
 <h3 id="01-20">Jan 20</h3>
@@ -189,7 +191,7 @@ Prove that $F$ induces an isomorphism on Spec.
 
 
 <div class="defn">
-<p><b>Definition:</b> A sequence $(r_n)_{n\in \mathbb N}$in $R^{\mathbb N}$ is <em>Cauchy in the $I$-adic topology</em> if for all $t\in \mathbb N$ there exists a $d\in \mathbb N$ such that for $n,m\geq d$, we have $r_n-r_m\in I^t$.
+<p><b>Definition 3.1:</b> A sequence $(r_n)_{n\in \mathbb N}$ in $R^{\mathbb N}$ is <em>Cauchy in the $I$-adic topology</em> if for all $t\in \mathbb N$ there exists a $d\in \mathbb N$ such that for $n,m\geq d$, we have $r_n-r_m\in I^t$.
 
 Let $C_I(R)$ be the set of Cauchy sequences.
 
@@ -197,7 +199,7 @@ Let $C^0_I(R)$ be the sequences convernging to zero, i.e., s.t. for all $n$ ther
 </p></div>
 
 <div class="thm">
-<p><b>Facts/Definition:</b> $C_I(R)$ is a ring and $C^0_I(R)$ is an ideal; the completion is $\widehat R^I = C_I/C_I^0$. We're going to only use this for local rings and the $I=\mathfrak m$ case, written just plain $\widehat R$, which satisfies:</p>
+<p><b>Facts/Definition 3.2:</b> $C_I(R)$ is a ring and $C^0_I(R)$ is an ideal; the completion is $\widehat R^I = C_I/C_I^0$. We're going to only use this for local rings and the $I=\mathfrak m$ case, written just plain $\widehat R$, which satisfies:</p>
 <ul>
 <li>$\widehat R$ is a local commutative unital noetherian ring</li>
 
@@ -216,7 +218,7 @@ Let $C^0_I(R)$ be the sequences convernging to zero, i.e., s.t. for all $n$ ther
 </p>
 <p>We started the proof of the other direction (in the style of [CdS]) but didn't finish; however we did get through the following:</p>
 <div class="defn">
-<p><b>Definition:</b> 
+<p><b>Definition 3.3:</b> 
 Let $(R,\mathfrak m)$ local. 
 Then $x_1,\ldots, x_n$ is <em>Lech independent</em> if having $a_1x_1+\cdots + a_nx_n=0$ for $a_i\in R$ in fact implies that $a_i \in \langle x_1,\ldots, x_n\rangle$ for all $i$.</p>
 
@@ -234,7 +236,7 @@ If $x_1=y_1z_1$ then \[\ell_R(R/\langle x_1,\ldots, x_n\rangle)=\ell_R(R/\langle
 
 <h3 id="01-22">Jan 22</h3>
 <div class="thm">
-<p><b>Proposition:</b> If $\underline x\in R$ is Lech independent and $\varphi:R\to S$ is a flat map, then $\varphi(x_1),\ldots, \varphi(x_n)$ is Lech independent in $S$.</p>
+<p><b>Proposition 4.1:</b> If $\underline x\in R$ is Lech independent and $\varphi:R\to S$ is a flat map, then $\varphi(x_1),\ldots, \varphi(x_n)$ is Lech independent in $S$.</p>
 </div>
 <p><b>Proof:</b> Let $I=\underline x$. Then by Lech independence, $I/I^2 \cong (R/I)^n$ as $(R/I)$ and as $R$-modules. But then flatness gives
 \[
@@ -244,7 +246,7 @@ and by rank reasons clearly $\varphi(\underline x)$ is still a minimal generatin
 </p>
 
 <div class="thm">
-<p><b>Proposition:</b> If $\underline x$ is Lech independent and $x_1=y_1z_1$ then $y_1,\ldots, x_2,\ldots, x_n$ is L.i.
+<p><b>Proposition 4.2:</b> If $\underline x$ is Lech independent and $x_1=y_1z_1$ then $y_1,\ldots, x_2,\ldots, x_n$ is L.i.
 </p></div>
 <p><b>Proof:</b> From last time, we saw that $\underline x : y_1 = \langle z_1,x_2,\ldots, x_n\rangle$. 
 So suppose we have coefficients $a_1z_1 + \sum_{i=2}^n a_ix_i=0$. 
@@ -268,32 +270,32 @@ Thus $S/\langle \underline x\rangle^{[p^e]}\to S/(I+\langle \underline x\rangle^
 
 <div class="defn">
 <p>
-<b>Definition:</b> $R$ is <em>$F$-split</em> if there exists some $R$-module map $\pi\in \operatorname{Hom}_R(F_*R,R)$ such that $\pi\circ F = \operatorname{id}_R$.
+<b>Definition 4.3:</b> $R$ is <em>$F$-split</em> if there exists some $R$-module map $\pi\in \operatorname{Hom}_R(F_*R,R)$ such that $\pi\circ F = \operatorname{id}_R$.
 </p>
 <p>Equivalently: There exists an $R$-module map $\pi:F_*R\to R$ such that $\pi(F_*1)=1$.</p>
 </div>
 <p>We saw that was the same since being a splitting exactly means that for all $r\in R$ we have $r = \pi\circ F(r) = \pi(F_*r^{p})=\pi(rF_*1)=r\pi(F_*1)$.</p>
 
 <div class="thm">
-<p><b>Proposition:</b> If $R$ is $F$-split then $R$ is reduced.</p>
+<p><b>Proposition 4.4:</b> If $R$ is $F$-split then $R$ is reduced.</p>
 </div>
 <p><em>Proof:</em> Let $\pi:F_*R\to R$ be our splitting. If $\pi\circ F=\operatorname{id}_R$, this forces the first map to be injective. And we saw $F$ injective iff $R$ reduced.&nbsp; &#9632;</p>
 
 <div class="zb">
 <p>
-<b>Example:</b> If $R=k[x]$ or $k[[x]]$ then $R$ is $F$-split. We saw that in fact these examples are both free, with $R$-basis of $\{F_*x^i\: | \: 0\le i \lt p\}$. 
+<b>Example 4.5:</b> If $R=k[x]$ or $k[[x]]$ then $R$ is $F$-split. We saw that in fact these examples are both free, with $R$-basis of $\{F_*x^i\: | \: 0\le i \lt p\}$. 
 By freeness, we can define a map by doing whatever we want on the generators, such as the <em>standard monomial splitting</em>, which sends
 \[F_*1\mapsto 1, \qquad F_*x^i\mapsto 0\ \  \forall 0\lt i\lt p.\]</p>
 </div>
 <div class="thm">
-<p><b>Proposition:</b> Suppose $\varphi:R\to S$ is split (as an $R$-module map). If $S$ is $F$-split then so is $R$.</p>
+<p><b>Proposition 4.6:</b> Suppose $\varphi:R\to S$ is split (as an $R$-module map). If $S$ is $F$-split then so is $R$.</p>
 </div>
 <p><em>Proof:</em> 
 Suppose that $\varphi$ is split via $\gamma:S\to R$, and that $F_S$ is split via $\pi:F_*S\to S$. 
 Then $\gamma\circ\pi\circ (F_*\varphi)$ is our desired splitting of $F_R$. See this via
 \[\gamma\circ\pi\circ (F_*\varphi)(F_*1) = \gamma\circ \pi(F_*\varphi(1)) = \gamma(\pi(F_*1))=\gamma(1)=1.\quad &#9632;\]</p>
 <div class="zb">
-<p><b>Example:</b>
+<p><b>Example 4.7:</b>
 Let $G$ be a finite group such that $p\not|\,|G|$. Let $R$ be a char $p$ ring with a $G$ action, and let
 \[R^G = \{r\in R \: | \: g\cdot r = r \ \forall g\in G\}\]
 be the invariant subring. The inclusion $R^G\to R$ is always split via the <em>Reynold's operator</em>:
@@ -309,7 +311,7 @@ Thus whenever $R$ is $F$-split, the invariant ring $R^G$ is also $F$-split.</p>
 </ul>
 <p>Finally, an in-class exercise was to prove the following, which we will go over on Tuesday:</p>
 <div class="thm">
-<p><b>Proposition:</b> The following are equivalent for a char $p$ ring $R$.
+<p><b>Proposition 4.8:</b> The following are equivalent for a char $p$ ring $R$.
   <ol>
     <li>$R$ is $F$-split.</li>
     <li>There exists some $e\gt 0$ such that $F^e:R\to F_*^eR$ splits.</li>
@@ -318,7 +320,7 @@ Thus whenever $R$ is $F$-split, the invariant ring $R^G$ is also $F$-split.</p>
 </p></div>
 
 <h3 id="01-27">Jan 27</h3>
-<p><b>Proof of proposition from last week (F-split iff for some e iff for all e):</b>
+<p><b>Proof of Proposition 4.8 from last week (F-split iff for some e iff for all e):</b>
 1 implies 3: If $\pi:F_*R\to R$ is our splitting, then notice that $\pi\circ F_*\pi \circ \cdots \circ F_*^{e-1}\pi:F_*^eR\to R$ is a splitting!
 Notation $\pi^{\star e} =$ such a composition, and in fact $\psi\star \phi := \psi\circ F_*^e\phi$. </p>
 
@@ -328,16 +330,16 @@ Notation $\pi^{\star e} =$ such a composition, and in fact $\psi\star \phi := \p
 \[ R \stackrel{F}{\to} F_*R \stackrel{F_*F^{e-1}}{\to} F_*^eR \stackrel{\pi}{\to}  R \]
 so take $\pi \circ F_*F^{e-1}$ as our splitting.  &nbsp; &#9632; </p>
 
-<p><b>(Non)Example:</b> The ring $\mathbb F_2[x^2,x^3]$ is reduced, but is NOT $F$-split. (Proved in HW 1 #4). </p>
+<p><b>(Non)Example 5.1:</b> The ring $\mathbb F_2[x^2,x^3]$ is reduced, but is NOT $F$-split. (Proved in HW 1 #4). </p>
 
-<p><b>Example:</b>  Here are some invariant rings that ARE $F$-split even though $p$ divides the order of the group (so that the Reynold's operator proof won't work):</p>
+<p><b>Example 5.2:</b>  Here are some invariant rings that ARE $F$-split even though $p$ divides the order of the group (so that the Reynold's operator proof won't work):</p>
 <ul>
     <li>If $G$ acts via the trivial action, then for ANY ring $R$ we have $R^G=R$. So regardless of the group order, if $R$ is $F$-split then clearly so is $R^G$.</li>
     <li>If $G=S_2$ and $R=\mathbb F_2[x,y]$ and we do the same symmetric group action of permutating the variables from last time. Then $R^G = \mathbb F_2[x+y,xy]\cong \mathbb F_2[w,z]$ which is regular and thus $F$-split.</li>
 </ul>
 
 <p>The following theorem was an in-class exercise.</p>
-<div class="thm"><p><b>Theorem:</b> Any $F$-finite regular local ring is $F$-split. Any complete regular local ring is $F$-split.</p></div>
+<div class="thm"><p><b>Theorem 5.3:</b> Any $F$-finite regular local ring is $F$-split. Any complete regular local ring is $F$-split.</p></div>
         <button type="button" class="viewsoln">View Complete Regular Local Proof</button>
         <div class="soln">
             <p>By the Cohen structure theorem, if $R$ is a complete regular local ring then $R\cong k[[x_1,\ldots, x_d]]$ where $k$ is the residue field. From seeing this example before we know that $F_*R$ is free (though possibly infinitely generated if $k$ is a bad field!), that $F_*1$ is part of a basis, and so the standard monomial splitting works. Recall the standard monomial splitting sends $F_*1\mapsto 1$ and $F_*(\lambda_i x^{\alpha})\mapsto 0$ for all the other generators.  &nbsp; &#9632; </p>
@@ -353,12 +355,12 @@ so take $\pi \circ F_*F^{e-1}$ as our splitting.  &nbsp; &#9632; </p>
 
 <p>It's stated there for motivation but it will take us a while to prove it. First we want to have a good understanding of what $\hom_S(F_*^eS,S)$ looks like, and how it relates to $\hom_R(F_*^eR,R)$. This will then help us figure out how a potential splitting of the Frobenius on $R$ might relate to one on $S$.</p>
 
-<p><b>Remark:</b> If $T$ is an $R$-algebra, then $\hom_R(T,R)$ has the structure 
+<p><b>Remark 5.5:</b> If $T$ is an $R$-algebra, then $\hom_R(T,R)$ has the structure 
 of a $T$-module via premultiplication: $(t\cdot \varphi)(s) = \varphi(ts) $.
 So, $\hom_R(F_*^eR,R)$ has the structure of an $F_*^eR$-module via premultiplication: $(F_*^er \cdot \varphi)(F_*^es) = \varphi(F_*^e(rs))$.</p>
 
 
-<div class="thm"><p><b>Proposition:</b> 
+<div class="thm"><p><b>Proposition 5.6:</b> 
 Let $k$ be an $F$-finite field, and let $S=$ either $k[x_1,\ldots, x_d]$, or the localization thereof at $\mathfrak m$, or $k[[x_1,\ldots, x_d]]$. 
 Then $\hom_S(F_*^eS,S)$ is a free rank one $F_*^eS$-module. 
 Specifically, if $\{F_*^e\lambda_i\}$ is a $k$-basis of $F_*^ek$ (where wlog $\lambda_1=1$), then  $\Phi:F_*^eS\to S$ is our generator where $\Phi$ is defined on the monomial basis to be 
@@ -399,12 +401,12 @@ $k$ is perfect means we don't have to worry about the $\lambda_i$ (a similar pro
 
 <h3 id="01-29">Jan 29</h3>
 
-<p><b>Remark:</b>
+<p><b>Remark 6.1:</b>
 In fact, $\hom_S(F_*^eS,S)$ is a free rank one $F_*^eS$ for any Gorenstein local ring $S$ (in particular, for any regular local ring). 
 See Remark 5.9 of [CdS] for a proof. 
 We'll use the regular case of this statement to be able to the following results for any regular local ring, not just polynomials/power series.</p>
 
-<div id="fedder-containment-lemma" class="thm"><p><b>Proposition:</b>
+<div id="fedder-containment-lemma" class="thm"><p><b>Proposition 6.2:</b>
 Let $S$ be an $F$-finite regular local ring and let $\Phi$ be the generator of $\hom_S(F_*^eS,S)$. Let $I$ and $J$ be ideals of $S$. Then
 \[
 \Phi(F_*^eJ)\subset I \iff J\subset I^{[p^e]}
@@ -435,7 +437,7 @@ Let $S$ be an $F$-finite regular local ring and let $\Phi$ be the generator of $
     as desired.  &nbsp; &#9632; 
 </p>
 
-<div id="fedder-hom-structure" class="thm"><p><b>Theorem:</b> 
+<div id="fedder-hom-structure" class="thm"><p><b>Theorem 6.3:</b> 
 Let $S$ be an $F$-finite ring, $I$ an ideal, and $R=S/I$. 
 Then there is a natural $F_*^eS$-module map
 \[\Psi:(F_*^e(I^{[p^e]}:I))\cdot \hom_S(F_*^eS,S)\to \hom_R(F_*^eR,R).\]
@@ -460,7 +462,7 @@ If $S$ is regular, then this map is a surjection and the kernel is $F_*^e(I^{[p^
   </p>
 
 <p>The following theorem has been restated for clarity. (It was still true as stated in class though!)</p>
-<div class="thm"><p><b>Theorem:</b> 
+<div class="thm"><p><b>Theorem 6.4:</b> 
 Let $S$ be an $F$-finite ring, $I$ an ideal, and $R=S/I$. Let $\mf q\in \bb V(I)\subset\Spec(S) $ be a prime ideal of $S$ that corresponds to a prime ideal in $R$. Then $R_{\mf q}$ is $F$-split if and only if (for any fixed $e$)
 \[(I^{[p^e]}:I)\not\subseteq \mf q^{[p^e]}.\]
 </p></div>
@@ -473,18 +475,6 @@ By the Lemma from Feb 3rd, $R$ is $F$-split if and only if $R_{\mf m}$ is $F$-sp
 By the above Theorem, this is if and only $(I^{[p]}:I)\not\subseteq \mf m^{[p]}$, as desired.
 &nbsp; &#9632; </p>
 
-<!-- <p><b>Proof:</b>
-To be filled in.
-  &nbsp; &#9632; 
-</p>
--->
-<!--
-<div class="thm">
-<p><b>Proposition:</b>
-If there exists a map $\pi:F_*^eR\to R$ such that $\pi(F_*^ed)=1$, and $c|d$ in $R$, then there exists a map sending $F_*^ec\mapsto 1$.
-</p></div>
--->
-
 
 
 <h3 id="02-03">Feb 3rd</h3>
@@ -493,7 +483,7 @@ If there exists a map $\pi:F_*^eR\to R$ such that $\pi(F_*^ed)=1$, and $c|d$ in 
 
 <p>Finishing the proof of the (more general) Fedder's criterion, including some necessary lemmas. Hopefully some examples. Also, <b>set up an HCC account by Thursday</b> if you want to follow along with the demo!</p>
 <p>The following results will appear as exercises, in addition to a few more examples (squarefree monomial ideals?)</p>
-<div class="thm"><p><b>Lemma 1:</b>
+<div class="thm"><p><b>Lemma 7.1:</b>
 If there exists a map $\pi:F_*^eR\to R$ such that $\pi(F_*^ed)=1$, and $c|d$ in $R$, then there exists a map sending $F_*^ec\mapsto 1$. In particular, if there is ANY surjective map $F_*^eR\to R$ then $R$ is $F$-split.
 </p></div>
         <button type="button" class="viewsoln">View Proof</button>
@@ -503,7 +493,7 @@ If there exists a map $\pi:F_*^eR\to R$ such that $\pi(F_*^ed)=1$, and $c|d$ in 
             <p>The in particular follows since we can always choose $c=1$.&nbsp; &#9632;</p> 
         </div>
 
-<div class="thm"><p><b>Lemma 2:</b>
+<div class="thm"><p><b>Lemma 7.2:</b>
 Let $\ev_d:\hom_R(F_*^eR,R)\to R$ be the "evaluation at $F_*^ed$" map, so that $\ev_d(\varphi) = \varphi(F_*^ed)$. Then there exists a map $\pi\in \hom_R(F_*^eR,R)$ such that $\pi(F_*^ed)=1$ if and only if $\ev_d$ is surjective.
 </p></div>
         <button type="button" class="viewsoln">View Proof</button>
@@ -511,7 +501,7 @@ Let $\ev_d:\hom_R(F_*^eR,R)\to R$ be the "evaluation at $F_*^ed$" map, so that $
             <p>Since the codomain of $\ev_d$ is a free rank one $R$-module, being surjective is equivalent to having $1$ in the image. But this is then equivalent to saying there exists a $\pi$ such that $\ev_d(\pi)=\pi(F_*^e1)=1$.&nbsp; &#9632;</p>
         </div>
 
-<div class="thm"><p><b>Lemma 4:</b>
+<div class="thm"><p><b>Lemma 7.4:</b>
 The following are equivalent for map $\varphi:M\to N$ of $R$-modules:
 <ol>
     <li> $\varphi$ is surjective. </li>
@@ -520,18 +510,22 @@ The following are equivalent for map $\varphi:M\to N$ of $R$-modules:
     <li> $\varphi_{\mf m}$ is surjective for all maximal ideals $\mf m$.</li>
 </ol>
 </p></div>
-<p><b>Proof:</b>
-    A map is surjective iff its cokernel is zero, i.e., iff $N/\im(\varphi))=0$. 
-    And checking if a module is zero localizes! 
-    More specifically, for (1) equivalent to (2), we know that $\varphi$ is surjective iff $N/\im(\varphi)=0$ iff $W^{-1}(N/\im(\varphi))=0$ for all multiplicative $W$. 
-    Since localization exact, $W^{-1}(N/\im(\varphi)) \cong (W^{-1}N)/(W^{-1}\im(\varphi))$. 
-    Further, note that $W^{-1}\varphi$ (i.e., the map where $m/w\mapsto \varphi(m)/w$) has image = $W^{-1}\im(\varphi)$. Thus in fact $W^{-1}(N/\im(\varphi))\cong (W^{-1}N)/\im(W^{-1}\varphi)$, and this is zero iff $W^{-1}\varphi$ is surjective.
-</p>
+
+        <button type="button" class="viewsoln">View Proof</button>
+        <div class="soln">
+      <p><b>Proof:</b>
+          A map is surjective iff its cokernel is zero, i.e., iff $N/\im(\varphi))=0$. 
+          And checking if a module is zero localizes! 
+          More specifically, for (1) equivalent to (2), we know that $\varphi$ is surjective iff $N/\im(\varphi)=0$ iff $W^{-1}(N/\im(\varphi))=0$ for all multiplicative $W$. 
+          Since localization exact, $W^{-1}(N/\im(\varphi)) \cong (W^{-1}N)/(W^{-1}\im(\varphi))$. 
+          Further, note that $W^{-1}\varphi$ (i.e., the map where $m/w\mapsto \varphi(m)/w$) has image = $W^{-1}\im(\varphi)$. Thus in fact $W^{-1}(N/\im(\varphi))\cong (W^{-1}N)/\im(W^{-1}\varphi)$, and this is zero iff $W^{-1}\varphi$ is surjective.
+      </p>
+    </div>
 <p>
     The arguments for (1) iff (3) and for (1) iff (4) follow similarly.&nbsp; &#9632;
 </p>
 
-<div class="thm"><p><b>Proposition 1:</b>
+<div class="thm"><p><b>Proposition 7.5:</b>
 The following are equivalent for any $F$-finite ring $R$:
 <ol>
     <li> $R$ is $F$-split. </li>
@@ -550,21 +544,23 @@ The following are equivalent for any $F$-finite ring $R$:
               \end{aligned}
             \]
 
-            By Lemma 2, $R$ is $F$-split iff $\ev_1$ is surjective. By Lemma 4, this is iff $W^{-1}\ev_1$ is surjective for all $W$. By the above standard result, $W^{-1}\ev_1$ can be viewed as a map $\hom_{W^{-1}R}(F_*^e(W^{-1}R),W^{-1}R)\to W^{-1}R$, and in fact by tracing through the isomorphisms this is $\ev_1$ for $W^{-1}R$. 
-            Thus by Lemma 2 in reverse, $W^{-1}\ev_1$ is surjective iff $W^{-1}R$ is $F$-split$.</p>
+            By Lemma 7.2, $R$ is $F$-split iff $\ev_1$ is surjective.
+            By Lemma 7.4, this is iff $W^{-1}\ev_1$ is surjective for all $W$. 
+            By the above standard result, $W^{-1}\ev_1$ can be viewed as a map $\hom_{W^{-1}R}(F_*^e(W^{-1}R),W^{-1}R)\to W^{-1}R$, and in fact by tracing through the isomorphisms this is $\ev_1$ for $W^{-1}R$. 
+            Thus by Lemma 7.2 in reverse, $W^{-1}\ev_1$ is surjective iff $W^{-1}R$ is $F$-split$.</p>
             <p>That completes the proof of (1) iff (2). The proofs of(1) iff (3) and of (1) iff (4) work the same.  &nbsp; &#9632;</p>
         </div>
 
-<div class="thm"><p><b>Corollary 1:</b>
+<div class="thm"><p><b>Corollary 7.6:</b>
 If $R$ is $F$-finite then the locus of $F$-split points is open, and is specifically equal to $\Spec R \setminus \bb V(\im( \ev_1))$.
 </p></div>
 
-<p><b>Rmk:</b> The ``locus'' of $F$-split points is the set of points $\mf p$ on which $R$ is $F$-split. 
+<p><b>Remark 7.7:</b> The ``locus'' of $F$-split points is the set of points $\mf p$ on which $R$ is $F$-split. 
 On Spec, points are prime ideals, and "being $F$-split at prime ideal $\mf p$ means that $R_{\mf p}$ is $F$-split. Finally, open means in the Zariski topology, where all open sets look like
 $U=\Spec R\setminus \bb V(J)$ for an ideal $J$.</p>
 
 
-        <button type="button" class="viewsoln">View Proof</button>
+        <button type="button" class="viewsoln">View Proof of Corollary 7.6</button>
         <div class="soln">
             <p>The localization $R_{\mf p}$ is $F$-split if and only if $\ev_1$ localized at $\mf p$ is surjective, i.e., iff the cokernel $(R/\im(\ev_1))_{\mf p}$ is zero, i.e, iff $(\im(\ev_1))_{\mf p}=R$. 
         That happens iff we inverted an element of the image, i.e., iff $\im(\ev_1)\not\subset \mf p$. 
@@ -573,7 +569,7 @@ $U=\Spec R\setminus \bb V(J)$ for an ideal $J$.</p>
 
 
 
-<div class="thm"><p><b>Lemma 3:</b>
+<div class="thm"><p><b>Lemma 7.3:</b>
 Let $S$ be regular local $F$-finite, take $t\in I^{[p^e]}:I$ and let $\varphi=F_*^et\cdot \Phi$, where $\Phi$ is as usual the generator of $\hom_S(F_*^eS,S)$. 
 Show that $\Psi(\varphi)$ (i.e., $\varphi$ viewed as a map on $S/I$) is surjective if and only if $t\notin \mf m^{[p^e]}$.
 </p></div>
@@ -582,17 +578,17 @@ Show that $\Psi(\varphi)$ (i.e., $\varphi$ viewed as a map on $S/I$) is surjecti
             <p>If $t\in \mf m^{[p^e]}$, then $\varphi(F_*^es) = \Phi(F_*^e(ts))\in \Phi(F_*^e(\mf m^{[p^e]})) = \mf m \Phi(F_*^eS) = \mf m$. 
             In particular, we never hit $1$ in the image.</p>
 
-            <p>If $t\notin \mf m^{[p^e]}$, then our <a href="#fedder-containment-lemma">containment proposition from Jan 29</a> says $\Phi(F_*^e(tS))\not\subset\mf m$. 
+            <p>If $t\notin \mf m^{[p^e]}$, then our <a href="#fedder-containment-lemma">containment Proposition 6.2 from Jan 29</a> says $\Phi(F_*^e(tS))\not\subset\mf m$. 
             Thus there is some $s\in S$ such that $\Phi(F_*^e(ts)) = \varphi(F_*^es) \notin \mf m$. 
             Thus the image of $\varphi$ contains a unit, and so $\varphi$ is surjective. &nbsp; &#9632; </p>
         </div>
 
 <p><b>Putting this all together...</b>
-    By the <a href="#fedder-hom-structure">theorem on hom structure from Jan 29</a> (and by the fact that $I^{[p^e]}:I$ is an ideal), EVERY map in $\hom_R(F_*^eR,R)$ comes from a map of the form of Lemma 3.
-    (See this because for any $t'\in I^{[p^e]}:I$ and $\gamma\in \hom_S(F_*^eS,S)$, we can write $\gamma = F_*^es \cdot \Phi$, and so $F_*^e(t')\cdot \gamma = F_*^e(t's)\cdot \Phi$. 
+    By the <a href="#fedder-hom-structure">Theorem 6.3 on hom structure from Jan 29</a> (and by the fact that $I^{[p^e]}:I$ is an ideal), EVERY map in $\hom_R(F_*^eR,R)$ comes from a map of the form of Lemma 7.3.
+    (See this because for any $t'\in I^{[p^e]}:I$ and $\gamma\in \hom_S(F_*^eS,S)$, we can write $\gamma = F_*^es \cdot \Phi$, and so $F_*^e(t')\cdot \gamma = F_*^e(t's)\cdot \Phi$. )
 </p>
-<p>By Lemma 1, there exists a $\varphi$ which is surjective when descended to $R$ iff $R$ is $F$-split. 
-    By Lemma 3, this happens iff there exists a $t\in I^{[p^e]}:I$ which is $\notin \mf m^{[p^e]}$. 
+<p>By Lemma 7.1, there exists a $\varphi$ which is surjective when descended to $R$ iff $R$ is $F$-split. 
+    By Lemma 7.3, this happens iff there exists a $t\in I^{[p^e]}:I$ which is $\notin \mf m^{[p^e]}$. 
     In other words, iff $I^{[p^e]}:I\not\subset \mf m^{[p^e]}$. 
     This (FINALLY!) completes the proof of <a href="#fedder-criterion">Fedder's criterion</a>, and in fact in a stronger way where we see we could've done some/any $e$ instead of just $e=1$. &nbsp; &#9632; </p>
 
@@ -690,7 +686,7 @@ Show that $\Psi(\varphi)$ (i.e., $\varphi$ viewed as a map on $S/I$) is surjecti
 <p>F-splitting is nice, but can we do better? Our goal: describe a stronger condition on the ring that is still related to the Frobenius, but gets us even nicer properties.</p>
 
 <div class="defn">
-<p><b>Definition:</b>
+<p><b>Definition 9.1:</b>
     Let $c\in R$. We say $R$ is <em>$e$-$F$-split along $c$</em> if the map 
     $R\to F_*^eR\to F_*^eR$ via 
     $r\mapsto F_*^er^{p^e}\mapsto F_*^e(r^{p^e}c)$ splits as an $R$-module map.
@@ -702,22 +698,22 @@ Show that $\Psi(\varphi)$ (i.e., $\varphi$ viewed as a map on $S/I$) is surjecti
 </div>
 
 <div class="zb">
-<p><b>Example:</b>Let $R=\bb F_p[x]$, $c=x^p$.</p>
+<p><b>Example 9.2:</b> Let $R=\bb F_p[x]$, $c=x^p$.</p>
 <ul>
     <li>$R$ is NOT 1-F-split along $c$. Notice that for any possible $\varphi$, we have $\varphi(F_*x^p) = x\varphi(F_*1) \neq 1$.</li>
     <li>$R$ IS 2-F-split along $c$. In fact taking $\varphi = F_*(x^{p^2-p-1}\cdot \Phi$ works, where $\Phi$ is the generating map which sends $F_*x^{p^2-1}\mapsto 1$. </li>
 </ul>
 </div>
 
-<div class="thm">
-<p><b>Remark 1:</b>
+<div id="divisible-e-F-split" class="thm">
+<p><b>Remark 9.3:</b>
 If $a|c$ and $R$ is $e$-$F$-split along $c$ then $R$ is $e$-$F$-split along $a$. 
 </p>
 </div>
 <p><b>Proof:</b> See Tuesday 02/03! Same statement just new vocab. &nbsp; &#9632; </p>
 
 <div class="thm">
-<p><b>Corollary:</b>
+<p><b>Corollary 9.4:</b>
 If $R$ is $e$-F-split along anything, then $R$ is $F$-split.
 </p>
 </div>
@@ -725,7 +721,7 @@ If $R$ is $e$-F-split along anything, then $R$ is $F$-split.
     By definition this means there exists a $\varphi$ such that $\varphi(F_*^e1)=1$.&nbsp; &#9632; </p>
 
 <div class="thm">
-<p><b>Remark 2:</b>
+<p><b>Remark 9.5:</b>
 If $R$ is $e$-$F$-split along $c$ then $R$ is $(e+1)$-$F$-split along $c$. 
 </p>
 </div>
@@ -740,7 +736,7 @@ If $R$ is $e$-$F$-split along $c$ then $R$ is $(e+1)$-$F$-split along $c$.
 
 
 <div class="thm">
-<p><b>Proposition: </b>
+<p><b>Proposition 9.6: </b>
     If $R$ is eventually $F$-split along $c$ then $c$ is a non-zero divisor.
 </p>
 </div>
@@ -757,7 +753,7 @@ If $R$ is $e$-$F$-split along $c$ then $R$ is $(e+1)$-$F$-split along $c$.
 
 
 <div class="defn">
-<p><b>Definition:</b>
+<p><b>Definition 9.7:</b>
     Let $R$ be $F$-finite. Then $R$ is <em>strongly $F$-regular</em> (SFR for short on the board) if for all $c$ non-zero divisors, $R$ is eventually $F$-split along $c$.
 </p>
 <p>
@@ -780,19 +776,19 @@ Equivalently (2),
 </p>
 
 <div class="defn">
-<p><b>Notation:</b> $R^\circ = R\setminus \bigcup_{\mf p\in \Min(R)}\mf p$ is the notation for the set of elements not in any minimal prime.</p>
+<p><b>Notation 9.8:</b> $R^\circ = R\setminus \bigcup_{\mf p\in \Min(R)}\mf p$ is the notation for the set of elements not in any minimal prime.</p>
 </div>
 
 <div class="zb">
-<p><b>Examples:</b> (to be proved in a later class)</p>
+<p><b>Examples 9.9:</b> (to be proved in a later class)</p>
 <ol>
-    <li>$F$-finite regular rings are strongly $F$-regular</li>
-    <li>$R=\bb F_p[x,y]/\langle xy\rangle$ is $F$-split, but not strongly $F$_regular</li>
+    <li>$F$-finite regular rings are strongly $F$-regular (see <a href="#F-finite+regular=SFR">Theorem 11.1</a>)</li>
+    <li>$R=\bb F_p[x,y]/\langle xy\rangle$ is $F$-split, but not strongly $F$-regular</li>
 </ol>
 </div>
 
 <div class="thm" id="local+SFR=domain">
-<p><b>Theorem:</b>
+<p><b>Theorem 9.10:</b>
     Let $(R,\mf m)$ be a local $F$-finite strongly $F$-regular ring. Then $R$ is a domain.
 </p>
 </div>
@@ -804,14 +800,14 @@ We had some good discussions about $F$-finiteness, and I'm going to summarize it
 As Adam pointed out in the chat, the original definition of strong $F$-regularity did not require $F$-finiteness, and indeed there's nothing in the definition that needs it there. In particular while all of our references require this, it's not always required out in the wild. For more about F-singularities in the non-F-finite world, check out <a href="https://www.math.purdue.edu/~murayama/F-SingularitiesNonF-finite.pdf">these notes by Takumi Murayama</a>. 
 </p>
 <p>
-<b>Fact:</b> (we won't prove this) 
+<b>Fact 9.11:</b> (we won't prove this) 
     There exists a char $p$ ring $R$ which is regular, but such that $\hom_R(F_*R,R)=0$. 
     In particular, this is a regular ring which is neither SFR nor even F-split.
 </p>
 
 
 <div class="thm">
-<p><b>Lemma 1:</b>
+<p><b>Lemma 9.12:</b>
     If $\bigcap_{i=1}^n\mf p_i\subset \mf q$ for prime ideals $\mf p_1,\ldots, \mf p_n, \mf q$, then there exists an $i$ such that $\mf p_i\subset \mf q$. 
 </p>
 </div>
@@ -821,11 +817,11 @@ As Adam pointed out in the chat, the original definition of strong $F$-regularit
 </p>
 
 
-<div class="thm"><p><b>Lemma 2:</b> If $(R,\mf m)$ local and $f+g$ is a unit then either $f$ or $g$ is a unit.</p></div>
+<div class="thm"><p><b>Lemma 9.13:</b> If $(R,\mf m)$ local and $f+g$ is a unit then either $f$ or $g$ is a unit.</p></div>
 <p>Proof omitted</p>
 
 
-<div class="thm"><p><b>Lemma 3:</b>
+<div class="thm"><p><b>Lemma 9.14:</b>
 $R$ is $e$-F-split along $c$ if and only if there exists $\varphi$ such that $\varphi(F_*^ec)=u$ a unit.
 </p></div>
 <p><b>Proof:</b>
@@ -836,7 +832,7 @@ $R$ is $e$-F-split along $c$ if and only if there exists $\varphi$ such that $\v
 
 <p><b>Proof of SFR + local implies domain:</b> See proof of Lemma 3.2 in [MP]. &nbsp; &#9632;</p>
 
-<div class="thm" id="local+regular=SFR"><p><b>Theorem:</b>
+<div class="thm" id="local+regular=SFR"><p><b>Theorem 9.15:</b>
     Let $(R,\mf m,k)$ be a local $F$-finite regular ring. Then $R$ is strongly $F$-regular.
 </p></div>
 <p><b>Proof:</b> See proof of Theorem 3.4 in [MP] (ignoring the 1st line about reducing to the local case because we, by assumption, are already in the local case!)    &nbsp; &#9632; </p>
@@ -866,10 +862,10 @@ $R$ is $e$-F-split along $c$ if and only if there exists $\varphi$ such that $\v
     </li>
 </ol>
 
-            <p><b>Remark:</b> A <em>Stanley-Reisner</em> ring is a polynomial ring mod a squarefree monomial ideal. Thus you have just proven that Stanley-Reisner rings are always $F$-split.</p>
+            <p><b>Remark 10.1:</b> A <em>Stanley-Reisner</em> ring is a polynomial ring mod a squarefree monomial ideal. Thus you have just proven that Stanley-Reisner rings are always $F$-split.</p>
 
 <div class="thm">
-<p><b>Facts:</b> Let $I,J,J_1,J_2$ be ideals.</p>
+<p><b>Facts 10.2:</b> Let $I,J,J_1,J_2$ be ideals.</p>
 <ol>
     <li>$I:(J_1+J_2) = (I:J_1)\cap (I:J_2)$. In particular, 
     $$I:\langle f_1,\ldots, f_t\rangle = \bigcap_{i=1}^t (I:\langle f_i\rangle.$$</li>
@@ -885,7 +881,7 @@ $R$ is $e$-F-split along $c$ if and only if there exists $\varphi$ such that $\v
 
 
 <div class="thm">
-<p><b>Theorem:</b>
+<p><b>Theorem 10.3:</b>
 Let $R$ be an $F$-finite ring of prime char $p\gt 0$. Then $R$ is strongly $F$-regular if and only if $R_{\mf p}$ is strongly $F$-regular for all prime ideals $\mf p$.
 </p></div>
 <p><b>Proof that SFR implies localizations are SFR:</b> 
@@ -930,8 +926,8 @@ if and only if $R_{\mf p}$ is eventually $e_0$-$F$-split along $c/1$ for all pri
 &nbsp; &#9632;
 </p>
 
-<div class="thm">
-<p><b>Theorem:</b>
+<div id="F-finite+regular=SFR" class="thm">
+<p><b>Theorem 11.1:</b>
 If $R$ is an $F$-finite regular ring then $R$ is strongly $F$-regular.
 </p>
 </div>
@@ -945,14 +941,14 @@ But by the <a href="#local+regular=SFR">Theorem from Feb 10</a>, a local $F$-fin
 One such result will be that direct summands of regular rings are Cohen-Macaulay and normal. Another such result will be related to the next one:</p>
 
 <div class="thm" id="SFR-implies-mf-splits">
-<p><b>Theorem:</b>
+<p><b>Theorem 11.2:</b>
 Let $R$ be $F$-finite and strongly $F$-regular. Then $R\hookrightarrow S$ splits for any module-finite extension $S$ of $R$.
 </p></div>
 
 <p>To prove this, we broke the result down into several claims. We proved the first three in class, and the other claim + putting it all together to prove the theorem will be done on Thursday. (See Theorem 3.5 of [MP]).</p>
 
 <div class="thm">
-<p><b>Claim 1:</b>
+<p><b>Claim 11.3:</b>
 If $R\hookrightarrow S$ is a module-finite extension, then $R\hookrightarrow S$ splits if and only if $R_{\mf p}\hookrightarrow (R\setminus \mf p)^{-1}S$ splits for all primes $\mf p\in \Spec(R)$.
 </p></div>
         <button type="button" class="viewsoln">View Proof</button>
@@ -966,7 +962,7 @@ If $R\hookrightarrow S$ is a module-finite extension, then $R\hookrightarrow S$ 
         </div>
 
 <div class="thm">
-<p><b>Claim 2:</b>
+<p><b>Claim 11.4:</b>
     Suppose that every module-finite extension $R'\hookrightarrow S'$ such that $R'$ is a SFR local domain and $S'$ is a domain splits. 
 Prove that in fact EVERY module-finite extension $R\hookrightarrow S$ where $R$ is SFR splits. </p>
 
@@ -975,7 +971,7 @@ Prove that in fact EVERY module-finite extension $R\hookrightarrow S$ where $R$ 
         <button type="button" class="viewsoln">View Proof</button>
         <div class="soln">
             <p>
-            By Claim 1, $R\hookrightarrow S$ splits if and only if $R_{\mf p}\hookrightarrow S_{\mf p}$ for all $\mf p$, thus WLOG we can assume that $R$ is local. By the <a href="#local+SFR=domain">Theorem from Feb 10</a>, this automatically ensures that $R$ is a domain. Thus we've reduced to the case where $R$ is a local domain.</p>
+            By Claim 11.3, $R\hookrightarrow S$ splits if and only if $R_{\mf p}\hookrightarrow S_{\mf p}$ for all $\mf p$, thus WLOG we can assume that $R$ is local. By the <a href="#local+SFR=domain">Theorem from Feb 10</a>, this automatically ensures that $R$ is a domain. Thus we've reduced to the case where $R$ is a local domain.</p>
             <p>Now let $\mf q\in \Min(S)$, and consider the map $R\to S \to S/\mf q$. Clearly the composite $R\to S/\mf q$ is still module-finite, and by design $S/\mf q$ is a domain. 
             Further, since $R\to S$ is integral, by lying over + incomparability, the minimal primes of $S$ lie over $\langle 0\rangle \in \Spec(R)$. In other words, $\mf q\cap R=(0)$ and so $R\to S/\mf q$ is injective.</p>
 
@@ -984,7 +980,7 @@ Prove that in fact EVERY module-finite extension $R\hookrightarrow S$ where $R$ 
         </div>
 
 <div class="thm">
-<p><b>Claim 3:</b>
+<p><b>Claim 11.5:</b>
 Let $R$ be a domain and $M$ be a finitely generated $R$-module. Prove that $M$ is torsion-free if and only if $M$ embeds into a finitely generated free module.
 </p></div>
         <button type="button" class="viewsoln">View Proof</button>
@@ -1001,14 +997,14 @@ Let $R$ be a domain and $M$ be a finitely generated $R$-module. Prove that $M$ i
         </div>
 
 <div class="defn">
-<p><b>Definition:</b>
+<p><b>Definition 11.6:</b>
 $M$ is a <em>solid</em> $R$-module if $\hom_R(M,R)\neq 0$.
 $S$ is a <em>solid</em> $R$-algebra if $\hom_R(S,R)\neq 0$ (in other words, if $S$ is solid as an $R$-module).
 </p>
 </div>
 
 <div class="thm">
-<p><b>Claim 4:</b>
+<p><b>Claim 11.7:</b>
 Let $R$ be a domain and $M$ a finitely-generated $R$-module. 
 If $M$ is a torsion-free $R$-module,
 then $M$ is solid.
@@ -1023,10 +1019,10 @@ then $M$ is solid.
 <h3 id="02-19">Feb 19</h3>
 
 
-        <button type="button" class="viewsoln">View Proof of Claim 4</button>
+        <button type="button" class="viewsoln">View Proof of Claim 11.7</button>
         <div class="soln">
             <p>
-            Suppose that $M$ is a torsion-free $R$-module. Then $\iota:M\hookrightarrow R^{\oplus n}$ for some $n$, generated by $e_1,\ldots, e_n$. 
+            Suppose that $M$ is a torsion-free $R$-module. Then by Claim 11.5, $\iota:M\hookrightarrow R^{\oplus n}$ for some $n$, generated by $e_1,\ldots, e_n$. 
              Let $x\in M$ be non-zero, and suppose that $x$ maps to $\sum_i a_i e_i$. Choose any $i$ such that $a_i\neq 0$. Then $\pi_i\circ \iota$, where $\pi_i$ is the projection onto $e_i$, is a map that sends $x\mapsto a_i$ and in particular is not the zero map.</p>
             <p>
             For the stronger statement: if $M$ is not torsion, let $N$ be the torsion submodule so that $M/N$ is non-zero and torsion-free. By the above, we can find a non-zero map $M/N\to R$, and then we simply compose this with the natural quotient to get a non-zero map $M\to M/N\to R$.</p>
@@ -1038,12 +1034,12 @@ then $M$ is solid.
 
 
 <div class="thm">
-<p><b>Claim 5:</b>
+<p><b>Claim 12.1:</b>
 If $S$ is a solid $R$-algebra, then in fact there exists $\theta\in \hom_R(S,R)$ such that $\theta(1)\neq 0$.
 </p>
 </div>
 
-        <button type="button" class="viewsoln">View Proof of Claim 4</button>
+        <button type="button" class="viewsoln">View Proof of Claim 12.1</button>
         <div class="soln">
             <p>
             Since $S$ is solid, there exists a non-zero $\varphi\in \hom_R(S,R)$. Choose some $s\in S$ such that $\varphi(s)\neq 0$, and sonsider the $R$-module map $\tau:S\to S$ via multiplication by $s$.
@@ -1052,36 +1048,36 @@ If $S$ is a solid $R$-algebra, then in fact there exists $\theta\in \hom_R(S,R)$
         </div>
 
 
-<p><b>Proof of <a href="#SFR-implies-mf-splits">Feb 17 Theorem</a>:</b>
-    By Claim 2, WLOG $R$ is SFR local domain and $S$ is domain. Since $S$ is a domain it is a torsion-free $R$-module, so by Claim 4 it is a solid $R$-algebra and by Claim 5 there exists $\theta\in \hom_R(S,R)$ such that $\theta(1)=c\neq 0$.
+<p><b>Proof of <a href="#SFR-implies-mf-splits">Theorem 11.2 from Feb 17</a>:</b>
+    By Claim 11.4, WLOG $R$ is SFR local domain and $S$ is domain. Since $S$ is a domain it is a torsion-free $R$-module, so by Claim 4 it is a solid $R$-algebra and by Claim 5 there exists $\theta\in \hom_R(S,R)$ such that $\theta(1)=c\neq 0$.
     Since $R$ is SFR there exists $e$ and $\varphi$ such that $\varphi(F_*^ec)=1$. 
     Then taking the map $\varphi \circ F_*^e\theta \circ F^e: S \to F_*^e S \to F_*^eR \to R$, we get that $1\mapsto F_*^e1 \mapsto F_*^ec \mapsto 1$. Thus this is our desired splitting of $R\hookrightarrow S$.
     &nbsp; &#9632;</p>
 
 <div class="defn">
-<p><b>Definition:</b>
+<p><b>Definition 12.2:</b>
     $R$ is a <em>splinter</em> if $R\hookrightarrow S$ splits for every module finite extension $S$ of $R$.
 </p></div>
 <p>This lets us rephrase the theorem we just proved as </p>
 
 <div class="thm">
-<p><b>Theorem:</b>
+<p><b>Theorem 12.3:</b>
     If $R$ is $F$-finite and strongly $F$-regular then $R$ is a splinter.
 </p></div>
 
 <div class="thm">
-<p><b>Corollary:</b>
+<p><b>Corollary 12.4:</b>
     If $R$ is $F$-finite and regular then $R$ is a splinter.
 </p></div>
 
 <p>To see how to remove the $F$-finite assumption, see the proof of Corollary 3.6 of [MP]. The more general statement that regular rings (in any characteristic!) are splinters is called the <em>Direct Summand Conjecture</em>, because it's equivalently saying that regular rings are direct summands of any module-finite extension. Although  it's called the direct summand conjecture, this is actually now a theorem! In other words, a regular ring in ANY characteristic (including mixed) is a splinter, see  <a href="">Andre&#769;'s paper "La conjecture du facteur direct"</a>.</p>
 
-<div class="thm"><p><b>Fact</b> (Proved on HW3):
+<div class="thm"><p><b>Fact 12.5</b> (Proved on HW3):
     Let $S=R_1\times R_2$. 
     Then $S$ is strongly $F$-regular if and only if both $R_1$ and $R_2$ are strongly $F$-regular.
 </p></div>
 
-<div class="thm"><p><b>Proposition:</b>
+<div class="thm"><p><b>Proposition 12.6:</b>
 Let $R$ be $F$-finite and strongly $F$-regular. Then $R$ is normal.
 </p></div>
 
@@ -1096,19 +1092,19 @@ Let $R$ be $F$-finite and strongly $F$-regular. Then $R$ is normal.
             &nbsp; &#9632;</p>
         </div>
 
-<div class="thm"><p><b>Corollary:</b>
+<div class="thm"><p><b>Corollary 12.7:</b>
 If $R$ is an $F$-finite one dimensional strongly $F$-regular ring, then $R$ is regular.</p></div>
-<p><b>Proof:</b> One-dimensional normal rings are all regular.
+<p><b>Proof:</b> One-dimensional normal domains are all regular (see <a href="https://stacks.math.columbia.edu/tag/00PD">Stacks Project</a> for a reference that proves this by way of DVRs).
     &nbsp; &#9632;</p>
 
 
-<div class="thm"><p><b>Fact:</b>
+<div class="thm"><p><b>Fact 12.8:</b>
 If $S$ is a reduced normal ring, then $S=\prod_{i=1}^nS_i$ is a finite product of normal domains $S_i$. In particular, every strongly $F$-regular ring is a product of normal domains.</p></div>
 
 <p>You will perhaps eventually see a proof of this in 906, but <a href="https://stacks.math.columbia.edu/tag/030C">here is a reference</a> (where we also recall that noetherian rings always have finitely many minimal primes, and that strongly $F$-regular rings are always reduced). </p>
 
 
-<div class="thm"><b>Theorem:</b>
+<div class="thm"><b>Theorem 12.9:</b>
 Let $R$ and $S$ be $F$-finiite rings such that $R$ is a direct summand of $S$. (In other words, $R\to S$ is a ring map that splits as an $R$-module map.) If $S$ is strongly $F$-regular then so is $R$.
 </p></div>
 
@@ -1130,10 +1126,97 @@ Let $R$ and $S$ be $F$-finiite rings such that $R$ is a direct summand of $S$. (
     Thus by rescaling by the inverse of this unit, we get our desired splitting of $R\to S_i$.
     &nbsp; &#9632;</p>
 
+<h3 id="02-24">Feb 24th</h3>
+
+<p><b>Proof of Thm 12.9:</b>
+    By the work last class, we can further assume that $R$ and $S$ are domains. In particular, if $c$ is an nzd on $R$ we are also guaranteed that $c$ is a nzd on $S$. See last paragraph of the proof of Theorem 3.9 in [MP] for details on building the $R$-splitting of $F_*^ec$ using the one $F_*^eS\to S$ and the one $S\to R$.
+    &nbsp; &#9632;
+</p>
+
+<div class="thm">
+<p><b>Lemma 13.1:</b>
+Let $R$ be an $F$-finite ring.
+<ol>
+    <li>If $R$ is $e$-F-split along $c$, then is $e+e'$-F-split along $c^{p^{e'}}$ for all $e'\ge 0$.</li>
+    <li>If $R$ is eventually $F$-split along $c$, then $R$ is eventually $F$-split along $c^n$ for all $n$. 
+        Specifically, if $R$ is $e$-F-split along $c$ then $R$ is $(e+\lceil \log_p n\rceil)$-F-split along $c^n$. </li>
+</ol>
+</p></div>
+<p><b>Proof:</b>
+    Let $\varphi:F_*^eR\to R$ be our map such that $\varphi(F_*^ec)=1$. 
+    By <a href="">Corollary 9.4</a>, we know that $R$ is $F$-split and by <a href="">Proposition 4.8</a> 
+    this means there exists a $\pi:F_*^{e'}R\to R$ such that $\pi(F_*^{e'}1)=1$. Then
+    \[\begin{aligned}
+    \big(\varphi\circ(F_*^e\pi)\big)(F_*^{e+e'}(c^{p^{e'}}))
+    &= \big(\varphi\circ(F_*^e\pi)\big)(F_*^e c F_*^{e'}(1)) = \varphi(F_*^e(\pi(cF_*^{e'}(1)))) \\
+    &= \varphi(F_*^e(c\pi(F_*^{e'}(1)))) =\varphi( F_*^e(c)) = 1.
+    \end{aligned}
+    \]
+    Therefore $\varphi\circ F_*^e\pi$ is our desired $e+e'$-F-splitting of $c^{p^{e'}}$.</p>
+<p>
+    For the second statement, notice that taking $e'=\lceil \log_pn\rceil$ ensures that $p^{e'} \geq n$, and so by the first statement we have that $R$ is $(e+\lceil \log_pn\rceil)$-F-split along $c^{p^{e'}}$, and since $c^n|c^{p^{e'}}$ we use <a href="#divisible-e-F-split">Remark 9.3</a> to get our desired splitting along $c^n$.
+    &nbsp; &#9632;</p>
+
+<div class="thm">
+<p><b>Theorem 13.2 ("Test Element" theorem):</b>
+Let $R$ be an $F$-finite ring and let $c\in R$ a nzd such that $R_c$ is strongly $F$-regular. Then $R$ is SFR if and only if $R$ is eventually $F$-split along $c$.
+</p></div>
+<p><b>Proof:</b>
+See proof of Theorem 3.11 of [MP], using the above Lemma 13.1 to summarize their argument about going from $c$ to $c^n$ by way of the $p^{e_1}$. </p>
+<p>The brief sketch of the whole argument for the backwards direction is that $R_c$ being strongly $F$-regular and our understanding of the behaviour of Hom sets under localization lets us say that for any nzd $d$ we can build a map $F_*^eR\to R$ where $F_*^ed\mapsto c^n$ for some $n$. And then Lemma 13.1 lets us send $F_*^{e''}c^n\mapsto 1$, so appropriately compose these. 
+    &nbsp; &#9632;
+</p>
+
+<div class="thm">
+<p><b>Theorem 13.3 (Jacobian Criterion):</b>
+Let $k$ be an algebraically closed field, let $S=k[x_1,\ldots, x_n]$, and let $I=\sqrt I$ be a radical ideal generated by $f_1,\ldots, f_t$. Let $\mf m=\langle x_1-\lambda_1,\ldots, x_n-\lambda_n\rangle$ be a maximal ideal of $S$ containing $I$ (in other words, let $\mf m$ be a closed point of $\bb V(I)$). Then $(S/I)_{\mf m}$ is a regular local ring if and only if the rank of the matrix 
+\[ J|_\lambda = \left[ \frac{df_i}{dx_j}\big|_\lambda      \right]_{\substack{1\le i \le t\\1\le j \le n}}     \]
+is $n-\dim (S/I)_{\mf m}$. Here remember that dim is the Krull dimension.
+</p></div>
+
+
+<div class="thm">
+<p><b>Corollary 13.4 (Jacobian Criterion:</b>
+Let $k$ be an algebraically closed field, let $S=k[x_1,\ldots, x_n]$, let $I=\sqrt I = \langle f_1,\ldots, f_t\rangle$ be a radical ideal such that $R=S/I$ is equidimensional. Then the singular locus of $R$ is
+\[
+\bb V(I) \cap \bb V(Jac(I)),
+\]
+where $Jac(I)$ is the ideal of $S$ generated by all the $(n-\dim R)\times (n-\dim R)$ minors of the matrix $J =\left[ \frac{df_j}{dx_i}\right]$. 
+</p></div>
+
+<p>Both of these results are true in char 0 and char $p$! We won't prove Theorem 13.3 because you saw it in Math 935. We won't exactly prove the corollary, but the main ingredients are that equidimensionality ensures we can ask for a consistent rank through the whole variety; and that the rank of a matrix can be upper bounded by the vanishings of minors.
+The main missing ingredient in this sketch is that Theorem 13.3 is only about maximal ideals whereas Corollary 13.4  is true for ALL prime ideals. (It turns out this is true because the regular locus of one of these finite type $k$-algebras is open! But this is yet another AG fact I won't prove.)
+</p>
+
+<div class="thm">
+<p><b>Remark 13.4:</b>
+Use the setup above and let $c\in Jac(I)$. 
+Then the primes of $R_c$ are exactly the prime ideals $\mf p\in \Spec(R)$ such that $c\notin \mf p$. In particular, if $c\notin \mf p$ then $Jac(I)\not\subseteq \mf p$. Thus $\mf p\notin \bb V(Jac(I))$, and since this holds for all primes of $R_c$ and since regularity localizes, this means that $R_c$ is regular.
+
+For this argument to work, we of course need $R_c$ to not be the zero ring, in other words, we need to make sure that $c$ is a nzd. Do this by making sure $c$ isn't in a minimal prime of $I$ either.
+</p></div>
+
+<p>The above remark is a great way to use the "test element" criterion for strong F-regularity in practice! If we take $c\in Jac(I)$ a nzd then $R_c$ is regular and hence also SFR and thus by the test element criterion all we have to do is check eventual splitting along $c$.</p>
+
+
+<p><b>Exercise 13.5:</b>
+Which of the following $R$ are SFR? Assume whatever you want/need about $k$ in order to prove it!</p>
+<ol>
+    <li>$S=k[x_1,\ldots, x_n]$, and $R=S_d=k[x^\alpha\: | \: \sum_i \alpha_i = d]$ the $d$-th Veronese.</li>
+    <li>$R = k[x,y]/\langle xy\rangle$</li>
+    <li>$R = k[a,b,c,d]/\langle ad-bc\rangle$</li>
+    <li>$S$ a strongly $F$-regular ring, $G$ a finite group acting on $S$ such that $p$ doesn't divide $|G|$, and $R = S^G$ the corresponding invariant ring</li>
+</ol>
+<p>Use any of the tools above, plus Glassbrenner's criterion from the HW3 and/or the faithful flat extension criterion from HW3. </p>
+
+
+<h3 id="02-26">Feb 26th</h3>
+
+<p>The answers to the four exercises above; the start of local cohomology. To be added!</p>
+
 
 <h3 id="upcoming">Upcoming</h3>
-
-<p>Finishing up Ch 3 of [MP]: finishing the above proof that direct summands of SFR rings are SFR. Then we'll do the "test element" criterion (Thm 3.11 of [MP]) that reduces checking SFR-ness to checking eventual $F$-splitting along a single (well-chosen) $c$. </p>
+<p>More on local cohomology, and using SFR-ness to ensure some cohomology vanishing (working towards showing that SFR rings are Cohen-Macaulay).</p>
 
 <p>&nbsp;</p> 
     </main>
