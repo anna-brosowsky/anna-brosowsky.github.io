@@ -84,7 +84,7 @@ characteristic $p > 0$ and let $I \subseteq S$ be an ideal\footnote{Note: Just l
     \begin{enumerate}
     \item $R$ is strongly $F$-regular.
     \item For every $c \in S$ not in any minimal prime of $I$, there exists $e > 0$ such that $c\not\in\mf m^{[p^e]}:(I^{[p^e]} :I)$.
-    \item $\bigcap_{e> 0}\mf m^{[p^e]}:(I^{[p^e]}:I)$ is contained in the union of the minimal primes.\footnote{Fun fact: By prime avoidance, you could even restate this a fourth way and require that the intersection by contained in a single minimal prime!}
+    \item $\bigcap_{e> 0}\mf m^{[p^e]}:(I^{[p^e]}:I)$ is contained in the union of the minimal primes of $I$.\footnote{Fun fact: By prime avoidance, you could even restate this a fourth way and require that the intersection by contained in a single minimal prime!}
     \end{enumerate}
 \end{enumerate}
 
@@ -94,7 +94,7 @@ characteristic $p > 0$ and let $I \subseteq S$ be an ideal\footnote{Note: Just l
 
 \item Prove the following number theory results. Since (a) is a special case of (b), you only need to write up a solution to (b). However, you may find it helpful to think about the simpler part (a) first!
 \begin{enumerate}[itemsep=1em]
-\item (Lucas's Theorem) Write $n=\sum_{i=0}^d n_i p^i$ and $m = \sum_{i=0}^d m_i p^i$ where $0\le n_i,m_i<p$ for all $i$.\footnote{Hint: Both parts (a) \& (b) are still true if you allow the top coefficient to be even larger, i.e., if we relax the last inequality to just be $n_d,m_d,m_{d,i}\ge 0$. You may actually find it easier to prove this more general version!} Then
+\item (Lucas's Theorem) Write $n=\sum_{i=0}^d n_i p^i$ and $m = \sum_{i=0}^d m_i p^i$ where $0\le n_i,m_i<p$ for all $i$.\footnote{Hint: Both parts (a) \& (b) are still true if you allow the top coefficient to be even larger, i.e., if we relax ONLY the last inequality to just be $n_d,m_d,m_{d,i}\ge 0$. You may actually find it easier to prove this more general version!} Then
 \[
 \binom{n}{m} \equiv \prod_{i=0}^d \binom{n_i}{m_i} \mod p.
 \]
@@ -118,7 +118,7 @@ Using Glassbrenner's criterion, prove each of the following facts:
 \begin{enumerate}[itemsep=1em]
 \item Show that $R$
 is not strongly F -regular if $n \ge d \ge 2$.
-\item Show that $R$ is strongly $F$-regular if $n < d$ and $p \gg 0$.\footnote{Hint: Use ``test element'' criterion (Thm 3.11 of [MP]; done in-class on Tuesday 02/24); an algebraic geometry criterion for non-singularity;  and use some number theory to make divisibility things nicer.}
+\item Show that $R$ is strongly $F$-regular if $n < d$ and $p \gg 0$. If you like, you may additionally assume that $p-1$ is divisible by $d$. \footnote{Hint: Use ``test element'' criterion (Thm 3.11 of [MP]; done in-class on Tuesday 02/24); an algebraic geometry criterion for non-singularity;  and Lucas's theorem.}
 \end{enumerate}
 
 
