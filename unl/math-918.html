@@ -864,7 +864,7 @@ $R$ is $e$-F-split along $c$ if and only if there exists $\varphi$ such that $\v
 
             <p><b>Remark 10.1:</b> A <em>Stanley-Reisner</em> ring is a polynomial ring mod a squarefree monomial ideal. Thus you have just proven that Stanley-Reisner rings are always $F$-split.</p>
 
-<div class="thm">
+<div class="thm" id="colon-facts">
 <p><b>Facts 10.2:</b> Let $I,J,J_1,J_2$ be ideals.</p>
 <ol>
     <li>$I:(J_1+J_2) = (I:J_1)\cap (I:J_2)$. In particular, 
@@ -1104,7 +1104,7 @@ If $S$ is a reduced normal ring, then $S=\prod_{i=1}^nS_i$ is a finite product o
 <p>You will perhaps eventually see a proof of this in 906, but <a href="https://stacks.math.columbia.edu/tag/030C">here is a reference</a> (where we also recall that noetherian rings always have finitely many minimal primes, and that strongly $F$-regular rings are always reduced). </p>
 
 
-<div class="thm"><b>Theorem 12.9:</b>
+<div class="thm" id="SFR-direct-summand"><b>Theorem 12.9:</b>
 Let $R$ and $S$ be $F$-finiite rings such that $R$ is a direct summand of $S$. (In other words, $R\to S$ is a ring map that splits as an $R$-module map.) If $S$ is strongly $F$-regular then so is $R$.
 </p></div>
 
@@ -1214,6 +1214,57 @@ Which of the following $R$ are SFR? Assume whatever you want/need about $k$ in o
 
 <p>The answers to the four exercises above; the start of local cohomology. To be added!</p>
 
+        <button type="button" class="viewsoln">View Exercise 13.5.1 Solution</button>
+        <div class="soln"><p>
+        We claim that as $S_d$-modules, $S\cong \bigoplus_{e=0}^{d-1} S_d\{x^\alpha\: | \: \sum_i \alpha_i = e\}$. In other words, we claim that $S$ is a free $S_d$ module of rank $d$.
+       To see that this collection of monomials generates all other monomials, notice that as long as the degree is $\ge d$, there is some monomial of degree $d$ which divides it. Iterating yields something of degree $\lt d$. And once we get all monomials we can certainly get all polynomials.</p>
+        <p> To see that this is really a direct sum, note that each of the $d$ summands has a different remainder class modulo $d$ and thus there are no non-trivial relations. 
+        </p></div>
+
+<p>Digression on minimal primes of monomial ideals:</p>
+<div class="thm">
+<p><b>Remark 14.1:</b>
+Suppose $I=\langle m_1,\ldots, m_t\rangle$ is a square-free monomial ideal in $k[x_1,\ldots, x_d]$, and write $m_i = x^{\alpha^{(i)}} = x_1^{\alpha^{(i)}_1}\cdots x_d^{\alpha^{(i)}_d}$. Then by using <a href="#colon-facts">Fact 10.2.3</a>, we can see that
+\[
+I = \bigcap_{\substack{1\le j_1,\ldots, j_t \le d\\  \alpha^{(i)}_{j_i}\ne 0}} \langle x_{j_1},\ldots, x_{j_t}\rangle. 
+\]
+In other words, for each monomial we choose a variable in that monomial, giving us our $t$ variables, and then we intersect over all possible choices we could have made.
+One can prove this works via induction on $t$: for $t=1$, the intersection formula gives us the lcm of all variables appearing in $m_1$ (which is $m_1$ itself); for $t\gt 1$, first use the intersection formula to see that $I = \bigcap_{j\: : \: \alpha^{(t)}_j\ne 0} \langle m_1,\ldots, m_{t-1}, x_j\rangle$ and then use the same idea to expand out the rest of the monomials.</p>
+<p>
+Now make this intersection minimal by throwing away redundant things---for example, if $I=\langle xy,xz\rangle$ this method gives 
+\[
+\langle x,x\rangle \cap \langle x,z\rangle \cap \langle y,x\rangle \cap \langle y,z\rangle,
+\]
+but both $\langle x,z\rangle$ and $\langle y,x\rangle$ are unnecessary as they contain $\langle x,x\rangle = \langle x\rangle$, so we should really just write
+\[
+\langle xy,xz\rangle = \langle x\rangle \cap \langle y,z\rangle.
+\]
+Observing that an ideal of variables is prime (and in particular, primary) we now have a decomposition of $I$ as an irredundant intersection of primary ideals. Using primary decomposition facts, this means that each of these ideals corresponds to a an associated prime. But $I$ was radical and these ideals were prime, thus we have found our minimal primes.
+</p></div>
+
+        <button type="button" class="viewsoln">View Exercise 13.5.2 Solution</button>
+        <div class="soln"><p>
+        Since this is a monomial ideal, we can directly compute the colon ideals appearing in Glassbrenner's using the properties from <a href="#colon-facts">Fact 10.2</a>. Thus for all $e$, $I^{[p^e]}:I = \langle(xy)^{p^e-1}\rangle$ and so
+        \[\begin{aligned}
+        \mf m^{p^e}:(I^{p^e}:I) &=\langle x^{p^e},y^{p^e}\rangle:\langle (xy)^{p^e-1}\rangle \\
+        &=\left\langle \frac{\lcm(x^{p^e},(xy)^{p^e-1})}{(xy)^{p^e-1}},\  \frac{\lcm(y^{p^e},(xy)^{p^e-1})}{(xy)^{p^e-1}}  \right\rangle\\
+        &= \langle x,y\rangle
+        \end{aligned}\]
+        In particular, $\bigcap_{e\gt 0}\mf m^{[p^e]}:(I^{[p^e]}:I) = \langle x,y\rangle$. On the flip side, by Remark 14.1 above, the minimal primes of $I$ are $\langle x\rangle$ and $\langle y\rangle$. Thus our intersection is NOT contained in the union of the minimal primes since $x+y \in \langle x,y\rangle$ but $x+y \notin \langle x\rangle \cup \langle y\rangle$, and so $R$ is NOT SFR.
+        </p>
+        <p>In fact, a similar argument can be used to show that a Stanley-Reisner ring is SFR if and only if it is a polynomial ring.</p>
+        </div>
+
+
+        <button type="button" class="viewsoln">View Exercise 13.5.3 Solution</button>
+        <div class="soln"><p>
+        </p></div>
+
+
+        <button type="button" class="viewsoln">View Exercise 13.5.4 Solution</button>
+        <div class="soln"><p>
+        We already saw in <a href="#invariant-rings-split">Example 4.7</a> that $R=S^G$ is a direct summand of $S$. Thus by <a href="SFR-direct-summand">Theorem 12.9</a>, since $S$ is SFR then so is $R$.
+        </p></div>
 
 <h3 id="upcoming">Upcoming</h3>
 <p>More on local cohomology, and using SFR-ness to ensure some cohomology vanishing (working towards showing that SFR rings are Cohen-Macaulay).</p>
