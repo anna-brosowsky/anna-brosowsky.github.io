@@ -15,12 +15,19 @@
           bb: ["{\\mathbb{#1}}",1],
           mf: ["{\\mathfrak{#1}}",1],
           mc: ["{\\mathcal{#1}}",1],
+          wh: ["{\\widehat{#1}}",1],
           Spec: "{\\operatorname{Spec}}",
           id: "{\\operatorname{id}}",
           im: "{\\operatorname{im}}",
           ev: "{\\operatorname{ev}}",
           Min: "{\\operatorname{Min}}",
-          lcm: "{\\operatorname{lcm}}"
+          lcm: "{\\operatorname{lcm}}",
+          sgn: "{\\operatorname{sgn}}",
+          hght: "{\\operatorname{ht}}",
+          depth: "{\\operatorname{depth}}",
+          Ext: "{\\operatorname{Ext}}",
+          Tor: "{\\operatorname{Tor}}",
+          ann: "{\\operatorname{ann}}",
         }
       }
     };
@@ -62,6 +69,8 @@ Here are the two general references for the course.
     <ul><li>Due on Friday Feb 20th at midnight. Submit on Gradescope.</li></ul></li>
 <li> Homework 3: [<a href="../Files/unl/math-918_hw3.pdf">PDF</a>] and [<a href="../Files/unl/math-918_hw3.tex">TeX</a>] + [<a href="../Files/unl/math-hw.sty">math-hw.sty</a>] (style file needed to compile! same as last week)
     <ul><li>Due on Friday March 6th at midnight. Submit on Gradescope.</li></ul></li>
+<li> Homework 4: [<a href="../Files/unl/math-918_hw4.pdf">PDF</a>] and [<a href="../Files/unl/math-918_hw4.tex">TeX</a>] + [<a href="../Files/unl/math-hw.sty">math-hw.sty</a>] (style file needed to compile! same as last week)
+    <ul><li>Due on Friday March 28th at midnight (three weeks because of spring break!). Submit on Gradescope.</li></ul></li>
 </ul>
 
 <h4>In-Class Handouts</h4>
@@ -103,8 +112,10 @@ Here are the two general references for the course.
   <dt><a href="#02-12">Feb 12</a></dt><dd>Fedder examples; proof that if $R$ is SFR then so is $R_{\mf p}$.</dd>
   <dt><a href="#02-17">Feb 17</a></dt><dd>Proof that if $R_{\mf p}$ is SFR for all $\mf p$, then $R$ is SFR; proved that all $F$-finite regular rings are SFR; stated that for SFR rings all module-finite extensions split and started proof.</dd>
   <dt><a href="#02-24">Feb 24</a></dt><dd>Finishing up Ch 3 of [MP]: finishing the above proof; doing the "test element" criterion that reduces checking SFR-ness to checking eventual $F$-splitting along a single (well-chosen) $c$, + a reminder of the Jacobian criterion for smoothness and how to use it to choose a good $c$.</dd>
-  <dt><a href="#02-26">Feb 26</a></dt><dd>Under construction!! Solutions to exercises on computing which of four rings $R$ were SFR; starting local cohomology.</dd>
-  <dt><a href="#upcoming">Upcoming</a></dt><dd>More local cohomology + seeing what SFR-ness can tell us about it.</dd>
+  <dt><a href="#02-26">Feb 26</a></dt><dd>Solutions to exercises on computing which of four rings $R$ were SFR; starting local cohomology.</dd>
+  <dt><a href="#03-03">Mar 03</a></dt><dd>More local cohomology basic properties + an example. (Proofs under construction</dd>
+  <dt><a href="#03-05">Mar 05</a></dt><dd>More local cohomology basic properties + a proof of the local cohomology characterization of Cohen-Macaulayness + defining the Frobenius action (Proofs under construction)</dd>
+  <dt><a href="#upcoming">Upcoming</a></dt><dd>Seeing how Frobenius interacts with local cohomology; discussion of F-injectivity, eventually getting to F-rationality.</dd>
 </dl>
 
 <h3 id="01-13">Jan 13</h3>
@@ -1176,7 +1187,7 @@ is $n-\dim (S/I)_{\mf m}$. Here remember that dim is the Krull dimension.
 
 
 <div class="thm">
-<p><b>Corollary 13.4 (Jacobian Criterion:</b>
+<p><b>Corollary 13.4 (Jacobian Criterion):</b>
 Let $k$ be an algebraically closed field, let $S=k[x_1,\ldots, x_n]$, let $I=\sqrt I = \langle f_1,\ldots, f_t\rangle$ be a radical ideal such that $R=S/I$ is equidimensional. Then the singular locus of $R$ is
 \[
 \bb V(I) \cap \bb V(Jac(I)),
@@ -1193,7 +1204,9 @@ The main missing ingredient in this sketch is that Theorem 13.3 is only about ma
 Use the setup above and let $c\in Jac(I)$. 
 Then the primes of $R_c$ are exactly the prime ideals $\mf p\in \Spec(R)$ such that $c\notin \mf p$. In particular, if $c\notin \mf p$ then $Jac(I)\not\subseteq \mf p$. Thus $\mf p\notin \bb V(Jac(I))$, and since this holds for all primes of $R_c$ and since regularity localizes, this means that $R_c$ is regular.
 
-For this argument to work, we of course need $R_c$ to not be the zero ring, in other words, we need to make sure that $c$ is a nzd. Do this by making sure $c$ isn't in a minimal prime of $I$ either.
+For this argument to work, we of course need $R_c$ to not be the zero ring, in other words, we need to make sure that $c$ is a nzd. Do this by making sure $c$ isn't in a minimal prime of $I$ either.</p>
+<p>
+<em>Edited to add:</em> In fact, it suffices to take $c\in \sqrt{Jac(I)}$ (and $c$ not in a minimal prime of $I$), because $\bb V(Jac(I)) = \bb V(\sqrt{Jac(I)})$.
 </p></div>
 
 <p>The above remark is a great way to use the "test element" criterion for strong F-regularity in practice! If we take $c\in Jac(I)$ a nzd then $R_c$ is regular and hence also SFR and thus by the test element criterion all we have to do is check eventual splitting along $c$.</p>
@@ -1212,7 +1225,7 @@ Which of the following $R$ are SFR? Assume whatever you want/need about $k$ in o
 
 <h3 id="02-26">Feb 26th</h3>
 
-<p>The answers to the four exercises above; the start of local cohomology. To be added!</p>
+<p> We started with answers to the four exercises above:</p>
 
         <button type="button" class="viewsoln">View Exercise 13.5.1 Solution</button>
         <div class="soln"><p>
@@ -1242,7 +1255,7 @@ but both $\langle x,z\rangle$ and $\langle y,x\rangle$ are unnecessary as they c
 Observing that an ideal of variables is prime (and in particular, primary) we now have a decomposition of $I$ as an irredundant intersection of primary ideals. Using primary decomposition facts, this means that each of these ideals corresponds to a an associated prime. But $I$ was radical and these ideals were prime, thus we have found our minimal primes.
 </p></div>
 
-        <button type="button" class="viewsoln">View Exercise 13.5.2 Solution</button>
+<button type="button" class="viewsoln">View Exercise 13.5.2 Solution</button>
         <div class="soln"><p>
         Since this is a monomial ideal, we can directly compute the colon ideals appearing in Glassbrenner's using the properties from <a href="#colon-facts">Fact 10.2</a>. Thus for all $e$, $I^{[p^e]}:I = \langle(xy)^{p^e-1}\rangle$ and so
         \[\begin{aligned}
@@ -1256,15 +1269,279 @@ Observing that an ideal of variables is prime (and in particular, primary) we no
         </div>
 
 
-        <button type="button" class="viewsoln">View Exercise 13.5.3 Solution</button>
+<button type="button" class="viewsoln">View Exercise 13.5.3 Solution</button>
         <div class="soln"><p>
+        Compute $Jac(I) = \langle d, -c, -b, a\rangle$. By Remark 13.4, if we take $c=c$, then $R[\frac{1}{c}]$ is a regular ring, thus SFR. 
+        So by the Test Element criterion, it suffices to show that $R$ is $e$-F-split along $c$ for some $e$.
+        By Glassbrenner, it is equivalent to show that $c(I^{[p^e]}:I)\not\subseteq \mf m^{[p^e]}$ for some $e$.</p>
+        <p>Taking $e=1$, note that $I^{[p]}:I=(ad-bc)^{p-1}$ and so
+        \[
+        c(ad-bc)^{p-1} = \sum_{i=0}^{p-1}\binom{p-1}{i} (ad)^{i} (bc)^{p-1-i}c
+        \]
+        The $i=p-1$ term of this expansion is $\binom{p-1}{p-1}(ad)^{p-1}(bc)^{p-1-i}c = a^{p-1}d^{p-1}c$. This term is $\notin \mf m^{[p]}$, and thus the whole product is $\notin \mf m^{[p]}$ as desired.
         </p></div>
 
 
-        <button type="button" class="viewsoln">View Exercise 13.5.4 Solution</button>
+<button type="button" class="viewsoln">View Exercise 13.5.4 Solution</button>
         <div class="soln"><p>
         We already saw in <a href="#invariant-rings-split">Example 4.7</a> that $R=S^G$ is a direct summand of $S$. Thus by <a href="SFR-direct-summand">Theorem 12.9</a>, since $S$ is SFR then so is $R$.
         </p></div>
+
+<p>Now, new topic: intro to local cohomology! A good reference for the background is Jack's notes from <a href="https://jack-jeffries.github.io/UM/LCnotes.pdf">Math 615 at Michigan</a> in Winter 2018.</p>
+
+<div class="thm">
+<p><b>Definition 14.2:</b>
+Fix $f_1,\ldots, f_c$ in $R$. The <em>C&#780;ech complex</em> is
+\[
+C&#780;(\underline f; R) := 0 \to R \to \bigoplus_{i=1}^c R_{f_i} \to \bigoplus_{i\lt j} R_{f_if_j} \to \cdots \to R_{f_1\cdots f_c} \to 0
+\]
+\[
+C&#780;(\underline f; M) := 0 \to R \to \bigoplus_{i=1}^c M_{f_i} \to \bigoplus_{i\lt j} M_{f_if_j} \to \cdots \to M_{f_1\cdots f_c} \to 0
+\]
+indexed cohomologically, so that $C&#780;(\underline f;R)^0=R$ and $C&#780;(\underline f;R)^c=R_{f_1\cdots f_c}$.</p>
+
+<p>The maps are defined as follows: consider index set $\mc J = \{j_1,\ldots, j_t\}$ and let $i\in [c]\setminus \mc J$. Define $\sgn(\mc J,i) =(-1)^{\#\{j\in \mc J \: | \: j \gt i\}}$. 
+Now define maps take $R_{f_{j_1}\cdots f_{j_t}}$ to $&#780;C(\underline f; R)^{t+1}$ via 
+\[
+\frac{a}{f_{j_1}\cdots f_{j_t}} \mapsto \sum_{i\not\in \mc J}  \sgn(\mc J,i)\frac{af_j}{f_jf_{i_1}\cdots f_{i_t}}\]
+i.e., further localization with some extra signs. Do the same thing for $C&#780;(\underline f; M)$.
+</p></div>
+
+<div class="thm">
+<p><b>Definition/Theorem 14.3:</b>
+Let $I$ be an ideal of $R$ and $M$ be an $R$-module. Then the <em>local cohomology of $M$ with respect to $I$</em>, written $H^i_I(M)$, can be described in any of the following equivalent ways:
+<ol>
+    <li>If $I=\langle f_1,\ldots, f_c\rangle$ then $H^i_I(M):=H^i(C&#780;(\underline f; M))$, i.e.,  the cohomology of the above complex.</li>
+
+    <li>$H^i_I(-)$ are the right derived functors for the left exact functor 
+    \[
+    \Gamma_I(M) := \bigcup_{t\in \bb N} \{m\in M \: | \: I^tm=0\} = \bigcup_{t\in\bb N} \ann_M(I^t).
+    \]
+    </li>
+    <li>$H^i_I(M) \cong \displaystyle\lim_{\substack{\to\\ t}} \Ext^i_R(R/I^t, M)$. 
+        (This one comes because actually $\Gamma_I(M) = \displaystyle\lim_{\substack{\to\\t}} \hom_R(R/I^t,M)$).</li>
+    <li>$H^i_I(M)$ is isomorphic to $\displaystyle\lim_{\substack{\to\\t}} H^i(K^\bullet(\underline f^t; M))$, 
+        where $K^\bullet(\underline f; R)$ is the cohomological Kozsul complex 
+        \[0\to K^0=\bigwedge^c R^c \to K^1 = \bigwedge^{c-1}R^c\to \cdots \to K^c = \bigwedge^0 R^c =R \to 0\]
+         and $K^\bullet(\underline f; M) = K^\bullet(\underline f; R) \otimes_R M$. 
+        Equivently it is defined in terms of the homological Kozsul complex as $K^\bullet(\underline f; M) = \hom_R(K_\bullet(\underline f; R), M)$.</li>
+</ol>
+</p></div>
+
+<p>The reason that is a definition/theorem is that it is NOT OBVIOUS why these are all equivalent! We will NOT be proving that they are equivalent, but see Theorem 3.9 (plus the various earlier theorems it builds upon) in <a href="https://jack-jeffries.github.io/UM/LCnotes.pdf">Jack's Local Cohomology notes</a> if you are curious about a proof.</p>
+
+<p>Once we believe that those definitions are equivalent, we get the following very useful facts:</p>
+
+<div class="thm">
+<p><b>Facts 14.4:</b>
+<ul>
+<li>For all $i$, local cohomology $H^i_I(-)$ is a functor from $R$-modules to $R$-modules ((See this via definition 2).</li>
+<li>If we also write $I=\langle g_1,\ldots, g_a\rangle$, then $C&#780;(\underline f; M)$ and $C&#780;(\underline g; M)$ have the same (co)homology. 
+    (See this because definitions 2,3,4 only depend on the ideal, not the generating set.) </li>
+<li>If $\sqrt J = \sqrt I$ then $H^i_I(M) = H^i_J(M)$. (See this by definition 2 because in fact $\Gamma_I(-)=\Gamma_J(-)$.)</li>
+</ul>
+</p></div>
+
+<div class="thm">
+<p><b>Remark 14.5:</b>
+If $I$ has a generating set of length $c$, then by looking at the C&#780;ech complex we know that $H^i_I(M)=0$ for all $i\gt c$ and for all $R$-modules $M$. So by the converse, this means that if $H^i_I(M)$ is non-zero for some $i$ and some $M$, then EVERY generating set for $I$ has length at least $i$!
+    This is useful because minimal generating sets don't have to have the same size (remember minimal just means under inclusion! Not minimum!), and it can be hard to know the size of the smallest possible minimal generating set.</p>
+
+<p>We can say something stronger: 
+    the <em>arithmetic rank</em> of an ideal $I$ is the minimum $c$ such that there exists $f_1,\ldots, f_c$ with $\sqrt I = \sqrt{\langle f_1,\ldots, f_c\rangle}$. By using Fact 14.4.3, we see that if $H^i_I(M)\neq 0$ for some $i$ and some $M$, then the arithmetic rank of $I$ is $\ge i$. 
+</p></div>
+
+<h3 id="03-03">Mar 3rd</h3>
+<p><em>Note: My notes don't mark where we ACTUALLY stopped at the end of Feb 26th, so apologies if some of the next results actually appeared last Thursday instead of this Tuesday!</em></p>
+
+<div class="zb">
+<p><b>Example 15.1:</b>
+We did an example of the limit of the Koszul cohomologies for $c=1$. Details under construction! Doing this also helped us resolve the Koszul indexing confusion; the correct version is now definitely stated in Def/Thm 14.3 above.</p>
+</div>
+
+<div class="thm">
+<p><b>Proposition 15.2:</b>
+    Write $I=\langle f_1,\ldots, f_c\rangle$, let $M$ be an $R$-module, and consider an equivalence class 
+    $\left[\frac{m}{f_1^t\cdots f_c^t}\right] \in H^c_I(M)$.
+    Then $\left[\frac{m}{f_1^t\cdots f_c^t}\right] \ne 0$ if and only if for all $k\ge 0$, we have $(f_1\cdots f_c)^k m \notin \langle f_1^{t+k},\ldots, f_c^{t+k}\rangle M$.
+</p></div>
+
+<p>Proof under construction!</p>
+
+<div class="thm">
+<p><b>Corollary 15.3:</b>
+    Suppose $I=\langle f_1,\ldots, f_c\rangle$ is generated by a regular sequence and consider an equivalence class 
+    $\left[\frac{r}{f_1^t\cdots f_c^t}\right] \in H^c_I(R)$.
+    Then $\left[\frac{r}{f_1^t\cdots f_c^t}\right] \ne 0$ if and only if $r \notin \langle f_1^{t},\ldots, f_c^{t}$.
+</p>
+<p>
+If we allow elements written in non-standard form, then $[\frac{r}{f_1^{t_1}\cdots f_c^{t_c}}]\ne 0$ if and only if $r\notin \langle f_1^{t_1},\ldots, f_c^{t_c}\rangle$.
+</p></div>
+
+<p>Proof under construction! Use Proposition 15.2 and the hinted Lemma about colons of regular sequences from HW2.</p>
+
+<div class="zb">
+<p><b>Example 15.4:</b>
+Let $R=k[x_1,\ldots, x_n]$ and write $\mf m=\langle x_1,\ldots, x_n\rangle$. Then as a $k$-vector space
+\[
+H^i_{\mf m}(R) = \displaystyle \begin{cases}
+0 & i\gt n \\
+\bigoplus_{\substack{\alpha\in \bb N^n\\ \alpha_i >0}} k\cdot \{\frac{1}{x^\alpha}\} & i = n\\
+0 & i\lt n
+\end{cases}
+\]
+Explanation of this breakdown still under construction! Proof uses the C&#780;ech complex for $i\gt n$, the limit of Koszul complexes for $i\lt n$, and Corollary 15.3 for $i=n$.
+</p></div>
+
+<p>The explanation for the zeroes can be generalized beyond a polynomial ring:</p>
+
+<div class="thm">
+<p><b>Proposition 15.5:</b>
+<ol>
+    <li>$H^i_{\mf m}(M)=0$ for all $i\gt \dim R$</li>
+    <li>If $R$ is Cohen-Macaulay, then $H^i_{\mf m}(R)=0$ for all $i\lt \dim(R)$.</li>
+</ol>
+</p></div>
+<p><b>Proof:</b>
+Under construction! For (1), use a sop and invariance under radical. For (2), use that an sop is a regular sequence, the limit of Koszul complexes, and invariance under radical.
+</p>
+
+<div class="thm">
+<p><b>Lemma 15.6:</b>
+For all $i$, $H^i_I(M)$ is $I$-torsion.
+</p></div>
+<p>Proof under construction! Warning: in a non-finitely generated setting, $I$-torsion only means that for all $y\in H^i_I(M)$, there exists an integer $n$ such that $I^ny=0$. It does NOT mean that we can say $I^nH^i_I(M)=0$ (think about the polynomial ring example above, the $H^n_{\mf m}(R)$ has elements of arbitrarily negative degree!) </p>
+
+<div class="thm">
+<p><b>Theorem 15.7:</b>
+Let $M$ an $R$-module, $I$ an ideal.
+\[
+\min\{i\: | \: H^i_I(M)\ne 0\} = \depth_I(M) = \depth_I(M)
+\]
+</p></div>
+
+<p>Compare with the 906 fact that $\depth_I(M) = \min\{i\: | \: \Ext^i(R/I,M)\ne 0\}$.
+</p>
+
+<h3 id="03-05">Mar 5th</h3>
+
+<div class="thm">
+<p><b>Fact 16.1</b>
+If $IM=M$ then there exists some $g\in I$ such that $gx=x$ for all $x\in M$, i.e., $g$ acts as the identity.
+</p></div>
+
+<p>Proof of Theorem 15.7 still under construction! It uses induction on depth. In the inductivte step, it uses a nzd $x\in I$ on $M$ and the LES on homology induced by $0\to M \to M \to M/x\to 0$ where the first map is $\cdot x$. </p>
+
+<div class="thm">
+<p><b>Theorem 16.(3/2):</b>
+$H^i_{\mf m}(R)=0$ for all $i\gt \dim R$ and for all $i\lt \depth(R)$. Further, $R$ is Cohen-Macaulay if and only if $H^i_{\mf m}(R)\ne 0$ exactly when $i=\dim R$.
+</p></div>
+<p>The proof of this is immediate upon combining the previous depth result and then the dimension vanishing from last class</p>
+
+<p>Now here are some assorted other facts about local cohomology that I (might) need later:</p>
+
+<div class="thm">
+<p><b>Proposition 16.2:</b> Let $R$ a noetherian ring, $I$ an ideal, and $\psi:R\to S$ a ring homomorphism.
+<ol>
+<li>(Invariance of base) 
+    Let $N$ be an $S$-module, and write ${}_{\psi}N$ for $N$ viewed as an $R$-module under restriction of scalars. 
+    Then $H^i_I({}_\psi N)$ has a natural $S$-module structure, and $H^i_I({}_\psi N)\cong H^i_{\psi(I)S}(N)$ as $S$-modules.
+</li>
+<li>(Flat base change)
+    Let $M$ be an $R$-module, and further assume that $\psi$ is flat. Then $S\otimes_R H^i_I(M)\cong H^i_I(S\otimes_R M)\cong H^i_{IS}(S\otimes_RM)$.
+</li>
+</ol>
+</p></div>
+<p>Proof under construction!</p>
+
+
+<div class="thm">
+<p><b>Remark 16.3:</b>
+    If $(R,\mf m)$ is local, $M$ a finitely generated $\mf m$-torsion module, then $M$ is naturally an $\wh R$-module. To see how, take $s\in \wh R$ and $x\in M$. 
+    By $\mf m$-torsion, there exists an $n$ such that $\mf m^nx=0$. 
+    By definition, we can view $s=\{r_i\}_{i\in \bb N}$ as a Cauchy sequence. In particular, for the $n$ appearing by torsion-ness, take $t\gg 0$ such that $r_t-r_{t+k}\in \mf m^n$ for all $k\ge 1$. 
+    Then define $s\cdot x$ as $r_t\cdot x$.</p>
+
+<p><em>Exercises to the reader</em>: Show that this action is well-defined; in other words, show that it doesn't depend on your choice of $n$,your choice of $t$, or your choice of which Cauchy sequence to use to represent $s$.
+</p></div>
+
+
+<div class="thm">
+<p><b>Proposition 16.4:</b>
+Let $R$ noetherian, $\mf m$ a maximal ideal, and $M$ an $R$-module.
+<ol>
+<li>
+    If $M$ is finitely generated then $H^i_{\mf m}(M)$ is artinian for all $i$.
+</li>
+<li>
+    If $(R,\mf m)$ is in fact local, then $H^i_{\mf m}(M)\cong H^i_{\mf m\wh R}(\wh R\otimes_R M)$. If $M$ is finitely generated, then $H^i_{\mf m}(M)\cong H^i_{\mf m \wh R}(\wh M)$.
+</li>
+</ol>
+</p></div>
+<p>(1) and the finitely generated part of (2) are really "Facts", meaning I won't prove them. Proof of the main part of (2) under construction. It uses flat base change and the above remark.</p>
+
+<div class="defn">
+<p><b>Definition 16.5:</b>
+Let $R$ be a standard graded ring of dimension $d$ and let $\mf m = R^+$ be the homogeneous maximal ideal. Then the <em>$a$-invariant</em> of $R$ is
+\[
+    a(R) = \max \{b \in \bb Z\: | \: (H^d_{\mf m}(R))_b \ne 0\},
+\]
+i.e., we are looking at the graded pieces of the top local cohomology module and taking the largest degree such that the piece is non-zero.
+</p></div>
+
+<p>When $R=k[x_1,\ldots, x_d]$ then $a(R)=-d$, because we saw we need monomials of the form $\frac{1}{x_1^{a_1}\cdots x_d^{a_d}}$ with all $a_i\ge 1$ to generate, and each $a_i$ contributes at least one to the degree of the denominator.</p>
+
+<p>Now, on to the Frobenius!</p>
+
+<div class="thm">
+<p><b>Remark 16.5:</b>
+We can get a natural Frobenius action on local cohomology. There are two different perspectives that are useful:
+<ol>
+<li>
+    Consider $F:R\to F_*R$. Since $H^i_I(-)$ is a functor, this gives a map $F:H^i_I(R)\to H^i_I(F_*R)$.  
+    By invariance of base using $N=F_*R$ (so that we already have the restriction of scalars action built into the notation),
+    we see that $H^i_I(F_*R)$ has a natural $F_*R$-module structure, and that $H^i_I(F_*R)\cong H^i_{IF_*R}(F_*R) = H^i_{F_*I^{[p]}}(F_*R)$ as $F_*R$-modules.
+    
+</li>
+<li>
+    Consider $F:R\to R$ (same map as above, different notation!) and write $I=\langle f_1,\ldots, f_c\rangle$. 
+    We then get a map of complexes $\check C(\underline f; R) \to \check C(\underline f^p; R)$ via taking 
+    $F:\frac{r}{f_{i_1}^t\cdots f_{i_j}^t} \mapsto \frac{r^p}{f_{i_1}^{tp}\cdots f_{i_j}^{tp}}$, and we checked that the signs still work out to ensure this commutes. 
+    The map on complexes induces a map on cohomology that is literally the $p$th powers of (equivalence classes of) elements $F:H^i_I(R)\to H^i_{I^{[p]}}(R) = H^i_I(R)$. 
+</li>
+</ol>
+</div>
+
+<div class="zb">
+<p><b>Example 16.6:</b>
+We did an example looking at the Frobenius action on $H^n_{\mf m}(k[x_1,\ldots, x_n]$. We saw that this action is injective.
+</p></div>
+
+<p>In that example, the $F$ action on $H^i_I$ was injective. How often does that happen? Is that special to polynomial rings or is it more general?</p>
+
+<div class="zb">
+<p><b>Exercise 16.7:</b>
+For which of the following classes of local rings is the map $F:H^i_{\mf m}(R)\to H^i_{\mf m}(R)$ injective for all $i$?
+<ul>
+    <li>$R$ reduced? (aka, $F$ injective on $R$ itself?)</li>
+    <li>$R$ $F$-split?</li>
+    <li>$R$ strongly $F$-regular?</li>
+    <li>$R$ regular?</li>
+</ul>
+</p></div>
+
+<button type="button" class="viewsoln">View Exercise 16.7 Partial Solution</button>
+        <div class="soln"><p>
+        These options go in increasing "strength", so once we know $F$ is injective on local cohomology for one class of $R$ listed above, we also know this property will hold for all lower done $R$ (pending some $F$-finiteness nuances).
+        </p>
+        <p>We'll show that $R$ being $F$-split implies that the Frobenius action on local cohomology is injective.
+        Since $R$ is $F$-split, there exists a map $\pi:F_*R\to R$ such that $\pi\circ F = \id_R$. 
+        Since $H^i_{\mf m}(-)$ is a functor, this means that $H^i_{\mf m}(\pi)\circ H_{\mf m}^i(F) = H^i_{\mf m}(\id_R) = \id_{H^i_{\mf m}(R)}$. 
+        In particular, this means that $H^i_{\mf m}(F)$ = the action of Frobenius on local cohmology must be injective!</p>
+        <p> Next class we'll see an example of a reduced ring where the Frobenius fails injectivity.
+        </p></div>
+
+<p>This discussion prompted the following informal definition, which we will do carefully on Tuesday: a ring is <em>$F$-injective</em> if the Frobenius action is injective on all the local cohomology modules for $\mf m$.</p>
 
 <h3 id="upcoming">Upcoming</h3>
 <p>More on local cohomology, and using SFR-ness to ensure some cohomology vanishing (working towards showing that SFR rings are Cohen-Macaulay).</p>

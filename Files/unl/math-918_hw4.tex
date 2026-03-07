@@ -1,0 +1,105 @@
+\documentclass[11pt]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in, headheight=14.5pt]{geometry}
+\usepackage{math-hw}
+\pagestyle{fancy}
+\fancyhead[L]{Math 918}
+%\fancyhead[C]{MATH 665}
+\fancyhead[R]{HW 4}
+
+\usepackage[margin=1in, headheight=14.5pt]{geometry}
+\usepackage{parskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% fonts
+\usepackage{calligra}
+\usepackage{mathrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{bbm}
+
+\usepackage{enumitem}
+\usepackage{hyperref}
+%\usepackage[colorlinks,  citecolor=green, linkcolor = black, urlcolor = cyan]{hyperref} % hyperlinks for cross-referencing; colorlinks is recommended because otherwise the boxes obscure the roman numerals; linkcolor is changed to blue after the table of contents (see firstpages.tex). As of 2021, red is not allowed by Rackham.
+\usepackage[nameinlink]{cleveref}
+%\usepackage{backref}
+\usepackage{url} % allow hyperlink in reference
+\usepackage[style=alphabetic,url=false,backref=true]{biblatex}
+\addbibresource{zotero-export.bib}
+\setlength{\droptitle}{-4em}
+
+
+\newtoggle{solution}
+\toggletrue{solution}
+%\togglefalse{solution}
+
+
+\iftoggle{solution}{
+\includeversion{solnenv}
+\includeversion{commenv}
+}{
+\excludeversion{solnenv}
+\excludeversion{commenv}
+}
+
+
+
+
+
+\title{Homework 4}
+%\author{Anna Brosowsky}
+\date{\vspace{-4em}}
+
+\begin{document}
+
+
+\maketitle\thispagestyle{fancy}
+
+Remember you are allowed to discuss with classmates (or an AI tool), but that you need to tell me who/what you discussed with + the final submitted writeup should be your own work.
+
+
+\begin{enumerate}[itemsep=4em]
+
+\item (Exercise 4.14 of [SS]) Write $K(R)$ for the total ring of fractions. A reduced Noetherian ring $R$ of characteristic $p > 0$ is called
+\emph{weakly normal} if $x\in K(R)$ and $x^p \in R$ implies that $x\in R$. Any ring is
+called \emph{seminormal} if $x\in K(R)$, and $x^2, x^3 \in R$ implies that $x \in R$. 
+\begin{enumerate}
+\item Show
+that Frobenius split rings are weakly normal.
+
+
+
+\item Show that weakly normal rings
+are seminormal. 
+
+\end{enumerate}
+
+
+\item (Exercise 4.12 of [SS]) Let $R$ be a Noetherian char $p$ ring. Suppose that $\varphi:F_*^eR\to R$ is an $R$-linear map. 
+\begin{enumerate}
+\item Fix $I$ an ideal. Prove that $\varphi(F_*^e(\Gamma_I(R)))\subset \Gamma_I(R)$, where $\Gamma_I(R) = \bigcup_{t\in \N} \ann(I^t)$.
+\item
+Suppose further that $R$ is reduced. Prove that if $Q \subset R$ is a minimal prime of $R$, then $\varphi(F_*^eQ)\subset Q$.
+\end{enumerate}
+
+
+
+\item (Exercise 23 of [MP]) Let $(R,\mf m,k)$ be a local ring of char $p$ and $d=\dim R$. Prove that the kernel of the natural Frobenius action on $H^d_{\mf m}(R)$ is a proper submodule of $H^d_{\mf m}(R)$.
+
+
+
+\item (Exercise 7.15 of [SS]) Let $(R,\mf m, k)$ be a local Cohen-Macaulay ring\footnote{Fact (you may use without proof; possibly helpful for (c) implies (a)): If $R$ is a CM ring and $\underline x$ and $\underline y$ are sop's, then $\dim_k(\frac{\langle x_1,\ldots, x_d\rangle:\mf m}{\langle x_1,\ldots, x_d\rangle}) =\dim_k(\frac{\langle y_1,\ldots, y_d\rangle:\mf m}{\langle y_1,\ldots, y_d\rangle})$. This number is the \emph{Cohen-Macaulay type} of $R$.} of dimension $d$. Prove that TFAE:
+\begin{enumerate}
+\item The natural Frobenius action on $H^d_{\mf m}(R)$ is injective (in other words, $R$ is $F$-injective)
+\item For every s.o.p. $f_1,\ldots, f_d$, the ideal $I=\langle f_1,\ldots, f_d\rangle $ has
+\[
+I = \langle g \: | \: g^p \in I^{[p]}\rangle.
+\]
+\item There exists an s.o.p. $f_1,\ldots, f_d$, such that the ideal $I=\langle f_1,\ldots, f_d\rangle $ has
+\[
+I = \langle g \: | \: g^p \in I^{[p]}\rangle.
+\]
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
