@@ -115,7 +115,14 @@ Here are the two general references for the course.
   <dt><a href="#02-26">Feb 26</a></dt><dd>Solutions to exercises on computing which of four rings $R$ were SFR; starting local cohomology.</dd>
   <dt><a href="#03-03">Mar 03</a></dt><dd>More local cohomology basic properties + an example. (Proofs under construction</dd>
   <dt><a href="#03-05">Mar 05</a></dt><dd>More local cohomology basic properties + a proof of the local cohomology characterization of Cohen-Macaulayness + defining the Frobenius action (Proofs under construction)</dd>
-  <dt><a href="#upcoming">Upcoming</a></dt><dd>Seeing how Frobenius interacts with local cohomology; discussion of F-injectivity, eventually getting to F-rationality.</dd>
+  <dt><a href="#03-10">Mar 10</a></dt><dd>Matlis duality, its application to local cohomology (called local duality), and proving that for a complete local regular ring, we can detect the dimension of a module by looking at which local cohomology module is the top non-vanishing one. We ended with a NON-example of an F-injective.
+    Proofs under construction!
+</dd>
+  <dt><a href="#03-12">Mar 12</a></dt><dd>Saw how the non-example generalizes a little bit and saw how weak normality connects to the Frobenius action on $H^1$. We (vaguely) defined the word F-singularity.
+  Ended by showing that SFR implies CM in the complete case, and proved/stated other facts that we'll be needed to extend from the complete case to the general case.
+  (Notes complete!)
+</dd>
+  <dt><a href="#upcoming">Upcoming</a></dt><dd>Put everything from Mar 12 together to see why ALL SFR rings (which for us are all F-finite) are CM. Then we'll define F-rational as our last class of F-singularities.</dd>
 </dl>
 
 <h3 id="01-13">Jan 13</h3>
@@ -1661,14 +1668,27 @@ If $R$ is $F$-injective and $F$-finite, then $R$ is weakly normal.
 <p>Warning: Do NOT use this fact to do HW4#1. It makes the question way too easy :). Instead, do that HW question directly (e.g., without local cohomology).</p>
 
 <div class="thm">
-<p><b>Prop 18.3:</b>
+<p><b>Proposition 18.3:</b>
 If $R$ is a weakly normal domain, then the Frobenius action on $H^1$ is injective.
 </p></div>
 <p>Of course Proposition 18.3 immediately follows from the (stronger) Fact 18.1(a), but I'm still stating it here because we're actually going to prove it! 
 Proving it in the more general reduced case uses similar big picture ideas, but you have to be a lot more careful about things being zero-divisors.</p>
+<p>
+A reference for Fact 18.1 &amp; Fact 18.2 is either Lemma 3.15 and Theorem 3.16 of [KS],
+or see Schewede's <a href="https://mathscinet.ams.org/mathscinet/article?mr=2503989">F-injective singularities are Du Bois</a>.
+</p>
 
 <p><b>Proof (of Prop 18.3):</b>
-Under construction!
+    Let $f_1,\ldots, f_d$ be an sop. Let $\nu=[\sum_i \frac{r_i}{f_i^t}]$ be an element of the 1st local cohomology module of $R$. 
+    Suppose $F(\nu)=\sum_i[\frac{r_i^p}{f_i^{tp}}]=0$.
+    This means that there exists some $s\in R$ such that under the Cech complex map, $s\mapsto \sum_i\frac{sf_i^{tp}}{f_i^{tp}} = \sum_i \frac{r_i^p}{f_i^{tp}}$. 
+    In particular, since $R$ is a domain this means that $r_i^p = sf_i^{tp}$ for all $i$.</p>
+<p>
+    Now consider the element $x_i = \frac{r_i}{f_i^t}\in R_{f_i}\subset K(R)$ (This containment is where I'm using domain!).
+    By weak normality, since $x_i^p = s\in R$, we must also have $x_i\in R$. 
+    Further, since $R$ is reduced, the Frobenius is injective and thus $x_i=x_j$ for all $i$. Thus we simply call this element $x$.
+    Now we see that under the Cech complex map, $x\mapsto \sum_i \frac{r_i}{f_i^t}$ and thus $\nu=0$ in the 1st local cohomology, as desired.
+    &nbsp; &#9632;
 </p>
 
 
@@ -1744,7 +1764,7 @@ You proved on HW1 that taking quotients and adjoining (power series) variables p
 
 
 <div class="thm">
-<p><b>Theorem 18.8:</b>
+<p><b>Theorem 18.9:</b>
 Let $(R,\mf m)$ be an $F$-finite local ring. Then $R$ is SFR if and only if the completion $\wh R$ is SFR.
 </p></div>
 <p><b>Proof:</b>
