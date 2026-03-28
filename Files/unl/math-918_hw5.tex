@@ -1,0 +1,158 @@
+\documentclass[11pt]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in, headheight=14.5pt]{geometry}
+\usepackage{math-hw}
+\pagestyle{fancy}
+\fancyhead[L]{Math 918}
+%\fancyhead[C]{MATH 665}
+\fancyhead[R]{HW 5}
+
+\usepackage[margin=1in, headheight=14.5pt]{geometry}
+\usepackage{parskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% fonts
+\usepackage{calligra}
+\usepackage{mathrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{bbm}
+
+\usepackage{enumitem}
+\usepackage{hyperref}
+%\usepackage[colorlinks,  citecolor=green, linkcolor = black, urlcolor = cyan]{hyperref} % hyperlinks for cross-referencing; colorlinks is recommended because otherwise the boxes obscure the roman numerals; linkcolor is changed to blue after the table of contents (see firstpages.tex). As of 2021, red is not allowed by Rackham.
+\usepackage[nameinlink]{cleveref}
+%\usepackage{backref}
+\usepackage{url} % allow hyperlink in reference
+\usepackage[style=alphabetic,url=false,backref=true]{biblatex}
+\addbibresource{zotero-export.bib}
+\setlength{\droptitle}{-4em}
+
+
+\newtoggle{solution}
+\toggletrue{solution}
+%\togglefalse{solution}
+
+
+\iftoggle{solution}{
+\includeversion{solnenv}
+\includeversion{commenv}
+}{
+\excludeversion{solnenv}
+\excludeversion{commenv}
+}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+
+
+
+\title{Homework 5}
+%\author{Anna Brosowsky}
+\date{\vspace{-4em}}
+
+\begin{document}
+
+
+\maketitle\thispagestyle{fancy}
+
+Remember you are allowed to discuss with classmates (or an AI tool), but that you need to tell me who/what you discussed with + the final submitted writeup should be your own work.
+
+
+\begin{enumerate}[itemsep=4em]
+
+\item In this question we see some generally useful comm alg facts\footnote{Not included is the useful but harder to prove fact that $A$ is normal if and only if $A$ satisfies $(R_1)$ and $(S_2)$.}. 
+In particular, we are NOT assuming char $p$! First, some definitions:
+\begin{defn}
+Let $A$ be a Noetherian ring and let $k\in \bb N$.
+\begin{itemize}
+\item $A$ satisfies \emph{Serre's condition $(R_k)$} if for all primes $\mf p$ of height $\le k$, we have $A_{\mf p}$ is a regular local ring.
+
+\item $A$ satisfies \emph{Serre's condition $(S_k)$} if for all primes $\mf p$, we have $\depth(A_{\mf p})\ge \min\{k,\operatorname{ht}(\mf p)\}$.
+\end{itemize}
+\end{defn}
+Now for the problem:
+\begin{enumerate}
+
+\item Give an example of a ring that has $(S_1)$ but is not reduced.
+
+\item Give an example of a ring that has $(R_0)$ but is not reduced.
+
+
+
+\item Prove that $A$ is reduced if and only if $A$ satisfies $(R_0)$ and $(S_1)$.
+
+
+
+\item Prove that $A$ is Cohen-Macaulay if and only if $A$ satisfies $(S_d)$ for $d=\dim A$, if and only if  $A$ satisfies $(S_k)$ for all $k$.\footnote{This has nothing to do with anything else on this HW, but is such a cute fact that I'm including it anyways.}
+
+
+\end{enumerate}
+
+\item In this question, we are back to assuming $A$ has char $p$.
+\begin{enumerate}
+\item Let $(A,\mf m)$ be a local char $p>0$ ring of dimension 0. Prove that $A$ is F-injective if and only if it is reduced.
+
+
+\item Let $(A,\mf m)$ be a local char $p>0$ ring of dimension $>0$. Prove that if $A$ is F-injective then $H^0_{\mf m}(A)=0$.
+
+\item Let $A$ be an $F$-injective ring. Prove that $A$ is reduced.
+
+\end{enumerate}
+
+\item (Exercise 22 of [MP]) Let R be an $\bb N$-graded ring over a field of prime characteristic $p > 0$ with
+homogeneous maximal ideal $\mf m$. Show that
+\begin{enumerate}
+\item If R is $F$-injective, then $[H^i_{\mf m}(R)]_{>0} = 0$ for each $i$. Conclude that $a(R)\le 0$.
+
+
+\item If R is $F$-rational, then $[H^d_{\mf m}(R)]_{\ge 0} = 0$. Conclude that $a(R)<0$.
+
+\end{enumerate}
+
+\newpage
+
+\item Here are some more useful colon ideal facts:
+\begin{enumerate}
+\item
+Let $I$ ideal of a regular local ring $(R,\mf m)$. Prove that
+\[
+\Ass(I^{[p^e]}:I) \subseteq \Ass(I).
+\]
+Conclude that if $I$ is $\mf p$-primary then $I^{[p^e]}:I$ is $\mf p$-primary.
+
+\item 
+Let $(R,\mf m)$ be a regular local ring and $I$ unmixed (i.e., all associated primes are minimal). Let $I=\bigcap_{i=1}^n Q_i$. Prove that 
+\[
+I^{[p]}:I = \bigcap_{i} (Q_i^{[p]}:Q_i).
+\]
+
+
+\end{enumerate}
+
+\item As on Thurs 03/26, let $S=k[x,y,z,u,v]_{\mf m}$, let 
+\[
+I = I_2\begin{pmatrix}
+x^n & z & v \\
+u   & z & y^n
+\end{pmatrix}
+= \langle z(x^n-u), z(v-y^n), x^ny^n-uv\rangle
+\]
+be the ideal of 2x2 minors, and let $R=S/I$. 
+
+\begin{enumerate}
+\item Compute the minimal primary decomposition for $I$.\footnote{Hint: Use the $\bb Z^3$-grading coming from the columns, so that $\deg x=e_1$, $\deg u=ne_1$, $\deg z=e_2$, and $\deg y=e_3$, $\deg v=ne_3$.\\
+You may use without proof the fact that even in the multigraded setting, associated primes of homogeneous ideals are homogeneous.}
+
+
+\item 
+Prove that if $p\le n$ then $R$ is NOT F-split.\footnote{Hint: Modding out by a monomial ideal can make a complicated equation more understandable.}
+
+
+\end{enumerate}
+
+
+
+\end{enumerate}
+
+
+\end{document}

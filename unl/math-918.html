@@ -80,6 +80,8 @@ Office hours for the week after break will be on zoom (see email for link) and w
     <ul><li>Due on Friday March 6th at midnight. Submit on Gradescope.</li></ul></li>
 <li> Homework 4: [<a href="../Files/unl/math-918_hw4.pdf">PDF</a>] and [<a href="../Files/unl/math-918_hw4.tex">TeX</a>] + [<a href="../Files/unl/math-hw.sty">math-hw.sty</a>] (style file needed to compile! same as last week)
     <ul><li>Due on Friday March 28th at midnight (three weeks because of spring break!). Submit on Gradescope.</li></ul></li>
+<li> Homework 5: [<a href="../Files/unl/math-918_hw5.pdf">PDF</a>] and [<a href="../Files/unl/math-918_hw5.tex">TeX</a>] + [<a href="../Files/unl/math-hw.sty">math-hw.sty</a>] (style file needed to compile! same as last week)
+    <ul><li>Due on Friday April 11th at midnight. Submit on Gradescope.</li></ul></li>
 </ul>
 
 <h4>In-Class Handouts</h4>
@@ -131,7 +133,14 @@ Office hours for the week after break will be on zoom (see email for link) and w
   Ended by showing that SFR implies CM in the complete case, and proved/stated other facts that we'll be needed to extend from the complete case to the general case.
   (Notes complete!)
 </dd>
-  <dt><a href="#upcoming">Upcoming</a></dt><dd>Put everything from Mar 12 together to see why ALL SFR rings (which for us are all F-finite) are CM. Then we'll define F-rational as our last class of F-singularities.</dd>
+  <dt><a href="#03-24">Mar 24</a></dt><dd>
+Put everything from Mar 12 together to see why ALL SFR rings (which for us are all F-finite) are CM. Then we'll define F-rational as our last class of F-singularities, and see how F-rational fits into our singularity picture.</dd>
+  <dt><a href="#03-26">Mar 26</a></dt><dd>
+    F-injective behaves well under deformation; and using this to see an example of an F-injective ring that is not F-split.
+    </dd>
+  <dt><a href="#upcoming">Upcoming</a></dt><dd>
+    The long-awaited applications of F-singularities! Up first is a combinatorics application (we'll also have to state some general facts about the Hilbert polynomial); after that will be reduction to char p.
+    </dd>
 </dl>
 
 <h3 id="01-13">Jan 13</h3>
@@ -1448,7 +1457,7 @@ If $IM=M$ then there exists some $g\in I$ such that $gx=x$ for all $x\in M$, i.e
 
 <p>Proof of Theorem 15.7 still under construction! It uses induction on depth. In the inductivte step, it uses a nzd $x\in I$ on $M$ and the LES on homology induced by $0\to M \to M \to M/x\to 0$ where the first map is $\cdot x$. </p>
 
-<div class="thm">
+<div class="thm" id="CM-local-coho">
 <p><b>Theorem 16.(3/2):</b>
 $H^i_{\mf m}(R)=0$ for all $i\gt \dim R$ and for all $i\lt \depth(R)$. Further, $R$ is Cohen-Macaulay if and only if $H^i_{\mf m}(R)\ne 0$ exactly when $i=\dim R$.
 </p></div>
@@ -1482,15 +1491,15 @@ $H^i_{\mf m}(R)=0$ for all $i\gt \dim R$ and for all $i\lt \depth(R)$. Further, 
 </p></div>
 
 
-<div class="thm">
+<div class="thm" id="LC-at-maxl">
 <p><b>Proposition 16.4:</b>
 Let $R$ noetherian, $\mf m$ a maximal ideal, and $M$ an $R$-module.
 <ol>
 <li>
-    If $M$ is finitely generated then $H^i_{\mf m}(M)$ is artinian for all $i$.
+If $M$ is finitely generated then $H^i_{\mf m}(M)$ is artinian for all $i$.
 </li>
 <li>
-    If $(R,\mf m)$ is in fact local, then $H^i_{\mf m}(M)\cong H^i_{\mf m\wh R}(\wh R\otimes_R M)$. If $M$ is finitely generated, then $H^i_{\mf m}(M)\cong H^i_{\mf m \wh R}(\wh M)$.
+If $(R,\mf m)$ is in fact local, then $H^i_{\mf m}(M)\cong H^i_{\mf m\wh R}(\wh R\otimes_R M)$. If $M$ is finitely generated, then $H^i_{\mf m}(M)\cong H^i_{\mf m \wh R}(\wh M)$.
 </li>
 </ol>
 </p></div>
@@ -1548,13 +1557,13 @@ For which of the following classes of local rings is the map $F:H^i_{\mf m}(R)\t
 
 <button type="button" class="viewsoln">View Exercise 16.7 Partial Solution</button>
         <div class="soln"><p>
-        These options go in increasing "strength", so once we know $F$ is injective on local cohomology for one class of $R$ listed above, we also know this property will hold for all lower done $R$ (pending some $F$-finiteness nuances).
+        These options go in increasing "strength", so once we know $F$ is injective on local cohomology for one class of $R$ listed above, we also know this property will hold options later on in the list (pending some $F$-finiteness nuances).
         </p>
         <p>We'll show that $R$ being $F$-split implies that the Frobenius action on local cohomology is injective.
         Since $R$ is $F$-split, there exists a map $\pi:F_*R\to R$ such that $\pi\circ F = \id_R$. 
         Since $H^i_{\mf m}(-)$ is a functor, this means that $H^i_{\mf m}(\pi)\circ H_{\mf m}^i(F) = H^i_{\mf m}(\id_R) = \id_{H^i_{\mf m}(R)}$. 
         In particular, this means that $H^i_{\mf m}(F)$ = the action of Frobenius on local cohmology must be injective!</p>
-        <p> Next class we'll see an example of a reduced ring where the Frobenius fails injectivity.
+        <p> Next class we'll see an example of a reduced ring where the Frobenius fails injectivity, which will complete the solution by showing that the first bullet is not sufficient to force F-injectivity but the later three are sufficent.
         </p></div>
 
 <p>This discussion prompted the following informal definition, which we will do carefully on Tuesday: a ring is 
@@ -1574,7 +1583,7 @@ Let $M$ be an $R$-module. The <em>injective hull</em> of $M$ is $E_R(M):=$ the s
 <div class="defn">
 <p><b>Definition 17.2:</b>
 Let $(R,\mf m, k)$ be a local ring, and let $M$ be an $R$-module. The <em>Matlis dual</em> of $M$ is
-\[M^\vee := \hom_R(M,E_R(k).\]
+\[M^\vee := \hom_R(M,E_R(k)).\]
 </p></div>
 
 <div class="THM">
@@ -1807,8 +1816,299 @@ Now by the above two claims, we have a $c\in \wh R$ nzd such that $\wh R[1/c]$ i
 
 
 
-<h3 id="upcoming">Upcoming</h3>
+<h3 id="03-24">Mar 24</h3>
 <p>After break, observe we can put everything together to get that ALL SFR rings are CM. Then define $F$-rational as a local cohomology analogue to SFR.</p>
+<p>Preview of exercises and statements that will appear the week of 03/24 &amp; 03/26; full notes (including proofs + missing statements) to appear after class!</p>
+
+<div class="thm">
+<p><b>Proposition 19.1:</b>
+Let $(R,\mf m)$ be a local ring. Then $R$ is CM if and only if its completion $\wh R$ is CM. 
+</p></div>
+<p><b>Proof:</b>
+You know from <a href="#LC-at-maxl">Proposition 16.4</a> that $H^i_{\mf m}(R) = H^i_{\mf m \wh R}(\wh R)$. 
+You know from Math 906 that $\dim R = \dim \wh R$ and that $\mf m \wh R = \wh{\mf m}$ is the maximal ideal of $\wh R$. Thus all but the $d$-th local cohomology module vanish for $R$ iff the same is true for $\wh R$, and by the local cohomology characterization of CM (<a href="#CM-local-coho">Theorem 16.(3/2)</a>) we are done!
+&nbsp; &#9632;
+</p>
+
+
+<div class="thm">
+<p><b>Proposition 19.2:</b>
+Let $(R,\mf m)$ be a local ring. 
+If $R$ is SFR, then it is CM.
+</p></div>
+<p><b>Proof:</b>
+If $R$ is SFR, then $\wh R$ is SFR. By Theorem, this means $\wh R$ is CM. By previous proposition, we're back to $R$ is CM.
+&nbsp; &#9632;
+</p>
+
+<p>
+Now, in the proof in the complete case it was useful to look at the action of multiplication by $c$ on local cohomology. And it was especially useful to understand how this action combined with the Frobenius. This leads to:
+</p>
+
+<div class="defn">
+<p><b>Definition 19.3:</b>
+Let $(R,\mf m)$ be a local ring of dimension $d$. $R$ is <em>$F$-rational</em> if $R$ is Cohen-Macaulay and for all $c\in R^\circ$, 
+there exists $e\gt 0$ such that the composition
+\[
+H^d_{\mf m}(R)\to^{F^e}   H^d_{\mf m}(R)\to^{c}  H^d_{\mf m}(R)
+\]
+
+is injective, where the first map is the Frobenius action and the second map is multiplication by $c$.
+</p></div>
+
+It turns out we can define both $F$-rationality  and $F$-injectivity for non-local rings as well:
+
+
+<div class="defn">
+<p><b>Definition 19.4:</b>
+A not-necessarily-local ring $R$ is <em>F-injective</em> if $R_{\mf m}$ is F-injective for all maximal ideals $\mf m$. 
+A not-necessarily-local ring $R$ is <em>F-rational</em> if $R_{\mf m}$ is F-rational for all maximal ideal $\mf m$.
+</p></div>
+
+
+This is a reasonable thing to do because both of these notions localize:
+
+<div class="thm">
+<p><b>Fact 19.5:</b>
+Let $R$ be a char $p$ ring. 
+<ul>
+<li> $R$ F-rational implies $R_{\mf p}$ F-rational for all $\mf p\in \Spec(R)$.</li>
+<li>$R$ F-injective implies $R_{\mf p}$ F-injective for all $\mf p\in \Spec(R)$.</li>
+</ul>
+</p></div>
+
+
+
+
+
+
+
+<div class="zb">
+<p><b>Exercise 19.6:</b>
+Let $(R,\mf m)$ be a local char $p$ ring. Prove the following $R$ is F-injective if and only if the completion $\wh R$ is F-injective.
+</p>
+</div>
+
+<p>
+The version of this for F-rational is true when $R$ is also F-finite, but is much harder to prove! See Chapter 6 of [MP].
+</p>
+
+
+        <button type="button" class="viewsoln">View Solution to Exercise 19.6</button>
+        <div class="soln">
+            <p>
+                We saw (Proposition 16.4) that flat base change in the context of completion means that $H^i_{\mf m}(R) \cong H^i_{\mf m\wh R}(\wh R)$. 
+                At the time we didn't explicitly state what the isomorphism was, but thinking through in the context of flat base change we really would get $H^i_{\mf m}(R)\to H^i_{\mf m \wh R}(\wh R)$ via $\sum_\alpha [\frac{r_\alpha}{(f_{\alpha_1}\cdots f_{\alpha_i})^t}]\mapsto \sum_\alpha [\frac{r_\alpha}{(f_{\alpha_1}\cdots f_{\alpha_i})^t}]$, where now everything is viewed as an element of $\wh R$ instead.
+
+                Since $\sqrt{\mf m \wh R}$ is the maximal ideal of $\wh R$, the following commutative diagram tells us that $F$ acts injectively on $H^i$ for $R$ iff it does so for $\wh R$.
+            </p>
+            <p>
+                (Imagine a nice commutative diagram here that I will insert later, summarizing the end of the proof)
+            </p>
+        </div>
+
+
+<p><b>Exercise 19.7:</b>
+Let $R$ be a char $p$ ring. Prove the following:</p>
+<ol>
+<li> If $R$ is SFR then $R$ is F-rational.</li>
+<li> If $R$ is F-rational then $R$ is F-injective.</li>
+<li> (Challenge; Needs the following two integral closure facts) If $R$ is F-rational then $R$ is normal.</li>
+</ol>
+</div>
+
+
+<div class="thm">
+<p><b>Fact 19.8:</b>
+Suppose $R$ is a ring of positive dimension. If every principal ideal of height one is integrally closed, then $R$ is reduced and normal.
+</p></div>
+
+<div class="thm">
+<p><b>Fact 19.9:</b>
+Let $I,J$ ideals. Then $J\subset \overline I$ if and only if there exists an $n\gt 0$ such that for all $m\gt 0$, we have $(I+J)^nI^m=(I+J)^{n+m}$ 
+if and only if there exists $n\gt 0$ in $\bb N$ such that $(I+J)^nI = (I+J)^{n+1}$. (In other words, if and only if $I$ is a <em>reduction</em> of $I+J$).
+</p></div>
+
+
+        <button type="button" class="viewsoln">View Solution to Exercise 19.7:</button>
+        <div class="soln">
+            <p><b>Proof of #1:</b>
+                This one is easy---for all $i\lt d$, $H^i_{\mf m}(R)=0$ and so the Frobenius action is vacuously injective. And for $i=d$, take $c=1$ and we get the Frobenius action.
+                &nbsp; &#9632;
+            </p>
+            <p><b>Proof of #2:</b>
+            Take the perspective that local cohomology is a functor and take the composition
+
+            \[
+            R\xrightarrow{F^e}  F_*^eR\xrightarrow{\cdot F_*^ec}  F_*^eR
+            \]
+hit it with local cohomology
+
+            \[
+            H^d_{\mf m}(R)\xrightarrow{F^e}  H^d_{\mf m}(F_*^eR)\xrightarrow{\cdot F_*^ec}  H^d_{\mf m}(F_*^eR)
+            \]
+
+        and remember that by the base change theorem that $H^d_{\mf m}(F_*eR)\cong H^d_{\mf m}(R)$. This is exactly the map that appeared in the definition of $F$-rationality! So if $R$ is SFR, then the upstairs map splits, which by functoriality will force a splitting to exist downstairs, and so in particular that map is injective.
+                &nbsp; &#9632;
+            </p>
+            <p><b>Proof of #3:</b>
+                If $\dim R=0$, then $F$-rational implies reduced implies field. Clearly normal! 
+            </p>
+            <p>
+                If $\dim R\gt 0$, want to use Fact 19.8. Let $I=\langle x \rangle$ be a height one principal ideal (so, $x\in R^\circ$). Let $y\in \overline I$. 
+                We want to show that in fact $y\in I$. 
+                Using the Fact 19.9, there exists $n$ such that $\langle x,y\rangle^{n}\langle x\rangle^m = \langle y,x\rangle^{n+m}$ for all $m\gt 0$.
+                Thus 
+                \[x^n y^m\in \langle x,y\rangle^n\langle x\rangle^m \subset \langle x^m\rangle\] 
+                for all $m\gt 0$. In particular, $x^ny^{p^e}\in (x^{p^e})$ for all $e$.
+            </p>
+            <p>
+                Extending $x$ to a full sop $x,x_2,\ldots, x_d$ of $R$, we can take a Cech class $\eta_t = [\frac{y}{xx_2^t\cdots x_d^t}]$.
+                Thus
+                \[
+                x^n F^e(\eta_t) = \left[  \frac{x^n\cdot y^{p^e}}{x^{p^e}x_2^{tp^e}\cdots x_d^{tp^e}}  \right] = 0
+                \]
+                because the numerator is contained in the ideal generated by the factors of the denominator.
+            </p>
+            <p>            
+                Since F-rational, $\eta_t=0$ for all $t$, and thus by CM, $y\in \langle x, x_2^t,\ldots, x_d^t\rangle$ for all $t$, 
+                therefore $y\in \langle x\rangle$ (e.g., by using Krull's intersection in $R/x$) and $\langle x\rangle$ is integrally closed as desired.
+                &nbsp; &#9632;
+            </p>
+        </div>
+
+<h3 id="03-26">Mar 26th</h3>
+
+<p>
+Now that you have seen abstractly how F-rational and F-injective fit into the singularities picture, it would be nice to be able to do more examples! 
+We have checked by hand that a polynomial ring is F-injective but $k[x^2,x^3]$ is not. 
+We can also use Fedder or Glassbrenner to show that a ring is F-injective or F-rational via the stronger statements of F-splitting and SFR, respectively... but what do we do if a ring is F-injective but not F-split? (Fedder would fail). 
+Are there even any such rings? Now we develop some tools to explore this.
+</p>
+
+<div class="defn">
+<p><b>Definition 20.1:</b>
+Suppose $\mc P$ is a property of local rings. Say <em>$\mc P$ deforms</em> (or <em>$\mc P$ behaves well under deformation</em>) if whenever $(R,\mf m)$ is a local ring with $f\in \mf m$ a nzd such that $R/(f)$ has $\mc P$, then $R$ also has $\mc P$.
+</p></div>
+
+<p>As an example, we can restate the following 906 fact in this new language:</p>
+<div class="thm">
+<p><b>Proposition 20.2:</b>
+Cohen-Macaulayness deforms: you saw in 906 an even stronger statement, that $R$ is CM if and ONLY if $R/f$ is CM.
+</p></div>
+
+
+<div class="thm">
+<p><b>Fact 20.3:</b>
+For any zero-dimensional local ring $(S,\mf m)$, the extension $(0:\mf m)\hookrightarrow S$ is essential. Further, for a local ring $(R,\mf m)$ of ANY dimension $d$, fix an sop $f_1,\ldots, f_d$. Then the map
+\[
+\left\{ \left[\frac{r}{f_1^t\cdots f_d^t}\right]\: \bigg| \: t\in \bb N,\ r\in \langle f_1^t,\ldots, f_d^t\rangle:\mf m    \right\}
+    \hookrightarrow 
+H^d_{\mf m}(R)
+\]
+is essential.
+</p></div>
+<p><b>Proof:</b>
+
+Following the hinted solution method, this (basically) ends up being proven on HW4\#4.
+&nbsp; &#9632;
+</p>
+
+<div class="thm">
+<p><b>Theorem 20.4:</b>
+Let $(R,\mf m,k)$ be a CM local char $p$ and $f\in \mf m$ a nzd. If $R/f$ is F-injective then so is $R$. In particular, the property $\mc P=$ (F-injective + CM) deforms.
+</p></div>
+<p><b>Proof:</b>
+Let $d=\dim R$, so that $d-1 = \dim (R/f)$.
+Consider the commutative diagram
+
+(imagine a nice diagram)
+
+and hit it with local cohomology LES to get the following commutative diagram:
+    (imagine a nice diagram; sorry tikzcd does not work with mathjax hence the diagrams not here yet)
+    </p>
+    <p>
+It suffices to show the map $x^{p-1}F$ is injective (since if $F$ fails injectivity then certainly this map will also fail). We proceed by contradiction.
+    </p>
+    <p>
+    Since $f$ is a nzd, can extend to a sop $f=f_1, f_2,\ldots, f_d$. If this map fails injectivity, then since the extension above is essential, there exists a $t$ and an $r\in \langle f_1^t,\ldots, f_d^t\rangle:\mf m$ such that the non-zero element $\left[\frac{r}{(\prod f_i)^t}\right]$ is in the kernel, i.e., has $\left[\frac{f^{p-1}r^p}{(\prod f_i)^{tp}t}\right]$. 
+    But since $f\in \mf m$, we know that $fr \in \langle f_1^t,\ldots, f_d^t\rangle$ and thus the image under the $\cdot f$ map is zero and so this must come from $H^{d-1}_{\mf m}(R/f)$. 
+    However, by commutativity this means that going down then right maps to zero, and F-injectivity means that the original element is zero, contradiction.
+    </p>
+    <p>
+    For the ``in particular'', note that if we instead start with just assuming $R/f$ is CM+F-inj, then the other direction of the 906 theorem gets us that $R$ is CM, and what we just proved now gives us $R$ is F-inj.
+    &nbsp; &#9632;
+</p>
+
+<div class="thm">
+<p><b>Fact 20.5:</b>
+Let $S$ be a noetherian ring, and let $A$ be an $s\times r$ matrix of ring elements with $r \ge s$ such that $I_t(A)$ is a proper ideal. Then
+<ul>
+<li> $\hght(I_t(A))\le (r-t+1)(s-t+1)$ </li>
+<li> $\depth_I(S)\le r-s+1$     </li>
+</ul>
+</p></div>
+<p>Reference: Eagon-Northcott 1962, "Ideals defined by matrices and a certain complex associated with them", Section 5 Thm 1 + Section 6 Thm 3.</p>
+
+<div class="thm">
+<p><b>Fact 20.6:</b>
+
+Let $S$ be a noetherian ring, let $A$ be an $s\times r$ matrix of ring elements with $r\ge s$ s.t. $I=I_t(A)$ is a proper ideal and $\depth_{I}(S)=r-s+1$. Then $\pd_S(S/I) = r-s+1$.
+</p></div>
+
+<p>Reference: Eagon-Northcott 1962, "Ideals defined by matrices and a certain complex associated with them", 1st theorem in introduction.</p>
+
+<div class="thm">
+<p><b>Theorem 20.7:</b>
+Let $S=k[x,y,z,u,v]_{\mf m}$, and let 
+\[
+I:= I_{2}\begin{pmatrix}
+x^n &amp; z &amp; v\\
+u   &amp; z &amp; y^n
+\end{pmatrix}
+\]
+Let $R=S/I$. Then $R$ is CM of dimension 3, and $R$ is F-injective.
+</p></div>
+<p><b>Proof:</b>
+<em>CM+dim:</em>
+Applying the fact to our case, we get that $\hght(I)\le (3-2+1)(2-2+1)=2$ and that $\depth_I(S)\le 3-2+1=2$. 
+Note that $\depth_I(R)\ge2$, because $uv-x^ny^n$ is irreducible and thus $uv-x^ny^n, z(u-x^n)$ is a regular sequence. However EN gives that 2 is an upper bound, thus $\depth(I)=2$ and so also $\hght(I)=2$ and $\dim(R)=3$.  Now second fact gives that $\pd = 3-2+1=2$, and so Auslander--Buchsbaum--Serre gives that since our ambient ring is regular that $\depth(R) = 5-2=3$. But the height fact gives that $\dim(R)=3$. Thus our ring is CM.
+</p>
+<p>
+<em>F-injective</em>
+We'll use the above deformation theorem twice: By CM-ness, we know $x,y$ is a regular seqence on $R$.
+Now we want to show that $R/(x,y)$ is F-injective. If we do that, by deformation once we get $R/x$ is F-injective, and then that $R$ is F-injective.
+</p>
+<p>
+Note that $I+\langle x,y\rangle = \langle x,y, uz, uv, vz\rangle$. This is a squarefree monomial ideal, which we proved a while ago (using Fedder) is always F-split. And  F-split implies F-injective.
+&nbsp; &#9632;
+</p>
+
+<div class="thm">
+<p><b>Theorem 20.8</b>
+When $p\le n$, the determinantal ring $R$ above is NOT F-split. 
+</p></div>
+<p><b>Proof:</b>
+Appears as HW5#5.
+&nbsp; &#9632;
+</p>
+
+<div class="thm">
+<p><b>Corollary 20.9:</b>
+F-splitting does NOT deform in general.
+</p></div>
+<p><b>Proof:</b>
+If F-splitting did deform, then since the ring $R/(x,y)$ we encountered in the proof of F-injectivity is F-split and $x,y$ is a regular sequence, the same deformation argument would give that $R$ is F-split. But (as you will see on HW) Fedder fails. Contradiction.
+&nbsp; &#9632;
+</p>
+
+
+<h3 id="upcoming">Upcoming</h3>
+<p>Applications of F-singularities! #1 is an application to combinatorics (that the number of magic squares grows like a polynomial). #2 is an application to char 0---we will learn "reduction to char p" and see an example or two of how it can be useful</p>
+
+<!-- 
+&nbsp; &#9632;
+ -->
 
 <p>&nbsp;</p> 
     </main>

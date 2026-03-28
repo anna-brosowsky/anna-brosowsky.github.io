@@ -57,7 +57,7 @@
 Remember you are allowed to discuss with classmates (or an AI tool), but that you need to tell me who/what you discussed with + the final submitted writeup should be your own work.
 
 
-\begin{enumerate}[itemsep=3em]
+\begin{enumerate}[itemsep=1.5em]
 
 \item (Exercise 4.14 of [SS]) Write $K(R)$ for the total ring of fractions. A reduced Noetherian ring $R$ of characteristic $p > 0$ is called
 \emph{weakly normal} if $x\in K(R)$ and $x^p \in R$ implies that $x\in R$. Any ring is
@@ -99,7 +99,13 @@ Suppose further that $R$ is reduced. Prove that if $Q \subset R$ is a minimal pr
 \[
 I = \langle g \: | \: g^p \in I^{[p]}\rangle.
 \]
-\item There exists an s.o.p. $f_1,\ldots, f_d$, such that the ideal $I=\langle f_1,\ldots, f_d\rangle $ has\footnote{Hint: Prove for any zero-dimensional local ring $(S,\mf m)$ that the extension $(0:\mf m)\hookrightarrow S$ is essential.}
+\item There exists an s.o.p. $f_1,\ldots, f_d$, such that the ideal $I=\langle f_1,\ldots, f_d\rangle $ has\footnote{Hint: Prove for any zero-dimensional local ring $(S,\mf m)$ that the extension $(0:\mf m)\hookrightarrow S$ is essential. Then use this to prove that for a local ring $(R,\mf m)$ of ANY dimension $d$ and an sop $f_1,\ldots, f_d$, that the map
+\(
+\left\{ \left[\frac{r}{f_1^t\cdots f_d^t}\right]\: \bigg| \: t\in \bb N,\ r\in \langle f_1^t,\ldots, f_d^t\rangle:\mf m    \right\}
+    \hookrightarrow 
+H^d_{\mf m}(R)
+\)
+is essential. (Or, just do the variant of this where you restrict to the submodules where your denominators use a  fixed power of $t$ in both source and target.)}
 \[
 I = \langle g \: | \: g^p \in I^{[p]}\rangle.
 \]
