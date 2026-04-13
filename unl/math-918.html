@@ -84,6 +84,8 @@ Here are the two general references for the course.
     <ul><li>Due on Friday March 28th at midnight (three weeks because of spring break!). Submit on Gradescope.</li></ul></li>
 <li> Homework 5: [<a href="../Files/unl/math-918_hw5.pdf">PDF</a>] and [<a href="../Files/unl/math-918_hw5.tex">TeX</a>] + [<a href="../Files/unl/math-hw.sty">math-hw.sty</a>] (style file needed to compile! same as last week)
     <ul><li>Due on Saturday April 11th at midnight. Submit on Gradescope.</li></ul></li>
+<li> Homework 6: [<a href="../Files/unl/math-918_hw6.pdf">PDF</a>] and [<a href="../Files/unl/math-918_hw6.tex">TeX</a>] + [<a href="../Files/unl/math-hw.sty">math-hw.sty</a>] (style file needed to compile! same as last week)
+    <ul><li>Due on Friday May 1st at midnight (three weeks due to late release!). Submit on Gradescope.</li></ul></li>
     <li>Not required but: below is the form to vote on your choice of bonus topic!</li>
 </ul>
 
@@ -2653,12 +2655,224 @@ And try to use faithful flatness or other nice properties of the extension $R_\k
 <h4>F-Finiteness</h4>
 <p>Now, new topic! First some theorem statements, then some definitions, then a proof (with a little more detail than in class).</p>
 
-<p>This section is still under construction!</p>
+
+
+<div class="defn">
+<p><b>Definition 23.4:</b>
+Let $R$ be a $k$-algebra. Then $R$ is \emph{geometrically regular over $k$} if $k'\otimes_k R$ is regular for all finite field extensions $k'/k$.
+</p></div>
+
+<div class="thm">
+<p><b>Fact 23.5:</b>
+Let $R$ be a $k$-algebra.</p>
+<ul>
+<li> If $R$ is geometrically regular over $k$, then it is regular.</li>
+<li> If $k$ is perfect, then $R$ is regular iff it is geometrically regular over $k$.</li>
+<li> More generally, $R$ is geometrically regular over $k$ iff $k'\otimes_k R$ is regular for all finite purely inseparable extensions $k'/k$, iff $k^{perf}\otimes_k R$ is regular (where $k^{perf}$ is the unique purely inseparable field extension such that $k^{perf}$ is perfect).</li>
+</ul>
+</div>
+
+<div class="zb">
+<p><b>Example 23.6:</b>
+$R=\bb F_p(t)[x]/(x^p-t)$ is regular, but NOT geometrically regular over $\bb F_p(t)$---in fact, $\bb F_p(t^{1/p})\otimes_{\bb F_p(t)} R \cong \bb F_p(t)[x]/(x-t^{1/p})^p$ is not even reduced!
+</p><p>
+Sanity check: $R$ IS geometrically regular over $\bb F_p(t^{1/p})$, since in fact $R=\bb F_p(t^{1/p})$. So the ``over $k$'' bit of the definition does make a difference!
+</p></div>
+
+<div class="thm">
+<p><b>Fact 23.7:</b>
+$R=\bb F_p(t)[x,y]/(y^2-x^p+t)$ is regular but not geometrically regular over $\bb F_p(t)$. 
+</p></div>
+<p>A proof of this appears on HW 6, most of it done by you, and one hard step explained in the footnotes instead.</p>
+
+<div class="defn">
+<p><b>Definition 23.8:</b>
+Let $R$ be a Noetherian ring. Then $R$ is \emph{excellent} if $R$ satisfies all of the following:
+</p>
+<ol>
+<li> $R$ is \emph{universally catenary}, i.e., every finite type $R$-algebra is catenary.</li>
+
+<li> $R$ is J-2, i.e., every finite type $R$-algebra has open regular locus.</li>
+
+<li> For every $\mf p \in \Spec R$, the ``formal fibers'' $\wh{R_{\mf p}}\otimes_R \kappa(\mf p)$ of the completion are geometrically regular $\kappa(\mf p)$-algebras.</li>
+</ol>
+</div>
+
+<div class="zb">
+<p><b>Example 23.9:</b>
+Examples are:</p>
+<ul>
+<li> Fields, $\bb Z$, and Noetherian complete local rings.</li>
+<li> Anything finite type over an excellent ring is also excellent.</li>
+<li> Any localization of an excellent ring is excellent.</li>
+</ul>
+</div>
+
+<div class="thm">
+<p><b>Fact 23.10 (Kunz):</b>
+If $R$ is F-finite, then $R$ is excellent. Further, if $(R,\mf m,k)$ is local, then $R$ is F-finite if and only if $R$ is excellent and $k$ is F-finite.
+</p></div>
+
+<div class="thm">
+<p><b>Fact 23.11 [Gabber]:</b>
+If $R$ is F-finite, then $R$ is a homomorphic image of an F-finite regular ring. (In particular, $R$ admits a canonical module!)
+</p></div>
+
+<div class="thm">
+<p><b>Fact 23.12:</b>
+Let $M$ be a finitely generated $R$-module. Then 
+\[
+\left\{\mf p \in \Spec(R) \: | \: M_{\mf p} \textrm{ is free}\right\}
+\]
+is an open set in the Zariski topology.
+</p></div>
+<p>Reference:
+Matsumura Theorem 24.3
+</p>
+
+
+<div class="thm">
+<p><b>Fact 23.13:</b>
+Let $(R,\mf m, k)$ be an F-finite local domain. Then for all $e$, we have
+\[
+\rank_R(F_*^eR) = [F_*^ek:k] p^{e\dim R}.
+\]
+</p></div>
+
+<p>This section is still under construction! I need to add references for all these facts. </p>
+
+<h3 id="04-09">Apr 09</h3>
+
+<h4>An example of a "bad" regular ring, aka, why F-finite matters</h4>
+
+<div class="defn">
+<p><b>Definition 24.1:</b>
+Let $k$ be a field. A \emph{non-Archimedean norm} on $k$ is a function $|\cdot | : k\to \bb R_{\ge 0}$ (written multiplicatively) such that.
+<ul>
+<li> $|x|=0$ iff $x=0$;</li>
+<li> $|xy|=|x||y|$; and</li>
+<li> $|x+y|\le \max \{|x|,|y|\}$.</li>
+</ul>
+<p>
+The \emph{valuation ring of $k$} is the subring $k^\circ:= \{x\in k\: | \: |x|\le 1\}$.
+</p></div>
+
+<div class="defn">
+<p><b>Definition 24.2:</b>
+A \emph{non-Archimedean (NA) field} is a pair $(k,|\cdot|)$ of a field $k$ with non-Archimedean norm $|\cdot|$ such that
+<ul>
+<li> $k$ is complete with respect to the metric $d(x,y) = |x-y|$; and</li>
+<li>  the value group $|k^\times|$ is not the trivial group (i.e., there exists $0\ne x\in k$ such that $|x|\ne 1$)</li>
+</ul>
+</div>
+
+<div class="zb">
+<p><b>Example 24.3 (A char 0 NA field):</b> 
+The p-adic numbers: Let's construct one of the most famous examples of an NA field. 
+</p>
+<p>
+Fix prime $p$ and fix $0\lt c\lt 1$ in $\bb R$. (A ``stylish'' choice is $c=1/p$.) We'll construct a NA valuation on $k=\bb Q$. Write $r\in \bb Q^\times$ as $r=p^t\frac{a}{b}$ for $t\in \bb Z$ and $a,b\in \bb Z$ with $p$ not dividing either. Let  $\nu_p(r) = t$, and let $|r| = c^{\nu_p(r)} = c^t$. Then  $|\cdot|$ is a NA norm on $\bb Q$. 
+</p>
+<p>
+It also clearly has non-trivial value group, since $|p|=c^1\ne 1$. However, it is not complete!
+Consider the sequence $a_n = \sum_{i=0}^n p^i$. Then 
+\[
+d(a_n,a_{n+k}) = \left|\sum_{i=n+1}^{n+k} p^i\right|
+= |p^{n+1}| \left|\sum_{i=0}^{k-1} p^i\right| = c^{n+1}c^0.
+\]
+So this sequence is Cauchy. However, there is no limit point.
+</p>
+<p>
+The \emph{p-adic numbers} ares the field $\bb Q_p$, which is the (metric space) completion of $\bb Q$ with respect to this norm. It turns out that they look like formal Laurent series in $p$, i.e., a p-adic number is
+\[
+\sum_{i=t}^\infty b_i p^i
+\]
+for $t\in \bb Z$ and $b_i\in \{0,1,\ldots, p-1\}$. In particular, this is a char 0 NA field.
+</p></div>
+
+
+<div class="defn">
+<p><b>Definition 24.4:</b>
+Let $(k,|\cdot|)$ be a NA field. Fix integer $n\gt0$. The \emph{Tate algebra in $n$ variables over $k$} is the $k$-subalgebra
+\[
+T_n(k):= \left\{
+\sum_{\alpha \in \bb N^n} c_\alpha x^\alpha \: \big| \: c_\alpha \in k\textrm{ and } |c_\alpha|\to 0 \textrm{ as } \alpha_1+\cdots + \alpha_n \to \infty
+\right\}
+\subset k[[x_1,\ldots, x_n]]
+\]
+</p></div>
+
+<div class="thm">
+<p><b>Fact 24.5:</b>
+$T_n(k)$ is nice! It satisfies the following properties for all $n$:
+<br>
+Noetherian, 
+dimension $n$, 
+UFD, 
+regular, 
+excellent.
+</p></div>
+
+<p>However, in an F-singularity way $T_n(k)$ is NOT always nice. In particular:</p>
+<div class="thm">
+<p><b>Fact 24.6:</b>
+For every prime $p\gt 0$ there exists a NA field $(k,|\cdot|)$ of char $p$ such that 
+\[\hom_{T_n(k)}(F_*^e(T_n(k)), T_n(k))=0\]
+for all $e,n\gt 0$. In particular, this is a regular ring which is not SFR, nor even F-split.
+</p></div>
+
+<h4>F-purity</h4>
+
+
+<div class="defn">
+<p><b>Definition 24.7:</b>
+Let $g:M_1\to M_2$ be a map of $R$-modules. Say $g$ is \emph{pure} if $g\otimes \id_N : M_1\otimes_R N \to M_2\otimes_R N$ is injective for every $R$-module $N$.
+</p></div>
+
+<div class="thm">
+<p><b>Lemma 24.8:</b>
+Let $g:M_1\to M_2$ and $h:M_2\to M_3$. Then $g$ and $h$ pure implies $h\circ g$ pure. s a partial converse, $h\circ g$ pure implies $g$ pure.
+</p></div>
+
+<p>TODO insert proof!</p>
+
+<div class="defn">
+<p><b>Definition 24.9:</b>
+A (char $p$) ring $R$ is \emph{F-pure} if the map $F:R\to F_*^eR$ is a pure map for some/equivalently all $e\gt 0$.
+</p></div>
+
+
+<p>How do we check if something is pure?</p>
+
+<div class="thm">
+<p><b>Fact 24.10:</b>
+Let $(R,\mf m,k)$ local,  $M$ an $R$-module, $g:R\to M$ an $R$-module map. Then $g$ is pure if and only if $E_R(k) \to M\otimes_R E_R(k)$ is injective.
+</p></div>
+
+<div class="thm">
+<p><b>Lemma 24.11:</b>
+If $R\to S$ is a faithfully flat $R$-algebra map, then $R\to S$ is pure.
+</p></div>
+<p><b>Proof:</b>
+Will appear on HW6, at least in the local case.
+</p>
+
+<div class="thm">
+<p><b>Theorem 24.12:</b>
+If $R$ is regular (of char p), then $R$ is F-pure.
+</p></div>
+
+<p><b>Proof:</b>
+By Kunz, $R\to F_*R$ is flat (and thus faithfully flat). By the lemma, this map is pure.
+&nbsp; &#9632;
+</p>
+
+
+<p>This section still under construction! Missing some proofs/refs.</p>
 
 <h3 id="upcoming">Upcoming</h3>
-<p>
-    Wrapping up reduction to char p; start of F-finiteness: partial proof that F-finite rings are excellent, + the "almost" converse; F-finite rings are quotients of F-finite regular rings, seeing (but not proving) an example of a regular but non F-finite ring which fails many of our earlier properties of regular rings.
-</p>
+
+<p>Tight closure and Frobenius closure!</p>
 
 <!-- 
 &nbsp; &#9632;

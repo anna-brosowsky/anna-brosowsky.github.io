@@ -1,0 +1,124 @@
+\documentclass[11pt]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in, headheight=14.5pt]{geometry}
+\usepackage{math-hw}
+\pagestyle{fancy}
+\fancyhead[L]{Math 918}
+\fancyhead[R]{HW 6}
+
+\usepackage[margin=1in, headheight=14.5pt]{geometry}
+\usepackage{parskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% fonts
+\usepackage{calligra}
+\usepackage{mathrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{bbm}
+
+\usepackage{enumitem}
+\usepackage{hyperref}
+%\usepackage[colorlinks,  citecolor=green, linkcolor = black, urlcolor = cyan]{hyperref} % hyperlinks for cross-referencing; colorlinks is recommended because otherwise the boxes obscure the roman numerals; linkcolor is changed to blue after the table of contents (see firstpages.tex). As of 2021, red is not allowed by Rackham.
+\usepackage[nameinlink]{cleveref}
+%\usepackage{backref}
+\usepackage{url} % allow hyperlink in reference
+\usepackage[style=alphabetic,url=false,backref=true]{biblatex}
+\addbibresource{zotero-export.bib}
+\setlength{\droptitle}{-4em}
+
+
+\newtoggle{solution}
+\toggletrue{solution}
+
+
+\iftoggle{solution}{
+\includeversion{solnenv}
+\includeversion{commenv}
+}{
+\excludeversion{solnenv}
+\excludeversion{commenv}
+}
+
+\newtheorem{fact}{Fact}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+
+
+
+\title{Homework 6}
+%\author{Anna Brosowsky}
+\date{\vspace{-4em}}
+
+\begin{document}
+
+
+\maketitle\thispagestyle{fancy}
+
+Remember you are allowed to discuss with classmates (or an AI tool), but that you need to tell me who/what you discussed with + the final submitted writeup should be your own work.
+
+
+\begin{enumerate}[itemsep=5em]
+
+\item (Proof of Fact 22.4) Let $D$ be a finitely generated $\bb Z$-module, let $\mf m\subset D$ be a maximal ideal, and let $k=D/\mf m$.  
+\begin{enumerate}
+\item Prove that there is no embedding $\bb Z\hookrightarrow k$.
+\footnote{Hint: Noether normalization}
+
+
+\item Prove that $k$ has characteristic $p>0$, and further is a finite field.
+
+
+\end{enumerate}
+
+
+\item (Proof of weak generic freeness) Let $D$ be a noetherian domain, and $M$ an f.g. $D$-module. Prove there exists $c\ne 0$ in $D$ such that $D[1/c]\otimes_D M$ is $D[1/c]$ free.
+
+
+
+\item Let $g:M\to N$ be a map of $R$-modules. Prove that $g$ is pure if and only if $g_{\mf p}:M_{\mf p}\to N_{\mf p}$ is pure for all prime ideals $\mf p$.
+
+
+
+\item In this question, we see an application of the ``injective hull'' criterion for purity. 
+\begin{enumerate}[itemsep=1em]
+\item Let $\iota : M\hookrightarrow N$ be an embedding of $R$-modules. Prove that the following are equivalent:
+\begin{enumerate}
+\item The map $\iota$ is an essential extension (eaning for all $B\subset N$ non-zero submodules, $B\cap M \neq 0$)
+\item For all maps $\varphi:N\to N'$ of $R$-modules, we have $\varphi$ is injective iff $\varphi|_M$ is injective.
+\end{enumerate}
+
+\item Let $(R,\mf m,k)$ be a local ring, and let $h:R\to S$ be a faithfully flat $R$-algebra map. Prove that $R\to S$ is pure.\footnote{Hint: Build a commutative square that incorporates an essential extension, the tensoring that flatness helps with, and the tensoring that purity helps with. Use faithfulness to get info about the remaining side.}
+
+
+\end{enumerate}
+
+
+\newpage
+
+\item In this question we will show (most of the argument) that the ring $R=\bb F_p(t)[x,y]/\langle y^2-x^p+t\rangle$ for $p>2$ is regular, but not geometrically regular.\footnote{Technically, this argument only shows that $R$ is regular at point $\mf p$. What about checking regularity at all the other points? You'd use the \emph{Jacobian criterion for smoothness}. It looks ALMOST the same as the Jacobian criterion for regularity that you are used to, but remove the hypothesis algebraically closed, and replace ``regular'' with ``geometrically regular over $k$'' (i.e., with the map $\Spec R \to \Spec k$ being smooth). That would tell you that $\mf p$ is the only non-geometrically regular point, and so narrows down your check in part (a) to that single ideal.\\
+In part (b), the Jacobian criterion is not sufficient because the criterion doesn't tell you which specific field extensions cause failure of regularity, just that there is some finite field extension out there that is a problem.\\
+References: \url{https://stacks.math.columbia.edu/tag/01V9} and \url{https://stacks.math.columbia.edu/tag/038X}}
+\begin{enumerate}
+\item Explain why $\mf p = \langle y, x^p-t\rangle$ is a maximal ideal of $R$. Then prove that $R$ is regular at the point $\mf p$ , i.e., that $R_{\mf p}$ is a regular local ring.
+
+
+\item Prove that $R'=\bb F_p(t^{1/p})\otimes_{\bb F_p(t)} R$ is NOT a regular ring. Do this by finding a prime ideal $\mf q$ such that $R'_{\mf q}$ is NOT a regular local ring.
+
+
+\end{enumerate}
+
+\item (Tight \& Frobenius closure will be defined on 04/14; or see Def 12.1 of [MP].)\\
+Let $R=\bb F_p[x,y,z]/\langle x^3+y^3+z^3\rangle$.
+
+\begin{enumerate}
+\item Prove that $z^2\in \langle x,y\rangle ^*$.
+
+
+\item If $p\equiv 2 \mod 3$, prove that $z^2\in \langle x,y\rangle^F$.
+
+
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
