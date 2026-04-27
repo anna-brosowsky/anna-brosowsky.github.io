@@ -61,13 +61,8 @@ Here are the two general references for the course.
 </ul>
 
 <p>Office Hours: <b>Mon 1:30-2:30</b> and <b>Thurs 12:30-1:30</b>. Or stop by my office when my door is open.</p>
-<p><b>ON 04/08-04/10</b>: I will be out of town!
-<ul>
-<li>The usual Monday 04/06 office hour will continue normally.</li>
-<li>Thursday OH CANCELLED and instead moved to TUESDAY 04/07 12:30-1:30 (right after class).</li>
-<li>Adam will be subbing Thursday so class is in person, same time same place.</li>
-<li>If the change of office hours causes issues with HW 5, no worries! As always you can ask for an extension, and/or shoot me questions via email.</li>
-</ul>
+
+
 
 <h3>Homeworks</h3>
 <ul>
@@ -86,10 +81,8 @@ Here are the two general references for the course.
     <ul><li>Due on Saturday April 11th at midnight. Submit on Gradescope.</li></ul></li>
 <li> Homework 6: [<a href="../Files/unl/math-918_hw6.pdf">PDF</a>] and [<a href="../Files/unl/math-918_hw6.tex">TeX</a>] + [<a href="../Files/unl/math-hw.sty">math-hw.sty</a>] (style file needed to compile! same as last week)
     <ul><li>Due on Friday May 1st at midnight (three weeks due to late release!). Submit on Gradescope.</li></ul></li>
-    <li>Not required but: below is the form to vote on your choice of bonus topic!</li>
 </ul>
 
-<iframe width="640px" height="480px" src="https://forms.office.com/r/NDxYkev1mP?embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
 
 <h4>In-Class Handouts</h4>
 <ul>
@@ -150,8 +143,34 @@ Put everything from Mar 12 together to see why ALL SFR rings (which for us are a
     </dd>
     <dt><a href="#04-02">Apr 02</a></dt>
     <dd>Reduction to char p: Hochster-Roberts theorem that a subring of a polynomial ring with a "contracted" sop is a CM ring, statements of generic freeness.</dd>
+    <dt><a href="#04-07">Apr 07</a></dt>
+    <dd>
+    Wrapping up reduction to char p---Hochster's meta-theorem + a "style of result" and some examples when it is actually true. Start of F-finiteness: partial proof that F-finite rings are excellent, + the "almost" converse; F-finite rings are quotients of F-finite regular rings, 
+    </dd>
+    <dt><a href="#04-09">Apr 09</a></dt>
+    <dd>
+    Saw (without proof) an example of a regular but non F-finite ring which fails many of our earlier properties of regular rins.
+    Start of F-purity! Definion of pure, F-pure, + some basic statements.
+    </dd>
+    <dt><a href="#04-14">Apr 14</a></dt>
+    <dd>
+    Finished F-purity, including proving the injective hull criterion for checking purity, and saw that for F-finite rings, R is F-pure iff it is F-split.
+    Defined tight&amp; Frobenius closure.
+    </dd>
+    <dt><a href="#04-16">Apr 16</a></dt>
+    <dd>Test elements (for tight closure), tight closure of graded ideals, and a bunch of examples<br>
+    Under construction!
+    </dd>
+    <dt><a href="#04-21">Apr 21</a></dt>
+    <dd>Frobenius closure commutes with localization; tight closure does NOT commute with localization.
+        Defined F-regular and weakly F-regular; saw how closure operations (tight/Frobenius on all/parameter ideals) relate to the four F-singularities. In some cases we got an exact characetrization; in some cases only one direction.</dd>
+    <dt><a href="#04-23">Apr 23</a></dt>
+   <dd> 
+    Wrapped up tight closure: colon capturing, persistence, the char p version of Hochster-Roberts, and big balanced CM algebras. Stated Peskine-Szpiro vanishing (finite pd implies Tor's against $F_*^eR$ vanish) and proved the acyclicity lemma.<br>
+    Still under construciton!
+    </dd>
   <dt><a href="#upcoming">Upcoming</a></dt><dd>
-    Wrapping up reduction to char p; start of F-finiteness: partial proof that F-finite rings are excellent, + the "almost" converse; F-finite rings are quotients of F-finite regular rings, seeing (but not proving) an example of a regular but non F-finite ring which fails many of our earlier properties of regular rings.
+    Finish proof of Peskine-Szpiro vanishing, statements and (maybe?) some proofs related to Herzog's partial converse as well as Rodicio's theorem.
     </dd>
 </dl>
 
@@ -403,10 +422,11 @@ so take $\pi \circ F_*F^{e-1}$ as our splitting.  &nbsp; &#9632; </p>
 
 <p>It's stated there for motivation but it will take us a while to prove it. First we want to have a good understanding of what $\hom_S(F_*^eS,S)$ looks like, and how it relates to $\hom_R(F_*^eR,R)$. This will then help us figure out how a potential splitting of the Frobenius on $R$ might relate to one on $S$.</p>
 
+<div class="rmk">
 <p><b>Remark 5.5:</b> If $T$ is an $R$-algebra, then $\hom_R(T,R)$ has the structure 
 of a $T$-module via premultiplication: $(t\cdot \varphi)(s) = \varphi(ts) $.
 So, $\hom_R(F_*^eR,R)$ has the structure of an $F_*^eR$-module via premultiplication: $(F_*^er \cdot \varphi)(F_*^es) = \varphi(F_*^e(rs))$.</p>
-
+</div>
 
 <div class="thm"><p><b>Proposition 5.6:</b> 
 Let $k$ be an $F$-finite field, and let $S=$ either $k[x_1,\ldots, x_d]$, or the localization thereof at $\mathfrak m$, or $k[[x_1,\ldots, x_d]]$. 
@@ -449,10 +469,12 @@ $k$ is perfect means we don't have to worry about the $\lambda_i$ (a similar pro
 
 <h3 id="01-29">Jan 29</h3>
 
+<div class="rmk">
 <p><b>Remark 6.1:</b>
 In fact, $\hom_S(F_*^eS,S)$ is a free rank one $F_*^eS$ for any Gorenstein local ring $S$ (in particular, for any regular local ring). 
 See Remark 5.9 of [CdS] for a proof. 
 We'll use the regular case of this statement to be able to the following results for any regular local ring, not just polynomials/power series.</p>
+</div>
 
 <div id="fedder-containment-lemma" class="thm"><p><b>Proposition 6.2:</b>
 Let $S$ be an $F$-finite regular local ring and let $\Phi$ be the generator of $\hom_S(F_*^eS,S)$. Let $I$ and $J$ be ideals of $S$. Then
@@ -1272,7 +1294,7 @@ Which of the following $R$ are SFR? Assume whatever you want/need about $k$ in o
         </p></div>
 
 <p>Digression on minimal primes of monomial ideals:</p>
-<div class="thm">
+<div class="rmk">
 <p><b>Remark 14.1:</b>
 Suppose $I=\langle m_1,\ldots, m_t\rangle$ is a square-free monomial ideal in $k[x_1,\ldots, x_d]$, and write $m_i = x^{\alpha^{(i)}} = x_1^{\alpha^{(i)}_1}\cdots x_d^{\alpha^{(i)}_d}$. Then by using <a href="#colon-facts">Fact 10.2.3</a>, we can see that
 \[
@@ -1379,7 +1401,7 @@ Let $I$ be an ideal of $R$ and $M$ be an $R$-module. Then the <em>local cohomolo
 </ul>
 </p></div>
 
-<div class="thm">
+<div class="rmk">
 <p><b>Remark 14.5:</b>
 If $I$ has a generating set of length $c$, then by looking at the C&#780;ech complex we know that $H^i_I(M)=0$ for all $i\gt c$ and for all $R$-modules $M$. So by the converse, this means that if $H^i_I(M)$ is non-zero for some $i$ and some $M$, then EVERY generating set for $I$ has length at least $i$!
     This is useful because minimal generating sets don't have to have the same size (remember minimal just means under inclusion! Not minimum!), and it can be hard to know the size of the smallest possible minimal generating set.</p>
@@ -1492,7 +1514,7 @@ $H^i_{\mf m}(R)=0$ for all $i\gt \dim R$ and for all $i\lt \depth(R)$. Further, 
 <p>Proof under construction!</p>
 
 
-<div class="thm">
+<div class="rmk">
 <p><b>Remark 16.3:</b>
     If $(R,\mf m)$ is local, $M$ a finitely generated $\mf m$-torsion module, then $M$ is naturally an $\wh R$-module. To see how, take $s\in \wh R$ and $x\in M$. 
     By $\mf m$-torsion, there exists an $n$ such that $\mf m^nx=0$. 
@@ -1530,7 +1552,7 @@ i.e., we are looking at the graded pieces of the top local cohomology module and
 
 <p>Now, on to the Frobenius!</p>
 
-<div class="thm">
+<div class="rmk">
 <p><b>Remark 16.5:</b>
 We can get a natural Frobenius action on local cohomology. There are two different perspectives that are useful:
 <ol>
@@ -2349,7 +2371,7 @@ But the point is that as we vary over the OTHER maximal ideals we're still (hope
 Let $R=k[x_1,\ldots, x_n]$ be a polynomial ring over a field, let $A$ be a $k$-subalgebra of $R$ generated by homogeneous elements, and let $y_1,\ldots, y_d$ be a homogenous sop for $A$ such that for every $1\le i \le d-1$, we have $\langle y_1,\ldots, y_i\rangle R \cap A = \langle y_1,\ldots, y_i\rangle A$. Then $A$ is CM.
 </p></div>
 
-<div class="thm">
+<div class="thm" id="fact-22-2">
 <p><b>Fact 22.2:</b>
 The theorem is true when $k$ is char $p\gt0$.
 </p></div>
@@ -2659,7 +2681,7 @@ And try to use faithful flatness or other nice properties of the extension $R_\k
 
 <div class="defn">
 <p><b>Definition 23.4:</b>
-Let $R$ be a $k$-algebra. Then $R$ is \emph{geometrically regular over $k$} if $k'\otimes_k R$ is regular for all finite field extensions $k'/k$.
+Let $R$ be a $k$-algebra. Then $R$ is <em>geometrically regular over $k$</em> if $k'\otimes_k R$ is regular for all finite field extensions $k'/k$.
 </p></div>
 
 <div class="thm">
@@ -2687,10 +2709,10 @@ $R=\bb F_p(t)[x,y]/(y^2-x^p+t)$ is regular but not geometrically regular over $\
 
 <div class="defn">
 <p><b>Definition 23.8:</b>
-Let $R$ be a Noetherian ring. Then $R$ is \emph{excellent} if $R$ satisfies all of the following:
+Let $R$ be a Noetherian ring. Then $R$ is <em>excellent</em> if $R$ satisfies all of the following:
 </p>
 <ol>
-<li> $R$ is \emph{universally catenary}, i.e., every finite type $R$-algebra is catenary.</li>
+<li> $R$ is <em>universally catenary</em>, i.e., every finite type $R$-algebra is catenary.</li>
 
 <li> $R$ is J-2, i.e., every finite type $R$-algebra has open regular locus.</li>
 
@@ -2713,7 +2735,7 @@ Examples are:</p>
 If $R$ is F-finite, then $R$ is excellent. Further, if $(R,\mf m,k)$ is local, then $R$ is F-finite if and only if $R$ is excellent and $k$ is F-finite.
 </p></div>
 
-<div class="thm">
+<div class="thm" id="F-finite-Gabber">
 <p><b>Fact 23.11 [Gabber]:</b>
 If $R$ is F-finite, then $R$ is a homomorphic image of an F-finite regular ring. (In particular, $R$ admits a canonical module!)
 </p></div>
@@ -2747,7 +2769,7 @@ Let $(R,\mf m, k)$ be an F-finite local domain. Then for all $e$, we have
 
 <div class="defn">
 <p><b>Definition 24.1:</b>
-Let $k$ be a field. A \emph{non-Archimedean norm} on $k$ is a function $|\cdot | : k\to \bb R_{\ge 0}$ (written multiplicatively) such that.
+Let $k$ be a field. A <em>non-Archimedean norm</em> on $k$ is a function $|\cdot | : k\to \bb R_{\ge 0}$ (written multiplicatively) such that.
 <ul>
 <li> $|x|=0$ iff $x=0$;</li>
 <li> $|xy|=|x||y|$; and</li>
@@ -2793,7 +2815,8 @@ for $t\in \bb Z$ and $b_i\in \{0,1,\ldots, p-1\}$. In particular, this is a char
 
 <div class="defn">
 <p><b>Definition 24.4:</b>
-Let $(k,|\cdot|)$ be a NA field. Fix integer $n\gt0$. The \emph{Tate algebra in $n$ variables over $k$} is the $k$-subalgebra
+Let $(k,|\cdot|)$ be a NA field. Fix integer $n\gt0$. 
+The <em>Tate algebra in $n$ variables over $k$</em> is the $k$-subalgebra
 \[
 T_n(k):= \left\{
 \sum_{\alpha \in \bb N^n} c_\alpha x^\alpha \: \big| \: c_\alpha \in k\textrm{ and } |c_\alpha|\to 0 \textrm{ as } \alpha_1+\cdots + \alpha_n \to \infty
@@ -2814,7 +2837,7 @@ excellent.
 </p></div>
 
 <p>However, in an F-singularity way $T_n(k)$ is NOT always nice. In particular:</p>
-<div class="thm">
+<div class="thm" id="Tate-algebra-fails-F-split">
 <p><b>Fact 24.6:</b>
 For every prime $p\gt 0$ there exists a NA field $(k,|\cdot|)$ of char $p$ such that 
 \[\hom_{T_n(k)}(F_*^e(T_n(k)), T_n(k))=0\]
@@ -2826,53 +2849,779 @@ for all $e,n\gt 0$. In particular, this is a regular ring which is not SFR, nor 
 
 <div class="defn">
 <p><b>Definition 24.7:</b>
-Let $g:M_1\to M_2$ be a map of $R$-modules. Say $g$ is \emph{pure} if $g\otimes \id_N : M_1\otimes_R N \to M_2\otimes_R N$ is injective for every $R$-module $N$.
+Let $g:M_1\to M_2$ be a map of $R$-modules. Say $g$ is <em>pure</em> if $g\otimes \id_N : M_1\otimes_R N \to M_2\otimes_R N$ is injective for every $R$-module $N$.
 </p></div>
 
 <div class="thm">
 <p><b>Lemma 24.8:</b>
-Let $g:M_1\to M_2$ and $h:M_2\to M_3$. Then $g$ and $h$ pure implies $h\circ g$ pure. s a partial converse, $h\circ g$ pure implies $g$ pure.
+Let $g:M_1\to M_2$ and $h:M_2\to M_3$. Then $g$ and $h$ pure implies $h\circ g$ pure. As a partial converse, $h\circ g$ pure implies $g$ pure.
 </p></div>
 
-<p>TODO insert proof!</p>
+<button type="button" class="viewsoln">View Proof of Lemma 24.8</button>
+<div class="soln">
+    <p>
+    Let $N$ be an $R$-module, and consider
+    \[
+    (h\circ g)\otimes \id_N = (h\otimes \id_N) \circ (g\otimes \id_N) : M_1\otimes_R N \to M_2\otimes_R N\to M_3\otimes_R N.
+    \]
+    If the two maps are injective, then clearly their composite is. This holds for all $N$, so $h,h$ pure implies $h\circ g$ pure.
+    </p>
+    <p>
+    Conversely, if $h\circ g$ is pure then the composite with $N$ is injective, thus the first map must be injective. This holds for all $N$, so $g$ must be pure.
+    </p>
+</div>
+
 
 <div class="defn">
 <p><b>Definition 24.9:</b>
-A (char $p$) ring $R$ is \emph{F-pure} if the map $F:R\to F_*^eR$ is a pure map for some/equivalently all $e\gt 0$.
+A (char $p$) ring $R$ is <em>F-pure</em> if the map $F:R\to F_*^eR$ is a pure map for some/equivalently all $e\gt 0$.
 </p></div>
 
 
 <p>How do we check if something is pure?</p>
 
-<div class="thm">
-<p><b>Fact 24.10:</b>
-Let $(R,\mf m,k)$ local,  $M$ an $R$-module, $g:R\to M$ an $R$-module map. Then $g$ is pure if and only if $E_R(k) \to M\otimes_R E_R(k)$ is injective.
-</p></div>
 
 <div class="thm">
-<p><b>Lemma 24.11:</b>
+<p><b>Lemma 24.10:</b>
 If $R\to S$ is a faithfully flat $R$-algebra map, then $R\to S$ is pure.
 </p></div>
 <p><b>Proof:</b>
-Will appear on HW6, at least in the local case.
+Will appear on HW6, at least in the local case. Combine with some localization statements to see that it holds as stated here!
+&nbsp; &#9632;
 </p>
 
 <div class="thm">
-<p><b>Theorem 24.12:</b>
+<p><b>Theorem 24.11:</b>
 If $R$ is regular (of char p), then $R$ is F-pure.
 </p></div>
 
 <p><b>Proof:</b>
-By Kunz, $R\to F_*R$ is flat (and thus faithfully flat). By the lemma, this map is pure.
+By Kunz, $R\to F_*R$ is flat (and thus faithfully flat---recall that for $R\to S$ a flat map with $(R,\mf m)$ local, that it is fairthful iff $\mf mS\ne S$. But we know that $\mf m F_*^eR = F_*^e(\mf m^{[p^e]})$ which is clearly proper). 
+By Lemma 24.10, this map is pure.
 &nbsp; &#9632;
 </p>
 
 
-<p>This section still under construction! Missing some proofs/refs.</p>
+
+<h3 id="04-14">Apr 14</h3>
+
+<div class="thm">
+<p><b>Proposition 25.1:</b>
+Let $(R,\mf m,k)$ local,  $M$ an $R$-module, $g:R\to M$ an $R$-module map. Then $g$ is pure if and only if $E_R(k) \to M\otimes_R E_R(k)$ is injective.
+</p></div>
+<p><b>Proof:</b>
+This is exactly Proposition 2.2 of [MP]; see their proof.
+<!-- Further commentary on the direct limit thing: Suppose $\phi:N\to W$ is a map of $R$-modules, that $N=\displaystyle\lim_{\to}N_\alpha$, and that $\iota_\alpha:N_\alpha\to N$. 
+If $\phi$ is NOT injective, then let 
+-->
+&nbsp; &#9632;
+</p>
+
+<div class="thm">
+<p><b>Proposition 25.2:</b>
+Let $(R,\mf m,k)$ be local. Then $R$ is F-pure if and only if $\wh R$ is F-pure.
+</p></div>
+<p><b>Proof:</b>
+This is exactly Corollary 2.3 of [MP]; see their proof. 
+A reference for their isomorphism $E_R(k)\cong E_{\wh R}(k)$ is Theorem 5.79 of <a href="https://eloisagrifo.github.io/Teaching/ca2/ca2.pdf">Eloísa's Comm Alg 2 notes</a>. 
+&nbsp; &#9632;
+</p>
+
+<div class="thm">
+<p><b>Fact 25.3:</b>
+Let $\iota:R\to M$ be a pure map. If EITHER $R$ is complete local, OR if $M$ is f.g., then $R\to M$ is split.
+In particular, if $R$ is F-pure and is EITHER complete local OR is F-finite, then $R$ is F-split.
+</p></div>
+<p><b>Proof:</b>
+This is exactly Corollary 2.4 of [MP]; see their proof. 
+In class we only sketched this proof, but we noted that some key ideas were:
+</p>
+<ul>
+<li>
+    To prove something is split, it's easiest to show that $\hom_R(M,R)\to R$ via evaluation at $\iota(1)$ is surjective.
+</li>
+<li>
+    In the complete local case, use  Matlis duality (and the injective hull characterization).
+</li>
+<li>
+    Having $M$ f.g. means  we can commute localization with Hom, and this means we can reduce to local and then to complete case (using that completion is faithful flat in order to get to the complete case).
+</li>
+</ul>
+<p>
+&nbsp; &#9632;
+</p>
+
+
+<p>So: In the F-finite case, F-pure and F-split are the same, and this is why in talks you may hear people use these terms interchangeably.
+However, we know they are NOT the same in the non-F-finite case---Theorem 24.11 on regular implies F-pure had no finiteness assumptions, 
+which means the rings from <a href="#Tate-algebra-fails-F-split">Fact 24.6</a> are F-pure (since they are regular) but are NOT F-split (because $\hom_R(F_*^eR,R)=0$).
+</p>
+
+<h4>Tight Closure</h4>
+
+<div class="defn">
+<p><b>Definition 25.4:</b>
+Let $I\subset R$ be an ideal. The <em>Frobenius closure</em> of $I$ is
+\[
+I^F = \{z\in R \: | \: z^{p^e}\in I^{[p^e]}\ \forall e \gg 0\}.
+\]
+The <em>tight closure</em> of $I$ is
+\[
+I^* = \{z\in R \: | \: \exists  c\in R^\circ \textrm{ such that } cz^{p^e}\in I^{[p^e]} \ \forall e\gg 0\}.
+\]
+</p></div>
+
+<div class="thm">
+<p><b>Proposition 25.5:</b> Let $I\subset R$ be an ideal. Then
+\[
+I^F = \{z\in R \: | \: \exists e\gt 0\textrm{ such that } z^{p^e}\in I^{[p^e]}\}.
+\]
+In other words, it suffices to find a single large $e$ instead of having to check all of them $e$.
+</p></div>
+<p><b>Proof:</b>
+It suffices to show that if $z^{p^e}\in I^{[p^e]}$, that $z^{p^{e+1}}\in I^{[p^{e+1}]}$ (since we can then iterate to get all higher $e$).
+Now suppose that $z^{p^e}\in I^{[p^e]}$. Then
+\[
+    z^{p^{e+1}} = (z^{p^e})^p \in (I^{[p^e]})^{[p]} = I^{[p^{e+1}]}
+\]
+as desired. &nbsp; &#9632;
+</p>
+
+
+<p><em>Warning:</em> We canNOT do the same replacement for the definition of tight closure. 
+The problem is the $c$. 
+If we only needed to check a single $c$, we could just replace $c$ with something that worked for this specific $e$. 
+For a retroactive argument as to why, consider $R=k[x,y]$ and $I=\langle x\rangle$. From <a href="">Example on April 16th</a>, we know that $I^* = \langle x\rangle$.
+However, we see that taking $c=x^{p-2}$, that $ cx^2 = x^{p^2}\in I^{[p]}=\langle x^p\rangle$, even though $x^2\notin I^*$. 
+So having a $c$ and a single $e$ that works is clearly not sufficient to ensure that an element is in the tight closure.
+</p>
+
+<div class="thm">
+<p><b>Fact 25.6:</b>
+When $R$ is an excellent local domain (e.g., complete or F-finite local domain), then $z\in I^*$ if and only if there exists a $c\ne 0$ and a sequence $\{n_e\}$ in $\bb Z_{\gt0}$ such that $\lim_{e\to\infty}\frac{n_e}{p^e}=0$ and  $c^{n_e}z^{p^e}\in I^{[p^e]}$. 
+</p></div>
+<p>
+In fact, when $R$ is specifically a complete local domain, a  stronger statement holds:
+ the $c^{n_e}$ can be replaced by elements whose order grows "asymptotically strictly less than $p^e$".
+For a reference (and precise statement) for the stronger statement, see "Tight closure and elements of small order in integral extensions" by Hochster and Huneke, Theorem 3.1. 
+The version stated above follows directly from the stronger statement, plus the fact that for excellent reduced local rings that $z\in I^*$ if and only if $z\in (I\wh R)^*\cap R$.
+</p>
+
+<p>The following fact will help us understand the connection between tight closure and integral closure:</p>
+
+<div class="thm">
+<p><b>Fact 25.7:</b>
+Let $R$ be a ring of any characteristic and $I$ an ideal. 
+Then $z\in \overline I$ (the integral closure of $I$) 
+if and only if there exists $c\in R^\circ$ such that for all $n\gg 0$ we have $cx^n\in I^n$.
+</p></div>
+<p>Reference: Corollary 6.8.12 of Huneke+Swanson's textbook "Integral Closure of Ideals, Rings, and Modules".</p>
+
+<div class="thm">
+<p><b>Proposition 25.8:</b>
+Let $I\subset R$ an ideal. Then
+$I\subset I^F\subset I^* \subset \overline I$.
+</p></div>
+
+
+<div class="thm">
+<p><b>Theorem 25.9:</b>
+<!-- Let $R$ be an $\bb N^r$-graded ring, and let $I$ be a homogeneous ideal. Then $I^F$, $I^*$, and $\overline I$ are all homogeneous ideals.
+-->
+Under construction!
+</p></div>
+
+<p>Recall that $I$ is <em>homogeneous</em> if any of the following equivalent statements hold:</p>
+<ol>
+<li>There exists a generating set for $I$ composed of homogeneous ring elements.</li>
+<li>$I=\bigoplus I_\alpha$, where $I_\alpha = I\cap R_\alpha$ (and where $R=\bigoplus R_\alpha$ is the decomposition of $R$ into graded pieces)</li>
+<li>Let $z=\sum z_\alpha$ be the decomposition of ring element $z$ into its graded pieces, where $\deg z_\alpha=\alpha$. Then $z\in I$ if and only if $z_\alpha\in I$ for all $\alpha$.</li>
+</ol>
+
+<p><b>Proof (for Frobenius closure):</b>
+Since $I$ is homogeneous, it has a homogeneous generating set. Taking $p^e$-th power of an element $f$ yields a homogeneous element $f^{p^e}$ of degree $p^e\cdot \deg f$. Thus $I^{[p^e]}$ is also homogeneous for all $e$.</p>
+<p>Now suppose $z\in I^F$ and write $z=\sum z_\alpha$ where $\deg z_\alpha=\alpha$.
+By definition, there exists an $e$ such that $z^{p^e} = \sum_\alpha z_\alpha^{p^e} \in I^{[p^e]}$. Since $I^{[p^e]}$ is homogeneous and since $\deg z_\alpha^{p^e}=p^e\alpha$ are all in distinct degrees, we have that $z_\alpha^{p^e}\in I^{[p^e]}$.
+Thus $z_\alpha\in I^F$, as desired.
+&nbsp; &#9632;
+</p>
+
+<p><b>Proof (for tight closure)</b> is postponed to next class!</p>
+
+<p><b>Reference (for integral closure)</b> is Corollary 5.2.3 of Huneke+Swanson's textbook "Integral Closure of Ideals, Rings, and Modules".</p>
+
+
+<h3 id ="04-16">Apr 16</h3>
+
+<p><em>Note</em> that some corrections and clarifications have been made! In particular, everything else will be clearest if we define tight closure test elements to be not in any minimal prime to start out with.
+Also, in some cases we needed to add "domain". 
+</p>
+
+
+<div class="defn">
+<p><strong>Definition 26.1:</strong> 
+Let <span
+class="math inline">\(R\)</span> be a char <span
+class="math inline">\(p\)</span> ring. Then <span
+class="math inline">\(c\in R\)</span> not in any minimal prime is a <em>test element (for tight
+closure)</em> if for all ideals <span class="math inline">\(I\)</span>
+and all <span class="math inline">\(u\in I^*\)</span>, we have <span
+class="math inline">\(cu^{p^e}\in I^{p^e}\)</span> for all <span
+class="math inline">\(e\)</span>.</p>
+</div>
+
+
+<div class="thm">
+<p><strong>Fact 26.2</strong>: </p>
+<ol>
+<li><p>If <span class="math inline">\(R\)</span> is F-finite +
+reduced then test elements exist. Specifically, for any <span
+class="math inline">\(c\in R^\circ\)</span> such that <span
+class="math inline">\(R[1/c]\)</span> is regular, there exists an
+integer <span class="math inline">\(N&gt;0\)</span> such that <span
+class="math inline">\(c^N\)</span> is a test element.</p></li>
+<li><p>If <span class="math inline">\(R\)</span> is a <span
+class="math inline">\(\mathbb{N}^r\)</span>-graded <b>domain</b>  such that test
+elements exist, then homogeneous test elements exist.</p></li>
+</ol>
+</div>
+<p>Reference for the first fact is Huneke's book "Tight Closure and its Applications", Theorem 2.1. 
+Reference for the second fact is Hochster+Huneke
+</p>
+
+<div class="rmk">
+<p><b>Remark 26.3:</b>
+To see why we need the word "domain" to get homogeneous test elements, consider the ring $\overline{\bb F_p}[x,y]/\langle xy\rangle$. 
+It is F-finite and reduced, so taking $c=x+y$ (noting that the Jacobian ideal is $\langle x,y\rangle$) gives an element whose power is a test element.
+However, EVERY $\bb N^2$-homogeneous element (except 1) is contained in a minimal prime! 
+Specifically, the $\bb N^2$ homogeneous elements are the monomials, but every non-unit monomial is contained in either $\langle x\rangle$ or in $\langle y\rangle$, which are our two minimal primes. 
+</p>
+<p>
+Further, notice that 1 can't be a test element because the Example below clearly shows that $x\in \langle x+y\rangle^*$, but homogeneity of the Frobenius closure still ensures that $x\notin \langle x+y\rangle^*$ (and thus $c=1$ cannot be a test element).
+</p></div>
+
+<p>Despite the addition of the word domain, our desired general result about homogeneity of the tight closure still holds! But we'll go about it a different way. First note the following:</p>
+
+<div class="thm">
+<p><b>Lemma 26.4:</b>
+Let $R$ be an $\bb N^h$-graded ring with $R_0$ containing a field $k$, and let $M$ be an $\bb N^h$-graded $R$-module.
+For $\underline c \in k^h$, define the degree-preserving $k$-linear map
+$\theta_{\underline c}:M\to M$ via $m=\sum m_\alpha \mapsto \underline \sum  c^{\alpha} m_\alpha$. 
+</p>
+<p>
+If $N\subset M$ is a $\bb N^h$-graded submodule, then $\theta_{\underline c}(N)=N$ for all $\underline c \in (k^\times)^h$. 
+If $k$ is an infinite field and $N$ is any submodule of $M$, then $N$ is $\bb N^h$-graded if and only if $\theta_{\underline c}(N)=N$ for all $\underline c\in (k^\times)^h$.
+</p></div>
+<p><b>Proof:</b>
+Note that $\theta_{\underline c}$ is invertible, with inverse $\theta_{\underline c^{-1}}$. 
+Further, if $N$ is a submodule then so is $\theta_{\underline c}(N)$. To see this, first notice it is closed under scaling by homogeneous elements: if $r_\beta \in R_\beta$ and $g\in N$
+then $r_\beta \theta_{\underline c}(g) = \sum_\alpha \underline c^\alpha r_\beta g_\beta = \theta_{\underline c}(\frac{1}{\underline c^\beta} r_\beta g)$.
+Then since it is a k-linear map, it is closed under addition as well. In particular, if $\theta_{\underline c}(N)\subset N$ for all $\underline c\in (k^\times)^h, then we automatically get that
+\[
+N = \theta_{\underline c^{-1}}(\theta_{\underline c}(N)) \subset \theta_{\underline c^{-1}(N) \subset N.
+\]
+</p>
+<p> 
+Now, if $N$ is graded, then for any $g\in N$ we have $g=\sum_\alpha g_\alpha$ its homogeneous decomposition and we know that $g_\alpha\in N$. 
+Thus $\theta_{\underline c}(g_\alpha) = \underline c^{\alpha} g_\alpha\in N$, and so $\theta_{\underline c}(g) = \sum_\alpha \theta_i{\underline c}(g_\alpha) \in N$. 
+Thus $\theta_{\underline c}(N) \subset N$.
+The commentary in the first paragraph then gives that this is an equality. 
+</p>
+<p>
+Now suppose $k$ is an infinite field. We proceed by induction on $h$ (the dimension of the multigrading).
+</p>
+<p> Suppose $h=1$, and consider $g=\sum_{i=a}^{a+d}g_i \in N$. 
+Our hypothesis means that for every $c\in k^\times$, we have 
+\[
+\theta_c(g) = \sum_{i=a}^{a+d} c^ig_i = c^a \cdot \sum_{i=0}^d c^i g_{i+a} \in N.
+\]
+Since $c$ was a unit, this means that $\sum_{i=0}^d c^i g_{i+a} \in N$. 
+Now choose $c_0,\ldots, c_{d}\in k^\times$, and consider the <em><a href="https://en.wikipedia.org/wiki/Vandermonde_matrix">Vandermonde matrix</a></em>
+\[
+V = V(c_0,\ldots, c_d) =
+\begin{bmatrix}
+1 &amp; 1 &amp; \cdots &amp; 1 \\
+c_0 &amp; c_1 &amp; \cdots &amp; c_d \\
+c_0^2 &amp; c_1^2 &amp; \cdots &amp; c_d^2 \\
+\vdots &amp; \cdots  &amp; \vdots \\
+c_0^d &amp; c_1^d &amp; \cdots &amp; c_d^d
+\end{bmatrix}
+\]
+which has determinant $\prod_{1\le i \lt j \le d} (c_i-c_j)$ (proof sketch: expansion by minors means this should by a homogeneous polynomial of degree $0+1+\cdots + d = \frac{d(d+1)}{2} = \binom{d+1}{2}$ in the $c_i$'s with integer coefficients. 
+Further, if $c_i=c_j$ then the determinant is zero because we have two duplicate columns. Thus $(c_i-c_j)$ divides the determinant,
+ensure that they are all "separate" roots, then check the degree).</p>
+<p>
+In particular, since $k$ is infinite we can choose $d+1$ distinct values which ensures that $V$ is invertible. 
+Applying the inverse, we see that the unit vectors are in the span of the columns of the Vandermonde, i.e., $g_i$ is in the $k$-vector space generated by $\theta_{c_0}(g), \ldots, \theta_{c_d}(g)$.
+Thus every homogeneous component $g_i$ of $g$ is in $N$ and so $N$ is homogeneous as desired.
+</p>
+<p>
+Now suppose the statement holds for grading group of dimension up to $h$, we want to show the statement holds for $h+1$. View $\bb N^{h+1}$ as $\bb N \times \bb N^h$. 
+Since $I$ is stablized by every $\theta_{\underline c}$, it is in particular stabilized by $\theta_{1,c_1,\ldots, c_h}$ and by $\theta_{c_0, 1,\ldots, 1}$ for any choice of $c_0,\ldots, c_h\in (k^\times)^h$. 
+By our inductive hyptohesis, $N$ is homogeneous in the $\bb N^h$ grading given by ignoring the first component of the degree.
+Now fix $a_1,\ldots, a_h$, and consider $N'$ the $(a_1,\ldots, a_h)$ graded piece. 
+To show that $N$ was homogeneous in the $\bb N^{h+1}$ grading, it suffices to show that $N'$ is homogeneous in the $\bb N$-grading induced by taking the only the first component of the degree.
+But $N'$ is invariant under $\theta_{c_0, 1,\ldots, 1}$ for all $c_1$, and thus again by the inductive hypothesis this is homogeneous.
+&nbsp; &#9632;
+</p>
+
+<div class="proof">
+<p><b>Proof of Thm 25.9 (tight closure of homogeneous is homogeneous):</b></p>
+<p>
+    First suppose that $R_0$ contains an infinite field.
+    Suppose $u\in I^*$ via $b\in R^\circ$ (so that $bu^{p^e}\in I^{[p^e]}$ for all $e\gg 0$). 
+    Write $b = \sum_\beta b_\beta$ and $u=\sum_\alpha u_\alpha$.
+    Then $\sum_{\alpha,\beta} b_\beta u_\alpha^{p^e}\in I^{[p^e]}$ and since $I^{[p^e]}$ is homogeneous, 
+    this means that for all possible degrees $\gamma$, we have that the degree $\gamma$ component  
+    $\sum_\alpha b_{\gamma-p^e\alpha}u_\alpha^{p^e}\in I^{[p^e]}$. 
+    So of course scaling by $c$
+    &nbsp; &#9632;
+</p>
+</div>
+
+
+<div class="lemma">
+    <p><strong>Lemma 26.5</strong>. If <span
+    class="math inline">\(R\)</span> is local and <span
+    class="math inline">\(I\)</span> a proper ideal (or <span
+    class="math inline">\(R\)</span> is $\mathbb N$-graded and <span
+    class="math inline">\(I\)</span> a homogeneous ideal with generators in positive degree), then <span
+    class="math inline">\(I^*\)</span> is a proper ideal.
+</p></div>
+
+
+<button type="button" class="viewsoln">View Proof of Lemma 26.5</button>
+<div class="soln">
+    <p><em>Proof.</em> 
+
+    <p>Local case: If <span class="math inline">\(c\)</span> is a unit, then
+    <span class="math inline">\(c1\in I^{[p^e]}\)</span> iff <span
+    class="math inline">\(I=R\)</span>. So assume <span
+    class="math inline">\(c\in \mathfrak{m}\)</span> and <span
+    class="math inline">\(I\subset \mathfrak{m}\)</span>, then <span
+    class="math inline">\(c\in I^{[p^e]}\)</span> for all <span
+    class="math inline">\(e\gg 0\)</span> means that <span
+    class="math inline">\(c\in \bigcap_e I^{[p^e]} \subset \bigcap_e
+    \mathfrak{m}^{p^e} = 0\)</span>. But that’s a contradiciton.</p>
+
+    <p>If <span class="math inline">\(R\)</span> is graded and 
+    and  <span class="math inline">\(I\)</span> is homogeneous with generators of positive degree, then $I\subset R_{\ge 1}$. 
+    Then
+    <span class="math inline">\(c\in I^{[p^e]}\subset R_{\ge p^e}\)</span> for all <span
+    class="math inline">\(e\gg 0\)</span> means that <span
+    class="math inline">\(c\in \bigcap_eI^{[p^e]} \subset\bigcap  R_{\ge p^e}\)</span>
+    for all <span class="math inline">\(e\)</span> means <span
+    class="math inline">\(c=\sum_i c_i\)</span> has $c_i$ in every degree simultaneously. 
+    But that’s impossible unless $c=\sum c_i=0$. ◻</p>
+</div>
+
+<div class="thm">
+<p><b>Lemma 26.6:</b> $\langle 0 \rangle^F = \langle 0\rangle^*= \sqrt{\langle 0 \rangle}$.
+</p>
+</div>
+
+    <button type="button" class="viewsoln">View Proof of Lemma 26.6</button>
+    <div class="soln">
+    If $u\in \langle 0\rangle^*$, then there exists $c\in R^\circ$ such that $cu^{p^e}=0$ for all $e\gg 0$. 
+    Since $c$ is not in any minimal prime, this means that $u^{p^e}$ IS in the intersection of all of the minimal primes for $e\gg 0$. 
+    Thus $u^{p^e}\in \sqrt{0}$, and thus $u\in \sqrt 0$.</p>
+
+    <p>
+    Conversely, for any $u\in \sqrt{\langle 0 \rangle}$, for $e\gg 0$ we have $u^{p^e}=0 \in \langle 0\rangle^{[p^e]}$. Thus $\sqrt 0 \subseteq I^F \subseteq I^* \subseteq \sqrt 0$ so we must have equality.
+    </div>
+
+<div class="zb">
+<p><strong>Example 26.7</strong>. For each of the following rings <span
+class="math inline">\(R\)</span> and ideals <span
+class="math inline">\(I\)</span>, compute <span
+class="math inline">\(I^F\)</span> and <span
+class="math inline">\(I^*\)</span>.</p>
+<p>Note: All of the examples are homogeneous, so it will always suffice
+to consider homogeneous elements. 
+Further, $I$ is always homogenous with generators in positive degree, so the closures are always proper ideals.</p>
+
+<ul>
+
+<li><p><span class="math inline">\(R=k[x]/x^n\)</span>, <span
+class="math inline">\(I=(x^m)\)</span> for <span
+class="math inline">\(n&gt;m\)</span>.</p>
+
+    <button type="button" class="viewsoln">View Solution</button>
+    <div class="soln">
+    <p>For any <span class="math inline">\(n\ge t\ge 1\)</span>, letting
+    <span class="math inline">\(e\)</span> s.t. <span
+    class="math inline">\(p^e\ge n\)</span>, we get <span
+    class="math inline">\((x)^{p^e}=0 \in (x^t)^{[p^e]} =
+    (x^{tp^e})=(0)\)</span>. However, <span
+    class="math inline">\(1^{p^e}\notin (x^{p^e})\)</span>. Therefore <span
+    class="math inline">\(I^F=(x)\)</span>.</p>
+    <p>This ring is local, so we must have <span
+    class="math inline">\(I^*\)</span> proper, and thus <span
+    class="math inline">\(I^*=(x)\)</span>.</p>
+    </div>
+</li>
+
+
+
+<li><p><span class="math inline">\(R=k[t^2,t^3]\subset k[t]\)</span>,
+and <span class="math inline">\(I=(t^2)\)</span>.</p>
+
+    <button type="button" class="viewsoln">View Solution</button>
+    <div class="soln">
+    <p>Since <span class="math inline">\(p\ge 2\)</span>, we see that <span
+    class="math inline">\((t^3)^p = t^{3p} \in \langle
+    t^{2p}\rangle\)</span>, because we can write <span
+    class="math inline">\(t^{3p} = t^p t^{2p}\)</span>. Thus $t^3\in I^*$.
+    Further everything
+    is proper and graded, so <span
+    class="math inline">\(I^F=I^*=(t^2,t^3)\)</span>.</p>
+    </div>
+</li>
+
+
+<li><p>(CHALLENGE, PARTLY A HW PROBLEM) <span
+class="math inline">\(R=\overline{\mathbb{F}_p}[x,y,z,]/\langle
+x^3+y^3+z^3\rangle\)</span>, ideal <span class="math inline">\(I=\langle
+x,y\rangle\)</span>. Hint: For <span class="math inline">\(I^F\)</span>
+depends on the characteristic! And $I^*$ differs when $p=3$!</p>
+
+
+    <button type="button" class="viewsoln">View Solution when $k$ is algebraically closed</button>
+    <div class="soln">
+    <p>
+    $p=3$ case: $z^3 = -(x^3+y^3) \in \langle x,y\rangle^{[3]}$, so $z\in I^F$. Thus $I^F=I^* = \langle x,y,z\rangle$.</p>
+    <p>
+    $p\equiv 2 \mod 3$ case: From the HW, you know $z^2\in I^F$. 
+    By Fact 26.8 below, $z\notin I^*$ since we are in a domain and $z$ isn't strictly greater than the smallest degree of a generator.
+    This traps the tight and Frobenius closure into being equal, so  $I^F = I^* = \langle x,y,z^2\rangle$.</p>
+    <p>
+    $p\equiv 1 \mod 3$ case: From the HW, you know that $z^2\in I^*$, and from Fact 26.8 you know that $z\notin I^*$. Thus $I^* = \langle x,y,z^2\rangle$. And by Theorem 27.5 below (I'm cheating, sorry!), $I^F=I=\langle x,y\rangle$ since $R$ is F-split.
+    </p>
+    </div>
+</li>
+
+
+<li><p><span class="math inline">\(R=k[x,y]/(xy)\)</span> and <span
+class="math inline">\(I=\langle x+y\rangle\)</span>.</p>
+
+    <button type="button" class="viewsoln">View Solution</button>
+    <div class="soln">
+    <p>Note that <span class="math inline">\(x^2=x(x+y)\)</span> and <span
+    class="math inline">\(y^2=y(x+y)\)</span> are both in <span
+    class="math inline">\(I\)</span>, and so the only graded things to check
+    are of degree 1. Consider <span class="math inline">\(ax+by\)</span> for
+    <span class="math inline">\(a,b\in k\)</span>. Now <span
+    class="math inline">\((a+b)^{p^e} =
+    a^{p^e}x^{p^e}+b^{p^e}y^{p^e}\)</span>. By degree reasons, since the
+    principal generator of <span class="math inline">\(I^{[p^e]}\)</span> is
+    of degree <span class="math inline">\(p^e\)</span>, there must exist a
+    homogeneous <span class="math inline">\(u\)</span> of degree zero such
+    that <span class="math display">\[a^{p^e}x^{p^e}+b^{p^e}y^{p^e}
+    = u(x^{p^e}+y^{p^e}).\]</span> But that clearly happens if and only if
+    <span class="math inline">\(a^{p^e}=b^{p^e}=u\)</span>, in which case
+    this element was already in <span class="math inline">\(I\)</span>. 
+    Thus
+    <span class="math inline">\(I^F=I=\langle x+y\rangle\)</span>.</p>
+    
+    <p>Note that taking <span class="math inline">\(c=x+y\)</span>, we see
+    that <span class="math inline">\(cx^{p^e} = x^{p^e+1}+x^{p^e}y =
+    x^{p^e+1} = (x+y)^{p^e}x \in I^{[p^e]}\)</span>. A similar argument
+    holds for <span class="math inline">\(y\)</span>, and thus <span
+    class="math inline">\(x,y\in I^*\)</span>. This is a maximal ideal, so
+    <span class="math inline">\(I^*=\langle x,y\rangle\)</span>.
+    </p>
+    </div>
+</li>
+
+<li><p><span class="math inline">\(R=k[x,y]\)</span> and <span
+class="math inline">\(I=\langle x \rangle\)</span>.</p></li>
+
+
+<button type="button" class="viewsoln">View Solution</button>
+<div class="soln">
+    <p>
+    We'll show that $y\notin I^*$, and this will let us conclude that $I^*=I^F = I = \langle x \rangle$.</p>
+    <p>
+    Suppose $cy^{p^e}\in \langle x^{p^e}\rangle$. Since $R$ is a UFD and both $x,y$ are irreducible, we must then have that $x^{p^e}$ divides $c$. But this means that $c\in R_{\ge p^e}$ for all $e$, which for degree reasons can only happen if $c=0$.
+    But then $c\notin R^\circ$. Thus $y\notin I^*$ as desired.
+    </p>
+</div>
+</ul>
+</div>
+
+<p>Here is a bonus fact that we didn't see in class, but helps make a quicker argument for the challenge above, at least when $k$ is algebraically closed:</p>
+
+<div class="thm">
+<p><b>Fact 26.8:</b>
+Let $R$ be an $\N$-graded domain such that $R_0=k$ is an algebraically closed field (of char $p$). 
+Let $J=\langle y_1,\ldots, y_n\rangle$ be an ideal generated by homogeneous elements, such that $\deg y_1=\cdots = \deg y_n=d$.
+Let $K$ be a homogeneous ideal such that every generator has degree strictly greater than $d$.
+If $z\in (J+K)^*$ is homogeneous of degree $\le d$, then $z\in J$.
+</p></div>
+<p><b>Reference:</b> Huneke's book, Theorem between exercise 4.4 and exercise 4.5.</p>
+
+<p>Food for thought (i.e., for next class): Why did I choose to put the rings in the order I did? What do you notice about the tight and Frobenius closures vs the original ideal as we go down the list?</p>
+
+<h3 id="04-21">Apr 21</h3>
+
+<div class="thm">
+<p><b>Theorem 27.1:</b>
+ Let $I\subset R$ an ideal, and $W$ a multiplicative set. Then
+</p>
+<ul>
+<li>
+    $(I^F)W^{-1}R = (IW^{-1}R)^F$
+</li>
+<li>
+    $(I^*)W^{-1}R \subseteq (IW^{-1}R)^*$
+</li>
+</ul>
+</div>
+<p><b>Proof:</b>
+Under construction! This was an exercise.
+</p>
+
+<div class="rmk">
+<p><b>Remark 27.2:</b>
+The containment for tight closure can be strict---after many years of people hoping to show that equality holds, Brenner+Monsky found a counterexample.
+</p></div>
+
+<div class="defn">
+<p><b>Definition 27.3:</b>
+$R$ is <em>weakly F-regular (WFR)</em> if every ideal is tightly closed. </br>
+$R$ is <em>F-regular</em> if $W^{-1}R$ is WFR for every multiplicative set.
+</p></div>
+
+
+<div class="rmk">
+<p><b>Open Question 27.4:</b>
+Does WFR imply F-regular? Does F-regular imply SFR? And the combo ("weak implies strong"): does WFR imply SFR?
+</p></div>
+
+<p>Note that Remark 27.2 does not answer the question, it just tells us we don't have an easy answer. 
+Even though we don't always have $(I^*)W^{-1}R = (IW^{-1}R)^*$, it's still possible that that $IW^{-1}R = (IW^{-1}R)^*$.<br>
+The second part of the question is motivated by the following theorem.
+</p>
+
+<div class="thm">
+<p><b>Theorem 27.5:</b>
+</p>
+<ol>
+<li>
+    If $R$ is regular, then every ideal is tightly closed (i.e., $R$ is weakly F-regular). 
+    In fact, $R$ is F-regular.
+</li>
+<li>
+    If $R$ is strongly F-regular, then every ideal is tightly closed (i.e., $R$ is weakly F-regular). In fact, $R$ is F-regular.
+</li>
+<li>
+    Let $R$ be local. Then $R$ is F-rational if and only if every parameter ideal is tightly closed. 
+</li>
+<li>
+    $R$ is F-pure if and only if every ideal is Frobenius closed.
+</li>
+<li>
+    Let $R$ be local. If every parameter ideal is Frobenius closed, then $R$ is F-injective.
+    If $R$ is CM + local, then $R$ is F-injective if and only if every parameter ideal is Frobenius closed. 
+</li>
+</ol>
+</div>
+
+<p>Of course, in the F-finite case part 1 is superseded by part 2. However, the proof is so cute that we should see it anyways!</p>
+
+<p>In part 5, the hypothesis CM really is necessary to get an if and only if. 
+<a href="https://arxiv.org/abs/1601.02524">Quy+Shimomoto</a> have a local non-CM F-injective ring (which is even F-finite!)
+which has a parameter ideal which is not F-closed.
+</p>
+
+<div class="thm">
+<p><b>Fact 27.6:</b>
+Let $\varphi:R\to S$ be a flat ring extension, and let $I,J\subset R$ be ideals.
+Then
+\[
+(I :_R J)S = (IS) :_S (JS).
+\]
+</p></div>
+
+<p>The next fact was NOT stated in class, but lets us avoid some of the "local" issues that came up.</p>
+
+<div class="thm">
+<p><b>Fact 27.7:</b>
+If $R_1$ and $R_2$ are weakly F-regular, then so is the ring $R_1\times R_2$.
+</p></div>
+
+<p><b>Proof of Thm 27.5 (F-singularities vs closures):</b>
+
+Under construction! Parts 1, 2, and 4 were an in-class exercise; part 5 was on a previous homework (before we knew what F-closure was called).
+
+</p>
+
+
+
+<h3 id="04-23">Apr 23</h3>
+
+<p>Wrapped up tight closure via stating some applications---this is SUCH a big topic that you could have an entire class on just this!
+So the following list is really just a small sampler.</p>
+
+<div class="thm">
+<p><b>Fact 28.1 (Colon Capturing):</b>
+Let $R$ be EITHER local and a homomorphic image of a CM local ring (e.g., F-finite local by <a href="#F-finite-Gabber">Gabber's Fact 23.11</a>), OR be an $\bb N$-graded domain which is a finitie type $k$-algebra.
+Let $\underline y$ be an sop (homogeneous in the graded case). 
+Then
+\[
+\langle y_1,\ldots, y_i\rangle : \langle y_{i+1}\rangle \subseteq \langle y_1,\ldots, y_i\rangle^* \quad \forall i.
+\]
+</p></div>
+<p>
+<b>Reference:</b>
+For the local case, Theorem 3.1 of Huneke's book.
+</p>
+
+<div class="thm">
+<p><b>Fact 28.2 (Persistence):</b>
+Let $R\to S$ a ring map, and assume that EITHER $R$ is essentially of finite type over an excellent local ring, OR that $R_{red}$ is F-finite.
+Let $I\subset R$ be an ideal.
+Then $(I^*)S \subseteq (IS)^*$.
+</p></div>
+<p><b>Reference:</b>
+Theorem 2.3 of Huneke's book. (In class I accidentally omitted the hypothesis on $R$, sorry! This fix basically lets us more generally resolve the issue we saw before for localization, where we need to worry about whether a $c\in R^\circ$ is still in $S^\circ$.)
+</p>
+
+
+<p><b>Proof of <a href="#fact-22-2">Fact 22.2</a> (a graded subring of a polynomial ring with a "contracted" sop is CM):</b>
+Recall that $R=k[x_1,\ldots, x_n]$, that $A\subseteq R$ is our graded subring, and that $\underline y$ is a homogeneous sop for $A$.</p>
+<p>
+Let $I = \langle y_1,\ldots, y_i\rangle\subset A$. By colon capturing, $I:y_{i+1}\subseteq I^*$.
+By persistence, $(I:y_{i+1})R \subseteq (I^*)R \subseteq (IR)^*$ (noting that even if $k$ is not F-finite, it is still excellent, and $A$ is a finite type $k$-algebra). 
+By Theorem 27.5.1, since $R$ is regular we have $(IR)^*=IR$. </p>
+<p>
+Thus $I:y_{i+1}\subseteq (y_1,\ldots, y_i)R \cap A = (y_1,\ldots, y_i)$ by assumption that the sop is contracted.
+This is exactly the statement that $A$ is CM.
+</p>
+
+<div class="thm">
+<p><b>Fact 28.3 (Briançon-Skoda, tight closure version):</b>
+
+</p></div>
+
+<div class="thm">
+<p><b>Fact 28.4 (big CM algebras &amp; tight closure):</b>
+Let $R$ be excellent local (e.g., complete local domain or F-finite+local). Assume that $\wh R$ is a domain (i.e., $R$ is <em>analytically irreducible</em>). 
+Let $I\subset R$ ideal and $u\in R$ element.
+Then $u\in I^*$ if and only if there exists a balanced big CM algebra $B$ for $R$ such that $u\in IB\cap R$.
+</p></div>
+<p><b>Reference:</b> Theorem 7.0 of Huneke's Tight closure and its Applications book.</p>
+
+<p>Recall that "big" means not-necessarily-f.g., and that "balanced" means EVERY sop is a regular sequence (since as many of you saw in the big CM-inar last year, once we are infinitely generated it is possible to have one sop be a regular sequence, but not have all sop be regular).
+</p>
+
+<div class="thm">
+<p><b>Fact 28.5 (big CM algebras exist):</b>
+Let $R$ be an excellent local domain (e.g., complete local domain or F-finite local domain) of char $p$. Then $R^+$ is a big CM algebra for $R$.<br>
+Here, $R^+$ is the <em>absolute integral closure</em> of $R$, i.e., the integral closure of $R$ inside an algebraic closure of $\Frac(R)$.
+</p>
+</div>
+
+<p>Finally, some vague thoughts:
+</p>
+<ul>
+    <li>We learned about solid algebras a while ago. There is a version of Fact 28.4 that works for solid algebras instead of balanced big CM algebras. This suggests something called <em>solid closure</em>, which can be different from tight closure, but which DOES make sense in char zero.</li>
+    <li>There are many other interesting applications of tight closure to homological things! Some of this came up in the big CM-inar last year.</li>
+</ul>
+
+<h4>Homological Algebra</h4>
+
+<div class="defn">
+<p><b>Definition 28.6:</b>
+The <em>Peskine-Szpiro</em> functors are $\mc F^e:\textrm{R-Mod}\to \textrm{R-Mod}$ via $M\mapsto M\otimes_R F_*^eR$, i.e., 
+base change along the $e$th Frobenius.
+</p></div>
+
+<p>
+We have seen this functor many times before, this is just our first time giving it a name! Remember there are two interesting functors floating around in char p: there is the exact $F_*^e$ functor, which is just decorating everything with an $F_*^e$.
+In contrast, the PS functors are rarely exact (and in fact are exact precisely when $R$ is regular, via Kunz's theorem).
+</p>
+
+<p>First we state our main theorem of the day, then state a key lemma. We proved the lemma as a series of exercises which we went over in class; we also stated some exercises working towards the theorem but those solutions got postponed until next week.</p>
+
+<div class="thm">
+<p><b>Theorem 28.7:</b>
+Let $M$ be an f.g. $R$-module with $\pd_R M\lt \infty$. Then 
+\[
+\Tor_i^R(M, F_*^eR)=0 \quad \forall i\ge 1.
+\]
+Further, if $P_\bullet\to M$ is a minimal free resolution of $M$ then $\mc F^e(P_\bullet)\to \mc F^e(M)$ is a minimal free resolution of $\mc F^e(M)$.
+</p></div>
+
+
+<div class="thm">
+<p><b>Lemma 28.8 (Acyclicity lemma):</b>
+Let $R$ be local and $0\to M_n\to \cdots \to M_0 \to 0$ be a complex of finitely generated $R$-modules with non-zero homology such that $\depth(M_i)\ge i$ for all $i$.
+Let $s=\max\{i\: | \: H_i(M_\bullet) \ne 0\}$.
+If $s\gt 0$, then $\depth(H_s(M_\bullet))\ge 1$.
+</p></div>
+
+<p>As a corollary, we get the "original" statement of the lemma:</p>
+
+<div class="thm">
+<p><b>Corollary 28.9:</b>
+Let $R$ be local and $0\to M_n\to \cdots \to M_0 \to 0$ be a complex of finitely generated $R$-modules such that for all $i\ge 0$, BOTH of the following conditions hold:</p>
+<ol>
+    <li>$\depth(M_i)\ge i$</li>
+    <li>Either $\depth(H_i(M_\bullet))=0$ or $H_i(M_\bullet)=0$.</li>
+</ol>
+<p>Then in fact for all $i\gt 0$, we have $H_i(M_\bullet)=0$.
+(In other words, item 2 is forced to always be in the second case except for possibly $i=0$).
+</p></div>
+
+
+<div class="zb">
+<p><b>Exercise 28.10:</b> Prove the acyclicity lemma. Do it via contradiction (so, assume that both $s\gt 0$ and $\depth(H_s(M_\bullet))=0$), and  via the following steps:
+</p>
+<ol>
+<li>
+    Let $Z_i = \ker(M_i\to M_{i-1})$ and $B_i = \im(M_{i+1}\to M_i)$ (so: subscripts based on which $M_i$ you live inside!). 
+    Rearranging the order if necessary, build some SES's: 
+    one involving $B_s, H_s(M_\bullet), Z_s$, and for all $0\le i \le n-s-1$, 
+    one involving $B_{s+i}, B_{s+i+1}, M_{s+i+1}$.
+</li>
+<li>
+    Prove the lemma in the case that $s=n$ <br>
+    (thanks to Cleve for pointing out after class that this case needs to be handled separately!).
+</li>
+<li>
+    Assuming $0\lt s \lt n$, prove by induction that $\depth (B_{s+i})=i-s+1$ for all $0\le i \le n-s-1$.
+</li>
+<li>
+    Put this together to prove the lemma.
+</li>
+</ol>
+<p>Solutions under construction!</p>
+
+<div class="zb">
+<p><b>Exercise 28.11:</b>
+Prove PS's theorem, via the following suggested outline:
+</p>
+<ol>
+<li>
+    Choose a good integer $s$ and choose a prime $\mf p\in \Ass(\Tor_s^R(M,F_*^eR))$. Localize at this prime.
+</li>
+<li>
+    Use the acyclicity lemma + Auslander-Buchsbaum to get the Tor vanishing statement..
+</li>
+<li>
+    Use the Tor vanishing statement to get the "further" statement that concretely relates a free resolution of $M$ with a free resolution of $\mc F^e(M)$.
+</li>
+</ol>
+</div>
+
+<p>Solution on Tuesday!</p>
 
 <h3 id="upcoming">Upcoming</h3>
 
-<p>Tight closure and Frobenius closure!</p>
+
+
+<p>Finishing the proof of PS's theorem, plus more statements (and maybe proofs??) of other cool homological applications.</p>
 
 <!-- 
 &nbsp; &#9632;
