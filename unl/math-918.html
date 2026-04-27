@@ -62,7 +62,7 @@ Here are the two general references for the course.
 
 <p>Office Hours: <b>Mon 1:30-2:30</b> and <b>Thurs 12:30-1:30</b>. Or stop by my office when my door is open.</p>
 
-
+<p><b>on MONDAY 04/27</b>: Office hours moved to AFTER the RTG seminar (i.e., 3:30-4:30) so that I can watch the Math in the City presentations. I will also be around my office all afternoon prior to the presentations, so feel free to stop by between noon-ish and 1:30pm as well</p>
 
 <h3>Homeworks</h3>
 <ul>
@@ -697,7 +697,9 @@ Show that $\Psi(\varphi)$ (i.e., $\varphi$ viewed as a map on $S/I$) is surjecti
       <ul><li>By default installed programs aren't actually accessible to you, you need to "module load" them first. For example, "module load python". Here, "apptainer" is a way to get weirder and more niche programs.</li></ul>
     </li>
     <li><div class="code">apptainer exec docker://unlhcc/macaulay2 M2</div>
-      <ul><li>This starts up M2, including "installing" it. The first time you do it, it might take a while (for me it took under 10 minutes, but more than 5). However, it will cache the result in something called a SIF file to make future loads faster! So if you ever see output messages about using cached SIF files, that's usually a good thing :)</ul></li></li>
+      <ul><li>This starts up M2, including "installing" it. The first time you do it, it might take a while (for me it took under 10 minutes, but more than 5). However, it will cache the result in something called a SIF file to make future loads faster! So if you ever see output messages about using cached SIF files, that's usually a good thing :)
+      </li></ul>
+    </li>
 </ol>
 <p>TADA! After this you should now be in M2 interactive mode.</p>
 
@@ -709,7 +711,8 @@ Show that $\Psi(\varphi)$ (i.e., $\varphi$ viewed as a map on $S/I$) is surjecti
     <li>The page now shows a list of files (or maybe is empty if it's your first time). In the upper right, there are some white and blue buttons. Use the blue Upload button to upload a new file (for example, the demo files from below).Or use "New File" to create a new file from scratch (for example, to copy paste some M2 code from the web version).
 </ol>
 <p>From this screen you can also create/edit files! The New File button is near the upload button, and is useful for copy-pasting M2 code from the web version. To edit an existing file, scroll down to it in the list and click the meatball menu (3 vertical dots). Both of these (new file or edit) open a file editor. Be sure to save in the upper left when done!</p>
-<p>Harder way: Use the scp (secure copy not slurm copy). From your laptops terminal, type<div class="code">scp /path/to/laptop/file username@swan.unl.edu:/work/math918/username</div></p>
+<p>Harder way: Use the scp (secure copy not slurm copy). From your laptops terminal, type<br>
+<span class="code">scp /path/to/laptop/file username@swan.unl.edu:/work/math918/username</span></p>
 
 <h4>Submitting an asynchronous M2 job to the HCC (aka submitting a batch script)</h4>
 <p>The files from class: [<a href="../Files/unl/helloworld.submit">Sample Batch Script</a>] +  [<a href="../Files/unl/demo.m2">demo.m2</a>]. Upload using instructions above!</p> 
@@ -1140,7 +1143,7 @@ If $S$ is a solid $R$-algebra, then in fact there exists $\theta\in \hom_R(S,R)$
     If $R$ is $F$-finite and regular then $R$ is a splinter.
 </p></div>
 
-<p>To see how to remove the $F$-finite assumption, see the proof of Corollary 3.6 of [MP]. The more general statement that regular rings (in any characteristic!) are splinters is called the <em>Direct Summand Conjecture</em>, because it's equivalently saying that regular rings are direct summands of any module-finite extension. Although  it's called the direct summand conjecture, this is actually now a theorem! In other words, a regular ring in ANY characteristic (including mixed) is a splinter, see  <a href="">Andre&#769;'s paper "La conjecture du facteur direct"</a>.</p>
+<p>To see how to remove the $F$-finite assumption, see the proof of Corollary 3.6 of [MP]. The more general statement that regular rings (in any characteristic!) are splinters is called the <em>Direct Summand Conjecture</em>, because it's equivalently saying that regular rings are direct summands of any module-finite extension. Although  it's called the direct summand conjecture, this is actually now a theorem! In other words, a regular ring in ANY characteristic (including mixed) is a splinter, see  <a href="">André's paper "La conjecture du facteur direct"</a>.</p>
 
 <div class="thm"><p><b>Fact 12.5</b> (Proved on HW3):
     Let $S=R_1\times R_2$. 
@@ -1174,7 +1177,7 @@ If $S$ is a reduced normal ring, then $S=\prod_{i=1}^nS_i$ is a finite product o
 <p>You will perhaps eventually see a proof of this in 906, but <a href="https://stacks.math.columbia.edu/tag/030C">here is a reference</a> (where we also recall that noetherian rings always have finitely many minimal primes, and that strongly $F$-regular rings are always reduced). </p>
 
 
-<div class="thm" id="SFR-direct-summand"><b>Theorem 12.9:</b>
+<div class="thm" id="SFR-direct-summand"><p><b>Theorem 12.9:</b>
 Let $R$ and $S$ be $F$-finiite rings such that $R$ is a direct summand of $S$. (In other words, $R\to S$ is a ring map that splits as an $R$-module map.) If $S$ is strongly $F$-regular then so is $R$.
 </p></div>
 
@@ -1205,13 +1208,13 @@ Let $R$ and $S$ be $F$-finiite rings such that $R$ is a direct summand of $S$. (
 
 <div class="thm">
 <p><b>Lemma 13.1:</b>
-Let $R$ be an $F$-finite ring.
+Let $R$ be an $F$-finite ring.</p>
 <ol>
     <li>If $R$ is $e$-F-split along $c$, then is $e+e'$-F-split along $c^{p^{e'}}$ for all $e'\ge 0$.</li>
     <li>If $R$ is eventually $F$-split along $c$, then $R$ is eventually $F$-split along $c^n$ for all $n$. 
         Specifically, if $R$ is $e$-F-split along $c$ then $R$ is $(e+\lceil \log_p n\rceil)$-F-split along $c^n$. </li>
 </ol>
-</p></div>
+</div>
 <p><b>Proof:</b>
     Let $\varphi:F_*^eR\to R$ be our map such that $\varphi(F_*^ec)=1$. 
     By <a href="">Corollary 9.4</a>, we know that $R$ is $F$-split and by <a href="">Proposition 4.8</a> 
@@ -1392,14 +1395,14 @@ Let $I$ be an ideal of $R$ and $M$ be an $R$-module. Then the <em>local cohomolo
 <p>Once we believe that those definitions are equivalent, we get the following very useful facts:</p>
 
 <div class="thm">
-<p><b>Facts 14.4:</b>
+<p><b>Facts 14.4:</b></p>
 <ul>
 <li>For all $i$, local cohomology $H^i_I(-)$ is a functor from $R$-modules to $R$-modules ((See this via definition 2).</li>
 <li>If we also write $I=\langle g_1,\ldots, g_a\rangle$, then $C&#780;(\underline f; M)$ and $C&#780;(\underline g; M)$ have the same (co)homology. 
     (See this because definitions 2,3,4 only depend on the ideal, not the generating set.) </li>
 <li>If $\sqrt J = \sqrt I$ then $H^i_I(M) = H^i_J(M)$. (See this by definition 2 because in fact $\Gamma_I(-)=\Gamma_J(-)$.)</li>
 </ul>
-</p></div>
+</div>
 
 <div class="rmk">
 <p><b>Remark 14.5:</b>
@@ -3222,6 +3225,7 @@ But $N'$ is invariant under $\theta_{c_0, 1,\ldots, 1}$ for all $c_1$, and thus 
 
     <button type="button" class="viewsoln">View Proof of Lemma 26.6</button>
     <div class="soln">
+    <p>
     If $u\in \langle 0\rangle^*$, then there exists $c\in R^\circ$ such that $cu^{p^e}=0$ for all $e\gg 0$. 
     Since $c$ is not in any minimal prime, this means that $u^{p^e}$ IS in the intersection of all of the minimal primes for $e\gg 0$. 
     Thus $u^{p^e}\in \sqrt{0}$, and thus $u\in \sqrt 0$.</p>
@@ -3388,7 +3392,7 @@ The containment for tight closure can be strict---after many years of people hop
 
 <div class="defn">
 <p><b>Definition 27.3:</b>
-$R$ is <em>weakly F-regular (WFR)</em> if every ideal is tightly closed. </br>
+$R$ is <em>weakly F-regular (WFR)</em> if every ideal is tightly closed. <br>
 $R$ is <em>F-regular</em> if $W^{-1}R$ is WFR for every multiplicative set.
 </p></div>
 
@@ -3596,6 +3600,7 @@ Let $R$ be local and $0\to M_n\to \cdots \to M_0 \to 0$ be a complex of finitely
     Put this together to prove the lemma.
 </li>
 </ol>
+</div>
 <p>Solutions under construction!</p>
 
 <div class="zb">
