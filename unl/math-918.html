@@ -3119,9 +3119,9 @@ If $k$ is an infinite field and $N$ is any submodule of $M$, then $N$ is $\bb N^
 Note that $\theta_{\underline c}$ is invertible, with inverse $\theta_{\underline c^{-1}}$. 
 Further, if $N$ is a submodule then so is $\theta_{\underline c}(N)$. To see this, first notice it is closed under scaling by homogeneous elements: if $r_\beta \in R_\beta$ and $g\in N$
 then $r_\beta \theta_{\underline c}(g) = \sum_\alpha \underline c^\alpha r_\beta g_\beta = \theta_{\underline c}(\frac{1}{\underline c^\beta} r_\beta g)$.
-Then since it is a k-linear map, it is closed under addition as well. In particular, if $\theta_{\underline c}(N)\subset N$ for all $\underline c\in (k^\times)^h, then we automatically get that
+Then since it is a k-linear map, it is closed under addition as well. In particular, if $\theta_{\underline c}(N)\subset N$ for all $\underline c\in (k^\times)^h$, then we automatically get that
 \[
-N = \theta_{\underline c^{-1}}(\theta_{\underline c}(N)) \subset \theta_{\underline c^{-1}(N) \subset N.
+N = \theta_{\underline c^{-1}}(\theta_{\underline c}(N)) \subset \theta_{\underline c^{-1}}(N) \subset N.
 \]
 </p>
 <p> 
@@ -3168,26 +3168,48 @@ But $N'$ is invariant under $\theta_{c_0, 1,\ldots, 1}$ for all $c_1$, and thus 
 &nbsp; &#9632;
 </p>
 
+<div class="rmk">
+<p><b>Remark 26.5:</b>
+Note a side effect of the proof of this---in the $\bb N$-graded case, the exact same argument shows that as long as the field $k$ contains at least $d+1$ distinct non-zero elements, we can build the same invertible Vandermonde matrix to see that every component of $g$ is in $N$. 
+</p>
+
+<p>
+    Further, if $N$ was $\bb N^h$-graded, then a similar induction shows that if $g$'s degree's are contained in a $d_1\times d_2\times \cdots \times d_h$ "grid" of contiguous degrees, then as long as $k$ contains at least $d_1d_2\cdots d_h$ non-zero elements, we can ensure that every component of $g$ is in $N$.
+</p>
+</div>
+
+<div class="thm">
+<p><b>Fact 26.6:</b>
+Suppose $R$ contains field $K$, and that $L$ is a finite separable extension of $K$. Let $S=L\otimes_K R$. If $I$ is a tightly closed ideal of $R$, then $IS$ is a tightly closed ideal of $S$.
+</p></div>
+<p><b>Reference:</b> Theorem 7.29 part (a$^o$) of Hochster+Huneke "F-regularity, test elements, and smooth base change" (1994).</p>
+
+
 <div class="proof">
 <p><b>Proof of Thm 25.9 (tight closure of homogeneous is homogeneous):</b></p>
+<p>First we show that every tightly closed ideal is stable under the $\theta_{\underline c}$ maps. Note that $\theta_{\underline c}$ is in fact a $k$-algebra map on $R$: if $r=\sum_\alpha r_\alpha$ and $s=\sum_\beta s_\beta$, then
+\[
+\theta_{\underline c}(rs) = \sum_{\alpha,\beta} \underline c^{\alpha+\beta} r_\alpha s_\beta = \theta_{\underline c}(r)\theta_{\underline c}(s).
+\]
+    Suppose $u\in I^*$ via $b\in R^\circ$ (so that $bu^{p^e}\in I^{[p^e]}$ for all $e\gg 0$). Then since $I^{[p^e]}$ is homogeneous, $\theta_{\underline c}(bu^{p^e}) = \theta_{\underline c}(b)\theta_{\underline c}(u) \in I^{[p^e]}$. Further, we must have $\theta_{\underline c}(b)\in R^\circ$---write $b=\sum_\alpha b_\alpha$. For every minimal prime $\mf p$, there exists some $\alpha$ such that $b_\alpha \notin \mf p$.
+    Thus $\underline c^\alpha b_\alpha \notin \mf p$, and since $\mf p$ is homogeneous (it is a minimal prime of a graded ring) this means that $\theta_{\underline c}(b)\notin \mf p$ as desired, and $\theta_{\underline c}(I^*)\subset I^*$.</p>
+<p> Now we proceed towards Thm 25.9. The above discussion + Lemma 26.4 means that if $R_0$ contains an infinite field we immediately get that $I^*$ is homogeneous.</p>
+
 <p>
-<!--
-    First suppose that $R_0$ contains an infinite field.
-    Suppose $u\in I^*$ via $b\in R^\circ$ (so that $bu^{p^e}\in I^{[p^e]}$ for all $e\gg 0$). 
-    Write $b = \sum_\beta b_\beta$ and $u=\sum_\alpha u_\alpha$.
-    Then $\sum_{\alpha,\beta} b_\beta u_\alpha^{p^e}\in I^{[p^e]}$ and since $I^{[p^e]}$ is homogeneous, 
-    this means that for all possible degrees $\gamma$, we have that the degree $\gamma$ component  
-    $\sum_\alpha b_{\gamma-p^e\alpha}u_\alpha^{p^e}\in I^{[p^e]}$. 
-    So of course scaling by $c$
+    Now suppose we only know that $R$ contains some finite field $k$ (for example, we can always take $k=\bb F_p$).
+    Consider $u\in I^*$, and write $u=\sum_{\alpha \in \mc A} u_\alpha$. let $L$ be a finite field extension of $k$ containing at least $\prod_{i=1}^h (1+\max\{\alpha_i \: | \alpha \in \mc A\})$ many non-zero elements (as in the prior Remark). 
+    Let $S = R\otimes_k L$, and consider $u\in I^*S$. 
+    Since $L$ is an algebraic extension of a finite field it is automatically separable. 
+    By Fact 26.6, since $I^*$ is tightly closed, so is $I^*S$. 
+    Further, by Remark 26.5, our field is large enough to ensure that since $I^*S$ is stable under rescaling, we have that every homogeneous component of $u$ is in $I^*S$. 
+    Finally, since $S$ came about by applying $L\otimes_k -$, we in fact have that every homogeneous component of $u$ was in $I^*$.
     &nbsp; &#9632;
--->
-Under construction!
 </p>
 </div>
 
 
 <div class="lemma">
-    <p><strong>Lemma 26.5</strong>. If <span
+    <p><strong>Lemma 26.7</strong>. If <span
     class="math inline">\(R\)</span> is local and <span
     class="math inline">\(I\)</span> a proper ideal (or <span
     class="math inline">\(R\)</span> is $\mathbb N$-graded and <span
@@ -3196,7 +3218,7 @@ Under construction!
 </p></div>
 
 
-<button type="button" class="viewsoln">View Proof of Lemma 26.5</button>
+<button type="button" class="viewsoln">View Proof of Lemma 26.7</button>
 <div class="soln">
     <p><em>Proof.</em> 
 
@@ -3222,11 +3244,11 @@ Under construction!
 </div>
 
 <div class="thm">
-<p><b>Lemma 26.6:</b> $\langle 0 \rangle^F = \langle 0\rangle^*= \sqrt{\langle 0 \rangle}$.
+<p><b>Lemma 26.8:</b> $\langle 0 \rangle^F = \langle 0\rangle^*= \sqrt{\langle 0 \rangle}$.
 </p>
 </div>
 
-    <button type="button" class="viewsoln">View Proof of Lemma 26.6</button>
+    <button type="button" class="viewsoln">View Proof of Lemma 26.8</button>
     <div class="soln">
     <p>
     If $u\in \langle 0\rangle^*$, then there exists $c\in R^\circ$ such that $cu^{p^e}=0$ for all $e\gg 0$. 
@@ -3238,7 +3260,7 @@ Under construction!
     </div>
 
 <div class="zb">
-<p><strong>Example 26.7</strong>. For each of the following rings <span
+<p><strong>Example 26.9</strong>. For each of the following rings <span
 class="math inline">\(R\)</span> and ideals <span
 class="math inline">\(I\)</span>, compute <span
 class="math inline">\(I^F\)</span> and <span
@@ -3359,8 +3381,8 @@ class="math inline">\(I=\langle x \rangle\)</span>.</p></li>
 <p>Here is a bonus fact that we didn't see in class, but helps make a quicker argument for the challenge above, at least when $k$ is algebraically closed:</p>
 
 <div class="thm">
-<p><b>Fact 26.8:</b>
-Let $R$ be an $\N$-graded domain such that $R_0=k$ is an algebraically closed field (of char $p$). 
+<p><b>Fact 26.10:</b>
+Let $R$ be an $\bb N$-graded domain such that $R_0=k$ is an algebraically closed field (of char $p$). 
 Let $J=\langle y_1,\ldots, y_n\rangle$ be an ideal generated by homogeneous elements, such that $\deg y_1=\cdots = \deg y_n=d$.
 Let $K$ be a homogeneous ideal such that every generator has degree strictly greater than $d$.
 If $z\in (J+K)^*$ is homogeneous of degree $\le d$, then $z\in J$.
