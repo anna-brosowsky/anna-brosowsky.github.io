@@ -32,6 +32,9 @@
           pd:  "{\\operatorname{pd}}",
           Frac:"{\\operatorname{Frac}}",
           olin:["{\\overline{#1}}",1],
+          Soc:"{\\operatorname{Soc}}",
+          Mat:"{\\operatorname{Mat}}",
+          Ass:"{\\operatorname{Ass}}",
         }
       },
       loader: {load: ['ui/lazy']},
@@ -171,8 +174,16 @@ Put everything from Mar 12 together to see why ALL SFR rings (which for us are a
     Wrapped up tight closure: colon capturing, persistence, the char p version of Hochster-Roberts, and big balanced CM algebras. Stated Peskine-Szpiro vanishing (finite pd implies Tor's against $F_*^eR$ vanish) and proved the acyclicity lemma.<br>
     Still under construciton!
     </dd>
-  <dt><a href="#upcoming">Upcoming</a></dt><dd>
-    Finish proof of Peskine-Szpiro vanishing, statements and (maybe?) some proofs related to Herzog's partial converse as well as Rodicio's theorem.
+  <dt><a href="#04-28">Apr 28</a></dt><dd>
+    Finished proof of Peskine-Szpiro vanishing, and the corollary that the PS functors are exact on the category of modules of finite pd (so, a more general version of the direction of Kunz's theorem that regular implies PS functors are exact).<br>
+    Still under construction!
+    </dd>
+  <dt><a href="04-30">Apr 30</a></dt><dd>
+    Clarified the module action that comes from applying the Peskine-Szpiro functors. 
+    Stated Herzog's converse to PS's theorem; some effective bounds from Koh+Lee (i.e., when a finite number of Tor vanishings suffice to prove that $M$ has finite pd). 
+    Also saw more ways of using the Frobenius to detect regularity. Specifically, Rodicio's theorem and Avramov+Iyengar+Miller's theorem on how finite flat/injective dimension of $F_*^eR$ implies $R$ is regular.<br>
+    20 minute speed run of "what is a scheme" up thru the geometric notion of global Frobenius splitting; some warnings of how similar looking vocab is used in AG papers to maen related (but slightly different!) things than in CA papers.
+    Finally, some open questions.
     </dd>
 </dl>
 
@@ -3049,7 +3060,7 @@ Thus $z_\alpha\in I^F$, as desired.
 &nbsp; &#9632;
 </p>
 
-<p><b>Proof (for tight closure)</b> is postponed to next class!</p>
+<p><b>Proof (for tight closure)</b> is postponed to next class! Original source for the proof is Hochster+Huneke "Tight closure of parameter ideals and splitting in module-finite extensions" (1994).</p>
 
 <p><b>Reference (for integral closure)</b> is Corollary 5.2.3 of Huneke+Swanson's textbook "Integral Closure of Ideals, Rings, and Modules".</p>
 
@@ -3651,11 +3662,443 @@ Prove PS's theorem, via the following suggested outline:
 
 <p>Solution on Tuesday!</p>
 
-<h3 id="upcoming">Upcoming</h3>
+
+<h3 id="04-28">Apr 28</h3>
+
+<p>Under construction!</p>
 
 
 
-<p>Finishing the proof of PS's theorem, plus more statements (and maybe proofs??) of other cool homological applications.</p>
+<h3 id="04-30">Apr 30</h3>
+<div class="rmk">
+<p><strong>Remark 30.1</strong>. Let <span
+    class="math inline">\(R,S,T\)</span> be rings. Recall that if <span
+    class="math inline">\(M\)</span> is an <span
+    class="math inline">\((R,S)\)</span>-bimodule and <span
+    class="math inline">\(N\)</span> is an <span
+    class="math inline">\((S,T)\)</span>-bimodule, then <span
+    class="math inline">\(M\otimes_S N\)</span> is an <span
+    class="math inline">\((R,T)\)</span>-bimodule. So, when we defined <span
+    class="math inline">\(\mathcal{F}^e(M)\)</span> as <span
+    class="math inline">\(M\otimes_R F_*^eR\)</span>, which structure did we
+    mean? <span class="math inline">\(M\)</span> is not an interesting
+    bimodule; both left and right actions are the same. But <span
+    class="math inline">\(F_*^eR\)</span> can be given an interesting <span
+    class="math inline">\((R,R)\)</span>-module structure, namely <span
+    class="math inline">\(s\cdot (F_*^er) = sF_*^er =
+    F_*^e(s^{p^e}r)\)</span>, and <span class="math inline">\((F_*^er)\cdot
+    s = F_*^e(rs)\)</span>.</p>
+    <p>The Peskine-Szpiro functors take the natural “right” structure on the
+    tensor product, so that <span class="math inline">\((m\otimes F_*^er)
+    \cdot s = m\otimes F_*^e(rs)\)</span>. However, since <span
+    class="math inline">\(R\)</span> is commutative and this is the only
+    action we are considering, I will just write this as a left action.</p>
+</div>
+
+<p>So: the Frobenius action is the one getting “used up” in the tensor
+product, and we are left with the typical action. Thus the two key
+examples are:</p>
+
+<ul>
+    <li><p>Consider <span class="math inline">\(M=R/I\)</span>. As an <span
+    class="math inline">\(R\)</span>-module, <span
+    class="math inline">\(\mathcal{F}^e(R/I) \cong R/I^{[p^e]}\)</span> (no
+    <span class="math inline">\(F_*^e\)</span>, because I want <span
+    class="math inline">\(s\cdot \overline r = \overline
+    {sr}\)</span>!).</p></li>
+
+    <li><p>Consider <span class="math inline">\(\varphi:R\to R\)</span> via
+    <span class="math inline">\(\cdot x\)</span>. As an <span
+    class="math inline">\(R\)</span>-module map, <span
+    class="math display">\[\mathcal{F}^e(\varphi) = (\cdot x)\otimes
+    \mathop{\mathrm{id}}_{F_*^eR} : R\otimes_R F_*^eR \to  R\otimes_R
+    F_*^eR.\]</span> Thus <span class="math inline">\(r\otimes F_*^es
+    \mapsto (xr)\otimes F_*^es = r \otimes F_*^e(x^{p^e}s)\)</span>, and
+    since the isomorphism <span class="math inline">\(\mathcal{F}^e(R)\cong
+    R\)</span> goes via <span class="math inline">\(r\otimes F_*^es =
+    1\otimes F_*^e(r^{p^e}s) \mapsto r^{p^es}\)</span>, we see that <span
+    class="math inline">\(\mathcal{F}^e(\cdot x) = \cdot
+    x^{p^e}\)</span>.</p></li>
+</ul>
+
+<div class="lemma">
+    <p><strong>Lemma 30.2</strong>. <em>Let <span
+    class="math inline">\((R,\mathfrak{m})\)</span> be a local ring, let
+    <span class="math inline">\(M\)</span> be a f.g. <span
+    class="math inline">\(R\)</span>-module and <span
+    class="math inline">\(I\subset R\)</span> a (proper) ideal. Then there
+    exists a number <span class="math inline">\(u_0\ge 0\)</span> such that
+    <span class="math inline">\(\mathop{\mathrm{depth}}_R(I^u
+    M)&gt;0\)</span> for all <span class="math inline">\(u \ge
+    u_0\)</span>.</em></p>
+</div>
+<div class="proof">
+    <p><em>Proof.</em> For every <span class="math inline">\(u\ge
+    0\)</span>, by the derived functor definition we have <span
+    class="math display">\[H^0_{\mathfrak{m}}(I^uM) = \{y\in I^uM \: | \:
+    \exists i\ge 0 ,\ \mathfrak{m}^i y = 0\} = H^0_{\mathfrak{m}}(M) \cap
+    I^uM.\]</span></p>
+    <p>Notice that <span
+    class="math inline">\(H^0_{\mathfrak{m}}(M)\)</span> is finite length,
+    because it is a f.g. module (submodule of <span
+    class="math inline">\(M\)</span>) and every generator is killed by a
+    power of <span class="math inline">\(\mathfrak{m}\)</span>, thus there
+    is a common power of <span class="math inline">\(\mathfrak{m}\)</span>
+    that kills everything. In particular, <span
+    class="math display">\[\bigcap_{u\ge 0} H^0_{\mathfrak{m}}(I^uM)
+    \subseteq \bigcap_{u\ge 0} I^uM
+    = 0.\]</span> Thus that there is <span
+    class="math inline">\(u_0\)</span> such that <span
+    class="math inline">\(H^0_{\mathfrak{m}}(I^uM)=0\)</span> for all <span
+    class="math inline">\(u\ge u_0\)</span>. Now by Theorem 15.7 from class,
+    since <span
+    class="math inline">\(\mathop{\mathrm{depth}}_R(I^uM)\)</span> is the
+    minimum <span class="math inline">\(i\)</span> such that <span
+    class="math inline">\(H^i_{\mathfrak{m}}(I^uM)\ne 0\)</span>, we get
+    that <span
+    class="math inline">\(\mathop{\mathrm{depth}}_R(I^uM)&gt;0\)</span>. ◻</p>
+</div>
+<div class="thm">
+    <p><strong>Theorem 30.3</strong> (Herzog). <em>Let <span
+    class="math inline">\(M\)</span> be a finitely generated <span
+    class="math inline">\(R\)</span>-module for <span
+    class="math inline">\((R,\mathfrak{m})\)</span> local. Then the
+    following are equivalent:</em></p>
+    <ol>
+    <li><p><em><span class="math inline">\(\mathop{\mathrm{pd}}_R
+    M&lt;\infty\)</span></em></p></li>
+    <li><p><em><span class="math inline">\(\mathop{\mathrm{Tor}}_i^R(M,
+    F_*^eR)=0\)</span> for all <span
+    class="math inline">\(i,e&gt;0\)</span>.</em></p></li>
+    <li><p><em>There exists an infinite increasing sequence <span
+    class="math inline">\(\{e_k\}\)</span> such that <span
+    class="math inline">\(\mathop{\mathrm{Tor}}_i^R(M,F_*^{e_k}R)=0\)</span>
+    for all <span class="math inline">\(i,k&gt;0\)</span>.</em></p></li>
+    </ol>
+</div>
+<div class="proof">
+    <p><em>Proof.</em> (1) implies (2) is the Peskine+Szpiro theorem from
+    last class. (2) implies (3) is clear.</p>
+    <p>(3) implies (1): Suppose <span class="math inline">\(M\)</span> has
+    infinite projective dimension. Let <span class="math inline">\(F_\bullet
+    \to M\)</span> be a minimal free resolution. Let <span
+    class="math inline">\(t= \mathop{\mathrm{depth}}(R)\)</span>, and let
+    <span class="math inline">\(\underline x = x_1,\ldots, x_t\)</span> be a
+    regular sequence.</p>
+    <p>Let <span class="math inline">\(C_\bullet^k = (R/\langle \underline
+    x\rangle) \otimes_R \mathcal{F}^{e_k}(F_\bullet)\)</span>, so that <span
+    class="math inline">\(C^k_j \cong F_j/\langle \underline x\rangle
+    F_j\)</span>.</p>
+    <p>The assumption on Tor vanishing exactly ensures that the <span
+    class="math inline">\(\mathcal{F}^{e_k}(F_\bullet)\)</span> are exact
+    (as these are the complexes used to compute the Tor), and thus they give
+    a resolution of <span
+    class="math inline">\(\mathcal{F}^{e_k}(M)\)</span>. Thus <span
+    class="math inline">\(H_j(C_\bullet^k)\cong
+    \mathop{\mathrm{Tor}}_j^R(\mathcal{F}^{e_k}(M), R/\langle \underline x
+    \rangle)\)</span>. On the other hand, by using the Koszul complex to
+    resolve <span class="math inline">\(R/\langle \underline
+    x\rangle\)</span>, it is clear that <span
+    class="math inline">\(H_j(C_\bullet^k)=0\)</span> for all <span
+    class="math inline">\(j&gt;t\)</span>.</p>
+    <p>Let <span class="math inline">\(B_j^k =
+    \mathop{\mathrm{im}}(C_{i+1}^k\to C_i^k)\)</span>. Exactness ensures
+    that we have SES <span class="math display">\[0\to B_{j+1}^k\to
+    C_{j+1}^k \to B_j^k\to 0\]</span> for all <span
+    class="math inline">\(j&gt;t\)</span> and for all <span
+    class="math inline">\(k\ge 1\)</span>. Since the maps for <span
+    class="math inline">\(F_\bullet\)</span> have entries in <span
+    class="math inline">\(\mathfrak{m}\)</span>, the maps for <span
+    class="math inline">\(\mathcal{F}^{e_k}(F_\bullet)\)</span> have entries
+    in <span class="math inline">\(\mathfrak{m}^{[p^{e_k}]}\)</span>. Thus
+    <span class="math inline">\(B_j^k \subseteq
+    \mathfrak{m}^{[p^{e_k}]}C_j^k\)</span>. By the previous Lemma, there
+    exists some <span class="math inline">\(u_0\)</span> such that <span
+    class="math inline">\(\mathop{\mathrm{depth}}(\mathfrak{m}^u
+    C_j)&gt;0\)</span> for all <span class="math inline">\(u\ge
+    u_0\)</span>. Taking <span class="math inline">\(k\)</span> such that
+    <span class="math inline">\(p^{e_k} \ge u_0\)</span>, we then get that
+    <span class="math inline">\(\mathfrak{m}^{[p^{e_k}]} C_j \subset
+    \mathfrak{m}^{u_0}C_j\)</span>, and since submodules of positive depth
+    (f.g.) modules have positive depth (e.g., by the depth lemma), we get
+    that <span
+    class="math inline">\(\mathop{\mathrm{depth}}(B_j^k)&gt;0\)</span> for
+    all <span class="math inline">\(j&gt;t\)</span>, and thus again by the
+    depth lemma we get that <span
+    class="math inline">\(\mathop{\mathrm{depth}}C^k_{j+1}&gt;0\)</span> for
+    all <span class="math inline">\(j&gt;t\)</span>.</p>
+    <p>However, since <span class="math inline">\(C^k_j \cong F_j/\langle
+    \underline x\rangle F_j\)</span> and since <span
+    class="math inline">\(\underline x\)</span> was a maximal regular
+    sequence on <span class="math inline">\(R\)</span> and thus on <span
+    class="math inline">\(F_j\)</span>, we see that <span
+    class="math inline">\(\mathop{\mathrm{depth}}C^k_j = 0\)</span> for all
+    <span class="math inline">\(j\)</span>. This is a contradiction. ◻</p>
+</div>
+<div class="defn">
+    <p><strong>Definition 30.4</strong>. For <span
+    class="math inline">\(\partial:R^n\to R^m\)</span>, let <span
+    class="math display">\[\begin{aligned}
+    \mathop{\mathrm{col}_p} :=&amp; \inf\{ p^e \ge 1 \: | \: \pi\circ
+    \partial(R^n)\not\subset \mathfrak{m}^{[p^e]} \ \forall \textrm{
+    surjections }\pi:R^m\twoheadrightarrow R\}\\
+        &amp;= \inf\{ p^e\ge 1 \: | \: \forall A\in \Mat_{m\times n}, A\cong
+    \partial,\forall i\in[m],\ \exists j,\ a_{ij} \notin
+    \mathfrak{m}^{[p^e]} \}
+    \end{aligned}\]</span> For <span class="math inline">\(M\)</span> an
+    <span class="math inline">\(R\)</span>-module, let <span
+    class="math inline">\(\partial_i^M\)</span> denote the <span
+    class="math inline">\(i\)</span>-th map in a minimal projective
+    resolution of <span class="math inline">\(M\)</span>, and let <span
+    class="math display">\[\mathop{\mathrm{col}_p}(M) :=
+    \begin{cases}
+    \inf \{\mathop{\mathrm{col}}_p(\partial_i^M) \: | \:
+    i&gt;1+\mathop{\mathrm{depth}}(R)\} &amp; \mathop{\mathrm{pd}}(M)=\infty
+    \\
+    1 &amp; \mathop{\mathrm{pd}}(M)&lt;\infty
+    \end{cases}.\]</span></p>
+</div>
+<div class="defn">
+    <p><strong>Definition 30.5</strong>. Let <span
+    class="math inline">\(\Soc(N) = 0 :_N \mathfrak{m}\)</span> be the
+    socle, and let <span class="math display">\[s_p(N) = \inf\{p^e&gt;0 \: |
+    \: \Soc(N)\not\subset \mathfrak{m}^{[p^e]}N\}.\]</span></p>
+</div>
+<div class="defn">
+    <p><strong>Definition 30.6</strong>. Define invariants <span
+    class="math display">\[\mathop{\mathrm{col}_p}(R) =
+    \sup\left\{\mathop{\mathrm{col}}(M) \: \big| \: M\textrm{ an
+    $R$-module}\right\}\]</span> 
+    <span
+    class="math display">\[\mathop{\mathrm{fpd}_p}(R) = \inf\left\{s_p(N) \:
+    \big| \: N\textrm{ and $R$-module, }\mathop{\mathrm{pd}}(N)&lt;\infty,\
+    \mathop{\mathrm{depth}}(N)=0\right\}\]</span> 
+    <span
+    class="math display">\[\mathop{\mathrm{crs}_p}(R) = \inf \left\{
+    s_p(R/\langle \underline x\rangle)\: \big| \: \underline x \textrm{ is a
+    maximal regular sequence}\right\}.\]</span>
+    <span
+    class="math display">\[\mathop{\mathrm{drs}_p}(R) = \inf\left\{ p^e\ge 1
+    \: \big| \: \exists \textrm{maximal regular sequence $\underline x$ s.t.
+    } \mathfrak{m}^{[p^e]}\subseteq \langle \underline
+    x\rangle\right\}\]</span></p>
+</div>
+<div class="fact">
+    <p><strong>Fact 30.7</strong>. <em><span
+    class="math display">\[\mathop{\mathrm{col}_p}(R) \le
+    \mathop{\mathrm{fpd}_p}(R) \le \mathop{\mathrm{crs}_p}(R) \le
+    \mathop{\mathrm{drs}_p}(R) &lt; \infty,\]</span> and if <span
+    class="math inline">\(R\)</span> is Gorenstein then <span
+    class="math inline">\(\mathop{\mathrm{crs}_p}(R)=\mathop{\mathrm{drs}_p}(R)\)</span>.</em></p>
+</div>
+<div class="fact">
+    <p><strong>Fact 30.8</strong> (Koh+Lee). <em>Let <span
+    class="math inline">\(e\)</span> large enough that <span
+    class="math inline">\(p^e \ge \mathop{\mathrm{col}_p}(R)\)</span> (e.g.,
+    such that <span class="math inline">\(p^e\ge
+    \mathop{\mathrm{crs}_p}(R)\)</span>), let <span
+    class="math inline">\(M\)</span> f.g. <span
+    class="math inline">\(R\)</span>-module. If <span
+    class="math inline">\(\mathop{\mathrm{Tor}}_i^R(M,F_*^eR)=0\)</span> for
+    <span class="math inline">\(\mathop{\mathrm{depth}}(R)+1\)</span>
+    consecutive values of <span class="math inline">\(i&gt;0\)</span>, then
+    <span
+    class="math inline">\(\mathop{\mathrm{pd}}(M)&lt;\infty\)</span>.</em></p>
+</div>
+
+<div class="fact">
+    <p><strong>Fact 30.9</strong> (Koh+Lee). <em>Let <span
+    class="math inline">\(R\)</span> CM such that <span
+    class="math inline">\(\dim R&gt;0\)</span>, let <span
+    class="math inline">\(e\)</span> such that <span
+    class="math inline">\(p^e\ge \mathop{\mathrm{drs}_p}(R)\)</span>. If
+    <span
+    class="math inline">\(\mathop{\mathrm{Tor}}_i^R(M,F_*^R)=0\)</span> for
+    <span class="math inline">\(\mathop{\mathrm{depth}}R\)</span>
+    consecutive values of <span class="math inline">\(i&gt;0\)</span>, then
+    <span
+    class="math inline">\(\mathop{\mathrm{pd}}(M)&lt;\infty\)</span>.</em></p>
+</div>
+
+<p>The takeaway from the above two facts is that we get a COMPUTABLE way
+to use Herzog’s result! First, get an easy upper bound for <span
+class="math inline">\(\mathop{\mathrm{col}}_p(R)\)</span>—choose any
+maximal regular sequence <span class="math inline">\(\underline
+x\)</span>, taking <span class="math inline">\(s_p(R/\underline
+x)\)</span> is an upperbound for <span
+class="math inline">\(\mathop{\mathrm{crs}}_p\)</span>. Then expanding
+out the definition of <span class="math inline">\(s_p\)</span> means we
+can take any <span class="math inline">\(e&gt;0\)</span> such that there
+exists <span class="math inline">\(r\in R\)</span> with <span
+class="math inline">\(\mathfrak{m} r\in \langle \underline
+x\rangle\)</span> but with <span class="math inline">\(r\notin
+\mathfrak{m}^{[p^e]}+\langle \underline x\rangle\)</span>. Now check if
+<span class="math inline">\(\mathop{\mathrm{Tor}}_i(M,F_*^eR)=0\)</span>
+for <span class="math inline">\(i=1,2,\ldots,
+\mathop{\mathrm{depth}}(R)+1\)</span>. If they do equal zero, Koh+Lee
+says <span
+class="math inline">\(\mathop{\mathrm{pd}}(M)&lt;\infty\)</span>. If one
+is non-zero, then Peskine-Szpiro says <span
+class="math inline">\(\mathop{\mathrm{pd}}(M)=\infty\)</span>.</p>
+
+<div class="fact">
+    <p><strong>Fact 30.10</strong>. <em>Let <span
+    class="math inline">\((R,\mathfrak{m})\)</span> local ring. Then
+    TFAE</em></p>
+    <ul>
+    <li><p><em><span class="math inline">\(R\)</span> is
+    regular</em></p></li>
+    <li><p><em>(Kunz) <span class="math inline">\(F_*^eR\)</span> is flat
+    for some/all <span class="math inline">\(e&gt;0\)</span></em></p></li>
+    <li><p><em>(Rodicio) <span class="math inline">\(F_*^eR\)</span> has
+    finite flat dimension for some/all <span
+    class="math inline">\(e&gt;0\)</span>, i.e., there exists a finite
+    resolution by flat modules</em></p></li>
+    <li><p><em>(Avramov+Iyengar+Miller) <span
+    class="math inline">\(F_*^eR\)</span> has finite injective dimension for
+    some/all <span class="math inline">\(e&gt;0\)</span>, i.e., there exists
+    a finite injective resolution.</em></p></li>
+    </ul>
+</div>
+
+<h4 id="algebraic-geometry">Algebraic Geometry</h4>
+<p>Some VERY vague thoughts!</p>
+<div class="defn">
+    <p><strong>Definition 30.11</strong>. A <em>scheme</em> is (roughly) a
+    topological space <span class="math inline">\(X\)</span> + a
+    (contravariant) functor <span
+    class="math inline">\(\mathcal{O}_X\)</span> from poset category of open
+    sets of <span class="math inline">\(X\)</span> to category of rings
+    (called the <em>structure sheaf</em>), such that</p>
+    <ul>
+    <li><p><span class="math inline">\(X\)</span> is formed by gluing
+    together <span class="math inline">\(\mathop{\mathrm{Spec}}R\)</span>’s
+    along open sets</p></li>
+    <li><p><span class="math inline">\(\mathcal{O}_X\)</span> satisfies nice
+    properties somewhat analogous to <span
+    class="math inline">\(\mathcal{O}_X(U)\)</span> being a ring of
+    “functions” on open set <span class="math inline">\(U\)</span>. Further,
+    if <span class="math inline">\(U\cong \mathop{\mathrm{Spec}}R\)</span>,
+    then <span class="math inline">\(\mathcal{O}_X(U)=R\)</span>.</p></li>
+    </ul>
+    <p>An <em>affine scheme</em> is <span
+    class="math inline">\(X=\mathop{\mathrm{Spec}}R\)</span>, with <span
+    class="math inline">\(\mathcal{O}_X(D(f)) = R_f\)</span> and extended to
+    other open sets in a natural way. For each point <span
+    class="math inline">\(x\in X\)</span>, get a notion of a <em>stalk</em>,
+    a ring associated with the point <span class="math inline">\(x\)</span>.
+    If <span class="math inline">\(X=\mathop{\mathrm{Spec}}R\)</span> is
+    affine and <span class="math inline">\(x=\mathfrak{p}\)</span> is a
+    prime ideal, the stalk at <span class="math inline">\(x\)</span> is
+    literally the local ring <span
+    class="math inline">\(R_{\mathfrak{p}}\)</span>.</p>
+</div>
+<p>Idea: Think of how a manifold is a bunch of glued-together patches of
+Euclidean space—on a small enough open set, it looks exactly like <span
+class="math inline">\(\mathbb{R}^n\)</span>, but interesting structure
+occurs from the gluing. Similar here!</p>
+
+<div class="zb">
+    <p><strong>Example 30.12</strong>. Let <span
+    class="math inline">\(k\)</span> be an algebraically closed field. <span
+    class="math inline">\(\mathbb{P}^n_k\)</span> comes from gluing together
+    <span class="math inline">\(\mathbb{A}^{n}_k\)</span>’s in the standard
+    way. To see what rings <span
+    class="math inline">\(\mathcal{O}_x\)</span> gives us for some
+    understandable open sets:</p>
+    <ul>
+    <li><p>Let <span class="math inline">\(U_i\)</span> be the open set
+    whose closed points are <span class="math inline">\(\{[a_0:a_1:\cdots
+    :a_n] \: | \: a_i\ne 0\}\)</span>, aka, the open set corresponding to
+    one of our standard charts <span
+    class="math inline">\(\mathbb{A}^n_k\)</span>. Then <span
+    class="math inline">\(\mathcal{O}_{\mathbb{P}^n_k}(U_i) \cong
+    k[y_1,\ldots, y_n]\)</span> is a polynomial ring in <span
+    class="math inline">\(n\)</span> variables.</p></li>
+    <li><p><span
+    class="math inline">\(\mathcal{O}_{\mathbb{P}^n_k}(\mathbb{P}^n_k) \cong
+    k\)</span>, i.e., the ring for the biggest open set. is just the base
+    field! This is forced by the axioms (which I didn’t state...), but the
+    intuition is no interesting “polynomial/rational”-like function can have
+    domain ALL of <span class="math inline">\(\mathbb{P}^n\)</span>, as
+    every non-constant polynomial blows up at infinity.</p></li>
+    </ul>
+</div>
+<div class="defn">
+    <p><strong>Definition 30.13</strong>. The <em>Frobenius</em> is the scheme
+    map <span class="math inline">\(F:(X,\mathcal{O}_X)\to
+    (X,\mathcal{O}_X)\)</span> which is the Frobenius on all of the
+    affiliated rings (and the identity on <span
+    class="math inline">\(X\)</span>!).</p>
+    <ul>
+    <li><p><span class="math inline">\(X\)</span> is <em>globally
+    F-split</em> if there is a map <span class="math inline">\(\pi\)</span>
+    which is a map of <span
+    class="math inline">\(\mathcal{O}_X\)</span>-modules (think: acts like a
+    module map over each open set, in a compatible way) such that <span
+    class="math inline">\(\pi\circ F =
+    \mathop{\mathrm{id}}_X\)</span>.</p></li>
+    <li><p><span class="math inline">\(X\)</span> is <em>locally
+    F-split</em> if every stalk is F-split (and these are rings, so this
+    F-split is the thing we have been talking about all semester!)</p></li>
+    </ul>
+</div>
+<div class="fact">
+    <p><strong>Fact 30.14</strong>. <em>If <span class="math inline">\(X=\mathop{\mathrm{Spec}}R\)</span> is an affine
+    scheme which is “F-finite”, then <span class="math inline">\(X\)</span>
+    is globally F-split if and only if it is locally F-split (i.e., <span class="math inline">\(R_{\mathfrak{p}}\)</span> is F-split for all prime ideals $\mf p$)</em></p>
+    <p><em>However, there are examples of non-affine “F-finite” schemes
+    which are locally F-split but NOT globally F-split! Problem: scheme
+    gluing can be weird, so even though a scheme is built out of affine
+    schemes, but not be able to glue their <span
+    class="math inline">\(\pi\)</span>’s together.</em></p>
+</div>
+<div class="rmk">
+    <p><strong>Remark 30.15</strong>. Two terminology warnings: In algebraic
+    geometry papers, if they say F-split with no adjective (i.e., no local
+    or global)... they probably mean global!</p>
+    <p>Likewise, if they say globally F-regular or even just F-regular, they
+    mean something analogous to a global version of STRONG F-regularity, and which has nothing
+    to do with tight closure. </p>
+</div>
+<p>One reason to care about this stronger global conditions: being globally F-split forces some
+global (sheaf) cohomology vanishing theorems, analogous to how local
+F-singularities give bounds on the <span
+class="math inline">\(a\)</span>-invariant for local cohomology (HW5 #3).</p>
+
+<h4 id="open-questions">Open Questions</h4>
+<ol>
+<li><p>(weak implies strong) If <span class="math inline">\(R\)</span>
+is weakly F-regular, is it strongly F-regular?</p></li>
+<li><p>(deformation problem) Does F-injectivity deform?</p>
+<p>We saw the answer is yes if <span class="math inline">\(R\)</span> is
+also CM. For context, F-rationality ALWAYS deforms, but F-purity does
+not.</p></li>
+<li><p>Let <span class="math inline">\(R\)</span> be an excellent ring.
+Are the F-rational/F-pure/F-injective loci all open?</p>
+<p>For context, the answer is yes for F-finite rings (and we have only
+defined SFR for F-finite rings, so for us it doesn’t make sense to
+generalize the SFR locus to this setting).</p></li>
+<li><p>If <span class="math inline">\(R\)</span> is a splinter in char
+<span class="math inline">\(p\)</span> (i.e., all module finite
+extensions split), is <span class="math inline">\(R\)</span> SFR?</p>
+<p>For context, we saw that splinter implies SFR in char <span
+class="math inline">\(p\)</span>. And in char 0, it is known that being
+a splinter is equivalent to being normal. Finally, turns out WFR rings
+are splinters so weak implies strong solves this.</p></li>
+<li><p>Via reduction to char <span class="math inline">\(p\)</span>,
+does lc correspond to F-split? Does Du Bois correspond to
+F-injective?</p>
+<p>For context, it is known that if <span
+class="math inline">\(X_{\mathbb{F}_p}\)</span> is F-split for a dense
+open, then <span class="math inline">\(X_{\mathbb{C}}\)</span> is lc;
+and <span class="math inline">\(X_{\mathbb{F}_p}\)</span> F-injective on
+dense open implies <span class="math inline">\(X_{\mathbb{C}}\)</span>
+du Bois. Also, it is known that klt and SFR correspond, and rational and
+F-rational correspond, even without the “dense”.</p></li>
+</ol>
+
+
 
 <!-- 
 &nbsp; &#9632;
