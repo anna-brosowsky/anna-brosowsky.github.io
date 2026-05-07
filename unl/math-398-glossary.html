@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <title>Math 398: Glossary</title>
+    <meta name="author" content="Anna Brosowsky">
+    <meta name="description" content="Course webpage for UNL's Math 398 (Research in Experience in Mathematics) for Summer 2026.">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="course.css">
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        macros: {
+          bb: ["{\\mathbb{#1}}",1],
+          mf: ["{\\mathfrak{#1}}",1],
+          mc: ["{\\mathcal{#1}}",1],
+          wh: ["{\\widehat{#1}}",1],
+          Spec: "{\\operatorname{Spec}}",
+          id: "{\\operatorname{id}}",
+          im: "{\\operatorname{im}}",
+          ev: "{\\operatorname{ev}}",
+          Min: "{\\operatorname{Min}}",
+          lcm: "{\\operatorname{lcm}}",
+          sgn: "{\\operatorname{sgn}}",
+          hght: "{\\operatorname{ht}}",
+          depth: "{\\operatorname{depth}}",
+          Ext: "{\\operatorname{Ext}}",
+          Tor: "{\\operatorname{Tor}}",
+          ann: "{\\operatorname{ann}}",
+          reg: "{\\operatorname{reg}}",
+          pd:  "{\\operatorname{pd}}",
+          Frac:"{\\operatorname{Frac}}",
+          olin:["{\\overline{#1}}",1],
+          Soc:"{\\operatorname{Soc}}",
+          Mat:"{\\operatorname{Mat}}",
+          Ass:"{\\operatorname{Ass}}",
+        }
+      },
+      loader: {load: ['ui/lazy']},
+      options: {lazyMargin: '400px'},
+    };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+    <nav class="menu">
+        <ul>
+            <li><a href="math-398.html">Course Overview</a></li>
+            <li><a href="math-398-background.html">Detailed Project Background</a></li>
+            <li class="current"><a href="math-398-glossary.html">Glossary</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Math 398: Research Experience in Mathematics <br>
+        Summer 2026 Theme: Numerical invariants in prime characteristic</h1>
+
+
+
+<h2>Glossary of key terms</h2>
+<p>Many of these words are defined above, but I'm collecting the most important ones down here</p>
+<dl class="glossary">
+    <dt id="algebraic-geometry">Algebraic Geometry (AG)</dt><dd>A field of math whose heart understanding the geometric behaviour of the graphs of the solution to a system of polynomial equations. (So: combining algebra and geometry!) You have all already seen some aspects of this: it is knowing that $x^2+y^2=1$ looks like a circle, or that the solution to $x^2+y^2=z^2$ AND $y=1$ looks like a hyperbola. <br>
+    But it also means understanding graphs of equations using many variables (big data in thousands of dimensions? Modelling the time, temperature, and spatial location of an object in 5-D?) when graphing isn't feasible. But we still might be able to identify crossings, cusps, and other non-differentiable points.
+    AG also studies how the choice of coefficients affect your solutions (the graph of the solutions to $y=x^2+1$ AND $y=0$ is nothing over the real numbers, but is two points (namely, (i,0) and (-i,0)) over the complex numbers).<br>
+    It is a close cousin to <a href="#commutative-algebra">Commutative Algebra</a>, which cares about the algebra behind these polynomials.</dd>
+
+
+
+    <dt id="characteristic">Characteristic</dt><dd>
+    Given a "ring" (whatever that is, think about the set of integers or the set of one-variable polynomials over the real numbers) the <em>characteristic $n$</em> if $n$ is the smallest non-zero positive integer such that $1+1+\cdots + 1$ (taking $n$ 1's in the sum) equals zero.
+    If there is no such $n$ (such as the integers!) then say the ring has <em>characteristic zero</em>. (Notice we have to say this as a separate case---since it's always true that adding no 1's together gets zero... because there was nothing to add... so saying "smallest $n$" in the other definition would give zero every time).<br>
+    Characteristic zero examples: $\bb Z$, $\bb Q$, $\bb R$, $\bb C$, plus polynomials over any of these (so $\bb Z[x]$, $\bb Q[x,y,z]$, $\bb R[x]$, $\bb C[x_1,\ldots, x_d]$, etc).<br>
+    Non-zero characteristic examples: In the <a href="#modular-arithmetic">modular arithmetic</a> definition, you saw the ring $\bb Z/n\bb Z$.
+    This ring has characteristic $n$, because to compute $1+1+\cdots + 1$ with $n$ 1's, we first do the computation in $\bb Z$ (and get $n$), but then we have to take the remainder when dividing by $n$, which is zero. So clock arithmetic is a real-life ring of non-zero characteristic (namely, characteristic 12).
+    </dd>
+
+    <dt id="commutative-algebra">Commutative Algebra (CA)</dt><dd>A field of math focusing on the study of commutative rings---basically, understanding anything like the integers, polynomials, and power series; or weirder objects you might have seen in an algebra or number theory class, like the integers modulo $n$. 
+    So what do all of these examples have in common? They are objects that we can add, subtract, and multiply (though usually not divide); and even better the multiplication is "commutative" meaning $ab=ba$. A non-example would be 2x2 matrices---I can add, subtract, and multiply them, but usually changing the order of multiplication changes what matrix I get out of it.<br>
+    It is a close cousin to <a href="#algebraic-geometry">Algebraic Geometry</a>, which cares about the geometry of commutative rings.</dd>
+
+
+    <dt id="jacobi-criterion">Jacobian criterion</dt>
+    <dd>
+    This is a theorem, not a definition (see <a href="#singularities">singularities</a> for a vague definition/motivation), but it is such a useful theorem that it will probably help build your intuition more than a definition would:<br>
+    Consider polynomials $f_1, f_2,\ldots, f_n$ in $d$ variables, whose coefficients all live in an algebraically closed field (think: $\bb C$ not $\bb R$!). 
+
+    TODO!
+    </dd>
+
+    <dt id="modular-arithmetic">Modular arithmetic</dt>
+    <dd>
+    If it is currently 11 o'clock, and you have a meeting in 3 hours, what time is your meeting? It's not at 14 o'clock! (Unless you're using 24-hr/military time, but let's forget about that...) Your meeting is actually at 2 o'clock. 
+    Doing $11+3\equiv 2$ is an example of <em>modular arithmetic</em>---you pick some number $n$ (in this case $n=12$) and you say that any 
+    numbers with the same remainder when divided by $n$ (going "mod" $n$) are equivalent. 
+    So $0\equiv 12 \equiv 24$, and $1\equiv 13 \equiv 145$, and $2 \equiv 14 \equiv -10$.<br>
+    In an algebra or number theory class, you might have defined a <em>ring</em> $\bb Z/n\bb Z$ (other common notation is $\bb Z_n$ or $\bb Z/n$). 
+    I won't define a ring in general, but in this specific case, $\bb Z/n\bb Z$ is the set of numbers $\{0,1,2,\ldots, n-1\}$, and addition, multiplication, and subtraction work by doing normal addition,multiplication, and subtraction, then taking the remainder when you divide by $n$. So that in $\bb Z/12$, $11+3=2$. In other words, basically the same thing as above but I use $=$ instead of $\equiv$, and I'm forced to choose the "right" remainder class (14 doesn't make sense here since it's not in the set $\{0,1,2,\ldots, 11\}$). 
+    This $\bb Z/n\bb Z$ thing is a way that mathematicians try to make modular arithmetic more precise. Notice weird things can happen: $3*4=0$ (even though 3 and 4 are both non-zero!!!). <br>
+    Example: $\bb Z/2\bb Z$ has just numbers $\{0,1\}$, and $0+0=0$, $0+1=1+0=1$, and $1+1=0$ (since $1+1=2\equiv 0$ going mod 2). 
+    The multiplication table is $0*0=0$, $0*1=1*0=0$, and $1*1=1$. You may have secretly seen this before! If you have seen binary, this is the same as doing everything as binary, then ONLY taking the last (one's) digit. This is also the same as ("is isomorphic to") the set of {<span class="code">true</span>, <span class="code">false</span>} under the operations <span class="code">OR</span> &amp; <span class="code">AND</span>. Specifically, <br>
+    <center><span class="code">false OR false = false</span>, &nbsp;&nbsp; <span class="code">false OR true = true OR false = true</span>, &nbsp;&nbsp; <span class="code">true OR true = true</span></center><br>
+     means <span class="code">OR</span> behaves like addition, and <br>
+    <center><span class="code">false AND false = false</span>, &nbsp;&nbsp; <span class="code">false AND true = true AND false = false</span>, &nbsp;&nbsp; <span class="code">true AND true = true</span></center><br>
+     means <span class="code">AND</span> behaves like multiplication.    
+    </dd>
+
+
+    <dt>Numerical invariant</dt><dd>A numerical invariant is---a number! But really, a number you use to help classify things. One reason you might use it is to help tell two objects apart. Sometimes in math you are handed two descriptions that LOOK different, but it's hard to tell if they might be secretly describing the same object. A numerical invariant should be, well, invariant---even if an object is described in a weird way, this invariant should be the same. So if you compute the invariant and get different answers for your two different descriptions, the descriptions must be talking about legitimately different objects (unfortunately, if the invariants are the same, your objects might still be different and this invariant just isn't noticing---for example, even though a fire hydrant and a stop sign are both red, they are not the same thing!)<br>
+    However, in this class we'll be using invariants in a different way, namely to help us refine our understanding. For example, you could know that a shape is flat or curved. But even better would be to ask "how curved?" and assign a number that is bigger the more curved it is. Or, instead of just knowing whether an equation is differentiable or not at a point, a better question would be "How badly non-differentiable?".
+    <br>Some examples of numerical invariants that appear in other fields of math are: the degree of a polynomial, the multiplicity of a root of a polynomial, the chromatic number of a graph ("how many colors?"), the genus of a topological surface ("how many holes?"). We'll be especially interested in numerical invariants for <a href="#singularities">singularities</a>.</dd>
+
+
+    <dt>Prime characteristic (&amp; characteristic zero) in AG &amp; CA</dt><dd>
+    You are all very familiar with polynomials from your earlier algebra classes. But let's talk about what's going on with coefficients. 
+    The first time you say polynomials, they were probably in $\bb Z[x]$, $\bb Q[x]$, or $\bb R[x]$, i.e., polynomials in a single variable $x$, where the coefficients were integers ($\bb Z$), rational numbers ($\bb Q$), or real numbers ($\bb R$). Given a polynomial like $x^2 + 3$, I could choose to view it is $\bb Z[x]$, or in $\bb Q[x]$, or in $\bb R[x]$, because integers are special types of rational numbers, which are themselves special types of real numbers.
+    At some point, you might have added more variables, like $x^2+y^2-z^2\in \bb R[x,y,z]$ or $x_1^2+x_2^2+\cdots +x_d^2\in \bb R[x_1,\ldots, x_d]$. Eventually, you probably saw that looking at things over $\bb C$ changes things, since in $\bb R[x]$ the polynomial $x^2+1$ is irreducible, but in $\bb C[x]$ it factors as $(x+i)(x-i)$. <br>
+    In the <a href="#characteristic">characteristic definition</a>, we saw that all of these coefficient choices ($\bb Z$, $\bb Q$, $\bb R$, and $\bb C$) are <em>characteristic zero</em>, because $1+1+\cdots + 1$ can never equal zero (unless I had zero one's in the first place).<br>
+    However, "prime characteristic" means that we actually want our coefficients to have non-zero characteristic, and even better, a prime number characteristic! 
+    So, something like $\bb Z/2\bb Z$ or $\bb Z/101\bb Z$, but NOT something like $\bb Z/12\bb Z$ (the fact that non-zero numbers can multiply to zero, like $3*4=0$, is pretty bad, and happens exactly because 12 can be factored). It turns out that a side perk of using primes instead of any old $n$ is that every number in $\bb Z/p\bb Z$ is invertible, so we can do division! (This uses some number theory to prove, e.g., <a href="https://en.wikipedia.org/wiki/Euler%27s_theorem">Euler's theorem</a>).<br>
+    Summary: Prime characteristic AG &amp; CA (also called "characteristic $p$", where $p$ = your prime number) means working with polynomial rings like $\bb Z/p\bb Z[x,y,z]$, such as $(\bb Z/2\bb Z)[x]$, whose elements are $\{0,1,x,x+1,x^2,x^2+1, x^2+x, x^2+x+1,\ldots, \}$.
+    The behaviour of the "same" polynomial like $x^2+1$ continues to be different depending on the coefficients. Working mod 2, we get $x^2+1 = (x+1)*(x+1)$ (called the Freshman's dream!). So unlike over $\bb C$, where we had two different roots, here we get only one root, but with multiplicity two.
+    </dd>
+
+    <dt id="singularities">Singularities</dt><dd>
+    SUPER informally, a "smooth" point on the graph of a polynomial (or system of polynomials) is a point that is, well, smooth; a singularity (aka a singular point) is a point on the graph where something "bad" happened---a crossing, a twisting, a sharp corner, and some super funky things in higher dimensions. Check out <a href="https://homepage.univie.ac.at/herwig.hauser/gallery.html">Herwig Hauser's gallery of singular algebraic surfaces</a> (algebraic surface = graph of a 3-variable polynomial) for some equations and pictures!<br>
+    Still informal but slightly more detailed: In calculus, you saw that a function might be differentiable or not at a point (for example, $y=x^2$ is differentiable at $x=0$, but $y=|x|$ is not differentiable because it has a sharp corner). 
+    You also (probably) saw the idea of an implicit derivative, so that even for something that isn't a function (like $y^2+x^2=1$, not a function because it fails the vertical line test) we can take a derivative: for the $y^2+x^2=1$ example, I "pretend" $y$ is a function of $x$ and use the chain rule to get $2y*\frac{dy}{dx} + 2x = 0$, then I solve to get my derivative is $\frac{dy}{dx} = \frac{-x}{y}$. 
+    We see that $\frac{dy}{dx}$ doesn't exist when $y=0$ because we are dividing by zero (and thinking of the graph, because we have a vertical tangent line). 
+    However, these two points still feels smooth---if I rotate my paper, they look the same as any other point. 
+    </dd>
+
+
+
+    <dt id="variety">Variety</dt>
+    <dd>
+    Consider polynomials $f_1, f_2,\ldots, f_n$ in $d$ variables. 
+    We can draw the graph of the solution to the system $f_1(x_1,\ldots, x_d) = f_2(x_1,\ldots, x_d)=\cdots = f_n(x_1,\ldots, x_d)=0$. This looks like graphing each equation, then looking at the places where ALL of the graphs intersect. This is a <em>variety</em>.
+    Common notation for this is $\bb V(f_1,\ldots, f_n)$.
+    If a variety "feels" like something 1D/a curve, it is called an <em>algebraic curve</em>, and if it "feels" like something 2D/a surfece, it is called an <em>algebraic surface</em>. We use these terms even if it is drawn in 3 or 4 or 10000 dimensions). 
+    In two variables $\bb R[x,y]$ (so that the resulting pictures are drawn in 2D), some examples are:
+    <ul>
+        <li>Taking $f=y-x^2$. Then $\bb V(f)$ is a parabola. This is a algebraic curve.</li>
+        <li>Taking $f=x^2+y^2-1$. Then $\bb V(f)$ is a circle of radius 1. This is an algebraic curve.</li>
+        <li>Taking $f_1=y-x^2+1$ and $f_2=y$. The graph of $f_1=0$ looks like the parabola $y=x^2-1=(x+1)((x-1)$, and the graph of $f_2=0$ looks like the $y-axis$, $y=0$. The intersection of these is just the two points (0,1) and (0,-1). This is NOT a curve.</li>
+    </ul>
+    In three variables $\bb R[x,y,z]$ (so that the resulting pictures are drawn in 3D), some examples are:
+    <ul>
+        <li>Taking $f=y-x^2$ yields $\bb V(f)$ = a paraboloid, the surface of revolution that comes from rotating the parabola around the $z$-axis. Notice that even though a $z$ didn't appear in my equation, the fact that I said we were in three variables/drawing in 3D means it is a different picture than the same equation in the two variable list!This is an algebraic surface.</li>
+        <li>Taking $f=x^2+y^2+z^2-1$ yields $\bb V(f)$ = the surface of a sphere. This is an algebraic surface (since it is only the surface, not a filled in sphere!).</li>
+        <li>Taking $f_1=x^2+y^2-1$ and $f_2=x^2+y^2+z^2-4$ means we are taking the intersection of the (surface of) a cylinder of infinite height and radius 1, and of a sphere of radius 2. This variety looks like two circles of radius 1, one floating at height $\sqrt 3$ and one floating at height $-\sqrt 3$. This is an algebraic curve (or really, two algebraic curves).</li>
+    </ul>
+    </dd>
+
+</dl>
+
+
+    </main>
+</body>
