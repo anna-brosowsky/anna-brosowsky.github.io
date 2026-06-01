@@ -29,6 +29,14 @@
   content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
+/* Course menu */
+
+.nav .current{
+
+}
+
+
+
 
 /* Style the collapsible content. Note: hidden by default */
 .soln {

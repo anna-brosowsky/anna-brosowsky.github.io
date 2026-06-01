@@ -102,7 +102,7 @@
     In an algebra or number theory class, you might have defined a <em>ring</em> $\bb Z/n\bb Z$ (other common notation is $\bb Z_n$ or $\bb Z/n$). 
     I won't define a ring in general, but in this specific case, $\bb Z/n\bb Z$ is the set of numbers $\{0,1,2,\ldots, n-1\}$, and addition, multiplication, and subtraction work by doing normal addition,multiplication, and subtraction, then taking the remainder when you divide by $n$. So that in $\bb Z/12$, $11+3=2$. In other words, basically the same thing as above but I use $=$ instead of $\equiv$, and I'm forced to choose the "right" remainder class (14 doesn't make sense here since it's not in the set $\{0,1,2,\ldots, 11\}$). 
     This $\bb Z/n\bb Z$ thing is a way that mathematicians try to make modular arithmetic more precise. Notice weird things can happen: $3*4=0$ (even though 3 and 4 are both non-zero!!!). <br>
-    Example: $\bb Z/2\bb Z$ has just numbers $\{0,1\}$, and $0+0=0$, $0+1=1+0=1$, and $1+1=0$ (since $1+1=2\equiv 0$ going mod 2). 
+    <b>Example:</b> $\bb Z/2\bb Z$ has just numbers $\{0,1\}$, and $0+0=0$, $0+1=1+0=1$, and $1+1=0$ (since $1+1=2\equiv 0$ going mod 2). 
     The multiplication table is $0*0=0$, $0*1=1*0=0$, and $1*1=1$. You may have secretly seen this before! If you have seen binary, this is the same as doing everything as binary, then ONLY taking the last (one's) digit. This is also the same as ("is isomorphic to") the set of {<span class="code">true</span>, <span class="code">false</span>} under the operations <span class="code">OR</span> &amp; <span class="code">AND</span>. Specifically, <br>
     <center><span class="code">false OR false = false</span>, &nbsp;&nbsp; <span class="code">false OR true = true OR false = true</span>, &nbsp;&nbsp; <span class="code">true OR true = true</span></center><br>
      means <span class="code">OR</span> behaves like addition, and <br>
@@ -142,7 +142,7 @@
     Consider polynomials $f_1, f_2,\ldots, f_n$ in $d$ variables. 
     We can draw the graph of the solution to the system $f_1(x_1,\ldots, x_d) = f_2(x_1,\ldots, x_d)=\cdots = f_n(x_1,\ldots, x_d)=0$. This looks like graphing each equation, then looking at the places where ALL of the graphs intersect. This is a <em>variety</em>.
     Common notation for this is $\bb V(f_1,\ldots, f_n)$.
-    If a variety "feels" like something 1D/a curve, it is called an <em>algebraic curve</em>, and if it "feels" like something 2D/a surfece, it is called an <em>algebraic surface</em>. We use these terms even if it is drawn in 3 or 4 or 10000 dimensions). 
+    If a variety "feels" like something 1D/a curve, it is called an <em>algebraic curve</em>, and if it "feels" like something 2D/a surfece, it is called an <em>algebraic surface</em>. We use these terms even if it is drawn in 3 or 4 or 10000 dimensions). <br>
     In two variables $\bb R[x,y]$ (so that the resulting pictures are drawn in 2D), some examples are:
     <ul>
         <li>Taking $f=y-x^2$. Then $\bb V(f)$ is a parabola. This is a algebraic curve.</li>

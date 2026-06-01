@@ -7,6 +7,7 @@
     /* blues */
     --secondary-light: #9cd5ff;
     --secondary-dark: #0000cd;
+    --secondary-pale: #cfe7ff;
     /* greys */
     --tertiary-light: #b0c4de;
     --tertiary-dark: #696969;
@@ -95,7 +96,10 @@
     background: var(--secondary-light);
   }
   
-  nav a:hover, nav a:focus {
+  nav .current a:any-link {
+      background: var(--secondary-pale);
+    }
+  nav a:hover, nav a:focus , nav .current a:hover, nav.current a:focus{
     background: var(--tertiary-light);
   }
   
@@ -103,3 +107,4 @@
     color: var(--secondary-light);
     background: var(--primary-dark);
   }
+
