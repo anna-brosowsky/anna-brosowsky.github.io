@@ -18,9 +18,38 @@
         </ul>
     </nav>
     <main>
-<h1>Let's Learn Lean!</h1>
-<p> In Fall 2026, meetings will be <b>Mondays 2-3pm in Avery 117</b>. By request we can do a hybrid option, reach out to us if you want that! Ask me or Zach Norwood to be added to the mailing list; or seach for lean-learning-league on <a href="https://mailman.nebraska.edu/mailman3/lists/">mailman</a> and add yourself!</p>
+<h1>Let's Learn Lean with the UNLLLL!</h1>
 <p>Find this page again easily via <a href="http://go.unl.edu/LLLs26">http://go.unl.edu/LLLs26</a></p>
+
+
+<p> In Fall 2026, meetings will be <b>Mondays 2-3pm in Avery 117</b>. Meetings are hybrid using the same zoom link every week (check the mailing list).
+Ask me or Zach Norwood to be added to the mailing list; or seach for lean-learning-league on <a href="https://mailman.nebraska.edu/mailman3/lists/">mailman</a> and add yourself!</p>
+
+<p>The "All Levels" Lean League (aka AL aka UNLLLLAL) is open to everyone regardless of experience levels. We will do a combination of tutorials and reading through the textbook <a href="https://leanprover-community.github.io/mathematics_in_lean/">Mathematics in Lean</a>.
+    If you have a request for something you want to hear about in a tutorial, ask during a meeting and someone might be able to run one (or, maybe you can learn more about it and teach it to the rest of us?!).</p>
+
+<p>There is also the "Leaders" Lean League (aka UNLLLLL) that meets weekly and is time for people to work on ongoing projects. Come ask about it if you are interested in joining.</p>
+
+<h3>Fall 2026 Schedule</h3>
+
+<p>No meeting on labor day!</p>
+
+<p><b>Homework for 9/14:</b>
+    Install Lean! Use the instructions below. We will (hopefully) do a tutorial on "My First Proof" where we follow along with someone presenting to build a lean file with our very first proof (maybe roughly following some ideas from Ch 1 and the beginning of Ch 2 of the textbook).
+</p>
+
+
+<h2>Installation Instructions</h2>
+<p>Instructions to get the Mathematics in Lean project:</p>
+
+<ol>
+    <li>Install Lean and VS Code using the instructions here: <a href="https://lean-lang.org/install/">https://lean-lang.org/install/</a></li>
+    <li>Fetch the repository by clicking on the forall symbol in the upper right corner of VS Code, and choose "Open Project", then "Download Project", and then "Mathematics in Lean".</li>
+    <li>Click the forall symbol in VS Code, then "Project Actions...", then "Fetch Mathlib Build Cache".</li>
+    <li>Click the "Restart File" button in the bottom right corner.</li>
+</ol>
+
+<p>If you are running Windows and have antivirus software installed, then excluding the directory where the lean project is placed from scanning can speed up things a lot. As always, messing with your antivirus is something you are doing at your own risk.</p>
 
 
 <h2>Additional Resources</h2>
@@ -73,7 +102,9 @@ I haven't looked into it too much myself, but if anyone is interested and gets i
      
 </ul>
 
-<h2>Past Meetings</h2>
+<h3>Meeting summaries from Spring 2026</h3>
+<button type="button" class="viewhidden">View Spring 2026 Meeting Summaries</button>
+<div class="hidden">
 <dl>
     <dt>Jan 20th</dt>
     <dd>We played the <a href="https://adam.math.hhu.de/#/g/leanprover-community/nng4">natural number game</a> to start to get familiar with the syntax and key ideas. You can set rules to "relaxed" to skip ahead to later levels, but the goal was really just to do Tutorial World and Addition World (in particular, to mess around with induction!). 
@@ -98,7 +129,27 @@ We saw a mini-preview of what actual lean code would look like. We also discusse
     <dt>Feb 24th</dt>
     <dd>We learned to be careful of type signatures! lt_of_le_of_lt doesn't take any parameters, so it's illegal to try to write something like <span class="code">rw [lt_of_le_of_lt g h]</span>. We can tell this because when this Theorem was originally defined, there was no forall or any parameters in the definition. It HAS to be inferred from context.</dd>
 </dl>
+    </div>
 
+    <p>&nbsp;</p>
 
     </main>
+
+<script>
+    var coll = document.getElementsByClassName("viewhidden");
+    var i;
+    for (i = 0; i < coll.length; i++) {
+      console.log(i);
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+</script>
+
 </body>
